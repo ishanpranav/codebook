@@ -11,3 +11,8 @@ void euler_submit(int id, long long result, clock_t start)
         result,
         (double)(clock() - start) / CLOCKS_PER_SEC);
 }
+
+long math_natural_sum(long n)
+{
+    return n * (n + 1) / 2;
+}

@@ -4,15 +4,10 @@
 
 #include "euler.h"
 
-int math_natural_sum(int n)
-{
-    return n * (n + 1) / 2;
-}
-
 int main(void)
 {
     clock_t start = clock();
-    int sum = (3 * math_natural_sum(999 / 3)) +
+    long sum = (3 * math_natural_sum(999 / 3)) +
         (5 * math_natural_sum(999 / 5)) -
         (15 * math_natural_sum(999 / 15));
 
