@@ -38,4 +38,6 @@ int main(void)
     long sum = math_even_fibonacci_sum(4000000);
 
     euler_submit(2, sum, start);
+
+    return 0;
 }
