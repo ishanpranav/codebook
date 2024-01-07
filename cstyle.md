@@ -48,6 +48,8 @@ is impractical, use numeric suffixes instead.
 |  `a`   | arbitrary object, area                                                                       |
 |  `b`   | blue color component, boundary points in Pick\'s Theorem                                     |
 |  `e`   | arbitrary edge                                                                               |
+|  `ef`  | even Fibonacci number                                                                        |
+|  `f`   | Fibonacci number                                                                             |
 |  `dx`  | change in an arbitrary dimension                                                             |
 |  `g`   | green color component, arbitrary graph                                                       |
 |  `hi`  | larger pointer, point above, upper buffer                                                    |
