@@ -2,4 +2,4 @@
 
 #include <time.h>
 
-void euler_submit(int id, long result, clock_t start);
+void euler_submit(int id, long long result, clock_t start);

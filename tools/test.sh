@@ -1,4 +1,4 @@
-for i in {0001..0001};
+for i in {0001..0003};
 do
     ./../id${i}.o
 done

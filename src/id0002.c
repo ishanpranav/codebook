@@ -1,8 +1,10 @@
 // Licensed under the MIT License.
 
+// Even Fibonacci Numbers
+
 #include "euler.h"
 
-long math_even_fibonnaci_sum(long n)
+long math_even_fibonacci_sum(long n)
 {
     if (n < 2)
     {
@@ -15,7 +17,7 @@ long math_even_fibonnaci_sum(long n)
 
     while (ef2 <= n)
     {
-        long long ef3 = 4 * ef2 + ef1;
+        long ef3 = 4 * ef2 + ef1;
 
         if (ef3 > n)
         {
@@ -33,7 +35,7 @@ long math_even_fibonnaci_sum(long n)
 int main(void)
 {
     clock_t start = clock();
-    long sum = math_even_fibonnaci_sum(4000000);
+    long sum = math_even_fibonacci_sum(4000000);
 
     euler_submit(2, sum, start);
 }
