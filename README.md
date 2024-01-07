@@ -11,6 +11,7 @@ Efficient Project Euler solutions in C language
 | 4   | Largest Palindrome Product | Number theory | Maximum               | [Palindromic number](https://en.wikipedia.org/wiki/Palindromic_number)                 |
 | 5   | Smallest Multiple          | Number theory | Least Common Multiple | [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)               |
 | 6 | Sum Square Difference | Sequences | Difference  | [Square pyramidal number](https://en.wikipedia.org/wiki/Square_pyramidal_number) |
+| 7 | 10001st Prime | Number theory | Term | [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) |
 
 ## Omissions
 

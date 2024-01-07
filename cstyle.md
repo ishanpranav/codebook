@@ -57,7 +57,7 @@ is impractical, use numeric suffixes instead.
 |  `k`   | term number, arbitrary constant                                                              |
 |  `l`   | arbitrary line                                                                               |
 |  `lo`  | smaller pointer, point below, lower buffer                                                   |
-|  `m`   | matrix size in an arbitrary dimension                                                        |
+|  `m`   | matrix size in an arbitrary dimension, arbitrary natural number                              |
 | `max`  | inclusive maximum, exclusive interval upper bound                                            |
 | `mid`  | middle pointer, middle buffer                                                                |
 | `min`  | inclusive minimum, inclusive interval lower bound                                            |

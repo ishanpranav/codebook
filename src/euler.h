@@ -1,6 +1,9 @@
 // Licensed under the MIT License.
 
 #include <time.h>
+#include <stdio.h>
+#define euler_throw(format) \
+    fprintf(stderr, "Error: " format " at %s line %d.\n", __FILE__, __LINE__)
 
 /**
  * Submits a solution for the problem with the given identifier.
