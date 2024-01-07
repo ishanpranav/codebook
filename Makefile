@@ -25,6 +25,9 @@ id0006: src/id0006.c euler
 	 
 id0007: src/id0007.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o $(LIBM)
+	 
+id0008: src/id0008.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
 clean:
 	rm -rf *.o

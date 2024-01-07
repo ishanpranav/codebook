@@ -62,7 +62,7 @@ is impractical, use numeric suffixes instead.
 | `mid`  | middle pointer, middle buffer                                                                |
 | `min`  | inclusive minimum, inclusive interval lower bound                                            |
 |  `n`   | count, arbitrary integer                                                                     |
-|  `p`   | arbitrary pointer, arbitrary point                                                           |
+|  `p`   | arbitrary pointer, arbitrary point, arbitrary prime                                          |
 |  `q`   | arbitrary rational number                                                                    |
 |  `r`   | red color component, arbitrary real number                                                   |
 |  `u`   | arbitrary vertex                                                                             |

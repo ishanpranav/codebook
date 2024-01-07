@@ -7,6 +7,13 @@
 #include <stdlib.h>
 #include "euler.h"
 
+long math_max_prime(int k)
+{
+    double logK = log(k);
+    
+    return ceil(k * logK + k * log(logK));
+}
+
 void math_composites(long max, bool result[])
 {
     double sqrtMax = sqrt(max);
@@ -25,19 +32,8 @@ void math_composites(long max, bool result[])
     }
 }
 
-long math_prime(int k)
+long math_prime(int k, long max, bool composites[])
 {
-    double logK = log(k);
-    long max = ceil(k * logK + k * log(logK));
-    bool* composites = calloc(max - 2, sizeof(bool));
-
-    if (!composites)
-    {
-        return -1;
-    }
-
-    math_composites(max, composites);
-
     int n = 0;
 
     for (long i = 2; i < max; i++)
@@ -49,13 +45,9 @@ long math_prime(int k)
 
         if (n == k)
         {
-            free(composites);
-
             return i;
         }
     }
-
-    free(composites);
 
     return 0;
 }
@@ -63,16 +55,20 @@ long math_prime(int k)
 int main(void)
 {
     clock_t start = clock();
-    long term = math_prime(10001);
+    long max = math_max_prime(10001);
+    bool* composites = calloc(max - 2, sizeof(bool));
 
-    if (term < 0)
+    if (!composites)
     {
         euler_throw("Out of memory");
-
-        return 1;
     }
 
-    euler_submit(7, term, start);
+    math_composites(max, composites);
+
+    long p = math_prime(10001, max, composites);
+
+    euler_submit(7, p, start);
+    free(composites);
 
     return 0;
 }
