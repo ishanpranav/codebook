@@ -17,23 +17,3 @@ long math_natural_sum(long n)
 {
     return n * (n + 1) / 2;
 }
-
-long math_prime(int k, long max, bool composites[])
-{
-    int n = 0;
-
-    for (long i = 2; i < max; i++)
-    {
-        if (!composites[i - 2])
-        {
-            n++;
-        }
-
-        if (n == k)
-        {
-            return i;
-        }
-    }
-
-    return 0;
-}
