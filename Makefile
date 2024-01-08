@@ -3,7 +3,7 @@ CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 LIBM = -lm
 
 all: \
-	id0001 id0002 id0004 id0005 id0006 id0007 id0008 id0009 id0010
+	id0001 id0002 id0004 id0005 id0006 id0007 id0008 id0010 id0011
 
 euler: src/lib/euler.h src/lib/euler.c
 	$(CC) $(CFLAGS) -c src/lib/euler.c -o $@.o 
@@ -32,11 +32,11 @@ id0007: src/id0007.c euler prime_set
 id0008: src/id0008.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
-id0009: src/id0009.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o $(LIBM)
-
 id0010: src/id0010.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o prime_set.o $(LIBM)
+
+id0011: src/id0011.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
 clean:
 	rm -rf *.o

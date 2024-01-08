@@ -52,9 +52,10 @@ is impractical, use numeric suffixes instead.
 |  `f`   | Fibonacci number                                                                             |
 |  `dx`  | change in an arbitrary dimension                                                             |
 |  `g`   | green color component, arbitrary graph                                                       |
+|  `h`   | row offset, horizontal offset                                                                |
 |  `hi`  | larger pointer, point above, upper buffer                                                    |
 |  `i`   | abitrary counter, matrix index in an arbitrary dimension, interior points in Pick\'s Theorem |
-|  `k`   | term number, arbitrary constant                                                              |
+|  `k`   | term number, arbitrary constant, column offset, vertical offset                              |
 |  `l`   | arbitrary line                                                                               |
 |  `lo`  | smaller pointer, point below, lower buffer                                                   |
 |  `m`   | matrix size in an arbitrary dimension, arbitrary natural number                              |

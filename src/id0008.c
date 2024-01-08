@@ -49,13 +49,13 @@ int main(void)
         "84580156166097919133875499200524063689912560717606"
         "05886116467109405077541002256983155200055935729725"
         "71636269561882670428252483600823257530420752963450";
-    clock_t start = clock();
     
     for (int i = 0; i < 1000; i++)
     {
         series[i] -= '0';
     }
 
+    clock_t start = clock();
     long long max = series_max_product(series, 1000, 13);
 
     euler_submit(8, max, start);
