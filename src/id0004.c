@@ -3,7 +3,7 @@
 // Largest Palindrome Product
 
 #include <stdbool.h>
-#include "euler.h"
+#include "lib/euler.h"
 
 bool math_is_palindrome(long value)
 {    

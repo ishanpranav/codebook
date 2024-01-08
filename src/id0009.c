@@ -3,7 +3,7 @@
 // Special Pythagorean Triplet
 
 #include <math.h>
-#include "euler.h"
+#include "lib/euler.h"
 
 long math_pythagorean_triplet_product(int sum)
 {

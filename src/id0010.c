@@ -2,8 +2,8 @@
 
 // Summation of Primes
 
-#include "euler.h"
-#include "prime_set.h"
+#include "lib/euler.h"
+#include "lib/prime_set.h"
 
 int main(void)
 {

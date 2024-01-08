@@ -2,7 +2,29 @@
 
 // Largest Product in a Series
 
-#include "euler.h"
+#include "lib/euler.h"
+
+long long series_max_product(char series[], int n, int k)
+{
+    long long result = 0;
+
+    for (int i = 0; i < n - k - 1; i++)
+    {
+        long long product = series[i];
+
+        for (int j = 1; j < k; j++)
+        {
+            product *= series[i + j];
+        }
+
+        if (product > result)
+        {
+            result = product;
+        }
+    }
+
+    return result;
+}
 
 int main(void)
 {
@@ -34,22 +56,7 @@ int main(void)
         series[i] -= '0';
     }
 
-    long long max = 0;
-
-    for (int i = 0; i < 988; i++)
-    {
-        long long product = series[i];
-
-        for (int j = 1; j < 13; j++)
-        {
-            product *= series[i + j];
-        }
-
-        if (product > max)
-        {
-            max = product;
-        }
-    }
+    long long max = series_max_product(series, 1000, 13);
 
     euler_submit(8, max, start);
 

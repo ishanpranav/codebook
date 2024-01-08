@@ -5,11 +5,11 @@ LIBM = -lm
 all: \
 	id0001 id0002 id0004 id0005 id0006 id0007 id0008 id0009 id0010
 
-euler: src/euler.h src/euler.c
-	$(CC) $(CFLAGS) -c src/euler.c -o $@.o 
+euler: src/lib/euler.h src/lib/euler.c
+	$(CC) $(CFLAGS) -c src/lib/euler.c -o $@.o 
 
-prime_set: src/prime_set.h src/prime_set.c
-	$(CC) $(CFLAGS) -c src/prime_set.c -o $@.o
+prime_set: src/lib/prime_set.h src/lib/prime_set.c
+	$(CC) $(CFLAGS) -c src/lib/prime_set.c -o $@.o
 
 id0001: src/id0001.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o

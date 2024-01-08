@@ -3,10 +3,9 @@
 // 10001st Prime
 
 #include <math.h>
-#include <stdbool.h>
 #include <stdlib.h>
-#include "euler.h"
-#include "prime_set.h"
+#include "lib/euler.h"
+#include "lib/prime_set.h"
 
 long math_max_prime(int k)
 {

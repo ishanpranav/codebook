@@ -2,7 +2,7 @@
 
 // Even Fibonacci Numbers
 
-#include "euler.h"
+#include "lib/euler.h"
 
 long math_even_fibonacci_sum(long n)
 {

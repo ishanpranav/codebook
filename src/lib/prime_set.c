@@ -15,7 +15,7 @@ bool prime_set(PrimeSet instance, long max)
 
     double sqrtMax = sqrt(max);
 
-    for (long m = 2; m < sqrtMax; m++)
+    for (long m = 2; m <= sqrtMax; m++)
     {
         if (instance->composites[m - 2])
         {

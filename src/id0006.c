@@ -2,7 +2,7 @@
 
 // Sum Square Difference
 
-#include "euler.h"
+#include "lib/euler.h"
 
 long math_natural_sum_of_squares(long n)
 {
