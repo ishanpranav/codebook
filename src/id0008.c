@@ -36,7 +36,7 @@ int main(void)
 
     long long max = 0;
 
-    for (int i = 0; i < 987; i++)
+    for (int i = 0; i < 988; i++)
     {
         long long product = series[i];
 

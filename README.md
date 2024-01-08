@@ -13,6 +13,8 @@ Efficient Project Euler solutions in C language
 |  6  |    Sum Square Difference    |           Sequences            |      Difference       | [Square pyramidal number](https://en.wikipedia.org/wiki/Square_pyramidal_number)       |
 |  7  |        10001st Prime        |         Number theory          |         Term          | [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)           |
 |  8  | Largest Product in a Series | Sequences, Dynamic programming |        Maximum        | Sliding-window technique                                                               |
+|  9  | Special Pythagorean Triplet |            Geometry            |        Product        | [Euclid\'s formula](https://en.wikipedia.org/wiki/Pythagorean_triple)                  |
+| 10  |     Summation of Primes     |         Number theory          |          Sum          |                                                                                        |
 
 ## Omissions
 

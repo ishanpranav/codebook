@@ -2,9 +2,9 @@
 
 #include <time.h>
 #include <stdio.h>
-#define euler_throw(format) do \
+#define euler_throw(error) do \
 { \
-    fprintf(stderr, "Error: " format " at %s line %d.\n", __FILE__, __LINE__); \
+    fprintf(stderr, "Error: " error " at %s line %d.\n", __FILE__, __LINE__); \
     return 1; \
 } while (0)
 
