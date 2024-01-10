@@ -2,30 +2,29 @@
 
 // Summation of Primes
 
+#include <stdlib.h>
 #include "lib/euler.h"
-#include "lib/prime_set.h"
 
 int main(void)
 {
     clock_t start = clock();
-    struct PrimeSet primes;
+    long* primes = malloc(2000000l * sizeof * primes);
+    long count = math_get_primes(2000000l, primes);
 
-    if (!prime_set(&primes, 2000000l))
+    if (!primes || count < 0)
     {
         euler_throw("Out of memory\n");
     }
 
     long long sum = 0;
-    struct PrimeSetIterator iter;
 
-    for (prime_set_begin(&primes, &iter); 
-        !prime_set_end(&iter);
-        prime_set_next(&iter))
+    for (long i = 0; i < count; i++)
     {
-        sum += iter.current;
+        sum += primes[i];
     }
 
     euler_submit(10, sum, start);
+    free(primes);
 
     return 0;
 }

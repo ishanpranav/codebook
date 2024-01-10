@@ -5,7 +5,6 @@
 #include <math.h>
 #include <stdlib.h>
 #include "lib/euler.h"
-#include "lib/prime_set.h"
 
 long math_max_prime(int k)
 {
@@ -17,24 +16,16 @@ long math_max_prime(int k)
 int main(void)
 {
     clock_t start = clock();
-    struct PrimeSet primes;
+    long max = math_max_prime(10001);
+    long* primes = malloc((max - 2) * sizeof * primes);
 
-    if (!prime_set(&primes, math_max_prime(10001)))
+    if (!primes || math_get_primes(max, primes) < 0)
     {
         euler_throw("Out of memory");
     }
     
-    struct PrimeSetIterator iter;
-
-    prime_set_begin(&primes, &iter);
-
-    for (int i = 0; i < 10000; i++)
-    {
-        prime_set_next(&iter);
-    }
-
-    euler_submit(7, iter.current, start);
-    finalize_prime_set(&primes);
+    euler_submit(7, primes[10000], start);
+    free(primes);
 
     return 0;
 }
