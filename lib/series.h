@@ -6,6 +6,7 @@ struct Series
     char* end;
 };
 
+/** Represents a series of decimal digits. */
 typedef struct Series* Series;
 
 /**
