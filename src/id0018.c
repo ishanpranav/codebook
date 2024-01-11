@@ -5,12 +5,11 @@
 
 #include <stdlib.h>
 #include "../lib/euler.h"
+#include "../lib/lp_string.h"
 #define BUFFER_SIZE 512
 #define MAX_HEIGHT 100
 
-typedef char* String;
-
-int main(int count, String args[])
+int main(int count, LPString args[])
 {
     int id;
 
@@ -30,7 +29,7 @@ int main(int count, String args[])
 
     while (fgets(buffer, sizeof buffer, stdin))
     {
-        String substring = buffer;
+        LPString substring = buffer;
 
         for (int j = 0; j < m + 1; j++)
         {

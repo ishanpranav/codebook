@@ -5,11 +5,14 @@ all: \
 	id0001 id0002 id0003 id0004 id0005 id0006 id0007 id0008 id0009 id0010 \
 	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020
 
-euler: lib/euler.h lib/euler.c
-	$(CC) $(CFLAGS) -c lib/euler.c -o $@.o 
+euler: lib/euler.c lib/euler.h
+	$(CC) $(CFLAGS) -c $< -o $@.o 
 
-euler_math: lib/euler_math.h lib/euler_math.c
-	$(CC) $(CFLAGS) -c lib/euler_math.c -o $@.o
+euler_math: lib/euler_math.c lib/euler_math.h
+	$(CC) $(CFLAGS) -c $< -o $@.o
+
+series: lib/series.c lib/series.h
+	$(CC) $(CFLAGS) -c $< -o $@.o
 
 id0001: src/id0001.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
@@ -32,8 +35,8 @@ id0006: src/id0006.c euler
 id0007: src/id0007.c euler euler_math
 	$(CC) $(CFLAGS) $< -o $@.o euler.o euler_math.o -lm
 	 
-id0008: src/id0008.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o
+id0008: src/id0008.c euler series
+	$(CC) $(CFLAGS) $< -o $@.o euler.o series.o
 
 id0009: src/id0009.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
@@ -56,8 +59,8 @@ id0014: src/id0014.c euler
 id0015: src/id0015.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
-id0016: src/id0016.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
+id0016: src/id0016.c euler series
+	$(CC) $(CFLAGS) $< -o $@.o euler.o series.o -lgmp
 
 id0017: src/id0017.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
@@ -68,8 +71,8 @@ id0018: src/id0018.c euler
 id0019: src/id0019.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
-id0020: src/id0020.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
+id0020: src/id0020.c euler series
+	$(CC) $(CFLAGS) $< -o $@.o euler.o series.o -lgmp
 
 clean:
 	rm -rf *.o
