@@ -4,12 +4,13 @@
 
 #include <math.h>
 #include <stdlib.h>
-#include "lib/euler.h"
+#include "../lib/euler.h"
+#include "../lib/euler_math.h"
 
 long math_max_prime(int k)
 {
     double logK = log(k);
-    
+
     return ceil(k * logK + k * log(logK));
 }
 
@@ -23,7 +24,7 @@ int main(void)
     {
         euler_throw("Out of memory");
     }
-    
+
     euler_submit(7, primes[10000], start);
     free(primes);
 

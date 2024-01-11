@@ -1,5 +1,8 @@
-#include <stdlib.h>
-#include "lib/euler.h"
+// Licensed under the MIT License.
+
+// Longest Collatz Sequence
+
+#include "../lib/euler.h"
 
 int main(void)
 {

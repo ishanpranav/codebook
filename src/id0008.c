@@ -2,7 +2,7 @@
 
 // Largest Product in a Series
 
-#include "lib/euler.h"
+#include "../lib/euler.h"
 
 long long series_max_product(char series[], int n, int k)
 {
@@ -28,7 +28,7 @@ long long series_max_product(char series[], int n, int k)
 
 int main(void)
 {
-    char series[1000] = 
+    char series[1000] =
         "73167176531330624919225119674426574742355349194934"
         "96983520312774506326239578318016984801869478851843"
         "85861560789112949495459501737958331952853208805511"
@@ -49,7 +49,7 @@ int main(void)
         "84580156166097919133875499200524063689912560717606"
         "05886116467109405077541002256983155200055935729725"
         "71636269561882670428252483600823257530420752963450";
-    
+
     for (int i = 0; i < 1000; i++)
     {
         series[i] -= '0';

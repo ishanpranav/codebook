@@ -2,7 +2,7 @@
 
 // Multiples of 3 or 5
 
-#include "lib/euler.h"
+#include "../lib/euler.h"
 
 long math_sum_multiples_3_5(long max)
 {

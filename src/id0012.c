@@ -1,5 +1,9 @@
+// Licensed under the MIT License.
+
+// Highly Divisible Triangular Number
+
 #include <math.h>
-#include "lib/euler.h"
+#include "../lib/euler.h"
 
 int math_factors(long n)
 {
@@ -12,7 +16,7 @@ int math_factors(long n)
         {
             result++;
 
-            if (d != n / d) 
+            if (d != n / d)
             {
                 result++;
             }
@@ -33,6 +37,6 @@ int main(void)
         i++;
         n = n + i;
     }
-    
+
     euler_submit(12, n, start);
 }

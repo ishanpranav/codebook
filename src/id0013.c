@@ -1,4 +1,8 @@
-#include "lib/euler.h"
+// Licensed under the MIT License.
+
+// Large Sum
+
+#include "../lib/euler.h"
 
 int main(void)
 {

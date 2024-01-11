@@ -2,7 +2,7 @@
 
 // Smallest Multiple
 
-#include "lib/euler.h"
+#include "../lib/euler.h"
 
 long math_gcd(long a, long b)
 {

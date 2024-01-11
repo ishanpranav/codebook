@@ -3,7 +3,7 @@
 // Largest Product in a Grid
 
 #include <assert.h>
-#include "lib/euler.h"
+#include "../lib/euler.h"
 
 int main(void)
 {
@@ -75,7 +75,7 @@ int main(void)
             }
         }
     }
-    
+
     for (int i = 0; i < 17; i++)
     {
         for (int j = 19; j >= 3; j--)
