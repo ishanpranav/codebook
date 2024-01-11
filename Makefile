@@ -2,8 +2,8 @@ CC = gcc
 CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 
 all: \
-	id0001 id0002 id0004 id0005 id0006 id0007 id0008 id0010 id0011 id0012 \
-	id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020
+	id0001 id0002 id0003 id0004 id0005 id0006 id0007 id0008 id0009 id0010 \
+	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020
 
 euler: lib/euler.h lib/euler.c
 	$(CC) $(CFLAGS) -c lib/euler.c -o $@.o 
@@ -16,6 +16,9 @@ id0001: src/id0001.c euler
 
 id0002: src/id0002.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
+
+id0003: src/id0003.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 
 id0004: src/id0004.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
@@ -31,6 +34,9 @@ id0007: src/id0007.c euler euler_math
 	 
 id0008: src/id0008.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
+
+id0009: src/id0009.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 
 id0010: src/id0010.c euler euler_math
 	$(CC) $(CFLAGS) $< -o $@.o euler.o euler_math.o -lm
