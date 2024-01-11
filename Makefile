@@ -51,8 +51,8 @@ id0010: src/id0010.c euler euler_math
 id0011: src/id0011.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
-id0012: src/id0012.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
+id0012: src/id0012.c divisor_iterator euler
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o euler.o -lm
 
 id0013: src/id0013.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o

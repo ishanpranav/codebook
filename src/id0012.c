@@ -3,24 +3,17 @@
 // Highly Divisible Triangular Number
 
 #include <math.h>
+#include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
 
-int math_factors(long n)
+int math_divisors(long n)
 {
-    int result = 2;
-    long max = sqrt(n);
+    int result = 1;
+    struct DivisorIterator iter;
 
-    for (long d = 2; d <= max; d++)
+    for (divisor_begin(&iter, n); !divisor_end(&iter); divisor_next(&iter))
     {
-        if (n % d == 0)
-        {
-            result++;
-
-            if (d != n / d)
-            {
-                result++;
-            }
-        }
+        result++;
     }
 
     return result;
@@ -32,7 +25,7 @@ int main(void)
     long n = 1;
     clock_t start = clock();
 
-    while (math_factors(n) <= 500)
+    while (math_divisors(n) <= 500)
     {
         i++;
         n = n + i;

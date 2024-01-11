@@ -1,7 +1,6 @@
 // Licensed under the MIT License.
 
 #include <math.h>
-#include <stdio.h>
 #include "divisor_iterator.h"
 
 void divisor_begin(DivisorIterator iterator, long n)
@@ -10,14 +9,12 @@ void divisor_begin(DivisorIterator iterator, long n)
     iterator->end = sqrt(n);
     iterator->current = 1;
     iterator->next = 0;
-    iterator->state = 0;
-
-    printf("DIVISOR_BEGIN n = %ld end = %ld current = %ld next = %ld state = %d\n", iterator->n, iterator->end, iterator->current, iterator->next, iterator->state);
+    iterator->state = DIVISOR_ITERATOR_STATE_INITIAL;
 }
 
 bool divisor_end(DivisorIterator iterator)
 {
-    if (iterator->state == 1)
+    if (iterator->state == DIVISOR_ITERATOR_STATE_SWAP)
     {
         return iterator->next > iterator->end;
     }
@@ -25,46 +22,46 @@ bool divisor_end(DivisorIterator iterator)
     return iterator->current > iterator->end;
 }
 
+static void divisor_iterator_swap(long* p, long* q)
+{
+    long swap = *p;
+
+    *p = *q;
+    *q = swap;
+}
+
 void divisor_next(DivisorIterator iterator)
 {
     long n = iterator->n;
     long end = iterator->end;
 
-    if (iterator->state == 1)
+    if (iterator->state == DIVISOR_ITERATOR_STATE_SWAP)
     {
-        long swap = iterator->current;
-
-        iterator->current = iterator->next;
-        iterator->next = swap;
+        divisor_iterator_swap(&iterator->current, &iterator->next);
     }
 
-    if (iterator->state == 0 || iterator->state == 1)
+    if (iterator->state == DIVISOR_ITERATOR_STATE_YIELD)
     {
-        do
-        {
-            iterator->current++;
-        }
-        while (iterator->current <= end && n % iterator->current != 0);
+        divisor_iterator_swap(&iterator->current, &iterator->next);
 
-        if (iterator->current != n / iterator->current)
-        {
-            iterator->next = n / iterator->current;
-            iterator->state = 2;
-        }
-        else
-        {
-            iterator->next = 0;
-            iterator->state = 0;
-        }
+        iterator->state = DIVISOR_ITERATOR_STATE_SWAP;
+
+        return;
+    }
+
+    do
+    {
+        iterator->current++;
+    }
+    while (iterator->current <= end && n % iterator->current != 0);
+
+    if (iterator->current != n / iterator->current)
+    {
+        iterator->next = n / iterator->current;
+        iterator->state = DIVISOR_ITERATOR_STATE_YIELD;
     }
     else
     {
-        long swap = iterator->current;
-
-        iterator->current = iterator->next;
-        iterator->next = swap;
-        iterator->state = 1;
-    }    
-    
-    printf("DIVISOR_NEXT n = %ld end = %ld current = %ld next = %ld state = %d\n", iterator->n, iterator->end, iterator->current, iterator->next, iterator->state);
+        iterator->state = DIVISOR_ITERATOR_STATE_INITIAL;
+    }
 }

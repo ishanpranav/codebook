@@ -2,13 +2,20 @@
 
 #include <stdbool.h>
 
+enum DivisorIteratorState
+{
+    DIVISOR_ITERATOR_STATE_INITIAL,
+    DIVISOR_ITERATOR_STATE_SWAP,
+    DIVISOR_ITERATOR_STATE_YIELD
+};
+
 struct DivisorIterator
 {
     long n;
     long current;
     long next;
     long end;
-    int state;
+    enum DivisorIteratorState state;
 };
 
 typedef struct DivisorIterator* DivisorIterator;
