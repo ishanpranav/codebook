@@ -14,13 +14,14 @@ Efficient Project Euler solutions in C language
 |  7  |           [10001st Prime](src/id0007.c)            |         Number theory          |         Term          | [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)                   |
 |  8  |    [Largest Product in a Series](src/id0008.c)     | Sequences, Dynamic programming |        Maximum        | Sliding-window technique                                                                       |
 | 10  |        [Summation of Primes](src/id0010.c)         |         Number theory          |          Sum          |                                                                                                |
-| 11  |     [Largest Product in a Grid](src/id0011.c)      |      Dynamic programming       |        Maximum        | Sliding-window technique                                                                       |
+| 11  |     [Largest Product in a Grid](src/id0011.c)      |      Dynamic programming       |        Maximum        |                                                                                                |
 | 12  | [Highly Divisible Triangular Number](src/id0012.c) |         Number theory          |     Local Optimum     | [Integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)                   |
 | 13  |             [Large Sum](src/id0013.c)              |           Arithmetic           |          Sum          | [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic)           |
 | 14  |      [Longest Collatz Sequence](src/id0014.c)      |           Sequences            |        Optimum        | [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)                         |
 | 15  |           [Lattice Paths](src/id0015.c)            |         Combinatorics          | Binomial coefficient  | [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)                     |
 | 16  |          [Power Digit Sum](src/id0016.c)           | Arbitrary-Precision Arithmetic |          Sum          | [Arbitrary-precision arithmetic](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic) |
-| 17  |       [ Number Letter Counts](src/id0017.c)        |         Combinatorics          |         Count         |                                                                                                |
+| 17  |        [Number Letter Counts](src/id0017.c)        |         Combinatorics          |         Count         |                                                                                                |
+| 18, 67  |         [Maximum Path Sum I](src/id0018.c)         |          Graph theory          |        Maximum        | [Depth-first search](https://en.wikipedia.org/wiki/Depth-first_search)                         |
 
 ## Omissions
 

@@ -54,7 +54,10 @@ id0016: src/id0016.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
 
 id0017: src/id0017.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+
+id0018: src/id0018.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 
 clean:
 	rm -rf *.o

@@ -36,8 +36,7 @@ int main(void)
         7 * 9 * 100 + // hundred
         3 * 9 * 99 + // and
         sumOfTens * 100 + // twenty, thirty, fourty, ...ninety
-        sumOfOnes * 80 + // one, two, three, ...nine
         sumOfTeens * 10 + // ten, eleven, twelve, ...nineteen
-        sumOfOnes * 10; // one, two, three, ...nine
+        sumOfOnes * 90; // one, two, three, ...nine
     euler_submit(17, sum, start);
 }

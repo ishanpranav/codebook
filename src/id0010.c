@@ -14,7 +14,7 @@ int main(void)
 
     if (!primes || count < 0)
     {
-        euler_throw("Out of memory\n");
+        euler_throw("Out of memory");
     }
 
     long long sum = 0;
