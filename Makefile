@@ -6,8 +6,11 @@ all: \
 	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020 \
 	id0021
 
+divisor_iterator: lib/divisor_iterator.c lib/divisor_iterator.h	
+	$(CC) $(CFLAGS) -c $< -o $@.o
+
 euler: lib/euler.c lib/euler.h
-	$(CC) $(CFLAGS) -c $< -o $@.o 
+	$(CC) $(CFLAGS) -c $< -o $@.o
 
 euler_math: lib/euler_math.c lib/euler_math.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
@@ -75,8 +78,8 @@ id0019: src/id0019.c euler
 id0020: src/id0020.c euler series
 	$(CC) $(CFLAGS) $< -o $@.o euler.o series.o -lgmp
 
-id0021: src/id0021.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
+id0021: src/id0021.c divisor_iterator euler
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o euler.o -lm
 
 clean:
 	rm -rf *.o
