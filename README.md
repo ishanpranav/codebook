@@ -20,6 +20,7 @@ Efficient Project Euler solutions in C language
 | 14  |      [Longest Collatz Sequence](src/id0014.c)      |           Sequences            |        Optimum        | [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)                         |
 | 15  |           [Lattice Paths](src/id0015.c)            |         Combinatorics          | Binomial coefficient  | [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)                     |
 | 16  |          [Power Digit Sum](src/id0016.c)           | Arbitrary-Precision Arithmetic |          Sum          | [Arbitrary-precision arithmetic](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic) |
+| 17  |       [ Number Letter Counts](src/id0017.c)        |         Combinatorics          |         Count         |                                                                                                |
 
 ## Omissions
 
