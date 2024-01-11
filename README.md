@@ -2,7 +2,15 @@
 
 Efficient Project Euler solutions in C language
 
+## Attribution
+
+This repository depends on the
+[GNU Multiple Precision Arithmetic Library (GMP)](https://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library),
+which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
+
 ## Summary
+
+### 1-20, 67
 
 |   Id   |                      Problem                       |             Domain             |        Result         | Implementation                                                                                 |
 | :----: | :------------------------------------------------: | :----------------------------: | :-------------------: | ---------------------------------------------------------------------------------------------- |
@@ -26,10 +34,10 @@ Efficient Project Euler solutions in C language
 | 18, 67 |          [Maximum Path Sum](src/id0018.c)          |      Dynamic programming       |        Maximum        | Bottom-up approach                                                                             |
 |   19   |          [Counting Sundays](src/id0019.c)          |         Combinatorics          |         Count         |
 |   20   |        [Factorial Digit Sum](src/id0020.c)         | Arbitrary-precision arithmetic |          Sum          |                                                                                                |
-|   21   |          [Amicable Numbers](src/id0021.c)          |         Number theory          |          Sum          | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)                             |
 
-## Attribution
+### 21-
 
-This repository depends on the
-[GNU Multiple Precision Arithmetic Library (GMP)](https://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library),
-which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
+| Id  |             Problem              |    Domain     | Result | Implementation                                                     |
+| :-: | :------------------------------: | :-----------: | :----: | ------------------------------------------------------------------ |
+| 21  | [Amicable Numbers](src/id0021.c) | Number theory |  Sum   | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers) |
+| 22  |   [Names Scores](src/id0022.c)   |    Sorting    |  Sum   | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)               |
