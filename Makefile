@@ -3,7 +3,7 @@ CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 
 all: \
 	id0001 id0002 id0004 id0005 id0006 id0007 id0008 id0010 id0011 id0012 \
-	id0013 id0014 id0015 id0016 id0017 id0018
+	id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020
 
 euler: lib/euler.h lib/euler.c
 	$(CC) $(CFLAGS) -c lib/euler.c -o $@.o 
@@ -57,7 +57,13 @@ id0017: src/id0017.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 
 id0018: src/id0018.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+
+id0019: src/id0019.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+
+id0020: src/id0020.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
 
 clean:
 	rm -rf *.o

@@ -38,5 +38,5 @@ int main(void)
         n = n + i;
     }
 
-    euler_submit(12, n, start);
+    return euler_submit(12, n, start);
 }

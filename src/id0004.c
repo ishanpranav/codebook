@@ -57,7 +57,5 @@ int main(void)
         }
     }
 
-    euler_submit(4, max, start);
-
-    return 0;
+    return euler_submit(4, max, start);
 }

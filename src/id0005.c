@@ -32,7 +32,5 @@ int main(void)
         lcm = math_lcm(lcm, i);
     }
 
-    euler_submit(5, lcm, start);
-
-    return 0;
+    return euler_submit(5, lcm, start);
 }

@@ -36,5 +36,5 @@ int main(void)
         }
     }
 
-    euler_submit(14, result, start);
+    return euler_submit(14, result, start);
 }

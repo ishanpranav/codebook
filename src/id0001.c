@@ -18,7 +18,5 @@ int main(void)
     clock_t start = clock();
     long sum = math_sum_multiples_3_5(1000);
 
-    euler_submit(1, sum, start);
-
-    return 0;
+    return euler_submit(1, sum, start);
 }

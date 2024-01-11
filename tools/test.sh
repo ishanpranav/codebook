@@ -20,3 +20,8 @@ done
 
 cat ./../data/id0018.txt | ./../id0018.o
 cat ./../data/id0067.txt | ./../id0018.o 67
+
+for i in {0019..0020};
+do
+    ./../id${i}.o
+done

@@ -3,7 +3,6 @@
 // Maximum Path Sum I
 // Maximum Path Sum II
 
-#include <math.h>
 #include <stdlib.h>
 #include "../lib/euler.h"
 #define BUFFER_SIZE 512
@@ -56,5 +55,5 @@ int main(int count, String args[])
         }
     }
 
-    euler_submit(id, items[0][0], start);
+    return euler_submit(id, items[0][0], start);
 }

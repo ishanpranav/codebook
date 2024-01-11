@@ -15,7 +15,5 @@ int main(void)
     long sum = math_natural_sum(100);
     long difference = sum * sum - math_natural_sum_of_squares(100);
 
-    euler_submit(6, difference, start);
-
-    return 0;
+    return euler_submit(6, difference, start);
 }

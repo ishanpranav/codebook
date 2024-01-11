@@ -15,8 +15,9 @@
  * @param id     the problem identifier.
  * @param result the solution.
  * @param start  the program start time.
+ * @return `0` always.
 */
-void euler_submit(int id, long long result, clock_t start);
+int euler_submit(int id, long long result, clock_t start);
 
 /**
  * Computes a partial summation of the natural numbers.

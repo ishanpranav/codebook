@@ -27,5 +27,5 @@ int main(void)
     clock_t start = clock();
     long long result = math_binomial(40, 20);
 
-    euler_submit(15, result, start);
+    return euler_submit(15, result, start);
 }

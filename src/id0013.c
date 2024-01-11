@@ -20,5 +20,5 @@ int main(void)
         result /= 10;
     }
 
-    euler_submit(13, result, start);
+    return euler_submit(13, result, start);
 }

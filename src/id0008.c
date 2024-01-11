@@ -58,7 +58,5 @@ int main(void)
     clock_t start = clock();
     long long max = series_max_product(series, 1000, 13);
 
-    euler_submit(8, max, start);
-
-    return 0;
+    return euler_submit(8, max, start);
 }

@@ -37,7 +37,5 @@ int main(void)
     clock_t start = clock();
     long sum = math_even_fibonacci_sum(4000000l);
 
-    euler_submit(2, sum, start);
-
-    return 0;
+    return euler_submit(2, sum, start);
 }

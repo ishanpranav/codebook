@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-// Power Digit Sum
+// Factorial Digit Sum
 
 #include <gmp.h>
 #include "../lib/euler.h"
@@ -8,11 +8,11 @@
 int main(void)
 {
     mpz_t megahuge;
-    char digits[512];
+    char digits[256];
     clock_t start = clock();
 
-    mpz_init_set_ui(megahuge, 2);
-    mpz_pow_ui(megahuge, megahuge, 1000);
+    mpz_init(megahuge);
+    mpz_fac_ui(megahuge, 100);
     mpz_get_str(digits, 10, megahuge);
 
     int sum = 0;
@@ -22,7 +22,7 @@ int main(void)
         sum += *p - '0';
     }
 
-    euler_submit(16, sum, start);
+    euler_submit(20, sum, start);
     mpz_clear(megahuge);
 
     return 0;
