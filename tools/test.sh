@@ -12,4 +12,8 @@ done
 cat ./../data/id0011.txt | ./../id0011.o
 ./../id0012.o
 cat ./../data/id0013.txt | ./../id0013.o
-./../id0014.o
+
+for i in {0014..0016};
+do
+    ./../id${i}.o
+done
