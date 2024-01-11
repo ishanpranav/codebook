@@ -41,5 +41,7 @@ int main(void)
         }
     }
 
+    free(d);
+    
     return euler_submit(21, sum, start);
 }

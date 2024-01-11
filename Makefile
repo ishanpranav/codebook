@@ -4,7 +4,7 @@ CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 all: \
 	id0001 id0002 id0003 id0004 id0005 id0006 id0007 id0008 id0009 id0010 \
 	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020 \
-	id0021
+	id0021 id0022
 
 divisor_iterator: lib/divisor_iterator.c lib/divisor_iterator.h	
 	$(CC) $(CFLAGS) -c $< -o $@.o
@@ -15,6 +15,9 @@ euler: lib/euler.c lib/euler.h
 euler_math: lib/euler_math.c lib/euler_math.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
 
+lp_string: lib/lp_string.c lib/lp_string.h
+	$(CC) $(CFLAGS) -c $< -o $@.o
+	
 series: lib/series.c lib/series.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
 
@@ -80,6 +83,9 @@ id0020: src/id0020.c euler series
 
 id0021: src/id0021.c divisor_iterator euler
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o euler.o -lm
+
+id0022: src/id0022.c euler lp_string
+	$(CC) $(CFLAGS) $< -o $@.o euler.o lp_string.o
 
 clean:
 	rm -rf *.o

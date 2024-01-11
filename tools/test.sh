@@ -28,4 +28,5 @@ do
     ./../id${i}.o
 done
 
+cat ./../data/id0022.txt | ./../id0022.o
 cat ./../data/id0067.txt | ./../id0018.o 67
