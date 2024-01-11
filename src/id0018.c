@@ -3,26 +3,39 @@
 // Maximum Path Sum I
 // Maximum Path Sum II
 
-#include <assert.h>
 #include <math.h>
 #include <stdlib.h>
 #include "../lib/euler.h"
-#define MAX_HEIGHT 15
+#define BUFFER_SIZE 512
+#define MAX_HEIGHT 100
 
-int main(void)
+typedef char* String;
+
+int main(int count, String args[])
 {
+    int id;
+
+    if (count == 2)
+    {
+        id = strtol(args[1], NULL, 10);
+    }
+    else
+    {
+        id = 18;
+    }
+
     int m = 0;
     int items[MAX_HEIGHT][MAX_HEIGHT + 1] = { 0 };
+    char buffer[BUFFER_SIZE];
     clock_t start = clock();
-    char buffer[64];
 
     while (fgets(buffer, sizeof buffer, stdin))
     {
-        char* mid = buffer;
+        String substring = buffer;
 
         for (int j = 0; j < m + 1; j++)
         {
-            items[m][j] = strtol(mid, &mid, 10);
+            items[m][j] = strtol(substring, &substring, 10);
         }
 
         m++;
@@ -43,5 +56,5 @@ int main(void)
         }
     }
 
-    euler_submit(18, items[0][0], start);
+    euler_submit(id, items[0][0], start);
 }
