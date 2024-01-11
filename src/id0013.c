@@ -1,4 +1,3 @@
-#include <math.h>
 #include "lib/euler.h"
 
 int main(void)
@@ -17,5 +16,5 @@ int main(void)
         result /= 10;
     }
 
-    euler_submit(12, result, start);
+    euler_submit(13, result, start);
 }
