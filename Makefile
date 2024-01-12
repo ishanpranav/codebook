@@ -117,5 +117,11 @@ id0027: src/id0027.c \
 	boolean_set divisor_iterator euler euler_swap list prime_list
 	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o divisor_iterator.o euler.o euler_swap.o list.o prime_list.o -lm
 
+id0028: src/id0028.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+	
+id0029: src/id0029.c divisor_iterator euler euler_swap list
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o euler.o euler_swap.o list.o -lm
+	
 clean:
 	rm -rf *.o

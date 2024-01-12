@@ -3,7 +3,6 @@
 // Factorial Digit Sum
 
 #include <gmp.h>
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/series.h"
 

@@ -1,7 +1,6 @@
 // Licensed under the MIT License.
 
 #include <ctype.h>
-#include <stdlib.h>
 #include "series.h"
 
 void series_from_string(Series instance, LPString value)

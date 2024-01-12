@@ -3,7 +3,6 @@
 // 10001st Prime
 
 #include <math.h>
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/prime_list.h"
 

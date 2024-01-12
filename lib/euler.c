@@ -6,11 +6,9 @@
 
 Exception euler_submit(int id, long long result, clock_t start)
 {
-    printf(
-        "%04d%64lld    %lf\n",
-        id,
-        result,
-        (double)(clock() - start) / CLOCKS_PER_SEC);
+    double elapsed = (double)(clock() - start) / CLOCKS_PER_SEC;
+    
+    printf("%04d%64lld    %lf\n", id, result, elapsed);
 
     return 0;
 }

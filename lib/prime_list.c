@@ -1,6 +1,5 @@
 #include <math.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #include "boolean_set.h"
 #include "prime_list.h"
 

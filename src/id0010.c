@@ -2,7 +2,6 @@
 
 // Summation of Primes
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/prime_list.h"
 

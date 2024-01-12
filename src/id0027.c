@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-// Reciprocal Cycles
+// Quadratic Primes
 
 #include <stdlib.h>
 #include "../lib/divisor_iterator.h"

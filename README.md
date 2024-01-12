@@ -32,7 +32,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |   9    |    [Special Pythagorean Triplet](src/id0009.c)     |            Geometry            |        Product        | [Euclid\'s formula](https://en.wikipedia.org/wiki/Pythagorean_triple)                          |
 |   10   |        [Summation of Primes](src/id0010.c)         |         Number theory          |          Sum          |                                                                                                |
 |   11   |     [Largest Product in a Grid](src/id0011.c)      |      Dynamic programming       |        Maximum        |                                                                                                |
-|   12   | [Highly Divisible Triangular Number](src/id0012.c) |         Number theory          |     Local Optimum     | [Integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)                   |
+|   12   | [Highly Divisible Triangular Number](src/id0012.c) |         Number theory          |        Optimum        | [Integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)                   |
 |   13   |             [Large Sum](src/id0013.c)              |           Arithmetic           |          Sum          | [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic)           |
 |   14   |      [Longest Collatz Sequence](src/id0014.c)      |           Sequences            |        Optimum        | [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)                         |
 |   15   |           [Lattice Paths](src/id0015.c)            |         Combinatorics          | Binomial coefficient  | [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)                     |
@@ -44,10 +44,14 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 21-
 
-| Id  |                   Problem                   |    Domain     |   Result    | Implementation                                                         |
-| :-: | :-----------------------------------------: | :-----------: | :---------: | ---------------------------------------------------------------------- |
-| 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |     Sum     | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)     |
-| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |     Sum     | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)                   |
-| 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |     Sum     | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)      |
-| 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics | Permutation | [Permutation](https://en.wikipedia.org/wiki/Permutation)               |
-| 25  | [1000-digit Fibonacci Number](src/id0025.c) | Number theory | Term Number | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence) |
+| Id  |                   Problem                   |    Domain     |   Result    | Implementation                                                              |
+| :-: | :-----------------------------------------: | :-----------: | :---------: | --------------------------------------------------------------------------- |
+| 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |     Sum     | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)          |
+| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |     Sum     | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)                        |
+| 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |     Sum     | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)           |
+| 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics | Permutation | [Permutation](https://en.wikipedia.org/wiki/Permutation)                    |
+| 25  | [1000-digit Fibonacci Number](src/id0025.c) | Number theory | Term number | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)      |
+| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |   Optimum   | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)      |
+| 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |   Product   |                                                                             |
+| 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |     Sum     | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression) |
+| 29  |       [Distinct Powers](src/id0029.c)       | Number theory |    Count    |                                                                             |

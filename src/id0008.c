@@ -3,7 +3,6 @@
 // Largest Product in a Series
 
 #include <assert.h>
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/series.h"
 
