@@ -19,7 +19,7 @@ int main(void)
     struct List primes;
     clock_t start = clock();
     long max = math_max_prime(10001);
-    Exception ex = list(&primes, max - 2);
+    Exception ex = list(&primes, 0);
 
     euler_ok();
 

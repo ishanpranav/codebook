@@ -26,7 +26,7 @@ int main(void)
 {
     struct List primes;
     clock_t start = clock();
-    Exception ex = list(&primes, 999);
+    Exception ex = list(&primes, 0);
 
     euler_ok();
 

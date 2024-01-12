@@ -30,7 +30,7 @@ int main(void)
 {
     struct List abundants;
     clock_t start = clock();
-    Exception ex = list(&abundants, 28123 - 2);
+    Exception ex = list(&abundants, 0);
 
     euler_ok();
 

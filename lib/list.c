@@ -6,12 +6,12 @@
 Exception list(List instance, size_t capacity)
 {
     instance->begin = malloc(capacity * sizeof * instance->begin);
-    
+
     if (!instance->begin)
     {
         return EXCEPTION_OUT_OF_MEMORY;
     }
-    
+
     instance->end = instance->begin;
     instance->capacity = capacity;
 
@@ -27,9 +27,34 @@ void list_from_array(List instance, long values[], size_t length)
 
 Exception list_add(List instance, long item)
 {
-    if (instance->end == instance->begin + instance->capacity)
+    size_t length = instance->end - instance->begin;
+
+    if (length + 1 > instance->capacity)
     {
-        return EXCEPTION_OUT_OF_MEMORY;
+        long* newBegin;
+        size_t newCapacity;
+
+        if (instance->capacity == 0)
+        {
+            newCapacity = 4;
+        }
+        else
+        {
+            newCapacity = instance->capacity * 2;
+        }
+
+        size_t newSize = newCapacity * sizeof * newBegin;
+        
+        newBegin = realloc(instance->begin, newSize);
+
+        if (!newBegin)
+        {
+            return EXCEPTION_OUT_OF_MEMORY;
+        }
+
+        instance->capacity = newCapacity;
+        instance->begin = newBegin;
+        instance->end = newBegin + length;
     }
 
     *instance->end = item;
