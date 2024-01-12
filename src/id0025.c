@@ -16,9 +16,9 @@ int main(void)
     mpz_init(f0);
     mpz_init(f1);
     mpz_init(f2);
-    mpz_fib2_ui(f1, f0, n);
+    mpz_fib2_ui(f1, f0, n - 1);
 
-    while (mpz_sizeinbase(f0, 10) < 1000)
+    while (mpz_sizeinbase(f2, 10) < 1000)
     {
         mpz_add(f2, f0, f1);
         mpz_set(f0, f1);
