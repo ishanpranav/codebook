@@ -3,10 +3,13 @@
 #include <time.h>
 #include <stdbool.h>
 #include <stdio.h>
-#define euler_throw(error) do \
+#define euler_ok() do \
 { \
-    fprintf(stderr, "Error: " error " at %s line %d.\n", __FILE__, __LINE__); \
-    return 1; \
+    if (ex) \
+    { \
+        fprintf(stderr, "Error: %d at %s line %d.\n", ex, __FILE__, __LINE__); \
+        return 1; \
+    } \
 } while (0)
 
 /**

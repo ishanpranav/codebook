@@ -2,6 +2,7 @@
 
 // Largest Product in a Series
 
+#include <assert.h>
 #include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/series.h"
@@ -32,16 +33,16 @@ int main(void)
 {
     char buffer[1024];
     clock_t start = clock();
+    int read = fread(buffer, 1, sizeof buffer, stdin);
 
-    if (fread(buffer, 1, sizeof buffer, stdin) == 0)
-    {
-        euler_throw("Format");
-    }
+    assert(read != 0);
+    assert(!ferror(stdin));
 
-    Series series = series_from_string(buffer);
-    long long max = series_max_product(series, 13);
+    struct Series series;
 
-    free(series);
+    series_from_string(&series, buffer);
+
+    long long max = series_max_product(&series, 13);
     
     return euler_submit(8, max, start);
 }

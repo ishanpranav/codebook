@@ -15,7 +15,7 @@ int main(void)
         result += x;
     }
 
-    while (result > 10000000000)
+    while (result > 10000000000ll)
     {
         result /= 10;
     }

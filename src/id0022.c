@@ -2,6 +2,7 @@
 
 // Names Scores
 
+#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../lib/euler.h"
@@ -11,11 +12,9 @@ int main(void)
 {
     char buffer[65536];
     clock_t start = clock();
+    int read = fread(buffer, 1, sizeof buffer, stdin);
 
-    if (fread(buffer, 1, sizeof buffer, stdin) == 0)
-    {
-        euler_throw("Format");
-    }
+    assert(read != 0);
 
     long sum = 0;
     int count = 0;

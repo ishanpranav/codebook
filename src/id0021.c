@@ -2,6 +2,7 @@
 
 // Amicable Numbers
 
+#include <assert.h>
 #include <stdlib.h>
 #include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
@@ -12,10 +13,7 @@ int main(void)
     clock_t start = clock();
     int* d = malloc(sizeof * d * 9998);
 
-    if (!d)
-    {
-        euler_throw("Out of memory");
-    }
+    assert(d);
 
     for (int a = 2; a < 10000; a++)
     {

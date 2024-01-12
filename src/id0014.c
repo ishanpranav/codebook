@@ -10,7 +10,7 @@ int main(void)
     int maxLength = 10;
     int result = 0;
 
-    for (long i = 13; i < 1000000; i++)
+    for (long i = 13; i < 1000000l; i++)
     {
         int length = 0;
         long n = i;

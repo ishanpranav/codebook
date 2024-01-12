@@ -2,25 +2,25 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include "list.h"
 
+/** Iterates over the lexicographical permutations of a collection. */
 struct PermutationIterator
 {
-    long* set;
-    size_t length;
+    List values;
     bool end;
 };
 
-/** Iterates over the lexicographical permutations of a set. */
+/** Iterates over the lexicographical permutations of a collection. */
 typedef struct PermutationIterator* PermutationIterator;
 
 /**
- * Provides an iterator over the lexicographical permutations of a set.
+ * Provides an iterator over the lexicographical permutations of a collection.
  *
  * @param iterator the iterator.
- * @param set      the set.
- * @param length   the cardinality of the set.
+ * @param values   the collection.
 */
-void permutation_begin(PermutationIterator iterator, long* set, size_t length);
+void permutation_begin(PermutationIterator iterator, List values);
 
 /**
  * Advances the iterator to the next lexicographical permutation. This method

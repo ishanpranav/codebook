@@ -15,6 +15,7 @@ enum DivisorIteratorState
     DIVISOR_ITERATOR_STATE_YIELD
 };
 
+/** Iterates over the proper divisors of a natural number. */
 struct DivisorIterator
 {
     long n;

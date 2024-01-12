@@ -3,19 +3,21 @@
 // Non-Abundant Sums
 
 #include <stdlib.h>
+#include "../lib/boolean_set.h"
 #include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
+#include "../lib/list.h"
 
-bool math_is_abundant_sum(int n, int* begin, int* end, bool* set)
+bool math_is_abundant_sum(int n, List list, BooleanSet set)
 {
-    for (int* it = begin; it < end; it++)
+    for (long* it = list->begin; it < list->end; it++)
     {
         if (*it > n)
         {
             return false;
         }
-        
-        if (set[n - *it - 2])
+
+        if (set->begin[n - *it - 2])
         {
             return true;
         }
@@ -26,31 +28,25 @@ bool math_is_abundant_sum(int n, int* begin, int* end, bool* set)
 
 int main(void)
 {
+    struct List abundants;
     clock_t start = clock();
-    int* begin = calloc(28123 - 2, sizeof * begin);
+    Exception ex = list(&abundants, 28123 - 2);
 
-    if (!begin)
-    {
-        euler_throw("Out of memory");
-    }
+    euler_ok();
 
-    bool* set = calloc(28123 - 2, sizeof * set);
+    struct BooleanSet set;
 
-    if (!set)
-    {
-        euler_throw("Out of memory");
-    }
+    ex = boolean_set(&set, 28123 - 2);
 
-    int* end = begin;
+    euler_ok();
 
     for (int n = 12; n < 28123; n++)
     {
-        set[n - 2] = divisor_sum(n) > n;
-
-        if (set[n - 2])
+        set.begin[n - 2] = divisor_sum(n) > n;
+        
+        if (set.begin[n - 2])
         {
-            *end = n;
-            end++;
+            list_add(&abundants, n);
         }
     }
 
@@ -58,14 +54,14 @@ int main(void)
 
     for (int n = 2; n < 28123; n++)
     {
-        if (!math_is_abundant_sum(n, begin, end, set))
+        if (!math_is_abundant_sum(n, &abundants, &set))
         {
             sum += n;
         }
     }
 
-    free(set);
-    free(begin);
+    finalize_list(&abundants);
+    finalize_boolean_set(&set);
 
     return euler_submit(23, sum, start);
 }

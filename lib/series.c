@@ -4,15 +4,8 @@
 #include <stdlib.h>
 #include "series.h"
 
-Series series_from_string(LPString value)
+void series_from_string(Series instance, LPString value)
 {
-    Series instance = malloc(sizeof * instance);
-
-    if (!instance)
-    {
-        return NULL;
-    }
-
     char* end = value;
 
     for (char* p = value; *p; p++)
@@ -26,8 +19,6 @@ Series series_from_string(LPString value)
 
     instance->begin = value;
     instance->end = end;
-
-    return instance;
 }
 
 int series_sum(Series instance)

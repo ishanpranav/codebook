@@ -3,46 +3,39 @@
 #include "euler_swap.h"
 #include "permutation_iterator.h"
 
-void permutation_begin(
-    PermutationIterator iterator,
-    long* values,
-    size_t length)
+void permutation_begin(PermutationIterator iterator, List values)
 {
-    iterator->end = false;
-    iterator->length = length;
-    iterator->set = values;
+    iterator->end = values->begin != values->end;
+    iterator->values = values;
 }
 
 void permutation_next(PermutationIterator iterator)
 {
-    size_t last = iterator->length - 1;
+    long* last = iterator->values->end - 1;
 
-    while (last > 0 && iterator->set[last - 1] >= iterator->set[last])
+    while (last > iterator->values->begin && last[-1] >= *last)
     {
         last--;
     }
 
-    if (last > 0)
+    if (last > iterator->values->begin)
     {
-        size_t index = iterator->length - 1;
+        long* p = iterator->values->end - 1;
 
-        while (index > last && iterator->set[index] <= iterator->set[last - 1])
+        while (p > last && *p <= last[-1])
         {
-            index--;
+            p--;
         }
 
-        euler_swap(iterator->set + last - 1, iterator->set + index);
+        euler_swap(last - 1, p);
     }
 
-    size_t max = (iterator->length - last) / 2;
+    size_t max = (iterator->values->end - last) / 2;
 
-    for (size_t index = 0; index < max; index++)
+    for (size_t i = 0; i < max; i++)
     {
-        long* p = iterator->set + last + index;
-        long* q = iterator->set + iterator->length - 1 - index;
-
-        euler_swap(p, q);
+        euler_swap(last + i, iterator->values->end - i - 1);
     }
 
-    iterator->end = !last;
+    iterator->end = last != iterator->values->begin;
 }

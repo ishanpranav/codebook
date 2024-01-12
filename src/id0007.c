@@ -5,7 +5,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include "../lib/euler.h"
-#include "../lib/euler_math.h"
+#include "../lib/prime_list.h"
 
 long math_max_prime(int k)
 {
@@ -16,17 +16,21 @@ long math_max_prime(int k)
 
 int main(void)
 {
+    struct List primes;
     clock_t start = clock();
     long max = math_max_prime(10001);
-    long* primes = malloc((max - 2) * sizeof * primes);
+    Exception ex = list(&primes, max - 2);
 
-    if (!primes || math_get_primes(max, primes) < 0)
-    {
-        euler_throw("Out of memory");
-    }
+    euler_ok();
 
-    euler_submit(7, primes[10000], start);
-    free(primes);
+    ex = prime_list(&primes, max);
 
+    euler_ok();
+
+    long p = primes.begin[10000];
+
+    finalize_list(&primes);
+    euler_submit(7, p, start);
+    
     return 0;
 }

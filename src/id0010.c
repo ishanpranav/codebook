@@ -4,28 +4,29 @@
 
 #include <stdlib.h>
 #include "../lib/euler.h"
-#include "../lib/euler_math.h"
+#include "../lib/prime_list.h"
 
 int main(void)
 {
+    struct List primes;
     clock_t start = clock();
-    long* primes = malloc(2000000l * sizeof * primes);
-    long count = math_get_primes(2000000l, primes);
+    Exception ex = list(&primes, 2000000l);
 
-    if (!primes || count < 0)
-    {
-        euler_throw("Out of memory");
-    }
+    euler_ok();
+
+    ex = prime_list(&primes, 2000000l);
+
+    euler_ok();
 
     long long sum = 0;
 
-    for (long i = 0; i < count; i++)
+    for (long* it = primes.begin; it < primes.end; it++)
     {
-        sum += primes[i];
+        sum += *it;
     }
 
+    finalize_list(&primes);
     euler_submit(10, sum, start);
-    free(primes);
 
     return 0;
 }

@@ -8,10 +8,12 @@
 int main(void)
 {
     long values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    struct List list;
     struct PermutationIterator it;
     clock_t start = clock();
     
-    permutation_begin(&it, values, 10);
+    list_from_array(&list, values, 10);
+    permutation_begin(&it, &list);
 
     for (long i = 0; i < 999999l; i++)
     {

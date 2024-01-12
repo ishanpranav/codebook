@@ -2,8 +2,9 @@
 
 #include <stdio.h>
 #include "euler.h"
+#include "exception.h"
 
-int euler_submit(int id, long long result, clock_t start)
+Exception euler_submit(int id, long long result, clock_t start)
 {
     printf(
         "%04d%64lld    %lf\n",
