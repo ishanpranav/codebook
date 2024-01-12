@@ -4,7 +4,7 @@ CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 all: \
 	id0001 id0002 id0003 id0004 id0005 id0006 id0007 id0008 id0009 id0010 \
 	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020 \
-	id0021 id0022 id0023 id0024
+	id0021 id0022 id0023 id0024 id0025
 
 divisor_iterator: \
 	lib/divisor_iterator.c \
@@ -104,6 +104,9 @@ id0023: src/id0023.c divisor_iterator euler
 
 id0024: src/id0024.c permutation_iterator euler
 	$(CC) $(CFLAGS) $< -o $@.o permutation_iterator.o euler.o euler_swap.o
+
+id0025: src/id0025.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
 
 clean:
 	rm -rf *.o
