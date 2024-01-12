@@ -11,7 +11,7 @@ typedef const void* Object;
  * `LPString`.
  * 
  * @param instance the `LPString` instance to copy.
- * @return A new string with the same value.
+ * @return A new string with the same value. The caller is responsible.
  */
 LPString lp_string_clone(LPString instance);
 
