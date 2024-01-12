@@ -10,13 +10,13 @@ long long series_max_product(Series series, int k)
 {
     long long result = 0;
 
-    for (char* iter = series->begin; iter < series->end - k - 1; iter++)
+    for (char* it = series->begin; it < series->end - k - 1; it++)
     {
-        long long product = *iter;
+        long long product = *it;
 
         for (int j = 1; j < k; j++)
         {
-            product *= iter[j];
+            product *= it[j];
         }
 
         if (product > result)

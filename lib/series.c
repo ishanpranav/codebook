@@ -34,9 +34,9 @@ int series_sum(Series instance)
 {
     int result = 0;
     
-    for (char* iter = instance->begin; iter < instance->end; iter++)
+    for (char* it = instance->begin; it < instance->end; it++)
     {
-        result += *iter;
+        result += *it;
     }
 
     return result;

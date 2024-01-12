@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include "lp_string.h"
 
 struct Series

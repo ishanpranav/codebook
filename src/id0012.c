@@ -9,9 +9,9 @@
 int math_divisors(long n)
 {
     int result = 1;
-    struct DivisorIterator iter;
+    struct DivisorIterator it;
 
-    for (divisor_begin(&iter, n); !divisor_end(&iter); divisor_next(&iter))
+    for (divisor_begin(&it, n); !divisor_end(&it); divisor_next(&it))
     {
         result++;
     }

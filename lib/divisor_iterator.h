@@ -23,3 +23,4 @@ typedef struct DivisorIterator* DivisorIterator;
 void divisor_begin(DivisorIterator iterator, long n);
 bool divisor_end(DivisorIterator iterator);
 void divisor_next(DivisorIterator iterator);
+long divisor_sum(long n);

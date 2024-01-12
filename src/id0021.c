@@ -2,7 +2,6 @@
 
 // Amicable Numbers
 
-#include <math.h>
 #include <stdlib.h>
 #include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
@@ -20,15 +19,7 @@ int main(void)
 
     for (int a = 2; a < 10000; a++)
     {
-        int da = 0;
-        struct DivisorIterator iter;
-
-        for (divisor_begin(&iter, a); !divisor_end(&iter); divisor_next(&iter))
-        {
-            da += iter.current;
-        }
-
-        d[a - 2] = da;
+        d[a - 2] = divisor_sum(a);
     }
 
     for (int a = 2; a < 10000; a++)

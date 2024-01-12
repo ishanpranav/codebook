@@ -2,6 +2,7 @@
 
 #include <math.h>
 #include "divisor_iterator.h"
+#include "euler_swap.h"
 
 void divisor_begin(DivisorIterator iterator, long n)
 {
@@ -22,14 +23,6 @@ bool divisor_end(DivisorIterator iterator)
     return iterator->current > iterator->end;
 }
 
-static void divisor_iterator_swap(long* p, long* q)
-{
-    long swap = *p;
-
-    *p = *q;
-    *q = swap;
-}
-
 void divisor_next(DivisorIterator iterator)
 {
     long n = iterator->n;
@@ -37,12 +30,12 @@ void divisor_next(DivisorIterator iterator)
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_SWAP)
     {
-        divisor_iterator_swap(&iterator->current, &iterator->next);
+        euler_swap(&iterator->current, &iterator->next);
     }
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_YIELD)
     {
-        divisor_iterator_swap(&iterator->current, &iterator->next);
+        euler_swap(&iterator->current, &iterator->next);
 
         iterator->state = DIVISOR_ITERATOR_STATE_SWAP;
 
@@ -64,4 +57,17 @@ void divisor_next(DivisorIterator iterator)
     {
         iterator->state = DIVISOR_ITERATOR_STATE_INITIAL;
     }
+}
+
+long divisor_sum(long n)
+{
+    int result = 0;
+    struct DivisorIterator it;
+
+    for (divisor_begin(&it, n); !divisor_end(&it); divisor_next(&it))
+    {
+        result += it.current;
+    }
+
+    return result;
 }

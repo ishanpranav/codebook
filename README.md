@@ -2,6 +2,13 @@
 
 Efficient Project Euler solutions in C language
 
+## Constraints
+
+- Adhere to the [project style guide](cstyle.md).
+- Implement all solutions following the C99 standard.
+  - Assume that the English letter characters are ordered sequentially (i.e., no
+    EBCDIC).
+
 ## Attribution
 
 This repository depends on the
@@ -37,7 +44,9 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 21-
 
-| Id  |             Problem              |    Domain     | Result | Implementation                                                     |
-| :-: | :------------------------------: | :-----------: | :----: | ------------------------------------------------------------------ |
-| 21  | [Amicable Numbers](src/id0021.c) | Number theory |  Sum   | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers) |
-| 22  |   [Names Scores](src/id0022.c)   |    Sorting    |  Sum   | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)               |
+| Id  |                  Problem                   |    Domain     |   Result    | Implementation                                                     |
+| :-: | :----------------------------------------: | :-----------: | :---------: | ------------------------------------------------------------------ |
+| 21  |      [Amicable Numbers](src/id0021.c)      | Number theory |     Sum     | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers) |
+| 22  |        [Names Scores](src/id0022.c)        |    Sorting    |     Sum     | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)               |
+| 23  |     [Non-Abundant Sums](src/id0023.c)      | Number theory |     Sum     | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)  |
+| 24  | [Lexicographic Permutations](src/id0024.c) | Combinatorics | Permutation | [Permutation](https://en.wikipedia.org/wiki/Permutation)           |
