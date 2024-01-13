@@ -4,7 +4,8 @@ CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 all: \
 	id0001 id0002 id0003 id0004 id0005 id0006 id0007 id0008 id0009 id0010 \
 	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020 \
-	id0021 id0022 id0023 id0024 id0025 id0026 id0027 id0028 id0029 id0030
+	id0021 id0022 id0023 id0024 id0025 id0026 id0027 id0028 id0029 id0030 \
+	id0031 id0032 id0033 id0034 id0035 id0036 id0037 id0038 id0039 id0040
 
 boolean_set: lib/boolean_set.c lib/boolean_set.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
@@ -122,6 +123,9 @@ id0028: src/id0028.c euler
 	
 id0029: src/id0029.c divisor_iterator euler euler_swap list
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o euler.o euler_swap.o list.o -lm
+	
+id0030: src/id0030.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 	
 clean:
 	rm -rf *.o
