@@ -5,7 +5,7 @@
 
 void permutation_begin(PermutationIterator iterator, List values)
 {
-    iterator->end = values->begin != values->end;
+    iterator->end = false;
     iterator->values = values;
 }
 
@@ -37,5 +37,5 @@ void permutation_next(PermutationIterator iterator)
         euler_swap(last + i, iterator->values->end - i - 1);
     }
 
-    iterator->end = last != iterator->values->begin;
+    iterator->end = last == iterator->values->begin;
 }

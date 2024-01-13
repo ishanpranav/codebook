@@ -8,6 +8,7 @@
 struct BooleanSet
 {
     bool* begin;
+    bool* end;
 };
 
 /** Represents a set of boolean values. */
@@ -15,7 +16,7 @@ typedef struct BooleanSet* BooleanSet;
 
 /**
  * Initializes a `BooleanSet` instance.
- * 
+ *
  * @param instance the `BooleanSet` instance.
  * @param capacity the capacity.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
@@ -23,9 +24,19 @@ typedef struct BooleanSet* BooleanSet;
 */
 Exception boolean_set(BooleanSet instance, size_t capacity);
 
-/** 
+/**
+ * Intializes a `BooleanSet` instance. Do not call `finalize_boolean_set`.
+ *
+ * @param instance the `BooleanSet` instance.
+ * @param values   the backing array for the set. The caller is responsible for
+ *                 this argument.
+ * @param length   the length of the `values` argument.
+*/
+void boolean_set_from_array(BooleanSet instance, bool values[], size_t length);
+
+/**
  * Frees all resources.
- * 
+ *
  * @param instance the `BooleanSet` instance. This method corrupts the
  * `               `instance` argument.
 */

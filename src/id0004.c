@@ -7,12 +7,10 @@
 bool math_is_palindrome(long value)
 {
     long m = 0;
-    long n = value;
 
-    while (n)
+    for (long n = value; n; n /= 10)
     {
         m = (m * 10) + n % 10;
-        n /= 10;
     }
 
     return m == value;

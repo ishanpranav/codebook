@@ -16,7 +16,7 @@ typedef struct List* List;
 
 /**
  * Initializes a `List` instance.
- * 
+ *
  * @param instance the `List` instance.
  * @param capacity the capacity.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
@@ -24,9 +24,9 @@ typedef struct List* List;
 */
 Exception list(List instance, size_t capacity);
 
-/** 
+/**
  * Intializes a `List` instance. Do not call `finalize_list`.
- * 
+ *
  * @param instance the `List` instance.
  * @param values   the backing array for the list. The caller is responsible for
  *                 this argument.
@@ -36,7 +36,7 @@ void list_from_array(List instance, long values[], size_t length);
 
 /**
  * Adds an item to the end of the list.
- * 
+ *
  * @param instance the `List` instance.
  * @param item     the item to add.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
@@ -44,10 +44,19 @@ void list_from_array(List instance, long values[], size_t length);
 */
 Exception list_add(List instance, long item);
 
-/** 
+/**
+ * Determines whether an element is in the list.
+ *
+ * @param instance the `List` instance.
+ * @param item     the item to locate in the list.
+ * @return `true` if the `item` is found in the list; otherwise, `false`.
+*/
+bool list_contains(List instance, long item);
+
+/**
  * Frees all resources.
- * 
- * @param instance the `List` instance. This method corrupts the `instance` 
+ *
+ * @param instance the `List` instance. This method corrupts the `instance`
  *                 argument.
 */
 void finalize_list(List instance);

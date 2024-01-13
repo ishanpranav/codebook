@@ -44,7 +44,7 @@ Exception list_add(List instance, long item)
         }
 
         size_t newSize = newCapacity * sizeof * newBegin;
-        
+
         newBegin = realloc(instance->begin, newSize);
 
         if (!newBegin)
@@ -61,6 +61,19 @@ Exception list_add(List instance, long item)
     instance->end++;
 
     return 0;
+}
+
+bool list_contains(List instance, long item)
+{
+    for (long* it = instance->begin; it < instance->end; it++)
+    {
+        if (*it == item)
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void finalize_list(List instance)

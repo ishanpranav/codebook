@@ -42,7 +42,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |   19   |          [Counting Sundays](src/id0019.c)          |         Combinatorics          |         Count         |
 |   20   |        [Factorial Digit Sum](src/id0020.c)         | Arbitrary-precision arithmetic |          Sum          |                                                                                                |
 
-### 21-
+### 21-30
 
 | Id  |                   Problem                   |    Domain     |   Result    | Implementation                                                              |
 | :-: | :-----------------------------------------: | :-----------: | :---------: | --------------------------------------------------------------------------- |
@@ -55,3 +55,11 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |   Product   |                                                                             |
 | 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |     Sum     | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression) |
 | 29  |       [Distinct Powers](src/id0029.c)       | Number theory |    Count    |                                                                             |
+| 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |     Sum     |                                                                             |
+
+### 31-
+
+| Id  |               Problem               |    Domain     | Result | Implementation      |
+| :-: | :---------------------------------: | :-----------: | :----: | ------------------- |
+| 31  |      [Coin Sums](src/id0031.c)      | Combinatorics | Count  | Dynamic programming |
+| 32  | [Pandigital Products](src/id0032.c) | Number Theory |  Sum   |                     |

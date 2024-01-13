@@ -127,5 +127,11 @@ id0029: src/id0029.c divisor_iterator euler euler_swap list
 id0030: src/id0030.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 	
+id0031: src/id0031.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+	
+id0032: src/id0032.c permutation_iterator euler euler_swap list
+	$(CC) $(CFLAGS) $< -o $@.o permutation_iterator.o euler.o euler_swap.o list.o -lm
+	
 clean:
 	rm -rf *.o

@@ -12,7 +12,15 @@ Exception boolean_set(BooleanSet instance, size_t capacity)
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
+    instance->end = instance->begin + capacity;
+
     return 0;
+}
+
+void boolean_set_from_array(BooleanSet instance, bool values[], size_t length)
+{
+    instance->begin = values;
+    instance->end = values + length;
 }
 
 void finalize_boolean_set(BooleanSet instance)
