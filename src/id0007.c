@@ -15,20 +15,16 @@ long math_max_prime(int k)
 
 int main(void)
 {
-    struct List primes;
+    struct PrimeList primes;
     clock_t start = clock();
     long max = math_max_prime(10001);
-    Exception ex = list(&primes, 0);
+    Exception ex = prime_list(&primes, max);
 
     euler_ok();
 
-    ex = prime_list(&primes, max);
+    long p = primes.primes.begin[10000];
 
-    euler_ok();
-
-    long p = primes.begin[10000];
-
-    finalize_list(&primes);
+    finalize_prime_list(&primes);
     euler_submit(7, p, start);
     
     return 0;

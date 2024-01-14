@@ -17,3 +17,16 @@ long math_natural_sum(long n)
 {
     return n * (n + 1) / 2;
 }
+
+long math_gcd(long a, long b)
+{
+    while (b > 0)
+    {
+        long r = a % b;
+
+        a = b;
+        b = r;
+    }
+
+    return a;
+}

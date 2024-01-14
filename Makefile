@@ -54,8 +54,8 @@ id0005: src/id0005.c euler
 id0006: src/id0006.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 	 
-id0007: src/id0007.c boolean_set euler prime_list
-	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o euler.o list.o prime_list.o -lm
+id0007: src/id0007.c boolean_set divisor_iterator euler euler_swap prime_list
+	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o divisor_iterator.o euler.o euler_swap.o list.o prime_list.o -lm
 	 
 id0008: src/id0008.c euler series
 	$(CC) $(CFLAGS) $< -o $@.o euler.o series.o
@@ -63,8 +63,8 @@ id0008: src/id0008.c euler series
 id0009: src/id0009.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 
-id0010: src/id0010.c boolean_set euler list prime_list
-	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o euler.o list.o prime_list.o -lm
+id0010: src/id0010.c boolean_set divisor_iterator euler euler_swap list prime_list
+	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o divisor_iterator.o euler.o euler_swap.o list.o prime_list.o -lm
 
 id0011: src/id0011.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
@@ -131,7 +131,13 @@ id0031: src/id0031.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 	
 id0032: src/id0032.c permutation_iterator euler euler_swap list
-	$(CC) $(CFLAGS) $< -o $@.o permutation_iterator.o euler.o euler_swap.o list.o -lm
+	$(CC) $(CFLAGS) $< -o $@.o permutation_iterator.o euler.o euler_swap.o list.o
+	
+id0033: src/id0033.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+	
+id0034: src/id0034.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
 	
 clean:
 	rm -rf *.o

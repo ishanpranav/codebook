@@ -2,7 +2,6 @@
 
 // Pandigital Products
 
-#include <math.h>
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
 

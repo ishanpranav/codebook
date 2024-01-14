@@ -30,7 +30,7 @@ done
 
 cat ./../data/id0022.txt | ./../id0022.o
 
-for i in {0023..0030};
+for i in {0023..0033};
 do
     ./../id${i}.o
 done
