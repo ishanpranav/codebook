@@ -30,3 +30,15 @@ long math_gcd(long a, long b)
 
     return a;
 }
+
+bool math_is_palindrome(long n)
+{
+    long x = 0;
+
+    for (long y = n; y; y /= 10)
+    {
+        x = (x * 10) + y % 10;
+    }
+
+    return x == n;
+}

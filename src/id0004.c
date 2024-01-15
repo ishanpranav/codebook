@@ -4,18 +4,6 @@
 
 #include "../lib/euler.h"
 
-bool math_is_palindrome(long value)
-{
-    long m = 0;
-
-    for (long n = value; n; n /= 10)
-    {
-        m = (m * 10) + n % 10;
-    }
-
-    return m == value;
-}
-
 int main(void)
 {
     long max = 0;
@@ -46,7 +34,7 @@ int main(void)
                 break;
             }
 
-            if (math_is_palindrome(product))
+            if (math_is_palindrome(product, 10))
             {
                 max = product;
             }
