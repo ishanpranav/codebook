@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
-#ifndef f152f59488c248f48b77fc64f8dd0fc6
-#define f152f59488c248f48b77fc64f8dd0fc6
+#ifndef _f152f59488c248f48b77fc64f8dd0fc6
+#define _f152f59488c248f48b77fc64f8dd0fc6
 
 /** Specifies an error that occurs at runtime. */
 enum Exception

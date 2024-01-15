@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include "boolean_set.h"
 #include "list.h"
 

@@ -6,8 +6,8 @@
 
 int main(void)
 {
-    int x = 1;
-    int y = 1;
+    long x = 1;
+    long y = 1;
     clock_t start = clock();
 
     for (int a2 = 1; a2 <= 9; a2++)

@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include <stdlib.h>
 #include <string.h>
 #include "lp_string.h"

@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include <math.h>
 #include <stdbool.h>
 #include "divisor_iterator.h"

@@ -42,24 +42,22 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |   19   |          [Counting Sundays](src/id0019.c)          |         Combinatorics          |         Count         |
 |   20   |        [Factorial Digit Sum](src/id0020.c)         | Arbitrary-precision arithmetic |          Sum          |                                                                                                |
 
-### 21-30
+### 21-
 
-| Id  |                   Problem                   |    Domain     |   Result    | Implementation                                                              |
-| :-: | :-----------------------------------------: | :-----------: | :---------: | --------------------------------------------------------------------------- |
-| 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |     Sum     | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)          |
-| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |     Sum     | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)                        |
-| 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |     Sum     | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)           |
-| 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics | Permutation | [Permutation](https://en.wikipedia.org/wiki/Permutation)                    |
-| 25  | [1000-digit Fibonacci Number](src/id0025.c) | Number theory | Term number | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)      |
-| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |   Optimum   | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)      |
-| 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |   Product   |                                                                             |
-| 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |     Sum     | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression) |
-| 29  |       [Distinct Powers](src/id0029.c)       | Number theory |    Count    |                                                                             |
-| 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |     Sum     |                                                                             |
-
-### 31-
-
-| Id  |               Problem               |    Domain     | Result | Implementation      |
-| :-: | :---------------------------------: | :-----------: | :----: | ------------------- |
-| 31  |      [Coin Sums](src/id0031.c)      | Combinatorics | Count  | Dynamic programming |
-| 32  | [Pandigital Products](src/id0032.c) | Number Theory |  Sum   |                     |
+| Id  |                   Problem                   |    Domain     |         Result          | Implementation                                                              |
+| :-: | :-----------------------------------------: | :-----------: | :---------------------: | --------------------------------------------------------------------------- |
+| 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |           Sum           | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)          |
+| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |           Sum           | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)                        |
+| 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |           Sum           | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)           |
+| 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics |       Permutation       | [Permutation](https://en.wikipedia.org/wiki/Permutation)                    |
+| 25  | [1000-digit Fibonacci Number](src/id0025.c) | Number theory |       Term number       | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)      |
+| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |         Optimum         | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)      |
+| 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |         Product         |                                                                             |
+| 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |           Sum           | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression) |
+| 29  |       [Distinct Powers](src/id0029.c)       | Number theory |          Count          |                                                                             |
+| 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |           Sum           |                                                                             |
+| 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |          Count          | Dynamic programming                                                         |
+| 32  |     [Pandigital Products](src/id0032.c)     | Number Theory |           Sum           |                                                                             |
+| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number Theory | Greatest Common Divisor |                                                                             |
+| 34 | [Digit Factorials](src/id0034.c) | Sum | Number Theory | [Factorial](https://en.wikipedia.org/wiki/Factorial) |
+| 35 | [Circular Primes](src/id0035.c) | Count | Number Theory | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime) |

@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -74,6 +76,11 @@ bool list_contains(List instance, long item)
     }
 
     return false;
+}
+
+void list_clear(List instance)
+{
+    instance->end = instance->begin;
 }
 
 void finalize_list(List instance)

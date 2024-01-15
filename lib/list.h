@@ -1,5 +1,7 @@
 // Licensed under the MIT License.
 
+#ifndef _95a94c0379b44bd3967523c81d4caa55
+#define _95a94c0379b44bd3967523c81d4caa55
 #include <stddef.h>
 #include "exception.h"
 
@@ -54,9 +56,18 @@ Exception list_add(List instance, long item);
 bool list_contains(List instance, long item);
 
 /**
+ * Removes all elements from the list.
+ * 
+ * @param instance the `List` instance.
+*/
+void list_clear(List instance);
+
+/**
  * Frees all resources.
  *
  * @param instance the `List` instance. This method corrupts the `instance`
  *                 argument.
 */
 void finalize_list(List instance);
+
+#endif

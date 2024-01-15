@@ -139,5 +139,10 @@ id0033: src/id0033.c euler
 id0034: src/id0034.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 	
+id0035: src/id0035.c \
+	boolean_set divisor_iterator permutation_iterator prime_list euler \
+	euler_swap list
+	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o divisor_iterator.o permutation_iterator.o prime_list.o euler.o euler_swap.o list.o -lm
+	
 clean:
 	rm -rf *.o
