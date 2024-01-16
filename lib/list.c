@@ -8,6 +8,11 @@
 
 Exception list(List instance, size_t capacity)
 {
+    if (capacity == 0)
+    {
+        capacity = 4;
+    }
+
     instance->begin = malloc(capacity * sizeof * instance->begin);
 
     if (!instance->begin)
@@ -35,17 +40,7 @@ Exception list_add(List instance, long item)
     if (length + 1 > instance->capacity)
     {
         long* newBegin;
-        size_t newCapacity;
-
-        if (instance->capacity == 0)
-        {
-            newCapacity = 4;
-        }
-        else
-        {
-            newCapacity = instance->capacity * 2;
-        }
-
+        size_t newCapacity = instance->capacity * 2;
         size_t newSize = newCapacity * sizeof * newBegin;
 
         newBegin = realloc(instance->begin, newSize);

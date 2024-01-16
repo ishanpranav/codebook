@@ -23,6 +23,9 @@ list: lib/list.c lib/list.h
 lp_string: lib/lp_string.c lib/lp_string.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
 
+lp_string_collection: lib/lp_string_collection.c lib/lp_string_collection.h
+	$(CC) $(CFLAGS) -c $< -o $@.o
+	
 permutation_iterator: lib/permutation_iterator.c lib/permutation_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
 
@@ -95,8 +98,8 @@ id0020: src/id0020.c euler series
 id0021: src/id0021.c divisor_iterator euler
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o euler.o -lm
 
-id0022: src/id0022.c euler lp_string
-	$(CC) $(CFLAGS) $< -o $@.o euler.o lp_string.o
+id0022: src/id0022.c euler lp_string lp_string_collection
+	$(CC) $(CFLAGS) $< -o $@.o euler.o lp_string.o lp_string_collection.o
 
 id0023: src/id0023.c boolean_set divisor_iterator euler list
 	$(CC) $(CFLAGS) $< -o $@.o boolean_set.o divisor_iterator.o euler.o list.o -lm

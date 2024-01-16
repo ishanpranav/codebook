@@ -1,5 +1,7 @@
 // Licensed under the MIT License.
 
+#ifndef LP_STRING_554c4c38a6694dd599b5d6e01dedb42d
+#define LP_STRING_554c4c38a6694dd599b5d6e01dedb42d
 #include "object.h"
 
 /** Represents text as a zero-terminated sequence of characters. */
@@ -10,7 +12,8 @@ typedef char* LPString;
  * `LPString`.
  * 
  * @param instance the `LPString` instance to copy.
- * @return A new string with the same value. The caller is responsible.
+ * @return A new string with the same value, or `NULL` if the process is out of
+ *         memory. The caller is responsible.
  */
 LPString lp_string_clone(LPString instance);
 
@@ -25,3 +28,5 @@ LPString lp_string_clone(LPString instance);
  *         `right`. 
 */
 int lp_string_compare(Object left, Object right);
+
+#endif

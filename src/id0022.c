@@ -2,41 +2,27 @@
 
 // Names Scores
 
-#include <assert.h>
-#include <stdlib.h>
-#include <string.h>
 #include "../lib/euler.h"
 #include "../lib/lp_string_collection.h"
 
 int main(void)
 {
-    // char buffer[65536];
-
     long sum = 0;
-    int count = 0;
     struct LPStringCollection names;
     clock_t start = clock();
-    Exception ex = lp_string_collection_deserialize(&names, stdin);
-
-    // int read = fread(buffer, 1, sizeof buffer, stdin);
-
-    // assert(read != 0);
-
-    // LPString names[8192];
+    Exception ex = lp_string_collection(&names, 5000);
 
     euler_ok();
 
-    // for (LPString tok = strtok(buffer, "\","); tok; tok = strtok(NULL, "\","))
-    // {
-    //     names[count] = lp_string_clone(tok);
-    //     count++;
-    // }
+    ex = lp_string_collection_deserialize(&names, stdin);
+
+    euler_ok();
 
     lp_string_collection_sort(&names);
 
-    // qsort(names, count, sizeof * names, lp_string_compare);
+    size_t count = names.end - names.begin;
 
-    for (int i = 0; i < count; i++)
+    for (size_t i = 0; i < count; i++)
     {
         int rank = 0;
 
@@ -46,8 +32,6 @@ int main(void)
         }
 
         sum += rank * (i + 1);
-
-        // free(names.begin[i]);
     }
 
     finalize_lp_string_collection(&names);
