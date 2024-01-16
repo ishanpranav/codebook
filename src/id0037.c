@@ -53,5 +53,7 @@ int main(void)
         count++;
     }
 
+    finalize_prime_list(&primes);
+    
     return euler_submit(37, sum, start);
 }

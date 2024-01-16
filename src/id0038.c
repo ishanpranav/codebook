@@ -2,20 +2,19 @@
 
 // Pandigital Multiples
 
-#include <math.h>
 #include "../lib/euler.h"
 #include "../lib/list.h"
 
 int main(void)
 {
     long max = 918273645l;
-    long second[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    long array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     struct List digits;
     struct List pandigital;
     clock_t start = clock();
 
-    list(&digits, 9);
-    list_from_array(&pandigital, second, 9);
+    list(&digits, 0);
+    list_from_array(&pandigital, array, 9);
 
     for (int i = 2; i < 10000; i++)
     {
@@ -58,5 +57,7 @@ int main(void)
         max = n;
     }
 
+    finalize_list(&digits);
+    
     return euler_submit(38, max, start);
 }

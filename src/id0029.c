@@ -60,5 +60,7 @@ int main(void)
 
     count = 99 * 99 - count;
 
+    finalize_list(&values);
+
     return euler_submit(29, count, start);
 }

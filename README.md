@@ -42,7 +42,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |   19   |          [Counting Sundays](src/id0019.c)          |         Combinatorics          |         Count         |
 |   20   |        [Factorial Digit Sum](src/id0020.c)         | Arbitrary-precision arithmetic |          Sum          |                                                                                                |
 
-### 21-
+### 21-40
 
 | Id  |                   Problem                   |    Domain     |         Result          | Implementation                                                              |
 | :-: | :-----------------------------------------: | :-----------: | :---------------------: | --------------------------------------------------------------------------- |
@@ -64,3 +64,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 36 | [Double-base Palindromes](src/id0036.c) | Number theory | Sum | [Radix](https://en.wikipedia.org/wiki/Radix) |
 | 37 | [Truncatable Primes](src/id0037.c) | Number theory | Sum | [Truncatable prime](https://en.wikipedia.org/wiki/Truncatable_prime) |
 | 38 | [Pandigital Multiples](src/id0038.c) | Number theory | Maximum | |
+| 39 | [Integer Right Triangles](src/id0039.c) | Geometry | Maximum | |
+| 40 | [Champernowne\'s Constant](src/id0040.c) | Number theory | Product | [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant) |
+
+### 41-
