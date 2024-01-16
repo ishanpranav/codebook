@@ -1,53 +1,44 @@
 // Licensed under the MIT License.
 
-// Pandigital Prime
+// Coded Triangle Numbers
 
+#include <math.h>
 #include "../lib/euler.h"
-#include "../lib/permutation_iterator.h"
-#include "../lib/prime_list.h"
+#include "../lib/lp_string_collection.h"
 
 int main(void)
 {
-    long max = 2143;
-    struct List digits;
-    struct PrimeList primes;
+    struct LPStringCollection words;
     clock_t start = clock();
-    Exception ex = list(&digits, 9);
+    Exception ex = lp_string_collection(&words, 5000);
 
     euler_ok();
 
-    ex = prime_list(&primes, 10);
+    ex = lp_string_collection_deserialize(&words, stdin);
 
     euler_ok();
 
-    for (int i = 1; i <= 3; i++)
+    int count = 0;
+
+    for (LPString* word = words.begin; word < words.end; word++)
     {
-        list_add(&digits, i);
-    }
+        int n = 0;
 
-    for (int i = 4; i <= 9; i++)
-    {
-        list_add(&digits, i);
-
-        struct PermutationIterator it;
-
-        for (permutation_begin(&it, &digits); !it.end; permutation_next(&it))
+        for (char* p = *word; *p; p++)
         {
-            long n = 0;
+            n += *p - 'A' + 1;
+        }
 
-            for (long* p = it.values->begin; p < it.values->end; p++)
-            {
-                n = n * 10 + *p;
-            }
+        n = 8 * n + 1; 
 
-            if (n > max && prime_list_is_prime(&primes, n))
-            {
-                max = n;
-            }
+        int sqrtN = sqrt(n);
+
+        if (sqrtN * sqrtN == n)
+        {
+            count++;
         }
     }
 
-    finalize_list(&digits);
-    finalize_prime_list(&primes);
-    euler_submit(42, max, start);
+    finalize_lp_string_collection(&words);
+    euler_submit(42, count, start);
 }

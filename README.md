@@ -69,7 +69,9 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 41-
 
-| Id  |                Problem                 |    Domain     | Result  | Implementation |
-| :-: | :------------------------------------: | :-----------: | :-----: | -------------- |
-| 41  |    [Pandigital Prime](src/id0041.c)    | Number theory | Maximum |                |
-| 42  | [Coded Triangle Numbers](src/id0042.c) |   Sequences   |  Count  |                |
+| Id  |                 Problem                 |    Domain     | Result  | Implementation                                                       |
+| :-: | :-------------------------------------: | :-----------: | :-----: | -------------------------------------------------------------------- |
+| 41  |    [Pandigital Prime](src/id0041.c)     | Number theory | Maximum |                                                                      |
+| 42  | [Coded Triangle Numbers](src/id0042.c)  |   Sequences   |  Count  |                                                                      |
+| 43  | [Sub-string Divisibility](src/id0043.c) | Number theory |   Sum   |                                                                      |
+| 44  |   [Pentagonal Numbers](src/id0044.c)    |   Sequences   | Minimum | [Pentagonal number](https://en.wikipedia.org/wiki/Pentagonal_number) |
