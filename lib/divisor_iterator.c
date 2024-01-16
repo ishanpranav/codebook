@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include "divisor_iterator.h"
-#include "euler_swap.h"
+#include "euler.h"
 
 void divisor_begin(DivisorIterator iterator, long n)
 {

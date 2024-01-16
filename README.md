@@ -57,9 +57,10 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 29  |       [Distinct Powers](src/id0029.c)       | Number theory |          Count          |                                                                             |
 | 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |           Sum           |                                                                             |
 | 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |          Count          | Dynamic programming                                                         |
-| 32  |     [Pandigital Products](src/id0032.c)     | Number Theory |           Sum           |                                                                             |
-| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number Theory | Greatest Common Divisor |                                                                             |
-| 34 | [Digit Factorials](src/id0034.c) | Sum | Number Theory | [Factorial](https://en.wikipedia.org/wiki/Factorial) |
-| 35 | [Circular Primes](src/id0035.c) | Count | Number Theory | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime) |
-| 36 | [Double-base Palindromes](src/id0036.c) | Sum | Number Theory | [Radix](https://en.wikipedia.org/wiki/Radix) |
-| 37 | [Truncatable Primes](src/id0037.c) | Sum | Number Theory | |
+| 32  |     [Pandigital Products](src/id0032.c)     | Number theory |           Sum           |                                                                             |
+| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest Common Divisor |                                                                             |
+| 34 | [Digit Factorials](src/id0034.c) | Number theory | Sum | [Factorial](https://en.wikipedia.org/wiki/Factorial) |
+| 35 | [Circular Primes](src/id0035.c) | Number theory | Count | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime) |
+| 36 | [Double-base Palindromes](src/id0036.c) | Number theory | Sum | [Radix](https://en.wikipedia.org/wiki/Radix) |
+| 37 | [Truncatable Primes](src/id0037.c) | Number theory | Sum | [Truncatable prime](https://en.wikipedia.org/wiki/Truncatable_prime) |
+| 38 | [Pandigital Multiples](src/id0038.c) | Number theory | Maximum | |

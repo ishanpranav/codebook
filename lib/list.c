@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "list.h"
+#include "object.h"
 
 Exception list(List instance, size_t capacity)
 {
@@ -81,6 +82,54 @@ bool list_contains(List instance, long item)
 void list_clear(List instance)
 {
     instance->end = instance->begin;
+}
+
+static int list_item_compare(Object left, Object right)
+{
+    long leftValue = *(long*)left;
+    long rightValue = *(long*)right;
+
+    if (leftValue < rightValue)
+    {
+        return -1;
+    }
+
+    if (leftValue > rightValue)
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
+void list_sort(List instance)
+{
+    qsort(
+        instance->begin, 
+        instance->end - instance->begin, 
+        sizeof * instance->begin, 
+        list_item_compare);
+}
+
+bool list_equals(List left, List right)
+{
+    size_t length = left->end - left->begin;
+    size_t rightLength = right->end - right->begin;
+
+    if (rightLength != length)
+    {
+        return false;
+    }
+
+    for (size_t i = 0; i < length; i++)
+    {
+        if (left->begin[i] != right->begin[i])
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 void finalize_list(List instance)

@@ -1,6 +1,6 @@
 // Licensed under the MIT license.
 
-#include "euler_swap.h"
+#include "euler.h"
 #include "permutation_iterator.h"
 
 void permutation_begin(PermutationIterator iterator, List values)

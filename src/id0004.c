@@ -34,7 +34,7 @@ int main(void)
                 break;
             }
 
-            if (math_is_palindrome(product, 10))
+            if (math_is_palindrome(product))
             {
                 max = product;
             }

@@ -13,6 +13,14 @@ Exception euler_submit(int id, long long result, clock_t start)
     return 0;
 }
 
+void euler_swap(long* p, long* q)
+{
+    long swap = *p;
+
+    *p = *q;
+    *q = swap;
+}
+
 long math_natural_sum(long n)
 {
     return n * (n + 1) / 2;

@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
-#ifndef _95a94c0379b44bd3967523c81d4caa55
-#define _95a94c0379b44bd3967523c81d4caa55
+#ifndef LIST_95a94c0379b44bd3967523c81d4caa55
+#define LIST_95a94c0379b44bd3967523c81d4caa55
 #include <stddef.h>
 #include "exception.h"
 
@@ -61,6 +61,20 @@ bool list_contains(List instance, long item);
  * @param instance the `List` instance.
 */
 void list_clear(List instance);
+
+/**
+ * 
+ * @param instance the `List` instance.
+*/
+void list_sort(List instance);
+
+/**
+ * 
+ * @param instance 
+ * @param instance 
+ * @return
+*/
+bool list_equals(List left, List right);
 
 /**
  * Frees all resources.

@@ -23,6 +23,14 @@
 int euler_submit(int id, long long result, clock_t start);
 
 /**
+ * Exchanges the given values.
+ * 
+ * @param p a pointer to the first element to swap
+ * @param q a pointer to the second element to swap
+*/
+void euler_swap(long* p, long* q);
+
+/**
  * Computes a partial summation of the natural numbers.
  *
  * @param n the number of terms in the sequence.

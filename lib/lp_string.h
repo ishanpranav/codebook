@@ -1,10 +1,9 @@
 // Licensed under the MIT License.
 
+#include "object.h"
+
 /** Represents text as a zero-terminated sequence of characters. */
 typedef char* LPString;
-
-/** Represents an opaque type. */
-typedef const void* Object;
 
 /**
  * Creates a new instance of `LPString` with the same value as a specified
