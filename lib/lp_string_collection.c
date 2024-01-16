@@ -12,7 +12,7 @@ Exception lp_string_builder(LPStringBuilder instance, size_t capacity)
     {
         capacity = 4;
     }
-    
+
     instance->begin = malloc(capacity * sizeof * instance->begin);
 
     if (!instance->begin)
@@ -26,7 +26,7 @@ Exception lp_string_builder(LPStringBuilder instance, size_t capacity)
     return 0;
 }
 
-Exception lp_string_builder_append_char(LPStringBuilder instance, char item)
+Exception lp_string_builder_append_char(LPStringBuilder instance, char value)
 {
     size_t length = instance->end - instance->begin;
 
@@ -48,7 +48,7 @@ Exception lp_string_builder_append_char(LPStringBuilder instance, char item)
         instance->end = newBegin + length;
     }
 
-    *instance->end = item;
+    *instance->end = value;
     instance->end++;
 
     return 0;
@@ -70,7 +70,7 @@ LPString lp_string_builder_to_string(LPStringBuilder instance)
     }
 
     memcpy(result, instance->begin, length);
-    
+
     result[length] = '\0';
 
     return result;
@@ -105,7 +105,7 @@ Exception lp_string_collection(LPStringCollection instance, size_t capacity)
     return 0;
 }
 
-Exception lp_string_collection_add(LPStringCollection instance, LPString item)
+Exception lp_string_collection_add(LPStringCollection instance, LPString value)
 {
     size_t length = instance->end - instance->begin;
 
@@ -127,7 +127,7 @@ Exception lp_string_collection_add(LPStringCollection instance, LPString item)
         instance->end = newBegin + length;
     }
 
-    *instance->end = item;
+    *instance->end = value;
     instance->end++;
 
     return 0;
@@ -150,7 +150,7 @@ static Exception lp_string_collection_realize(
     {
         return 0;
     }
-    
+
     LPString value = lp_string_builder_to_string(builder);
 
     if (!value)
@@ -194,6 +194,8 @@ Exception lp_string_collection_deserialize(
 
                 if (ex)
                 {
+                    finalize_lp_string_builder(&builder);
+
                     return ex;
                 }
                 break;
@@ -212,6 +214,8 @@ Exception lp_string_collection_deserialize(
     }
 
     ex = lp_string_collection_realize(instance, &builder);
+
+    finalize_lp_string_builder(&builder);
 
     return ex;
 }

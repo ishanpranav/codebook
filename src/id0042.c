@@ -49,5 +49,5 @@ int main(void)
 
     finalize_list(&digits);
     finalize_prime_list(&primes);
-    euler_submit(41, max, start);
+    euler_submit(42, max, start);
 }

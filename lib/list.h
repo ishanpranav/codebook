@@ -20,7 +20,7 @@ typedef struct List* List;
  * Initializes a `List` instance.
  *
  * @param instance the `List` instance.
- * @param capacity the capacity.
+ * @param capacity the required minimum capacity.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
