@@ -25,7 +25,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |   2    |       [Even Fibonacci Numbers](src/id0002.c)       |           Sequences            |          Sum          | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)                         |
 |   3    |        [Largest Prime Factor](src/id0003.c)        |         Number theory          |        Maximum        | [Trial division](https://en.wikipedia.org/wiki/Trial_division)                                 |
 |   4    |     [Largest Palindrome Product](src/id0004.c)     |         Number theory          |        Maximum        | [Palindromic number](https://en.wikipedia.org/wiki/Palindromic_number)                         |
-|   5    |         [Smallest Multiple](src/id0005.c)          |         Number theory          | Least Common Multiple | [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)                       |
+|   5    |         [Smallest Multiple](src/id0005.c)          |         Number theory          | Least common multiple | [Euclidean algorithm](https://en.wikipedia.org/wiki/Euclidean_algorithm)                       |
 |   6    |       [Sum Square Difference](src/id0006.c)        |           Sequences            |      Difference       | [Square pyramidal number](https://en.wikipedia.org/wiki/Square_pyramidal_number)               |
 |   7    |           [10001st Prime](src/id0007.c)            |         Number theory          |         Term          | [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)                   |
 |   8    |    [Largest Product in a Series](src/id0008.c)     | Sequences, Dynamic programming |        Maximum        | Sliding-window technique                                                                       |
@@ -58,7 +58,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |           Sum           |                                                                             |
 | 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |          Count          | Dynamic programming                                                         |
 | 32  |     [Pandigital Products](src/id0032.c)     | Number theory |           Sum           |                                                                             |
-| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest Common Divisor |                                                                             |
+| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest common divisor |                                                                             |
 | 34 | [Digit Factorials](src/id0034.c) | Number theory | Sum | [Factorial](https://en.wikipedia.org/wiki/Factorial) |
 | 35 | [Circular Primes](src/id0035.c) | Number theory | Count | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime) |
 | 36 | [Double-base Palindromes](src/id0036.c) | Number theory | Sum | [Radix](https://en.wikipedia.org/wiki/Radix) |

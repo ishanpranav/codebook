@@ -63,16 +63,19 @@ bool list_contains(List instance, long item);
 void list_clear(List instance);
 
 /**
+ * Sorts the elements in the list.
  * 
  * @param instance the `List` instance.
 */
 void list_sort(List instance);
 
 /**
+ * Determines whether two lists are equal.
  * 
- * @param instance 
- * @param instance 
- * @return
+ * @param left  a list to compare to `right`. 
+ * @param right a list to compare to `left`.
+ * @return `true` if the two lists are of equal length and their corresponding
+ *         elements are equal; otherwise, `false`.
 */
 bool list_equals(List left, List right);
 
