@@ -6,41 +6,51 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../lib/euler.h"
-#include "../lib/lp_string.h"
+#include "../lib/lp_string_collection.h"
 
 int main(void)
 {
-    char buffer[65536];
-    clock_t start = clock();
-    int read = fread(buffer, 1, sizeof buffer, stdin);
-
-    assert(read != 0);
+    // char buffer[65536];
 
     long sum = 0;
     int count = 0;
-    LPString names[8192];
+    struct LPStringCollection names;
+    clock_t start = clock();
+    Exception ex = lp_string_collection_deserialize(&names, stdin);
 
-    for (LPString tok = strtok(buffer, "\","); tok; tok = strtok(NULL, "\","))
-    {
-        names[count] = lp_string_clone(tok);
-        count++;
-    }
+    // int read = fread(buffer, 1, sizeof buffer, stdin);
 
-    qsort(names, count, sizeof * names, lp_string_compare);
+    // assert(read != 0);
+
+    // LPString names[8192];
+
+    euler_ok();
+
+    // for (LPString tok = strtok(buffer, "\","); tok; tok = strtok(NULL, "\","))
+    // {
+    //     names[count] = lp_string_clone(tok);
+    //     count++;
+    // }
+
+    lp_string_collection_sort(&names);
+
+    // qsort(names, count, sizeof * names, lp_string_compare);
 
     for (int i = 0; i < count; i++)
     {
         int rank = 0;
 
-        for (char* p = names[i]; *p; p++)
+        for (char* p = names.begin[i]; *p; p++)
         {
             rank += *p - 'A' + 1;
         }
 
         sum += rank * (i + 1);
 
-        free(names[i]);
+        // free(names.begin[i]);
     }
+
+    finalize_lp_string_collection(&names);
 
     return euler_submit(22, sum, start);
 }
