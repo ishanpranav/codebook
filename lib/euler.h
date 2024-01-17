@@ -63,3 +63,11 @@ bool math_is_palindrome(long n);
  * @return `true` if `n` is pentagonal; otherwise, `false`.
 */
 bool math_is_pentagonal(long n);
+
+/**
+ * Determines if a given value is a perfect square.
+ * 
+ * @param n the value to test.
+ * @return `true` if `n` is a square; otherwise, `false`.
+*/
+bool math_is_square(long n);

@@ -2,10 +2,10 @@
 
 // Amicable Numbers
 
-#include <assert.h>
 #include <stdlib.h>
 #include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
+#include "../lib/exception.h"
 
 int main(void)
 {
@@ -13,8 +13,13 @@ int main(void)
     clock_t start = clock();
     int* d = malloc(sizeof * d * 9998);
 
-    assert(d);
+    if (!d)
+    {
+        Exception ex = EXCEPTION_OUT_OF_MEMORY;
 
+        euler_ok();
+    }
+    
     for (int a = 2; a < 10000; a++)
     {
         d[a - 2] = divisor_sum(a);

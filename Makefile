@@ -164,8 +164,8 @@ id0041: src/id0041.c \
 	divisor_iterator boolean_set euler list permutation_iterator prime_list
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o prime_list.o -lm
 	
-id0042: src/id0042.c euler lp_string lp_string_collection
-	$(CC) $(CFLAGS) $< -o $@.o euler.o lp_string.o lp_string_collection.o -lm
+id0042: src/id0042.c euler lp_string lp_string_collection math
+	$(CC) $(CFLAGS) $< -o $@.o euler.o lp_string.o lp_string_collection.o math.o -lm
 	
 id0043: src/id0043.c euler list permutation_iterator
 	$(CC) $(CFLAGS) $< -o $@.o euler.o list.o permutation_iterator.o -lm
@@ -176,5 +176,14 @@ id0044: src/id0044.c euler math
 id0045: src/id0045.c euler math
 	$(CC) $(CFLAGS) $< -o $@.o euler.o math.o -lm
 
+id0046: src/id0046.c divisor_iterator boolean_set euler list math prime_list
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o math.o prime_list.o -lm
+	
+id0047: src/id0047.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o
+
+id0048: src/id0048.c euler
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
+	
 clean:
 	rm -rf *.o

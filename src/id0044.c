@@ -5,6 +5,7 @@
 #include <limits.h>
 #include <math.h>
 #include "../lib/euler.h"
+#define MAX_SEARCH 10000
 
 int main(void)
 {
@@ -12,11 +13,11 @@ int main(void)
     long min = LONG_MAX;
     clock_t start = clock();
 
-    for (int m = 1; m < 10000; m++)
+    for (int m = 1; m < MAX_SEARCH; m++)
     {
         long j = (3 * m - 1) * m / 2;
 
-        for (int n = m + 1; n < 10000; n++)
+        for (int n = m + 1; n < MAX_SEARCH; n++)
         {
             time++;
 

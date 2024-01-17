@@ -32,9 +32,9 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |   9    |    [Special Pythagorean Triplet](src/id0009.c)     |            Geometry            |        Product        | [Euclid\'s formula](https://en.wikipedia.org/wiki/Pythagorean_triple)                          |
 |   10   |        [Summation of Primes](src/id0010.c)         |         Number theory          |          Sum          |                                                                                                |
 |   11   |     [Largest Product in a Grid](src/id0011.c)      |      Dynamic programming       |        Maximum        |                                                                                                |
-|   12   | [Highly Divisible Triangular Number](src/id0012.c) |           Sequences            |        Optimum        | [Integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)                   |
-|   13   |             [Large Sum](src/id0013.c)              |           Arithmetic           |          Sum          | [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic)           |
-|   14   |      [Longest Collatz Sequence](src/id0014.c)      |           Sequences            |        Optimum        | [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)                         |
+|   12   | [Highly Divisible Triangular Number](src/id0012.c) |           Sequences            |         Term          | [Integer factorization](https://en.wikipedia.org/wiki/Integer_factorization)                   |
+|   13   |             [Large Sum](src/id0013.c)              |           Arithmetic           |       Quotient        | [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic)           |
+|   14   |      [Longest Collatz Sequence](src/id0014.c)      |           Sequences            |         Term          | [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture)                         |
 |   15   |           [Lattice Paths](src/id0015.c)            |         Combinatorics          | Binomial coefficient  | [Binomial coefficient](https://en.wikipedia.org/wiki/Binomial_coefficient)                     |
 |   16   |          [Power Digit Sum](src/id0016.c)           | Arbitrary-precision arithmetic |          Sum          | [Arbitrary-precision arithmetic](https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic) |
 |   17   |        [Number Letter Counts](src/id0017.c)        |         Combinatorics          |         Count         |                                                                                                |
@@ -51,7 +51,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |           Sum           | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)            |
 | 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics |       Permutation       | [Permutation](https://en.wikipedia.org/wiki/Permutation)                     |
 | 25  | [1000-digit Fibonacci Number](src/id0025.c) |   Sequences   |       Term number       | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)       |
-| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |         Optimum         | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)       |
+| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |         Maximum         | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)       |
 | 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |         Product         |                                                                              |
 | 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |           Sum           | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression)  |
 | 29  |       [Distinct Powers](src/id0029.c)       | Number theory |          Count          |                                                                              |
@@ -69,11 +69,13 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 41-
 
-| Id  |                        Problem                        |    Domain     | Result  | Implementation                                                       |
-| :-: | :---------------------------------------------------: | :-----------: | :-----: | -------------------------------------------------------------------- |
-| 41  |           [Pandigital Prime](src/id0041.c)            | Number theory | Maximum |                                                                      |
-| 42  |        [Coded Triangle Numbers](src/id0042.c)         |   Sequences   |  Count  |                                                                      |
-| 43  |        [Sub-string Divisibility](src/id0043.c)        | Number theory |   Sum   |                                                                      |
-| 44  |          [Pentagonal Numbers](src/id0044.c)           |   Sequences   | Minimum | [Pentagonal number](https://en.wikipedia.org/wiki/Pentagonal_number) |
-| 45  | [Triangular, Pentagonal, and Hexagonal](src/id0045.c) |   Sequences   |  Term   | [Hexagonal number](https://en.wikipedia.org/wiki/Hexagonal_number)   |
-| 46  |     [Goldbach\'s Other Conjecture](src/id0046.c)      | Number theory | Maximum |                                                                      |
+| Id  |                        Problem                        |             Domain             | Result  | Implementation                                                       |
+| :-: | :---------------------------------------------------: | :----------------------------: | :-----: | -------------------------------------------------------------------- |
+| 41  |           [Pandigital Prime](src/id0041.c)            |         Number theory          | Maximum |                                                                      |
+| 42  |        [Coded Triangle Numbers](src/id0042.c)         |           Sequences            |  Count  |                                                                      |
+| 43  |        [Sub-string Divisibility](src/id0043.c)        |         Number theory          |   Sum   |                                                                      |
+| 44  |          [Pentagonal Numbers](src/id0044.c)           |           Sequences            | Minimum | [Pentagonal number](https://en.wikipedia.org/wiki/Pentagonal_number) |
+| 45  | [Triangular, Pentagonal, and Hexagonal](src/id0045.c) |           Sequences            |  Term   | [Hexagonal number](https://en.wikipedia.org/wiki/Hexagonal_number)   |
+| 46  |     [Goldbach\'s Other Conjecture](src/id0046.c)      |         Number theory          | Minimum |                                                                      |
+| 47  |        [Distinct Primes Factors](src/id0047.c)        |         Number theory          |  Term   |                                                                      |
+| 48  |              [Self Powers](src/id0048.c)              | Arbitrary-precision arithmetic | Modulus |                                                                      |

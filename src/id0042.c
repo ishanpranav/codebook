@@ -29,11 +29,7 @@ int main(void)
             n += *p - 'A' + 1;
         }
 
-        n = 8 * n + 1; 
-
-        double sqrtN = sqrt(n);
-
-        if (sqrtN == (int)sqrtN)
+        if (math_is_square(8 * n + 1))
         {
             count++;
         }

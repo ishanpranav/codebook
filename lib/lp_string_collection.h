@@ -54,7 +54,7 @@ Exception lp_string_collection_deserialize(
     Stream input);
 
 /**
- * Frees all rseources.
+ * Frees all resources.
  * 
  * @param instance the `LPStringCollection` instance. This method corrupts the
  *                 `instance` argument.
