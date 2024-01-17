@@ -6,7 +6,8 @@ all: \
 	id0011 id0012 id0013 id0014 id0015 id0016 id0017 id0018 id0019 id0020 \
 	id0021 id0022 id0023 id0024 id0025 id0026 id0027 id0028 id0029 id0030 \
 	id0031 id0032 id0033 id0034 id0035 id0036 id0037 id0038 id0039 id0040 \
-	id0041 id0042 id0043 id0044 id0045 id0046 id0047 id0048 id0049 id0050
+	id0041 id0042 id0043 id0044 id0045 id0046 id0047 id0048 id0049 id0050 \
+	id0051 id0052 id0053 id0054 id0055 id0056 id0057 id0058 id0059 id0060
 
 boolean_set: lib/boolean_set.c lib/boolean_set.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
@@ -188,6 +189,10 @@ id0048: src/id0048.c euler
 id0049: src/id0049.c \
 	divisor_iterator boolean_set euler list permutation_iterator prime_list 
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o prime_list.o -lm
+	
+id0050: src/id0050.c \
+	divisor_iterator boolean_set euler list prime_list 
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
 	
 clean:
 	rm -rf *.o
