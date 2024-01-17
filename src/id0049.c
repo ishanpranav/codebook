@@ -83,7 +83,7 @@ int main(void)
 {
     struct PrimeList primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 2);
+    Exception ex = prime_list(&primes, 3340);
 
     euler_ok();
     
@@ -113,7 +113,9 @@ int main(void)
 
     if (result < 0)
     {
-        ex = math_prime_permutation(&primes, &a, &b, &c, 1488, 3340, &result);
+        long last = primes.primes.end[-1];
+
+        ex = math_prime_permutation(&primes, &a, &b, &c, 1488, last, &result);
     }
 
     return euler_submit(49, result, start);
