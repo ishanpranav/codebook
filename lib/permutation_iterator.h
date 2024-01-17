@@ -7,7 +7,7 @@
 /** Iterates over the lexicographical permutations of a collection. */
 struct PermutationIterator
 {
-    List values;
+    struct List* values;
     bool end;
 };
 
