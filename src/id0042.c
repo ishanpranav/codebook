@@ -3,6 +3,7 @@
 // Coded Triangle Numbers
 
 #include <math.h>
+#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/lp_string_collection.h"
 
@@ -33,6 +34,8 @@ int main(void)
         {
             count++;
         }
+
+        free(*word);
     }
 
     finalize_lp_string_collection(&words);

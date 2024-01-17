@@ -2,6 +2,7 @@
 
 // Names Scores
 
+#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/lp_string_collection.h"
 
@@ -32,6 +33,8 @@ int main(void)
         }
 
         sum += rank * (i + 1);
+
+        free(names.begin[i]);
     }
 
     finalize_lp_string_collection(&names);

@@ -83,7 +83,7 @@ int main(void)
 {
     struct PrimeList primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 3340);
+    Exception ex = prime_list(&primes, 10000 - 3330 - 3330);
 
     euler_ok();
     

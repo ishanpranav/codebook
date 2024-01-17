@@ -43,7 +43,8 @@ Exception lp_string_collection_add(LPStringCollection instance, LPString value);
 void lp_string_collection_sort(LPStringCollection instance);
 
 /**
- * Deserializes a collection of strings from a formatted input stream.
+ * Deserializes a collection of strings from a formatted input stream. The
+ * caller is responsible for the generated strings.
  * 
  * @param instance the `LPStringCollection` instance.
  * @param input    the input stream.

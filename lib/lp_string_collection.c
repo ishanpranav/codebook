@@ -222,11 +222,6 @@ Exception lp_string_collection_deserialize(
 
 void finalize_lp_string_collection(LPStringCollection instance)
 {
-    for (LPString* it = instance->begin; it < instance->end; it++)
-    {
-        free(*it);
-    }
-
     free(instance->begin);
 
     instance->begin = NULL;
