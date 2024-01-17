@@ -8,7 +8,7 @@
 
 Exception list(List instance, size_t capacity)
 {
-    if (capacity == 0)
+    if (!capacity)
     {
         capacity = 4;
     }

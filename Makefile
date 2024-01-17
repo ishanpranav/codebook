@@ -168,7 +168,7 @@ id0043: src/id0043.c euler list permutation_iterator
 	$(CC) $(CFLAGS) $< -o $@.o euler.o list.o permutation_iterator.o -lm
 	
 id0044: src/id0044.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o
+	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
 	
 clean:
 	rm -rf *.o

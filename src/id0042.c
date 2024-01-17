@@ -31,9 +31,9 @@ int main(void)
 
         n = 8 * n + 1; 
 
-        int sqrtN = sqrt(n);
+        double sqrtN = sqrt(n);
 
-        if (sqrtN * sqrtN == n)
+        if (sqrtN == (int)sqrtN)
         {
             count++;
         }
