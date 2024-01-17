@@ -25,7 +25,10 @@ lp_string: lib/lp_string.c lib/lp_string.h
 
 lp_string_collection: lib/lp_string_collection.c lib/lp_string_collection.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
-	
+
+math: lib/math.c lib/euler.h
+	$(CC) $(CFLAGS) -c $< -o $@.o
+
 permutation_iterator: lib/permutation_iterator.c lib/permutation_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@.o
 
@@ -167,8 +170,11 @@ id0042: src/id0042.c euler lp_string lp_string_collection
 id0043: src/id0043.c euler list permutation_iterator
 	$(CC) $(CFLAGS) $< -o $@.o euler.o list.o permutation_iterator.o -lm
 	
-id0044: src/id0044.c euler
-	$(CC) $(CFLAGS) $< -o $@.o euler.o -lm
+id0044: src/id0044.c euler math
+	$(CC) $(CFLAGS) $< -o $@.o euler.o math.o -lm
 	
+id0045: src/id0045.c euler math
+	$(CC) $(CFLAGS) $< -o $@.o euler.o math.o -lm
+
 clean:
 	rm -rf *.o

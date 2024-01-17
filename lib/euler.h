@@ -52,6 +52,14 @@ long math_gcd(long a, long b);
  * Determines if a given value is a palindrome.
  *
  * @param n the value to test.
- * @return `true` if the `n` is a palindrome; otherwise, `false`.
+ * @return `true` if `n` is a palindrome; otherwise, `false`.
 */
 bool math_is_palindrome(long n);
+
+/**
+ * Determines if a given value is a pentagonal number.
+ * 
+ * @param n the value to test.
+ * @return `true` if `n` is pentagonal; otherwise, `false`.
+*/
+bool math_is_pentagonal(long n);

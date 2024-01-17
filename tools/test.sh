@@ -21,7 +21,7 @@ do
     ./../id${i}.o
 done
 
-cat ./../data/id0018.txt | ./../id0018.o
+cat ./../data/id0018.txt | ./../id0018.o 18
 
 for i in {0019..0021};
 do

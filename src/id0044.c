@@ -6,15 +6,9 @@
 #include <math.h>
 #include "../lib/euler.h"
 
-bool math_is_pentagonal(long n)
-{
-    double sqrtN = (sqrt(24 * n + 1) + 1) / 6;
-
-    return sqrtN == (int)sqrtN;
-}
-
 int main(void)
 {
+    long time = 0;
     long min = LONG_MAX;
     clock_t start = clock();
 
@@ -24,6 +18,8 @@ int main(void)
 
         for (int n = m + 1; n < 10000; n++)
         {
+            time++;
+
             long k = (3 * n - 1) * n / 2;
             long d = k - j;
 
@@ -37,7 +33,7 @@ int main(void)
                 continue;
             }
 
-            min = k - j;
+            min = d;
         }
     }
 
