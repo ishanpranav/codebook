@@ -57,21 +57,21 @@ static size_t permutation_count(List list, long item)
 
 bool permutation_test(List left, List right)
 {
-    long* p = left->begin;
-    long* q = right->begin;
+    long* leftBegin = left->begin;
+    long* rightBegin = right->begin;
 
-    if (left->end - p != right->end - q)
+    if (left->end - leftBegin != right->end - rightBegin)
     {
         return false;
     }
 
-    while (p < left->end && q < right->end && *p == *q)
+    while (leftBegin < left->end && *leftBegin == *rightBegin)
     {
-        p++;
-        q++;
+        leftBegin++;
+        rightBegin++;
     }
 
-    for (long* it = p; it < left->end; it++)
+    for (long* it = leftBegin; it < left->end; it++)
     {
         size_t leftCount = permutation_count(left, *it);
         size_t rightCount = permutation_count(right, *it);
