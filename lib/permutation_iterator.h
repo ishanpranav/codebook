@@ -29,3 +29,12 @@ void permutation_begin(PermutationIterator iterator, List values);
  * @param iterator the iterator.
 */
 void permutation_next(PermutationIterator iterator);
+
+/**
+ * Determines whether two collections are permutations of one another.
+ * 
+ * @param left  a collection to compare to `right`.
+ * @param right a collection to compare to `left`.
+ * @return `true` if `left` and `right` are permutations; otherwise, `false`.
+*/
+bool permutation_test(List left, List right);

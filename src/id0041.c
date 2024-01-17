@@ -8,13 +8,13 @@
 
 int main(void)
 {
-    long max = 2143;
     struct List digits;
-    struct PrimeList primes;
     clock_t start = clock();
     Exception ex = list(&digits, 9);
 
     euler_ok();
+    
+    struct PrimeList primes;
 
     ex = prime_list(&primes, 10);
 
@@ -22,12 +22,18 @@ int main(void)
 
     for (int i = 1; i <= 3; i++)
     {
-        list_add(&digits, i);
+        ex = list_add(&digits, i);
+
+        euler_ok();
     }
+
+    long max = 2143;
 
     for (int i = 4; i <= 9; i++)
     {
-        list_add(&digits, i);
+        ex = list_add(&digits, i);
+
+        euler_ok();
 
         struct PermutationIterator it;
 

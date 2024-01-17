@@ -10,10 +10,13 @@ int main(void)
     long max = 918273645l;
     long array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     struct List digits;
-    struct List pandigital;
     clock_t start = clock();
+    Exception ex = list(&digits, 0);
 
-    list(&digits, 0);
+    euler_ok();
+    
+    struct List pandigital;
+    
     list_from_array(&pandigital, array, 9);
 
     for (int i = 2; i < 10000; i++)

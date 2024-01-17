@@ -79,3 +79,4 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 46  |     [Goldbach\'s Other Conjecture](src/id0046.c)      |         Number theory          | Minimum |                                                                      |
 | 47  |        [Distinct Primes Factors](src/id0047.c)        |         Number theory          |  Term   |                                                                      |
 | 48  |              [Self Powers](src/id0048.c)              | Arbitrary-precision arithmetic | Modulus |                                                                      |
+| 49  |          [Prime Permutations](src/id0049.c)           |           Sequences            |  Terms  |                                                                      |

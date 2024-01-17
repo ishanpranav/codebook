@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
-#define MAX_SEARCH 1000000
+#define MAX_SEARCH 1000000l
 
 int main(void)
 {

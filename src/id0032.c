@@ -7,7 +7,6 @@
 
 int main(void)
 {
-    struct List l;
     struct List discovered;
     struct PermutationIterator it;
     long digits[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -16,6 +15,8 @@ int main(void)
 
     euler_ok();
 
+    struct List l;
+    
     list_from_array(&l, digits, 9);
     
     for (permutation_begin(&it, &l); !it.end; permutation_next(&it))

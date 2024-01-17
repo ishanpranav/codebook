@@ -39,3 +39,39 @@ void permutation_next(PermutationIterator iterator)
 
     iterator->end = last == iterator->values->begin;
 }
+
+static size_t permutation_count(List list, long item)
+{
+    size_t result = 0;
+
+    for (long* it = list->begin; it < list->end; it++)
+    {
+        if (item == *it)
+        {
+            result++;
+        }
+    }
+
+    return result;
+}
+
+bool permutation_test(List left, List right)
+{
+    if (left->end - left->begin != right->end - right->begin)
+    {
+        return false;
+    }
+
+    for (long* it = left->begin; it < left->end; it++)
+    {
+        size_t leftCount = permutation_count(left, *it);
+        size_t rightCount = permutation_count(right, *it);
+
+        if (leftCount != rightCount)
+        {
+            return false;
+        }
+    }
+    
+    return true;
+}

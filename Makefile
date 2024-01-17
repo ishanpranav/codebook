@@ -185,5 +185,9 @@ id0047: src/id0047.c euler
 id0048: src/id0048.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o -lgmp
 	
+id0049: src/id0049.c \
+	divisor_iterator boolean_set euler list permutation_iterator prime_list 
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o prime_list.o -lm
+	
 clean:
 	rm -rf *.o
