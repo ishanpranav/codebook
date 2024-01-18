@@ -198,5 +198,8 @@ id0051: src/id0051.c \
 	divisor_iterator boolean_set euler list prime_list 
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
 	
+id0052: src/id0052.c euler list permutation_iterator 
+	$(CC) $(CFLAGS) $< -o $@.o euler.o list.o permutation_iterator.o -lm
+	
 clean:
 	rm -rf *.o
