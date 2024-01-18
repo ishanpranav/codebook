@@ -38,8 +38,7 @@ long long math_binomial(int n, int k)
 
     for (int i = 0; i < k; i++)
     {
-        result *= n - i;
-        result /= i + 1;
+        result = (result * (n - i)) / (i + 1);
     }
 
     return result;
