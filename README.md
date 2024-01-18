@@ -96,4 +96,6 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 51  |       [Prime Digit Replacements](src/id0051.c)        |         Number theory          | Minimum |                                                                      |
 | 52  |          [Permuted Multiples](src/id0052.c)           |         Combinatorics          | Minimum |                                                                      |
 | 53  |        [Combinatoric Selections](src/id0053.c)        |         Combinatorics          |  Count  |                                                                      |
-| 54  |              [Poker Hands](src/id0054.c)              |            Sorting             |  Count  |                                                                      |
+| 54  |              [Poker Hands](src/id0054.c)              |           Simulation           |  Count  |                                                                      |
+| 55  |            [Lychrel Numbers](src/id0055.c)            |         Number theory          |  Count  |                                                                      |
+| 56 | [Powerful Digit Sum](src/id0056.c) | 

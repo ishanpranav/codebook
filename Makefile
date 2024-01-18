@@ -208,5 +208,8 @@ id0053: src/id0053.c euler
 id0054: src/id0054.c euler
 	$(CC) $(CFLAGS) $< -o $@.o euler.o
 	
+id0055: src/id0055.c euler
+	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@.o euler.o
+	
 clean:
 	rm -rf *.o

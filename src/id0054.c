@@ -70,7 +70,6 @@ typedef enum HandType HandType;
 typedef enum Rank Rank;
 typedef enum Suit Suit;
 typedef struct Card* Card;
-typedef struct Frequency* Frequency;
 typedef struct Hand* Hand;
 
 Rank rank_parse(char value)
@@ -161,8 +160,6 @@ static bool hand_is_straight(Hand instance)
 
 void hand_classify(Hand instance)
 {
-    qsort(instance->cards, 5, sizeof * instance->cards, card_compare);
-
     struct Frequency ranks[MAX_RANK];
     int suits[MAX_SUIT] = { 0 };
 
@@ -193,6 +190,8 @@ void hand_classify(Hand instance)
 
         return;
     }
+    
+    qsort(instance->cards, 5, sizeof * instance->cards, card_compare);
 
     bool straight = hand_is_straight(instance);
 

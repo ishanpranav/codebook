@@ -57,14 +57,19 @@ long math_gcd(long a, long b)
     return a;
 }
 
-bool math_is_palindrome(long n)
+long long math_reverse(long long n)
 {
-    long x = 0;
+    long long x = 0;
 
-    for (long y = n; y; y /= 10)
+    for (long long y = n; y; y /= 10)
     {
         x = (x * 10) + y % 10;
     }
 
-    return x == n;
+    return x;
+}
+
+bool math_is_palindrome(long long n)
+{
+    return n == math_reverse(n);
 }

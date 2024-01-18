@@ -59,12 +59,20 @@ long long math_binomial(int n, int k);
 long math_gcd(long a, long b);
 
 /**
+ * Reverses the digits of a given value.
+ * 
+ * @param n the value to reverse.
+ * @return the reflection of `n`.
+*/
+long long math_reverse(long long n);
+
+/**
  * Determines if a given value is a palindrome.
  *
  * @param n the value to test.
  * @return `true` if `n` is a palindrome; otherwise, `false`.
 */
-bool math_is_palindrome(long n);
+bool math_is_palindrome(long long n);
 
 /**
  * Determines if a given value is a pentagonal number.
