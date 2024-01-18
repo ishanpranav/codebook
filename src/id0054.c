@@ -2,9 +2,7 @@
 
 // Poker Hands
 
-#include <assert.h>
 #include <stdlib.h>
-#include <string.h>
 #include "../lib/euler.h"
 #include "../lib/lp_string.h"
 
@@ -24,20 +22,20 @@ enum HandType
 
 enum Rank
 {
-    RANK_TWO = 0,
-    RANK_THREE = 1,
-    RANK_FOUR = 2,
-    RANK_FIVE = 3,
-    RANK_SIX = 4,
-    RANK_SEVEN = 5,
+    RANK_ACE = 0,
+    RANK_KING = 1,
+    RANK_QUEEN = 2,
+    RANK_JACK = 3,
+    RANK_TEN = 4,
+    RANK_NINE = 5,
     RANK_EIGHT = 6,
-    RANK_NINE = 7,
-    RANK_TEN = 8,
-    RANK_JACK = 9,
-    RANK_QUEEN = 10,
-    RANK_KING = 11,
-    RANK_ACE = 12,
-    SIZE_RANK = 13
+    RANK_SEVEN = 7,
+    RANK_SIX = 8,
+    RANK_FIVE = 9,
+    RANK_FOUR = 10,
+    RANK_THREE = 11,
+    RANK_TWO = 12,
+    MAX_RANK = 13
 };
 
 enum Suit
@@ -46,7 +44,7 @@ enum Suit
     SUIT_DIAMONDS = 1,
     SUIT_CLUBS = 2,
     SUIT_HEARTS = 3,
-    SIZE_SUIT = 4
+    MAX_SUIT = 4
 };
 
 struct Card
@@ -65,8 +63,7 @@ struct Hand
 {
     struct Card cards[5];
     enum HandType type;
-    enum Rank firstPair;
-    enum Rank secondPair;
+    enum Rank pairs[2];
 };
 
 typedef enum HandType HandType;
@@ -85,9 +82,16 @@ Rank rank_parse(char value)
         case 'Q': return RANK_QUEEN;
         case 'J': return RANK_JACK;
         case 'T': return RANK_TEN;
+        case '9': return RANK_NINE;
+        case '8': return RANK_EIGHT;
+        case '7': return RANK_SEVEN;
+        case '6': return RANK_SIX;
+        case '5': return RANK_FIVE;
+        case '4': return RANK_FOUR;
+        case '3': return RANK_THREE;
+        case '2': return RANK_TWO;
+        default: return MAX_RANK;
     }
-
-    return value - '2';
 }
 
 Suit suit_parse(char value)
@@ -98,9 +102,8 @@ Suit suit_parse(char value)
         case 'D': return SUIT_DIAMONDS;
         case 'C': return SUIT_CLUBS;
         case 'H': return SUIT_HEARTS;
+        default: return MAX_SUIT;
     }
-
-    return SIZE_SUIT;
 }
 
 int card_compare(Object left, Object right)
@@ -108,7 +111,7 @@ int card_compare(Object left, Object right)
     const struct Card* leftCard = (const struct Card*)left;
     const struct Card* rightCard = (const struct Card*)right;
 
-    return rightCard->rank - leftCard->rank;
+    return leftCard->rank - rightCard->rank;
 }
 
 int frequency_compare(Object left, Object right)
@@ -121,7 +124,7 @@ int frequency_compare(Object left, Object right)
 
 static bool hand_is_flush(int suits[])
 {
-    for (Suit i = 0; i < SIZE_SUIT; i++)
+    for (Suit i = 0; i < MAX_SUIT; i++)
     {
         if (suits[i] == 5)
         {
@@ -134,11 +137,20 @@ static bool hand_is_flush(int suits[])
 
 static bool hand_is_straight(Hand instance)
 {
+    if (instance->cards[0].rank == RANK_ACE &&
+        instance->cards[1].rank == RANK_FIVE &&
+        instance->cards[2].rank == RANK_FOUR &&
+        instance->cards[3].rank == RANK_THREE &&
+        instance->cards[4].rank == RANK_TWO)
+    {
+        return true;
+    }
+
     Rank rank = instance->cards[0].rank;
 
     for (int i = 1; i < 5; i++)
     {
-        if (rank != instance->cards[i].rank + i)
+        if (rank != instance->cards[i].rank - i)
         {
             return false;
         }
@@ -151,10 +163,10 @@ void hand_classify(Hand instance)
 {
     qsort(instance->cards, 5, sizeof * instance->cards, card_compare);
 
-    struct Frequency ranks[SIZE_RANK];
-    int suits[SIZE_SUIT] = { 0 };
+    struct Frequency ranks[MAX_RANK];
+    int suits[MAX_SUIT] = { 0 };
 
-    for (Rank i = 0; i < SIZE_RANK; i++)
+    for (Rank i = 0; i < MAX_RANK; i++)
     {
         ranks[i].rank = i;
         ranks[i].count = 0;
@@ -176,8 +188,8 @@ void hand_classify(Hand instance)
         ranks[RANK_TEN].count == 1)
     {
         instance->type = HAND_TYPE_ROYAL_FLUSH;
-        instance->firstPair = SIZE_RANK;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[0] = MAX_RANK;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
@@ -187,19 +199,19 @@ void hand_classify(Hand instance)
     if (straight && flush)
     {
         instance->type = HAND_TYPE_STRAIGHT_FLUSH;
-        instance->firstPair = SIZE_RANK;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[0] = MAX_RANK;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
 
-    qsort(ranks, SIZE_RANK, sizeof * ranks, frequency_compare);
+    qsort(ranks, MAX_RANK, sizeof * ranks, frequency_compare);
 
     if (ranks[0].count == 4)
     {
         instance->type = HAND_TYPE_FOUR_OF_A_KIND;
-        instance->firstPair = ranks[0].rank;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[0] = ranks[0].rank;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
@@ -207,8 +219,8 @@ void hand_classify(Hand instance)
     if (ranks[0].count == 3 && ranks[1].count == 2)
     {
         instance->type = HAND_TYPE_FULL_HOUSE;
-        instance->firstPair = ranks[0].rank;
-        instance->secondPair = ranks[1].rank;
+        instance->pairs[0] = ranks[0].rank;
+        instance->pairs[1] = ranks[1].rank;
 
         return;
     }
@@ -216,8 +228,8 @@ void hand_classify(Hand instance)
     if (flush)
     {
         instance->type = HAND_TYPE_FLUSH;
-        instance->firstPair = SIZE_RANK;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[0] = MAX_RANK;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
@@ -225,8 +237,8 @@ void hand_classify(Hand instance)
     if (straight)
     {
         instance->type = HAND_TYPE_STRAIGHT;
-        instance->firstPair = SIZE_RANK;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[0] = MAX_RANK;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
@@ -234,33 +246,33 @@ void hand_classify(Hand instance)
     if (ranks[0].count == 3)
     {
         instance->type = HAND_TYPE_THREE_OF_A_KIND;
-        instance->firstPair = ranks[0].rank;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[0] = ranks[0].rank;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
 
     if (ranks[0].count == 2)
     {
-        instance->firstPair = ranks[0].rank;
+        instance->pairs[0] = ranks[0].rank;
 
         if (ranks[1].count == 2)
         {
             instance->type = HAND_TYPE_TWO_PAIRS;
-            instance->secondPair = ranks[1].rank;
+            instance->pairs[1] = ranks[1].rank;
 
             return;
         }
 
         instance->type = HAND_TYPE_ONE_PAIR;
-        instance->secondPair = SIZE_RANK;
+        instance->pairs[1] = MAX_RANK;
 
         return;
     }
 
     instance->type = HAND_TYPE_HIGH_CARD;
-    instance->firstPair = SIZE_RANK;
-    instance->secondPair = SIZE_RANK;
+    instance->pairs[0] = MAX_RANK;
+    instance->pairs[1] = MAX_RANK;
 }
 
 void hand_parse(Hand instance, LPString value)
@@ -283,29 +295,22 @@ int hand_compare(Hand left, Hand right)
         return result;
     }
 
-    if (left->firstPair != SIZE_RANK)
+    for (int i = 0; i < 2; i++)
     {
-        result = right->firstPair - left->firstPair;
-
-        if (result)
+        if (left->pairs[i] != MAX_RANK)
         {
-            return result;
-        }
-    }
+            result = left->pairs[i] - right->pairs[i];
 
-    if (left->secondPair != SIZE_RANK)
-    {
-        result = right->secondPair - left->secondPair;
-
-        if (result)
-        {
-            return result;
+            if (result)
+            {
+                return result;
+            }
         }
     }
 
     for (int i = 0; i < 5; i++)
     {
-        result = right->cards[i].rank - left->cards[i].rank;
+        result = left->cards[i].rank - right->cards[i].rank;
 
         if (result)
         {
@@ -329,7 +334,7 @@ int main(void)
 
         hand_parse(&first, buffer);
         hand_parse(&second, buffer + 15);
-        
+
         if (hand_compare(&first, &second) < 0)
         {
             count++;
