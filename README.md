@@ -8,6 +8,7 @@ Efficient Project Euler solutions in C language
 - Implement all solutions following the C99 standard.
   - Assume that the English letter characters are ordered sequentially (i.e., no
     EBCDIC).
+  - Assume that signed integer overflow is defined based on two's complement.
 
 ## Attribution
 
@@ -82,3 +83,5 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 49  |          [Prime Permutations](src/id0049.c)           |           Sequences            |  Terms  |                                                                      |
 | 50  |         [Consecutive Prime Sum](src/id0050.c)         |         Number theory          | Maximum |                                                                      |
 | 51  |       [Prime Digit Replacements](src/id0051.c)        |         Number theory          | Minimum |                                                                      |
+| 52  |          [Permuted Multiples](src/id0052.c)           |         Combinatorics          | Minimum |                                                                      |
+| 53  |        [Combinatoric Selections](src/id0053.c)        |         Combinatorics          |  Count  |                                                                      |

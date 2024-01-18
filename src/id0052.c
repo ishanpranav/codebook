@@ -1,3 +1,7 @@
+// Licensed under the MIT License.
+
+// Permuted Multiples
+
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
 

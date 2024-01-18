@@ -40,6 +40,14 @@ void euler_swap(long* p, long* q);
 long math_natural_sum(long n);
 
 /**
+ * 
+ * @param n
+ * @param k
+ * @return 
+*/
+long long math_binomial(int n, int k);
+
+/**
  * Computes the greatest common divisor using Euclid's algorithm.
  *
  * @param a a natural number.

@@ -1,5 +1,6 @@
 CC = gcc
 CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
+TWOS_COMPLEMENT = -fno-strict-overflow -fwrapv
 
 all: \
 	id0001 id0002 id0003 id0004 id0005 id0006 id0007 id0008 id0009 id0010 \
@@ -200,6 +201,9 @@ id0051: src/id0051.c \
 	
 id0052: src/id0052.c euler list permutation_iterator 
 	$(CC) $(CFLAGS) $< -o $@.o euler.o list.o permutation_iterator.o -lm
+	
+id0053: src/id0053.c euler
+	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@.o euler.o
 	
 clean:
 	rm -rf *.o

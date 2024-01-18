@@ -1,6 +1,8 @@
-#include <string.h>
+// Licensed under the MIT License.
+
+// Prime Digit Replacements
+
 #include "../lib/euler.h"
-#include "../lib/lp_string.h"
 #include "../lib/prime_list.h"
 
 void mask_list_replace(List value, long oldItem, long newItem)
