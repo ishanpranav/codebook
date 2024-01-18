@@ -5,17 +5,6 @@
 #include "../lib/euler.h"
 #include "../lib/prime_list.h"
 
-void mask_list_replace(List value, long oldItem, long newItem)
-{
-    for (long* it = value->begin; it < value->end; it++)
-    {
-        if (*it == oldItem)
-        {
-            *it = newItem;
-        }
-    }
-}
-
 bool mask_list_mask(List value)
 {
     int counts[10] = { 0 };
@@ -25,25 +14,20 @@ bool mask_list_mask(List value)
         counts[*it]++;
     }
 
-    if (counts[0] >= 2)
+    for (int i = 0; i <= 2; i++)
     {
-        mask_list_replace(value, 0, -1);
+        if (counts[i] >= 2)
+        {
+            for (long* it = value->begin; it < value->end; it++)
+            {
+                if (*it == i)
+                {
+                    *it = -1;
+                }
+            }
 
-        return true;
-    }
-
-    if (counts[1] >= 2)
-    {
-        mask_list_replace(value, 1, -1);
-
-        return true;
-    }
-
-    if (counts[2] >= 2)
-    {
-        mask_list_replace(value, 2, -1);
-
-        return true;
+            return true;
+        }
     }
 
     return false;
@@ -55,14 +39,9 @@ Exception math_prime_digit_replacement(
     List image,
     long* first)
 {
-    long length;
-
     for (long* p = primes->primes.begin; p < primes->primes.end; p++)
     {
-        *first = 0;
-        length = 0;
-
-        char str[10];
+        char str[7];
 
         sprintf(str, "%ld", *p);
         list_clear(mask);
@@ -81,6 +60,10 @@ Exception math_prime_digit_replacement(
         {
             continue;
         }
+        
+        long length = 0;
+        
+        *first = 0;
 
         for (int i = 0; i < 10; i++)
         {
@@ -104,7 +87,7 @@ Exception math_prime_digit_replacement(
                     return ex;
                 }
             }
-            
+
             long n = 0;
 
             for (long* q = image->begin; q < image->end; q++)

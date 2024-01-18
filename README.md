@@ -5,10 +5,21 @@ Efficient Project Euler solutions in C language
 ## Constraints
 
 - Adhere to the [project style guide](cstyle.md).
-- Implement all solutions following the C99 standard.
+- Implement all final solutions following the C99 standard.
   - Assume that the English letter characters are ordered sequentially (i.e., no
     EBCDIC).
   - Assume that signed integer overflow is defined based on two's complement.
+
+## Challenge
+
+As a challenge, higher-difficulty problems must be implemented in multiple
+languages.
+
+| Difficulty | Languages      |
+| :--------: | -------------- |
+|     5%     | C              |
+|    15%     | C, Python      |
+|    25%     | C, C\#, Python |
 
 ## Attribution
 
