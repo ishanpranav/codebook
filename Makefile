@@ -194,5 +194,9 @@ id0050: src/id0050.c \
 	divisor_iterator boolean_set euler list prime_list 
 	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
 	
+id0051: src/id0051.c \
+	divisor_iterator boolean_set euler list prime_list 
+	$(CC) $(CFLAGS) $< -o $@.o divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
+	
 clean:
 	rm -rf *.o

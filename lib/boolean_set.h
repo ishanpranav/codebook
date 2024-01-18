@@ -38,6 +38,6 @@ void boolean_set_from_array(BooleanSet instance, bool values[], size_t length);
  * Frees all resources.
  *
  * @param instance the `BooleanSet` instance. This method corrupts the
- * `               `instance` argument.
+ *                 `instance` argument.
 */
 void finalize_boolean_set(BooleanSet instance);

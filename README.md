@@ -80,3 +80,5 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 47  |        [Distinct Primes Factors](src/id0047.c)        |         Number theory          |  Term   |                                                                      |
 | 48  |              [Self Powers](src/id0048.c)              | Arbitrary-precision arithmetic | Modulus |                                                                      |
 | 49  |          [Prime Permutations](src/id0049.c)           |           Sequences            |  Terms  |                                                                      |
+| 50  |         [Consecutive Prime Sum](src/id0050.c)         |         Number theory          | Maximum |                                                                      |
+| 51  |       [Prime Digit Replacements](src/id0051.c)        |         Number theory          | Minimum |                                                                      |

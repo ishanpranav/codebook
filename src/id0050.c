@@ -1,3 +1,7 @@
+// Licensed under the MIT License.
+
+// Consecutive Prime Sum
+
 #include "../lib/euler.h"
 #include "../lib/prime_list.h"
 

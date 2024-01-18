@@ -100,9 +100,9 @@ static int list_item_compare(Object left, Object right)
 void list_sort(List instance)
 {
     qsort(
-        instance->begin, 
-        instance->end - instance->begin, 
-        sizeof * instance->begin, 
+        instance->begin,
+        instance->end - instance->begin,
+        sizeof * instance->begin,
         list_item_compare);
 }
 
