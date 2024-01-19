@@ -36,7 +36,7 @@ math.o: lib/math.c lib/euler.h
 permutation_iterator.o: lib/permutation_iterator.c lib/permutation_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-prime_list.o: lib/prime_list.c lib/prime_list.h divisor_iterator.o list.o
+prime_list.o: lib/prime_list.c lib/prime_list.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 series.o: lib/series.c lib/series.h
@@ -204,7 +204,7 @@ id0050.o: src/id0050.c \
 	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
 	
 id0051.o: src/id0051.c \
-	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o 
+	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o
 	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
 	
 id0052.o: src/id0052.c euler.o list.o permutation_iterator.o
@@ -229,5 +229,8 @@ id0058.o: src/id0058.c \
 	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o
 	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
 	
+id0059.o: src/id0059.c euler.o lp_string.o lp_string_collection.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o lp_string_collection.o
+
 clean:
 	rm -rf *.o

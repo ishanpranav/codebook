@@ -10,16 +10,16 @@ Efficient Project Euler solutions in C language
     EBCDIC).
   - Assume that signed integer overflow is defined based on two's complement.
 
-## Challenge
+## Languages
 
 As a challenge, higher-difficulty problems must be implemented in multiple
-languages.
+languages. The most difficult problems are implemented in 10 languages.
 
-| Difficulty | Languages      |
-| :--------: | -------------- |
-|     5%     | C              |
-|    15%     | C, Python      |
-|    25%     | C, C\#, Python |
+| Difficulty | Language                   |
+| :--------: | -------------------------- |
+|            | [C](tools/test.sh)         |
+|   \> 10%   | [Python](tools/test.py.sh) |
+|   \> 20%   | C\#                        |
 
 ## Attribution
 
@@ -59,7 +59,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | Id  |                   Problem                   |    Domain     |         Result          | Implementation                                                               |
 | :-: | :-----------------------------------------: | :-----------: | :---------------------: | ---------------------------------------------------------------------------- |
 | 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |           Sum           | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)           |
-| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |           Sum           | [Quicksort](https://en.wikipedia.org/wiki/Quicksort)                         |
+| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |           Sum           | [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)         |
 | 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |           Sum           | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)            |
 | 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics |       Permutation       | [Permutation](https://en.wikipedia.org/wiki/Permutation)                     |
 | 25  | [1000-digit Fibonacci Number](src/id0025.c) |   Sequences   |       Term number       | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)       |
@@ -81,23 +81,24 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 41-
 
-| Id  |                        Problem                        |             Domain             |   Result    | Implementation                                                       |
-| :-: | :---------------------------------------------------: | :----------------------------: | :---------: | -------------------------------------------------------------------- |
-| 41  |           [Pandigital Prime](src/id0041.c)            |         Number theory          |   Maximum   |                                                                      |
-| 42  |        [Coded Triangle Numbers](src/id0042.c)         |           Sequences            |    Count    |                                                                      |
-| 43  |        [Sub-string Divisibility](src/id0043.c)        |         Number theory          |     Sum     |                                                                      |
-| 44  |          [Pentagonal Numbers](src/id0044.c)           |           Sequences            |   Minimum   | [Pentagonal number](https://en.wikipedia.org/wiki/Pentagonal_number) |
-| 45  | [Triangular, Pentagonal, and Hexagonal](src/id0045.c) |           Sequences            |    Term     | [Hexagonal number](https://en.wikipedia.org/wiki/Hexagonal_number)   |
-| 46  |     [Goldbach\'s Other Conjecture](src/id0046.c)      |         Number theory          |   Minimum   |                                                                      |
-| 47  |        [Distinct Primes Factors](src/id0047.c)        |         Number theory          |    Term     |                                                                      |
-| 48  |              [Self Powers](src/id0048.c)              | Arbitrary-precision arithmetic |   Modulus   |                                                                      |
-| 49  |          [Prime Permutations](src/id0049.c)           |           Sequences            |    Terms    |                                                                      |
-| 50  |         [Consecutive Prime Sum](src/id0050.c)         |         Number theory          |   Maximum   |                                                                      |
-| 51  |       [Prime Digit Replacements](src/id0051.c)        |         Number theory          |   Minimum   |                                                                      |
-| 52  |          [Permuted Multiples](src/id0052.c)           |         Combinatorics          |   Minimum   |                                                                      |
-| 53  |        [Combinatoric Selections](src/id0053.c)        |         Combinatorics          |    Count    |                                                                      |
-| 54  |              [Poker Hands](src/id0054.c)              |           Simulation           |    Count    |                                                                      |
-| 55  |            [Lychrel Numbers](src/id0055.c)            |         Number theory          |    Count    |                                                                      |
-| 56  |          [Powerful Digit Sum](src/id0056.c)           | Arbitrary-precision arithmetic |   Maximum   |                                                                      |
-| 57  |        [Square Root Convergents](src/id0057.c)        | Arbitrary-precision arithmetic |    Count    |                                                                      |
-| 58  |             [Spiral Primes](src/id0058.c)             |           Sequences            | Term number |                                                                      |
+| Id  |                        Problem                        |             Domain             |   Result    | Implementation                                                         |
+| :-: | :---------------------------------------------------: | :----------------------------: | :---------: | ---------------------------------------------------------------------- |
+| 41  |           [Pandigital Prime](src/id0041.c)            |         Number theory          |   Maximum   |                                                                        |
+| 42  |        [Coded Triangle Numbers](src/id0042.c)         |           Sequences            |    Count    |                                                                        |
+| 43  |        [Sub-string Divisibility](src/id0043.c)        |         Number theory          |     Sum     |                                                                        |
+| 44  |          [Pentagonal Numbers](src/id0044.c)           |           Sequences            |   Minimum   | [Pentagonal number](https://en.wikipedia.org/wiki/Pentagonal_number)   |
+| 45  | [Triangular, Pentagonal, and Hexagonal](src/id0045.c) |           Sequences            |    Term     | [Hexagonal number](https://en.wikipedia.org/wiki/Hexagonal_number)     |
+| 46  |     [Goldbach\'s Other Conjecture](src/id0046.c)      |         Number theory          |   Minimum   |                                                                        |
+| 47  |        [Distinct Primes Factors](src/id0047.c)        |         Number theory          |    Term     |                                                                        |
+| 48  |              [Self Powers](src/id0048.c)              | Arbitrary-precision arithmetic |   Modulus   |                                                                        |
+| 49  |          [Prime Permutations](src/id0049.c)           |           Sequences            |    Terms    |                                                                        |
+| 50  |         [Consecutive Prime Sum](src/id0050.c)         |         Number theory          |   Maximum   |                                                                        |
+| 51  |       [Prime Digit Replacements](src/id0051.c)        |         Number theory          |   Minimum   |                                                                        |
+| 52  |          [Permuted Multiples](src/id0052.c)           |         Combinatorics          |   Minimum   |                                                                        |
+| 53  |        [Combinatoric Selections](src/id0053.c)        |         Combinatorics          |    Count    |                                                                        |
+| 54  |              [Poker Hands](src/id0054.c)              |           Simulation           |    Count    |                                                                        |
+| 55  |            [Lychrel Numbers](src/id0055.c)            |         Number theory          |    Count    |                                                                        |
+| 56  |          [Powerful Digit Sum](src/id0056.c)           | Arbitrary-precision arithmetic |   Maximum   |                                                                        |
+| 57  |        [Square Root Convergents](src/id0057.c)        | Arbitrary-precision arithmetic |    Count    |                                                                        |
+| 58  |             [Spiral Primes](src/id0058.c)             |           Sequences            | Term number |                                                                        |
+| 59  |            [XOR Decryption](src/id0059.c)             |          Cryptography          |     Sum     | [Frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis) |
