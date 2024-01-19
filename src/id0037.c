@@ -5,6 +5,7 @@
 #include <math.h>
 #include "../lib/euler.h"
 #include "../lib/prime_list.h"
+#define MAX_SEARCH 1000000l
 
 int main(void)
 {
@@ -12,7 +13,7 @@ int main(void)
     int count = 0;
     struct PrimeList primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 739399l);
+    Exception ex = prime_list(&primes, MAX_SEARCH);
 
     euler_ok();
 

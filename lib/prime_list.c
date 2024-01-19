@@ -7,6 +7,17 @@
 
 Exception prime_list(PrimeList instance, long max)
 {
+    if (max <= 2)
+    {
+        instance->composites.begin = NULL;
+        instance->composites.end = NULL;
+        instance->primes.begin = NULL;
+        instance->primes.end = NULL;
+        instance->primes.capacity = 0;
+        
+        return 0;
+    }
+
     Exception ex = boolean_set(&instance->composites, max - 2);
 
     if (ex)

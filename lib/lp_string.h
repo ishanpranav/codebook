@@ -3,9 +3,18 @@
 #ifndef LP_STRING_554c4c38a6694dd599b5d6e01dedb42d
 #define LP_STRING_554c4c38a6694dd599b5d6e01dedb42d
 #include "object.h"
+#include <stddef.h>
 
 /** Represents text as a zero-terminated sequence of characters. */
 typedef char* LPString;
+
+/**
+ * 
+ * @param instance
+ * @return A new string with the given length, or `NULL` if the process is out
+ *         of memory.
+*/
+LPString lp_string(size_t length);
 
 /**
  * Creates a new instance of `LPString` with the same value as a specified

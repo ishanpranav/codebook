@@ -4,6 +4,20 @@
 #include <string.h>
 #include "lp_string.h"
 
+LPString lp_string(size_t length)
+{
+    LPString result = malloc((length + 1) * sizeof * result);
+
+    if (result == NULL)
+    {
+        return NULL;
+    }
+
+    result[0] = '\0';
+
+    return result;
+}
+
 LPString lp_string_clone(LPString instance)
 {
     LPString result = malloc((strlen(instance) + 1) * sizeof * result);
