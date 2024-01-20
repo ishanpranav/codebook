@@ -219,8 +219,8 @@ id0054.o: src/id0054.c euler.o
 id0055.o: src/id0055.c euler.o
 	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ euler.o
 	
-id0056.o: src/id0056.c euler.o lp_string.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o -lgmp -lm
+id0056.o: src/id0056.c euler.o lp_string.o math.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o math.o -lgmp -lm
 	
 id0057.o: src/id0057.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp
@@ -231,6 +231,10 @@ id0058.o: src/id0058.c \
 	
 id0059.o: src/id0059.c euler.o lp_string.o lp_string_collection.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o lp_string_collection.o
+
+id0060.o: src/id0060.c \
+	boolean_set.o divisor_iterator.o euler.o list.o math.o prime_list.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o math.o prime_list.o -lm
 
 clean:
 	rm -rf *.o

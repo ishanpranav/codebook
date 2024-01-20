@@ -7,11 +7,6 @@
 #include "../lib/euler.h"
 #include "../lib/lp_string.h"
 
-int math_length(int a, int b)
-{
-    return 1 + (int)(b * log10(a));
-}
-
 int main(void)
 {
     int max = 0;

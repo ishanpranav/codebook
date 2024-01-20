@@ -14,3 +14,8 @@ bool math_is_square(long n)
 
     return sqrtN == (long)sqrtN;    
 }
+
+int math_length(int b, int a)
+{
+    return 1 + (int)(a * log10(b));
+}

@@ -59,6 +59,16 @@ long long math_binomial(int n, int k);
 long math_gcd(long a, long b);
 
 /**
+ * Determines the number of digits in the number resulting from `b` raised to
+ * the power `a`.
+ * 
+ * @param b the base.
+ * @param a the exponent.
+ * @return The number of digits in the expanded expression `b^a`.
+*/
+int math_length(int b, int a);
+
+/**
  * Reverses the digits of a given value.
  * 
  * @param n the value to reverse.

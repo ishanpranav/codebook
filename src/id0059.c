@@ -18,7 +18,6 @@ int main(void)
     assert(!ferror(stdin));
 
     struct LPStringBuilder message;
-
     Exception ex = lp_string_builder(&message, 0);
 
     euler_ok();
@@ -29,6 +28,9 @@ int main(void)
 
         euler_ok();
     }
+
+    // Assume that the most frequent characters in the ciphertext represent
+    // spaces, and construct the key accordingly.
 
     int i = 0;
     int frequencies[3][256] = { 0 };

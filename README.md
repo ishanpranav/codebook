@@ -102,3 +102,4 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 57  |        [Square Root Convergents](src/id0057.c)        | Arbitrary-precision arithmetic |    Count    |                                                                        |
 | 58  |             [Spiral Primes](src/id0058.c)             |           Sequences            | Term number |                                                                        |
 | 59  |            [XOR Decryption](src/id0059.c)             |          Cryptography          |     Sum     | [Frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis) |
+| 60 | []
