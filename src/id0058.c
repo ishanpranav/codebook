@@ -2,7 +2,7 @@
 
 // Spiral Primes
 
-#include "../lib/primality_tests/divisor_primality_test.h"
+#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 
 int main(void)
@@ -20,17 +20,17 @@ int main(void)
         long hiLeft = loLeft - length + 1;
         long hiRight = hiLeft - length + 1;
 
-        if (divisor_primality_test(loLeft) == PRIMALITY_PRIME)
+        if (miller_rabin_primality_test(loLeft) == PRIMALITY_PRIME)
         {
             count++;
         }
 
-        if (divisor_primality_test(hiLeft) == PRIMALITY_PRIME)
+        if (miller_rabin_primality_test(hiLeft) == PRIMALITY_PRIME)
         {
             count++;
         }
 
-        if (divisor_primality_test(hiRight) == PRIMALITY_PRIME)
+        if (miller_rabin_primality_test(hiRight) == PRIMALITY_PRIME)
         {
             count++;
         }

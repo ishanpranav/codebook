@@ -2,7 +2,7 @@
 
 // Goldbach's Other Conjecture
 
-#include "../lib/primality_tests/divisor_primality_test.h"
+#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 
 bool math_is_goldbach_other_conjecture(long n)
@@ -11,7 +11,7 @@ bool math_is_goldbach_other_conjecture(long n)
 
     for (long i = 0; (m = 2 * i * i) < n; i++)
     {
-        if (divisor_primality_test(n - m) == PRIMALITY_PRIME)
+        if (miller_rabin_primality_test(n - m) == PRIMALITY_PRIME)
         {
             return true;
         }
@@ -28,7 +28,7 @@ int main(void)
 
     for (n = 9; ; n += 2)
     {
-        if (divisor_primality_test(n) == PRIMALITY_PRIME)
+        if (miller_rabin_primality_test(n) == PRIMALITY_PRIME)
         {
             continue;
         }

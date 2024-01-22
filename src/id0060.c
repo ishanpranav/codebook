@@ -4,7 +4,7 @@
 
 #include <limits.h>
 #include <math.h>
-#include "../lib/primality_tests/divisor_primality_test.h"
+#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 #define MAX_SEARCH 10000
@@ -18,14 +18,14 @@ bool math_is_prime_pair(Sieve primes, int a, int b)
 {
     long concat = math_concat(a, b);
 
-    if (sieve_test(primes, concat, divisor_primality_test) != PRIMALITY_PRIME)
+    if (sieve_test(primes, concat, miller_rabin_primality_test) != PRIMALITY_PRIME)
     {
         return false;
     }
 
     concat = math_concat(b, a);
 
-    if (sieve_test(primes, concat, divisor_primality_test) != PRIMALITY_PRIME)
+    if (sieve_test(primes, concat, miller_rabin_primality_test) != PRIMALITY_PRIME)
     {
         return false;
     }

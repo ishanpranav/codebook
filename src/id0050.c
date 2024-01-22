@@ -2,7 +2,7 @@
 
 // Consecutive Prime Sum
 
-#include "../lib/primality_tests/divisor_primality_test.h"
+#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 
@@ -42,7 +42,10 @@ int main(void)
                 continue;
             }
 
-            Primality test = sieve_test(&primes, sum, divisor_primality_test);
+            Primality test = sieve_test(
+                &primes, 
+                sum, 
+                miller_rabin_primality_test);
 
             if (test != PRIMALITY_PRIME)
             {

@@ -17,6 +17,11 @@ divisor_primality_test.o: \
 	lib/primality_tests/divisor_primality_test.h
 	$(CC) $(CFLAGS) -c $< -o $@
 	
+miller_rabin_primality_test.o: \
+	lib/primality_tests/miller_rabin_primality_test.c \
+	lib/primality_tests/miller_rabin_primality_test.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 sieve_primality_test.o: \
 	lib/primality_tests/sieve_primality_test.c \
 	lib/primality_tests/sieve_primality_test.h
@@ -70,9 +75,8 @@ id0005.o: src/id0005.c euler.o
 id0006.o: src/id0006.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	 
-id0007.o: src/id0007.c \
-	boolean_set.o divisor_iterator.o euler.o list.o sieve.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o sieve.o -lm
+id0007.o: src/id0007.c boolean_set.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o sieve.o -lm
 	 
 id0008.o: src/id0008.c euler.o series.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o series.o
@@ -173,10 +177,9 @@ id0039.o: src/id0039.c euler.o
 id0040.o: src/id0040.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0041.o: src/id0041.c \
-	divisor_primality_test.o divisor_iterator.o euler.o list.o \
+id0041.o: src/id0041.c miller_rabin_primality_test.o euler.o list.o \
 	permutation_iterator.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o divisor_iterator.o euler.o list.o permutation_iterator.o -lm
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o list.o permutation_iterator.o -lm
 	
 id0042.o: src/id0042.c euler.o lp_string.o lp_string_collection.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o lp_string_collection.o math.o -lm
@@ -190,8 +193,8 @@ id0044.o: src/id0044.c euler.o math.o
 id0045.o: src/id0045.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm
 
-id0046.o: src/id0046.c divisor_primality_test.o divisor_iterator.o euler.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o divisor_iterator.o euler.o -lm
+id0046.o: src/id0046.c miller_rabin_primality_test.o euler.o
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o -lm
 	
 id0047.o: src/id0047.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -204,14 +207,12 @@ id0049.o: src/id0049.c \
 	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o permutation_iterator.o sieve.o -lm
 	
 id0050.o: src/id0050.c \
- 	divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o \
-	sieve.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o sieve.o -lm
+ 	miller_rabin_primality_test.o boolean_set.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o boolean_set.o euler.o list.o sieve.o -lm
 	
-id0051.o: src/id0051.c \
-	divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o \
-	sieve.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o sieve.o -lm
+id0051.o: src/id0051.c miller_rabin_primality_test.o boolean_set.o euler.o \
+	list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o boolean_set.o euler.o list.o sieve.o -lm
 	
 id0052.o: src/id0052.c euler.o list.o permutation_iterator.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o permutation_iterator.o -lm
@@ -231,16 +232,15 @@ id0056.o: src/id0056.c euler.o lp_string.o math.o
 id0057.o: src/id0057.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp
 	
-id0058.o: src/id0058.c divisor_primality_test.o divisor_iterator.o euler.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o divisor_iterator.o euler.o -lm
+id0058.o: src/id0058.c miller_rabin_primality_test.o euler.o
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o -lm
 	
 id0059.o: src/id0059.c euler.o lp_string.o lp_string_collection.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o lp_string_collection.o
 
 id0060.o: src/id0060.c \
-	divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o \
-	math.o sieve.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o math.o sieve.o -lm
+	miller_rabin_primality_test.o boolean_set.o euler.o list.o math.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o boolean_set.o euler.o list.o math.o sieve.o -lm
 
 clean:
 	rm -rf *.o

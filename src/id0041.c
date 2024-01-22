@@ -2,7 +2,7 @@
 
 // Pandigital Prime
 
-#include "../lib/primality_tests/divisor_primality_test.h"
+#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
 
@@ -40,7 +40,7 @@ int main(void)
                 n = n * 10 + *p;
             }
 
-            if (n > max && divisor_primality_test(n) == PRIMALITY_PRIME)
+            if (n > max && miller_rabin_primality_test(n) == PRIMALITY_PRIME)
             {
                 max = n;
             }

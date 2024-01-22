@@ -2,7 +2,7 @@
 
 // Prime Digit Replacements
 
-#include "../lib/primality_tests/divisor_primality_test.h"
+#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 
@@ -105,7 +105,7 @@ Exception math_prime_digit_replacement(
                 continue;
             }
 
-            Primality test = sieve_test(primes, n, divisor_primality_test);
+            Primality test = sieve_test(primes, n, miller_rabin_primality_test);
 
             if (test != PRIMALITY_PRIME)
             {
