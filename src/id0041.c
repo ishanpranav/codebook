@@ -2,21 +2,15 @@
 
 // Pandigital Prime
 
+#include "../lib/primality_tests/divisor_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
-#include "../lib/prime_list.h"
 
 int main(void)
 {
     struct List digits;
     clock_t start = clock();
     Exception ex = list(&digits, 9);
-
-    euler_ok();
-    
-    struct PrimeList primes;
-
-    ex = prime_list(&primes, 10);
 
     euler_ok();
 
@@ -46,7 +40,7 @@ int main(void)
                 n = n * 10 + *p;
             }
 
-            if (n > max && prime_list_is_prime(&primes, n))
+            if (n > max && divisor_primality_test(n) == PRIMALITY_PRIME)
             {
                 max = n;
             }
@@ -54,6 +48,5 @@ int main(void)
     }
 
     finalize_list(&digits);
-    finalize_prime_list(&primes);
     euler_submit(41, max, start);
 }

@@ -4,7 +4,7 @@
 
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
 
 long math_max_prime(int k)
 {
@@ -15,16 +15,16 @@ long math_max_prime(int k)
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
     long max = math_max_prime(10001);
-    Exception ex = prime_list(&primes, max);
+    Exception ex = sieve(&primes, max);
 
     euler_ok();
 
     long p = primes.primes.begin[10000];
 
-    finalize_prime_list(&primes);
+    finalize_sieve(&primes);
     euler_submit(7, p, start);
     
     return 0;

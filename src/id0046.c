@@ -2,16 +2,16 @@
 
 // Goldbach's Other Conjecture
 
+#include "../lib/primality_tests/divisor_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
 
-bool math_is_goldbach_other_conjecture(long n, PrimeList primes)
+bool math_is_goldbach_other_conjecture(long n)
 {
     long m;
 
     for (long i = 0; (m = 2 * i * i) < n; i++)
     {
-        if (prime_list_is_prime(primes, n - m))
+        if (divisor_primality_test(n - m) == PRIMALITY_PRIME)
         {
             return true;
         }
@@ -22,22 +22,18 @@ bool math_is_goldbach_other_conjecture(long n, PrimeList primes)
 
 int main(void)
 {
-    struct PrimeList primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 0);
-
-    euler_ok();
 
     long n;
 
     for (n = 9; ; n += 2)
     {
-        if (prime_list_is_prime(&primes, n))
+        if (divisor_primality_test(n) == PRIMALITY_PRIME)
         {
             continue;
         }
 
-        if (!math_is_goldbach_other_conjecture(n, &primes))
+        if (!math_is_goldbach_other_conjecture(n))
         {
             break;
         }

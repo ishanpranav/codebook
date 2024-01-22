@@ -2,8 +2,9 @@
 
 // Prime Digit Replacements
 
+#include "../lib/primality_tests/divisor_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
 
 bool mask_list_mask(List value)
 {
@@ -16,34 +17,38 @@ bool mask_list_mask(List value)
 
     for (int i = 0; i <= 2; i++)
     {
-        if (counts[i] >= 2)
+        if (counts[i] < 2)
         {
-            for (long* it = value->begin; it < value->end; it++)
-            {
-                if (*it == i)
-                {
-                    *it = -1;
-                }
-            }
-
-            return true;
+            continue;
         }
+
+        for (long* it = value->begin; it < value->end; it++)
+        {
+            if (*it == i)
+            {
+                *it = -1;
+            }
+        }
+
+        return true;
     }
 
     return false;
 }
 
 Exception math_prime_digit_replacement(
-    PrimeList primes,
+    Sieve primes,
     List mask,
     List image,
     long* first)
 {
-    for (long* p = primes->primes.begin; p < primes->primes.end; p++)
+    struct SieveIterator it;
+
+    for (sieve_begin(&it, primes); ; sieve_next(&it))
     {
         char str[7];
 
-        sprintf(str, "%ld", *p);
+        sprintf(str, "%ld", *it.current);
         list_clear(mask);
 
         for (char* q = str; *q; q++)
@@ -60,9 +65,9 @@ Exception math_prime_digit_replacement(
         {
             continue;
         }
-        
+
         long length = 0;
-        
+
         *first = 0;
 
         for (int i = 0; i < 10; i++)
@@ -95,7 +100,14 @@ Exception math_prime_digit_replacement(
                 n = n * 10 + *q;
             }
 
-            if (n <= 100000 || !prime_list_is_prime(primes, n))
+            if (n <= 100000)
+            {
+                continue;
+            }
+
+            Primality test = sieve_test(primes, n, divisor_primality_test);
+
+            if (test != PRIMALITY_PRIME)
             {
                 continue;
             }
@@ -114,14 +126,16 @@ Exception math_prime_digit_replacement(
         }
     }
 
-    return 1;
+    *first = -1;
+
+    return 0;
 }
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 1000000l);
+    Exception ex = sieve(&primes, 0);
 
     euler_ok();
 
@@ -141,7 +155,7 @@ int main(void)
 
     euler_ok();
 
-    finalize_prime_list(&primes);
+    finalize_sieve(&primes);
     finalize_list(&mask);
     finalize_list(&image);
 

@@ -12,6 +12,16 @@ all: \
 	id0049.o id0050.o id0051.o id0052.o id0053.o id0054.o id0055.o id0056.o \
 	id0057.o id0058.o id0059.o id0060.o id0061.o id0062.o id0063.o id0064.o
 
+divisor_primality_test.o: \
+	lib/primality_tests/divisor_primality_test.c \
+	lib/primality_tests/divisor_primality_test.h
+	$(CC) $(CFLAGS) -c $< -o $@
+	
+sieve_primality_test.o: \
+	lib/primality_tests/sieve_primality_test.c \
+	lib/primality_tests/sieve_primality_test.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 boolean_set.o: lib/boolean_set.c lib/boolean_set.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -36,7 +46,7 @@ math.o: lib/math.c lib/euler.h
 permutation_iterator.o: lib/permutation_iterator.c lib/permutation_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-prime_list.o: lib/prime_list.c lib/prime_list.h
+sieve.o: lib/sieve.c lib/sieve.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 series.o: lib/series.c lib/series.h
@@ -61,8 +71,8 @@ id0006.o: src/id0006.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	 
 id0007.o: src/id0007.c \
-	boolean_set.o divisor_iterator.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o prime_list.o -lm
+	boolean_set.o divisor_iterator.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o sieve.o -lm
 	 
 id0008.o: src/id0008.c euler.o series.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o series.o
@@ -70,9 +80,8 @@ id0008.o: src/id0008.c euler.o series.o
 id0009.o: src/id0009.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lm
 
-id0010.o: src/id0010.c \
-	boolean_set.o divisor_iterator.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o prime_list.o -lm
+id0010.o: src/id0010.c boolean_set.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o sieve.o -lm
 
 id0011.o: src/id0011.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -122,9 +131,8 @@ id0025.o: src/id0025.c euler.o
 id0026.o: src/id0026.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0027.o: src/id0027.c \
-	boolean_set.o divisor_iterator.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o prime_list.o -lm
+id0027.o: src/id0027.c boolean_set.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o sieve.o -lm
 
 id0028.o: src/id0028.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -147,16 +155,14 @@ id0033.o: src/id0033.c euler.o
 id0034.o: src/id0034.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0035.o: src/id0035.c \
-	boolean_set.o divisor_iterator.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o prime_list.o -lm
+id0035.o: src/id0035.c boolean_set.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o sieve.o -lm
 
 id0036.o: src/id0036.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0037.o: src/id0037.c \
-	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
+id0037.o: src/id0037.c boolean_set.o euler.o list.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o sieve.o -lm
 	
 id0038.o: src/id0038.c euler.o list.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o
@@ -168,9 +174,9 @@ id0040.o: src/id0040.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
 id0041.o: src/id0041.c \
-	divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o \
-	prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o prime_list.o -lm
+	divisor_primality_test.o divisor_iterator.o euler.o list.o \
+	permutation_iterator.o
+	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o divisor_iterator.o euler.o list.o permutation_iterator.o -lm
 	
 id0042.o: src/id0042.c euler.o lp_string.o lp_string_collection.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o lp_string_collection.o math.o -lm
@@ -184,9 +190,8 @@ id0044.o: src/id0044.c euler.o math.o
 id0045.o: src/id0045.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm
 
-id0046.o: src/id0046.c \
-	divisor_iterator.o boolean_set.o euler.o list.o math.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o math.o prime_list.o -lm
+id0046.o: src/id0046.c divisor_primality_test.o divisor_iterator.o euler.o
+	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o divisor_iterator.o euler.o -lm
 	
 id0047.o: src/id0047.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -195,17 +200,18 @@ id0048.o: src/id0048.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp
 	
 id0049.o: src/id0049.c \
-	divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o \
-	prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o permutation_iterator.o prime_list.o -lm
+	boolean_set.o euler.o list.o permutation_iterator.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ boolean_set.o euler.o list.o permutation_iterator.o sieve.o -lm
 	
 id0050.o: src/id0050.c \
- 	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
+ 	divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o \
+	sieve.o
+	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o sieve.o -lm
 	
 id0051.o: src/id0051.c \
-	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
+	divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o \
+	sieve.o
+	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o sieve.o -lm
 	
 id0052.o: src/id0052.c euler.o list.o permutation_iterator.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o permutation_iterator.o -lm
@@ -225,16 +231,16 @@ id0056.o: src/id0056.c euler.o lp_string.o math.o
 id0057.o: src/id0057.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp
 	
-id0058.o: src/id0058.c \
-	divisor_iterator.o boolean_set.o euler.o list.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o boolean_set.o euler.o list.o prime_list.o -lm
+id0058.o: src/id0058.c divisor_primality_test.o divisor_iterator.o euler.o
+	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o divisor_iterator.o euler.o -lm
 	
 id0059.o: src/id0059.c euler.o lp_string.o lp_string_collection.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o lp_string_collection.o
 
 id0060.o: src/id0060.c \
-	boolean_set.o divisor_iterator.o euler.o list.o math.o prime_list.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o math.o prime_list.o -lm
+	divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o \
+	math.o sieve.o
+	$(CC) $(CFLAGS) $< -o $@ divisor_primality_test.o boolean_set.o divisor_iterator.o euler.o list.o math.o sieve.o -lm
 
 clean:
 	rm -rf *.o

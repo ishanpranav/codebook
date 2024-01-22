@@ -34,6 +34,8 @@ Exception boolean_set(BooleanSet instance, size_t capacity);
 */
 void boolean_set_from_array(BooleanSet instance, bool values[], size_t length);
 
+Exception boolean_set_ensure_capacity(BooleanSet instance, size_t capacity);
+
 /**
  * Frees all resources.
  *

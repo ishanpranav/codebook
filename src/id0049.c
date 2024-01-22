@@ -4,10 +4,10 @@
 
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
 
 Exception math_prime_permutation(
-    PrimeList primes, 
+    Sieve primes, 
     List aDigits, 
     List bDigits, 
     List cDigits,
@@ -20,9 +20,9 @@ Exception math_prime_permutation(
         int b = a + 3330;
         int c = b + 3330;
 
-        if (!prime_list_is_prime(primes, a) ||
-            !prime_list_is_prime(primes, b) ||
-            !prime_list_is_prime(primes, c))
+        if (sieve_test(primes, a, NULL) != PRIMALITY_PRIME ||
+            sieve_test(primes, b, NULL) != PRIMALITY_PRIME ||
+            sieve_test(primes, c, NULL) != PRIMALITY_PRIME)
         {
             continue;
         }
@@ -81,9 +81,9 @@ Exception math_prime_permutation(
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 10000 - 3330 - 3330);
+    Exception ex = sieve(&primes, 10000);
 
     euler_ok();
     

@@ -4,14 +4,26 @@
 
 #include <stdlib.h>
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
+
+int math_quadratic_prime(Sieve primes, int a, int b)
+{
+    int n = 0;
+
+    while (sieve_test(primes, labs(n * (n + a) + b), NULL) == PRIMALITY_PRIME)
+    {
+        n++;
+    }
+
+    return n;
+}
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 1001);
-    
+    Exception ex = sieve(&primes, 1001);
+
     euler_ok();
 
     int maxA = 0;
@@ -22,12 +34,7 @@ int main(void)
     {
         for (long* b = primes.primes.begin; b < primes.primes.end; b++)
         {
-            int n = 0;
-
-            while (prime_list_is_prime(&primes, labs(n * (n + a) + *b)))
-            {
-                n++;
-            }
+            int n = math_quadratic_prime(&primes, a, *b);
 
             if (n > maxN)
             {
@@ -38,9 +45,9 @@ int main(void)
         }
     }
 
-    finalize_prime_list(&primes);
+    finalize_sieve(&primes);
 
-    int product = maxA * maxB;
-    
+    long product = maxA * maxB;
+
     return euler_submit(27, product, start);
 }

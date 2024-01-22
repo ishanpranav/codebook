@@ -4,29 +4,27 @@
 
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
-#define MAX_SEARCH 1000000l
+#include "../lib/sieve.h"
 
 int main(void)
 {
     long sum = 0;
     int count = 0;
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, MAX_SEARCH);
+    Exception ex = sieve(&primes, 0);
 
     euler_ok();
 
-    for (long* it = primes.primes.begin + 4; it < primes.primes.end; it++)
+    struct SieveIterator it;
+    
+    sieve_begin(&it, &primes);
+
+    for (sieve_skip(&it, 4); count < 11; sieve_next(&it))
     {
-        if (count == 11)
-        {
-            break;
-        }
+        long right = *it.current;
 
-        long right = *it;
-
-        while (right && prime_list_is_prime(&primes, right))
+        while (right && sieve_test(&primes, right, NULL) == PRIMALITY_PRIME)
         {
             right /= 10;
         }
@@ -36,10 +34,10 @@ int main(void)
             continue;
         }
 
-        long left = *it;
+        long left = *it.current;
         long orderOfMagnitude = pow(10, (int)log10(left));
 
-        while (left && prime_list_is_prime(&primes, left))
+        while (left && sieve_test(&primes, left, NULL) == PRIMALITY_PRIME)
         {
             left %= orderOfMagnitude;
             orderOfMagnitude /= 10;
@@ -50,11 +48,11 @@ int main(void)
             continue;
         }
 
-        sum += *it;
+        sum += *it.current;
         count++;
     }
 
-    finalize_prime_list(&primes);
+    finalize_sieve(&primes);
     
     return euler_submit(37, sum, start);
 }

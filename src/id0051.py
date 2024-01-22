@@ -8,13 +8,17 @@ from time import time
 def mask_list_mask(value : list[int]) -> bool:
     counts = [0] * 10
     
-    for it in value: counts[it] += 1
+    for it in value:
+        counts[it] += 1
         
     for i in range(3):
-        if counts[i] >= 2:
-            for j in range(len(value)):
-                if value[j] == i: value[j] = -1
-            return True
+        if counts[i] < 2: continue
+        
+        for j in range(len(value)):
+            if value[j] == i:
+                value[j] = -1
+            
+        return True
 
     return False
 
@@ -22,7 +26,8 @@ def math_prime_digit_replacement() -> int:
     for p in sieve:
         mask = []
         
-        for q in str(p): mask.append(int(q))
+        for q in str(p):
+            mask.append(int(q))
         
         if not mask_list_mask(mask): continue
         
@@ -33,8 +38,10 @@ def math_prime_digit_replacement() -> int:
             image = []
             
             for it in mask:
-                if it == -1: image.append(i)
-                else: image.append(it)
+                if it == -1:
+                    image.append(i)
+                else:
+                    image.append(it)
             
             n = 0
             
@@ -42,7 +49,8 @@ def math_prime_digit_replacement() -> int:
             
             if n <= 100000 or not isprime(n): continue
             
-            if length == 0: first = n
+            if length == 0: 
+                first = n
             
             length += 1
         

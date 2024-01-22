@@ -8,7 +8,7 @@
 
 Exception lp_string_builder(LPStringBuilder instance, size_t capacity)
 {
-    if (!capacity)
+    if (capacity < 4)
     {
         capacity = 4;
     }
@@ -87,7 +87,7 @@ void finalize_lp_string_builder(LPStringBuilder instance)
 
 Exception lp_string_collection(LPStringCollection instance, size_t capacity)
 {
-    if (!capacity)
+    if (capacity < 4)
     {
         capacity = 4;
     }

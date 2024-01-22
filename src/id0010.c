@@ -3,13 +3,13 @@
 // Summation of Primes
 
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 2000000l);
+    Exception ex = sieve(&primes, 2000000l);
 
     euler_ok();
 
@@ -20,7 +20,7 @@ int main(void)
         sum += *it;
     }
 
-    finalize_prime_list(&primes);
+    finalize_sieve(&primes);
     euler_submit(10, sum, start);
 
     return 0;

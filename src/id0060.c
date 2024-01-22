@@ -4,8 +4,9 @@
 
 #include <limits.h>
 #include <math.h>
+#include "../lib/primality_tests/divisor_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
 #define MAX_SEARCH 10000
 
 long math_concat(int a, int b)
@@ -13,18 +14,30 @@ long math_concat(int a, int b)
     return a * pow(10, math_length(b, 1)) + b;
 }
 
-bool math_is_prime_pair(PrimeList primes, int a, int b)
+bool math_is_prime_pair(Sieve primes, int a, int b)
 {
-    return
-        prime_list_is_prime(primes, math_concat(a, b)) &&
-        prime_list_is_prime(primes, math_concat(b, a));
+    long concat = math_concat(a, b);
+
+    if (sieve_test(primes, concat, divisor_primality_test) != PRIMALITY_PRIME)
+    {
+        return false;
+    }
+
+    concat = math_concat(b, a);
+
+    if (sieve_test(primes, concat, divisor_primality_test) != PRIMALITY_PRIME)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, MAX_SEARCH);
+    Exception ex = sieve(&primes, MAX_SEARCH);
 
     euler_ok();
 
@@ -86,7 +99,7 @@ int main(void)
         }
     }
 
-    finalize_prime_list(&primes);
+    finalize_sieve(&primes);
     finalize_list(&candidates);
 
     return euler_submit(60, min, start);

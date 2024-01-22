@@ -2,14 +2,15 @@
 
 // Consecutive Prime Sum
 
+#include "../lib/primality_tests/divisor_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/prime_list.h"
+#include "../lib/sieve.h"
 
 int main(void)
 {
-    struct PrimeList primes;
+    struct Sieve primes;
     clock_t start = clock();
-    Exception ex = prime_list(&primes, 1000000l);
+    Exception ex = sieve(&primes, 1000000l);
 
     euler_ok();
 
@@ -36,7 +37,14 @@ int main(void)
 
             long length = q - p;
 
-            if (length <= maxLength || !prime_list_is_prime(&primes, sum))
+            if (length <= maxLength)
+            {
+                continue;
+            }
+
+            Primality test = sieve_test(&primes, sum, divisor_primality_test);
+
+            if (test != PRIMALITY_PRIME)
             {
                 continue;
             }
