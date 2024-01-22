@@ -1,8 +1,10 @@
+// Licensed under the MIT License.
+
 #include <math.h>
 #include <stdbool.h>
 #include "miller_rabin_primality_test.h"
 
-long long math_modpow(long long a, long long n, long long mod)
+static long long miller_rabin_mod_pow(long long a, long long n, long long mod)
 {
     long long exponent = a;
     long long result = 1;
@@ -27,7 +29,7 @@ static bool miller_rabin_witness(
     long long d,
     long long a)
 {
-    long long x = math_modpow(a, d, n);
+    long long x = miller_rabin_mod_pow(a, d, n);
     long long y = 1;
 
     while (s)

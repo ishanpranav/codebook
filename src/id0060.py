@@ -1,3 +1,7 @@
+# Licensed under the MIT License.
+
+# Prime Pair Sets
+
 from math import inf, log10
 from sympy import isprime, primerange
 from time import time
