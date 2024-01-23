@@ -22,7 +22,7 @@ void euler_swap(long* p, long* q)
     *q = swap;
 }
 
-long math_natural_sum(long n)
+long math_triangular(long n)
 {
     return n * (n + 1) / 2;
 }

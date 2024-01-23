@@ -8,9 +8,9 @@ from time import time
 
 MAX_SEARCH = 10000
 
-def math_concat(a, b): return a * 10 ** (int(log10(b)) + 1) + b
+def math_concat(a: int, b: int) -> int: return a * 10 ** (int(log10(b)) + 1) + b
     
-def math_is_prime_pair(a, b): 
+def math_is_prime_pair(a: int, b: int) -> int: 
     return isprime(math_concat(a, b)) and isprime(math_concat(b, a))
 
 start = time()

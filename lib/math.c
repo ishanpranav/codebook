@@ -1,18 +1,13 @@
 #include <math.h>
 #include "euler.h"
 
-bool math_is_pentagonal(long n)
+bool math_is_polygonal(int s, long x)
 {
-    double term = (sqrt(24 * n + 1) + 1) / 6;
+    double term = sqrt(8 * (s - 2) * x + (s - 4) * (s - 4)) + (s - 4);
+
+    term /= 2 * (s - 2);
 
     return term == (long)term;
-}
-
-bool math_is_square(long n)
-{
-    double sqrtN = sqrt(n);
-
-    return sqrtN == (long)sqrtN;    
 }
 
 int math_length(int b, int a)

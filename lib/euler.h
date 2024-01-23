@@ -32,12 +32,13 @@ int euler_submit(int id, long long result, clock_t start);
 void euler_swap(long* p, long* q);
 
 /**
- * Computes a partial summation of the natural numbers.
+ * Computes a partial summation of the natural numbers. This is equivalent to
+ * computing the `n`-th triangular number.
  *
  * @param n the number of terms in the sequence.
  * @return The sum of the first `n` natural numbers.
 */
-long math_natural_sum(long n);
+long math_triangular(long n);
 
 /**
  * Computes the binomial coefficient `n` "choose" `k`.
@@ -85,17 +86,10 @@ long long math_reverse(long long n);
 bool math_is_palindrome(long long n);
 
 /**
- * Determines if a given value is a pentagonal number.
+ * Determines if a given value is a polygonal number.
  * 
- * @param n the value to test.
- * @return `true` if `n` is pentagonal; otherwise, `false`.
+ * @param s the number of sides of the polygon.
+ * @param x the value to test.
+ * @return `true` if `n` is a `s`-gonal number; otherwise, `false`.
 */
-bool math_is_pentagonal(long n);
-
-/**
- * Determines if a given value is a perfect square.
- * 
- * @param n the value to test.
- * @return `true` if `n` is a square; otherwise, `false`.
-*/
-bool math_is_square(long n);
+bool math_is_polygonal(int s, long x);

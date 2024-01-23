@@ -6,18 +6,18 @@
 
 int main(void)
 {
-    long n = 0;
+    long x = 0;
     clock_t start = clock();
 
-    for (int i = 143 + 1; ; i++)
+    for (int n = 143 + 1; ; n++)
     {
-        n = i * (2 * i - 1);
-        
-        if (math_is_pentagonal(n))
+        x = n * (2 * n - 1);
+
+        if (math_is_polygonal(5, x))
         {
             break;
         }
     }
 
-    return euler_submit(45, n, start);
+    return euler_submit(45, x, start);
 }

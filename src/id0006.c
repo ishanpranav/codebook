@@ -12,7 +12,7 @@ long math_natural_sum_of_squares(long n)
 int main(void)
 {
     clock_t start = clock();
-    long sum = math_natural_sum(100);
+    long sum = math_triangular(100);
     long difference = sum * sum - math_natural_sum_of_squares(100);
 
     return euler_submit(6, difference, start);

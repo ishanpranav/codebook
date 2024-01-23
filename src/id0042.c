@@ -23,14 +23,14 @@ int main(void)
 
     for (LPString* word = words.begin; word < words.end; word++)
     {
-        int n = 0;
+        int x = 0;
 
         for (char* p = *word; *p; p++)
         {
-            n += *p - 'A' + 1;
+            x += *p - 'A' + 1;
         }
 
-        if (math_is_square(8 * n + 1))
+        if (math_is_polygonal(3, x))
         {
             count++;
         }

@@ -29,7 +29,7 @@ int main(void)
                 continue;
             }
 
-            if (!math_is_pentagonal(d) || !math_is_pentagonal(k + j))
+            if (!math_is_polygonal(5, d) || !math_is_polygonal(5, k + j))
             {
                 continue;
             }

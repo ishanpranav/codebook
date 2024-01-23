@@ -5,7 +5,7 @@
 from sympy import isprime, sieve
 from time import time
 
-def mask_list_mask(value : list[int]) -> bool:
+def mask_list_mask(value: list[int]) -> bool:
     counts = [0] * 10
     
     for it in value:
