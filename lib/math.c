@@ -3,9 +3,9 @@
 
 bool math_is_polygonal(int s, long x)
 {
-    double term = sqrt(8 * (s - 2) * x + (s - 4) * (s - 4)) + (s - 4);
-
-    term /= 2 * (s - 2);
+    double sM2 = s - 2;
+    double sM4 = sM2 - 2;
+    double term = (sqrt(8 * sM2 * x + sM4 * sM4) + sM4) / (2 * sM2);
 
     return term == (long)term;
 }
