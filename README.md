@@ -19,7 +19,7 @@ languages. The most difficult problems are implemented in 10 languages.
 | :--------: | -------------------------- |
 |            | [C](tools/test.sh)         |
 |   \> 10%   | [Python](tools/test.py.sh) |
-|   \> 20%   | C\#                        |
+|   \> 20%   | [C\#](tools/test.cs.ps1)   |
 
 ## Attribution
 
@@ -106,6 +106,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 61-
 
-| Id  |                  Problem                  |    Domain     | Result | Implementation                                                      |
-| :-: | :---------------------------------------: | :-----------: | :----: | ------------------------------------------------------------------- |
-| 61  | [Cyclical Figurate Numbers](src/id0061.c) | Number theory |  Sum   | [Polygonal number]([https://en.wikipedia.org/wiki/Polygonal_number) |
+| Id  |                  Problem                  |    Domain     | Result  | Implementation                                                     |
+| :-: | :---------------------------------------: | :-----------: | :-----: | ------------------------------------------------------------------ |
+| 61  | [Cyclical Figurate Numbers](src/id0061.c) | Number theory |   Sum   | [Polygonal number](https://en.wikipedia.org/wiki/Polygonal_number) |
+| 62  |    [Cubic Permutations](src/id0062.c)     | Number theory | Minimum |                                                                    |
