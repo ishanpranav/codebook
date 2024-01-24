@@ -10,7 +10,7 @@ bool mask_list_mask(List value)
 {
     int counts[10] = { 0 };
 
-    for (long* it = value->begin; it < value->end; it++)
+    for (long long* it = value->begin; it < value->end; it++)
     {
         counts[*it]++;
     }
@@ -22,7 +22,7 @@ bool mask_list_mask(List value)
             continue;
         }
 
-        for (long* it = value->begin; it < value->end; it++)
+        for (long long* it = value->begin; it < value->end; it++)
         {
             if (*it == i)
             {
@@ -48,7 +48,7 @@ Exception math_prime_digit_replacement(
     {
         char str[7];
 
-        sprintf(str, "%ld", *it.current);
+        sprintf(str, "%lld", *it.current);
         list_clear(mask);
 
         for (char* q = str; *q; q++)
@@ -74,7 +74,7 @@ Exception math_prime_digit_replacement(
         {
             list_clear(image);
 
-            for (long* it = mask->begin; it < mask->end; it++)
+            for (long long* it = mask->begin; it < mask->end; it++)
             {
                 Exception ex;
 
@@ -95,7 +95,7 @@ Exception math_prime_digit_replacement(
 
             long n = 0;
 
-            for (long* q = image->begin; q < image->end; q++)
+            for (long long* q = image->begin; q < image->end; q++)
             {
                 n = n * 10 + *q;
             }

@@ -17,11 +17,11 @@ int main(void)
     long maxSum = 0;
     long maxLength = 0;
 
-    for (long* p = primes.primes.begin; p < primes.primes.end; p++)
+    for (long long* p = primes.primes.begin; p < primes.primes.end; p++)
     {
         long sum = 0;
 
-        for (long* q = p; q < primes.primes.end; q++)
+        for (long long* q = p; q < primes.primes.end; q++)
         {
             sum += *q;
 

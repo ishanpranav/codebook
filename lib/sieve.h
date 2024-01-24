@@ -10,14 +10,14 @@ struct Sieve
 {
     struct List primes;
     struct BooleanSet composites;
-    long max;
+    long long max;
 };
 
 /** Provides an iterator over all primes. */
 struct SieveIterator
 {
     struct Sieve* values;
-    long* current;
+    long long* current;
 };
 
 /** Represents the sequence of primes in a superset of [2, `max`). */
@@ -33,7 +33,7 @@ typedef struct SieveIterator* SieveIterator;
  * @param max      the exclusive minimum upper bound of the prime sequence.
  * @return The exception; otherwise, `0`.
 */
-Exception sieve(Sieve instance, long max);
+Exception sieve(Sieve instance, long long max);
 
 /**
  * Provides an iterator over all primes.
@@ -51,7 +51,7 @@ void sieve_begin(SieveIterator iterator, Sieve values);
  * @param count    the number of iterations to skip. This method may dynamically
  *                 extend the `values` argument.
 */
-void sieve_skip(SieveIterator iterator, long count);
+void sieve_skip(SieveIterator iterator, long long count);
 
 /**
  * Advances the iterator to the next prime.
@@ -69,7 +69,7 @@ void sieve_next(SieveIterator iterator);
  *                 The `fallback` argument is used if `n` is outside the
  *                 interval [2, `max`).
 */
-Primality sieve_test(Sieve instance, long n, PrimalityTest fallback);
+Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback);
 
 /**
  * Frees all resources.

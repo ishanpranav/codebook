@@ -29,10 +29,10 @@ bool math_is_substring_divisible(List digits)
 
 int main(void)
 {
-    long long sum = 0;
     struct List list;
     struct PermutationIterator it;
-    long digits[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    long long sum = 0;
+    long long digits[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
 
     list_from_array(&list, digits, 10);
@@ -43,7 +43,7 @@ int main(void)
         {
             long long n = 0;
 
-            for (long* d = it.values->begin; d < it.values->end; d++)
+            for (long long* d = it.values->begin; d < it.values->end; d++)
             {
                 n = n * 10 + *d;
             }

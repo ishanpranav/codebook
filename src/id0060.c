@@ -50,11 +50,11 @@ int main(void)
 
     int min = INT_MAX;
 
-    for (long* a = primes.primes.begin; a < primes.primes.end; a++)
+    for (long long* a = primes.primes.begin; a < primes.primes.end; a++)
     {
         list_clear(&candidates);
 
-        for (long* b = a; b < primes.primes.end; b++)
+        for (long long* b = a; b < primes.primes.end; b++)
         {
             if (math_is_prime_pair(&primes, *a, *b))
             {
@@ -64,16 +64,16 @@ int main(void)
             }
         }
 
-        for (long* b = candidates.begin; b < candidates.end; b++)
+        for (long long* b = candidates.begin; b < candidates.end; b++)
         {
-            for (long* c = b + 1; c < candidates.end; c++)
+            for (long long* c = b + 1; c < candidates.end; c++)
             {
                 if (!math_is_prime_pair(&primes, *b, *c))
                 {
                     continue;
                 }
 
-                for (long* d = c + 1; d < candidates.end; d++)
+                for (long long* d = c + 1; d < candidates.end; d++)
                 {
                     if (!math_is_prime_pair(&primes, *b, *d) ||
                         !math_is_prime_pair(&primes, *c, *d))
@@ -81,7 +81,7 @@ int main(void)
                         continue;
                     }
 
-                    for (long* e = d + 1; e < candidates.end; e++)
+                    for (long long* e = d + 1; e < candidates.end; e++)
                     {
                         int sum = *a + *b + *c + *d + *e;
 

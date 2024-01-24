@@ -13,12 +13,7 @@ int main(void)
 
     euler_ok();
 
-    long long sum = 0;
-
-    for (long* it = primes.primes.begin; it < primes.primes.end; it++)
-    {
-        sum += *it;
-    }
+    long long sum = list_sum(&primes.primes);
 
     finalize_sieve(&primes);
     euler_submit(10, sum, start);

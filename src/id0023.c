@@ -10,7 +10,7 @@
 
 bool math_is_abundant_sum(int n, List list, BooleanSet set)
 {
-    for (long* it = list->begin; it < list->end; it++)
+    for (long long* it = list->begin; it < list->end; it++)
     {
         if (*it > n)
         {

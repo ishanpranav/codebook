@@ -26,7 +26,7 @@ int euler_submit(int id, long long result, clock_t start);
  * @param p a pointer to the first element to swap
  * @param q a pointer to the second element to swap
 */
-void euler_swap(long* p, long* q);
+void euler_swap(long long* p, long long* q);
 
 /**
  * Computes a partial summation of the natural numbers. This is equivalent to

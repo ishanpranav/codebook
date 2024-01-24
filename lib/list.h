@@ -8,8 +8,8 @@
 /** Represents a list of integers that can be accessed by index. */
 struct List
 {
-    long* begin;
-    long* end;
+    long long* begin;
+    long long* end;
     size_t capacity;
 };
 
@@ -34,7 +34,7 @@ Exception list(List instance, size_t capacity);
  *                 this argument.
  * @param length   the length of the `values` argument.
 */
-void list_from_array(List instance, long values[], size_t length);
+void list_from_array(List instance, long long values[], size_t length);
 
 /**
  * Adds an item to the end of the list.
@@ -44,7 +44,7 @@ void list_from_array(List instance, long values[], size_t length);
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception list_add(List instance, long item);
+Exception list_add(List instance, long long item);
 
 /**
  * Determines whether an element is in the list.
@@ -53,7 +53,7 @@ Exception list_add(List instance, long item);
  * @param item     the item to locate in the list.
  * @return `true` if the `item` is found in the list; otherwise, `false`.
 */
-bool list_contains(List instance, long item);
+bool list_contains(List instance, long long item);
 
 /**
  * Removes all elements from the list.
@@ -78,6 +78,14 @@ void list_sort(List instance);
  *         elements are equal; otherwise, `false`.
 */
 bool list_equals(List left, List right);
+
+/**
+ * Computes the summation of the terms in the list.
+ * 
+ * @param instance the `List` instance.
+ * @return the summation of `instance`.
+*/
+long long list_sum(List instance);
 
 /**
  * Frees all resources.

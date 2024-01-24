@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    long values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    long long values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     struct List list;
     struct PermutationIterator it;
     clock_t start = clock();

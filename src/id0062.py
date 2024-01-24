@@ -2,7 +2,6 @@
 
 # Cubic Permutations
 
-from itertools import permutations
 from time import time
 
 def math_cubic_permutation() -> int:
@@ -15,19 +14,21 @@ def math_cubic_permutation() -> int:
         
         while b < max:
             cb = b * b * b
-            digits = "".join(sorted(str(cb)))
+            key = "".join(sorted(str(cb)))
             
-            if digits not in lookup.keys():
-                matches = set()
-                lookup[digits] = matches
+            if key not in lookup:
+                matches = []
+                lookup[key] = matches
             else:
-                matches = lookup[digits]
+                matches = lookup[key]
             
-            matches.add(cb)
+            matches.append(cb)
             
-            if len(matches) == 5:
-                return min(matches)
+            if len(matches) == 5: return min(matches)
             
             b += 1
 
-print(math_cubic_permutation())
+start = time()
+result = math_cubic_permutation()
+
+print(f"0062{result:>64}    {time() - start:.6f}")

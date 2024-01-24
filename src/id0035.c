@@ -35,9 +35,9 @@ int main(void)
 
     int count = 0;
 
-    for (long* p = primes.primes.begin; p < primes.primes.end; p++)
+    for (long long* it = primes.primes.begin; it < primes.primes.end; it++)
     {
-        if (math_is_circular_prime(*p, &primes))
+        if (math_is_circular_prime(*it, &primes))
         {
             count++;
         }

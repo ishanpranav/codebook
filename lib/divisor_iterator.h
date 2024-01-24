@@ -6,10 +6,10 @@
 /** Iterates over the proper divisors of a natural number. */
 struct DivisorIterator
 {
-    long n;
-    long current;
-    long next;
-    long end;
+    long long n;
+    long long current;
+    long long next;
+    long long end;
     enum DivisorIteratorState state;
 };
 
@@ -22,7 +22,7 @@ typedef struct DivisorIterator* DivisorIterator;
  * @param iterator the iterator.
  * @param n        the number whose proper divisors to enumerate.
 */
-void divisor_begin(DivisorIterator iterator, long n);
+void divisor_begin(DivisorIterator iterator, long long n);
 
 /**
  * Returns a value indicating whether the iterator can advance to the next
@@ -47,4 +47,4 @@ void divisor_next(DivisorIterator iterator);
  * @param n the number whose proper divisors to sum.
  * @return The sum of the proper divisors of `n`.
 */
-long divisor_sum(long n);
+long long divisor_sum(long long n);

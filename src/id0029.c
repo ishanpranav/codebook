@@ -37,7 +37,7 @@ int main(void)
 
     int count = 0;
 
-    for (long* it = values.begin; it < values.end; it++)
+    for (long long* it = values.begin; it < values.end; it++)
     {
         int exponent = exponents[*it];
 

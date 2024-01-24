@@ -8,7 +8,7 @@
 int main(void)
 {
     long max = 918273645l;
-    long array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    long long array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     struct List digits;
     clock_t start = clock();
     Exception ex = list(&digits, 0);
@@ -40,7 +40,7 @@ int main(void)
 
         long long n = 0;
 
-        for (long* it = digits.begin; it < digits.end; it++)
+        for (long long* it = digits.begin; it < digits.end; it++)
         {
             n = n * 10 + *it;
         }

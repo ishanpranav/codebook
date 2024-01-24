@@ -35,7 +35,7 @@ int main(void)
         {
             long n = 0;
 
-            for (long* p = it.values->begin; p < it.values->end; p++)
+            for (long long* p = it.values->begin; p < it.values->end; p++)
             {
                 n = n * 10 + *p;
             }

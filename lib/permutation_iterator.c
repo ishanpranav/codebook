@@ -11,7 +11,7 @@ void permutation_begin(PermutationIterator iterator, List values)
 
 void permutation_next(PermutationIterator iterator)
 {
-    long* last = iterator->values->end - 1;
+    long long* last = iterator->values->end - 1;
 
     while (last > iterator->values->begin && last[-1] >= *last)
     {
@@ -20,7 +20,7 @@ void permutation_next(PermutationIterator iterator)
 
     if (last > iterator->values->begin)
     {
-        long* p = iterator->values->end - 1;
+        long long* p = iterator->values->end - 1;
 
         while (p > last && *p <= last[-1])
         {
@@ -40,11 +40,11 @@ void permutation_next(PermutationIterator iterator)
     iterator->end = last == iterator->values->begin;
 }
 
-static size_t permutation_count(List list, long item)
+static size_t permutation_count(List list, long long item)
 {
     size_t result = 0;
 
-    for (long* it = list->begin; it < list->end; it++)
+    for (long long* it = list->begin; it < list->end; it++)
     {
         if (item == *it)
         {
@@ -57,8 +57,8 @@ static size_t permutation_count(List list, long item)
 
 bool permutation_test(List left, List right)
 {
-    long* leftBegin = left->begin;
-    long* rightBegin = right->begin;
+    long long* leftBegin = left->begin;
+    long long* rightBegin = right->begin;
 
     if (left->end - leftBegin != right->end - rightBegin)
     {
@@ -71,7 +71,7 @@ bool permutation_test(List left, List right)
         rightBegin++;
     }
 
-    for (long* it = leftBegin; it < left->end; it++)
+    for (long long* it = leftBegin; it < left->end; it++)
     {
         size_t leftCount = permutation_count(left, *it);
         size_t rightCount = permutation_count(right, *it);

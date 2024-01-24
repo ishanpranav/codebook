@@ -32,7 +32,7 @@ int main(void)
 
     for (int a = -999; a < 1000; a += 2)
     {
-        for (long* b = primes.primes.begin; b < primes.primes.end; b++)
+        for (long long* b = primes.primes.begin; b < primes.primes.end; b++)
         {
             int n = math_quadratic_prime(&primes, a, *b);
 

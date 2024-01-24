@@ -4,7 +4,7 @@
 #include "divisor_iterator.h"
 #include "sieve.h"
 
-static Exception sieve_extend(Sieve instance, long max)
+static Exception sieve_extend(Sieve instance, long long max)
 {
     Exception ex = boolean_set_ensure_capacity(&instance->composites, max - 2);
 
@@ -13,22 +13,22 @@ static Exception sieve_extend(Sieve instance, long max)
         return ex;
     }
     
-    long end = sqrt(max);
+    long long end = sqrt(max);
 
-    for (long m = 2; m <= end; m++)
+    for (long long m = 2; m <= end; m++)
     {
         if (instance->composites.begin[m - 2])
         {
             continue;
         }
 
-        for (long n = m * m; n < max; n += m)
+        for (long long n = m * m; n < max; n += m)
         {
             instance->composites.begin[n - 2] = true;
         }
     }
 
-    for (long m = instance->max; m <= max; m++)
+    for (long long m = instance->max; m <= max; m++)
     {
         if (instance->composites.begin[m - 2])
         {
@@ -48,7 +48,7 @@ static Exception sieve_extend(Sieve instance, long max)
     return ex;
 }
 
-Exception sieve(Sieve instance, long max)
+Exception sieve(Sieve instance, long long max)
 {
     if (max < 11)
     {
@@ -92,10 +92,10 @@ void sieve_begin(SieveIterator iterator, Sieve values)
     iterator->current = values->primes.begin;
 }
 
-void sieve_skip(SieveIterator iterator, long count)
+void sieve_skip(SieveIterator iterator, long long count)
 {
-    long min = *iterator->current + count;
-    long max = iterator->values->max;
+    long long min = *iterator->current + count;
+    long long max = iterator->values->max;
 
     if (min > max)
     {
@@ -140,7 +140,7 @@ void sieve_next(SieveIterator iterator)
     iterator->current++;
 }
 
-Primality sieve_test(Sieve instance, long n, PrimalityTest fallback)
+Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback)
 {
     if (n < 2 || n >= instance->max)
     {

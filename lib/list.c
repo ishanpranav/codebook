@@ -26,20 +26,20 @@ Exception list(List instance, size_t capacity)
     return 0;
 }
 
-void list_from_array(List instance, long values[], size_t length)
+void list_from_array(List instance, long long values[], size_t length)
 {
     instance->begin = values;
     instance->end = values + length;
     instance->capacity = length;
 }
 
-Exception list_add(List instance, long item)
+Exception list_add(List instance, long long item)
 {
     size_t length = instance->end - instance->begin;
 
     if (length + 1 > instance->capacity)
     {
-        long* newBegin;
+        long long* newBegin;
         size_t newCapacity = instance->capacity * 2;
         size_t newSize = newCapacity * sizeof * newBegin;
 
@@ -61,9 +61,9 @@ Exception list_add(List instance, long item)
     return 0;
 }
 
-bool list_contains(List instance, long item)
+bool list_contains(List instance, long long item)
 {
-    for (long* it = instance->begin; it < instance->end; it++)
+    for (long long* it = instance->begin; it < instance->end; it++)
     {
         if (*it == item)
         {
@@ -81,8 +81,8 @@ void list_clear(List instance)
 
 static int list_item_compare(Object left, Object right)
 {
-    long leftValue = *(long*)left;
-    long rightValue = *(long*)right;
+    long long leftValue = *(long long*)left;
+    long long rightValue = *(long long*)right;
 
     if (leftValue < rightValue)
     {
@@ -125,6 +125,18 @@ bool list_equals(List left, List right)
     }
 
     return true;
+}
+
+long long list_sum(List instance)
+{
+    long long result = 0;
+
+    for (long long* it = instance->begin; it < instance->end; it++)
+    {
+        result += *it;
+    }
+
+    return result;
 }
 
 void finalize_list(List instance)

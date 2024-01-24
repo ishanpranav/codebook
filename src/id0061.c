@@ -45,40 +45,40 @@ bool math_is_permuted_polygonal(int values[])
 
 int math_cyclic_polygonal_sum(List polygonals)
 {
-    long* begin = polygonals->begin;
-    long* end = polygonals->end;
+    long long* begin = polygonals->begin;
+    long long* end = polygonals->end;
 
-    for (long* a = begin; a < end; a++)
+    for (long long* a = begin; a < end; a++)
     {
-        for (long* b = begin; b < end; b++)
+        for (long long* b = begin; b < end; b++)
         {
             if (!math_is_cyclic(*a, *b))
             {
                 continue;
             }
 
-            for (long* c = begin; c < end; c++)
+            for (long long* c = begin; c < end; c++)
             {
                 if (!math_is_cyclic(*b, *c))
                 {
                     continue;
                 }
 
-                for (long* d = begin; d < end; d++)
+                for (long long* d = begin; d < end; d++)
                 {
                     if (!math_is_cyclic(*c, *d))
                     {
                         continue;
                     }
 
-                    for (long* e = begin; e < end; e++)
+                    for (long long* e = begin; e < end; e++)
                     {
                         if (!math_is_cyclic(*d, *e))
                         {
                             continue;
                         }
 
-                        for (long* f = begin; f < end; f++)
+                        for (long long* f = begin; f < end; f++)
                         {
                             if (!math_is_cyclic(*e, *f) || 
                                 !math_is_cyclic(*f, *a))

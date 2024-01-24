@@ -14,9 +14,9 @@ Exception euler_submit(int id, long long result, clock_t start)
     return 0;
 }
 
-void euler_swap(long* p, long* q)
+void euler_swap(long long* p, long long* q)
 {
-    long swap = *p;
+    long long swap = *p;
 
     *p = *q;
     *q = swap;

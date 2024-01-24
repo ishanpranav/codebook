@@ -245,5 +245,8 @@ id0060.o: src/id0060.c \
 id0061.o: src/id0061.c list.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o math.o -lm
 
+id0062.o: src/id0062.c list.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o list.o
+
 clean:
 	rm -rf *.o

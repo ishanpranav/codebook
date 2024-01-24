@@ -4,7 +4,7 @@
 #include "divisor_iterator.h"
 #include "euler.h"
 
-void divisor_begin(DivisorIterator iterator, long n)
+void divisor_begin(DivisorIterator iterator, long long n)
 {
     iterator->n = n;
     iterator->end = sqrt(n);
@@ -25,8 +25,8 @@ bool divisor_end(DivisorIterator iterator)
 
 void divisor_next(DivisorIterator iterator)
 {
-    long n = iterator->n;
-    long end = iterator->end;
+    long long n = iterator->n;
+    long long end = iterator->end;
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_SWAP)
     {
@@ -59,7 +59,7 @@ void divisor_next(DivisorIterator iterator)
     }
 }
 
-long divisor_sum(long n)
+long long divisor_sum(long long n)
 {
     int result = 0;
     struct DivisorIterator it;

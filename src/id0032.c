@@ -9,7 +9,7 @@ int main(void)
 {
     struct List discovered;
     struct PermutationIterator it;
-    long digits[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    long long digits[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
     Exception ex = list(&discovered, 0);
 
@@ -61,12 +61,7 @@ int main(void)
         }
     }
 
-    long sum = 0;
-
-    for (long* it = discovered.begin; it < discovered.end; it++)
-    {
-        sum += *it;
-    }
+    long long sum = list_sum(&discovered);
 
     finalize_list(&discovered);
 
