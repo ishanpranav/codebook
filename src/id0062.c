@@ -21,7 +21,7 @@ void lookup_from_struct(Lookup instance)
 
 List lookup_add(Lookup instance, LPStringBuilder key, long long value)
 {
-
+    return 0;
 }
 
 long long math_cubic_permutation(LPStringBuilder keyBuilder, Lookup lookup)
