@@ -3,47 +3,31 @@
 # Cubic Permutations
 
 from itertools import permutations
-from math import isclose
+from time import time
 
 def math_cubic_permutation() -> int:
-    n = 1
+    lookup = {}
+    max = 1
 
     while True:
-        result = n * n * n
-        digits = []
-        k = result
+        b = max
+        max *= 10
         
-        while k > 0:
-            digits.append(k % 10)
-            k //= 10
-        
-        count = 0
-        found = set()
-        
-        for permutation in permutations(digits):
-            if permutation[0] == 0: continue
+        while b < max:
+            cb = b * b * b
+            digits = "".join(sorted(str(cb)))
             
-            k = 0
+            if digits not in lookup.keys():
+                matches = set()
+                lookup[digits] = matches
+            else:
+                matches = lookup[digits]
             
-            for digit in permutation:
-                k = 10 * k + digit
-                
-            found.add(k)
+            matches.add(cb)
             
-        for k in found:
-            k = k ** (1/3)
+            if len(matches) == 5:
+                return min(matches)
             
-            if isclose(k, round(k)):
-                count += 1
-        
-        if count == 3:
-            print(result, count)
-            
-        if count == 5:
-            return result
-                
-        n += 1
+            b += 1
 
-min = math_cubic_permutation()
-
-print(min)
+print(math_cubic_permutation())
