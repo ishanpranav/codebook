@@ -5,7 +5,8 @@
 from math import sqrt
 from time import time
 
-def math_is_cyclic(a: int, b: int) -> bool: return a // 100 == b % 100
+def math_is_cyclic(a: int, b: int) -> bool: 
+    return a != b and a // 100 == b % 100
 
 def math_is_polygonal(s: int, x: int) -> bool:
     sM2 = s - 2
@@ -20,9 +21,7 @@ def math_is_octagonal_or_smaller_polygonal(x: int) -> bool:
     
     return math_is_polygonal(7, x) or math_is_polygonal(8, x)
 
-def math_is_permuted_polygonal(values: set) -> bool:
-    if len(values) != 6: return False
-    
+def math_is_permuted_polygonal(values: list) -> bool:
     flags = {}
     
     for i in range(3, 9):
@@ -36,13 +35,7 @@ def math_is_permuted_polygonal(values: set) -> bool:
             
     return all(flags.values())
     
-def math_cyclic_polygonal_sum() -> int:
-    polygonals = set()
-    
-    for x in range(1000, 10000):
-        if math_is_octagonal_or_smaller_polygonal(x):
-            polygonals.add(x)
-    
+def math_cyclic_polygonal_sum(polygonals: list[int]) -> int:
     for a in polygonals:
         for b in polygonals:
             if not math_is_cyclic(a, b): continue
@@ -60,13 +53,7 @@ def math_cyclic_polygonal_sum() -> int:
                             if not math_is_cyclic(e, f): continue
                             if not math_is_cyclic(f, a): continue
                             
-                            values = set()
-                            values.add(a)
-                            values.add(b)
-                            values.add(c)
-                            values.add(d)
-                            values.add(e)
-                            values.add(f)
+                            values = [a, b, c, d, e, f]
                             
                             if not math_is_permuted_polygonal(values): continue
                             
@@ -75,6 +62,12 @@ def math_cyclic_polygonal_sum() -> int:
     return -1
 
 start = time()
-result = math_cyclic_polygonal_sum()
+polygonals = []
+
+for x in range(1000, 10000):
+    if math_is_octagonal_or_smaller_polygonal(x):
+        polygonals.append(x)
+    
+result = math_cyclic_polygonal_sum(polygonals)
 
 print(f"0061{result:>64}    {time() - start:.6f}")

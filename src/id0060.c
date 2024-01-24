@@ -17,15 +17,16 @@ long math_concat(int a, int b)
 bool math_is_prime_pair(Sieve primes, int a, int b)
 {
     long concat = math_concat(a, b);
+    PrimalityTest primalityTest = miller_rabin_primality_test;
 
-    if (sieve_test(primes, concat, miller_rabin_primality_test) != PRIMALITY_PRIME)
+    if (sieve_test(primes, concat, primalityTest) != PRIMALITY_PRIME)
     {
         return false;
     }
 
     concat = math_concat(b, a);
 
-    if (sieve_test(primes, concat, miller_rabin_primality_test) != PRIMALITY_PRIME)
+    if (sieve_test(primes, concat, primalityTest) != PRIMALITY_PRIME)
     {
         return false;
     }

@@ -9,7 +9,7 @@ using System.Linq;
 
 bool IsCyclic(int a, int b)
 {
-    return a / 100 == b % 100;
+    return a != b && a / 100 == b % 100;
 }
 
 bool IsPolygonal(int s, int x)
@@ -59,18 +59,8 @@ bool IsPermutedPolygonal(IReadOnlyCollection<int> values)
     return flags == 0b111111000;
 }
 
-int CyclicPolygonalSum()
+int CyclicPolygonalSum(IEnumerable<int> polygonals)
 {
-    HashSet<int> polygonals = new HashSet<int>();
-
-    for (int x = 1000; x < 10000; x++)
-    {
-        if (IsOctagonalOrSmallerPolygonal(x))
-        {
-            polygonals.Add(x);
-        }
-    }
-
     foreach (int a in polygonals)
     {
         foreach (int b in polygonals)
@@ -108,10 +98,7 @@ int CyclicPolygonalSum()
                                 continue;
                             }
 
-                            HashSet<int> values = new HashSet<int>()
-                            {
-                                a, b, c, d, e, f
-                            };
+                            int[] values = new int[] { a, b, c, d, e, f };
 
                             if (!IsPermutedPolygonal(values))
                             {
@@ -130,9 +117,17 @@ int CyclicPolygonalSum()
 }
 
 Stopwatch start = Stopwatch.StartNew();
+List<int> polygonals = new List<int>();
 
-int result = CyclicPolygonalSum();
+for (int x = 1000; x < 10000; x++)
+{
+    if (IsOctagonalOrSmallerPolygonal(x))
+    {
+        polygonals.Add(x);
+    }
+}
+
+int sum = CyclicPolygonalSum(polygonals);
 
 start.Stop();
-
-Console.WriteLine("0061{0,64}    {1:f6}", result, start.Elapsed.TotalSeconds);
+Console.WriteLine("0061{0,64}    {1:f6}", sum, start.Elapsed.TotalSeconds);

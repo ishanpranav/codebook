@@ -79,7 +79,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 39  |   [Integer Right Triangles](src/id0039.c)   |   Geometry    |         Maximum         |                                                                              |
 | 40  |  [Champernowne\'s Constant](src/id0040.c)   | Number theory |         Product         | [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant) |
 
-### 41-
+### 41-60
 
 | Id  |                        Problem                        |             Domain             |   Result    | Implementation                                                                                                                                                                                                                                                           |
 | :-: | :---------------------------------------------------: | :----------------------------: | :---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -103,3 +103,9 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 58  |             [Spiral Primes](src/id0058.c)             |           Sequences            | Term number |                                                                                                                                                                                                                                                                          |
 | 59  |            [XOR Decryption](src/id0059.c)             |          Cryptography          |     Sum     | [Frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis)                                                                                                                                                                                                   |
 | 60  |            [Prime Pair Sets](src/id0060.c)            |         Number theory          |   Minimum   | [Miller–Rabin primality test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test), [Modular exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation), [Exponentiation by squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring) |
+
+### 61-
+
+| Id  |                  Problem                  |    Domain     | Result | Implementation                                                      |
+| :-: | :---------------------------------------: | :-----------: | :----: | ------------------------------------------------------------------- |
+| 61  | [Cyclical Figurate Numbers](src/id0061.c) | Number theory |  Sum   | [Polygonal number]([https://en.wikipedia.org/wiki/Polygonal_number) |

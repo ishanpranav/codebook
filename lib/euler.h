@@ -1,17 +1,14 @@
 // Licensed under the MIT License.
 
-#include <time.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <time.h>
 #define macro do {
 #define end_macro } while (false)
-#define euler_ok() macro \
-if (ex) \
-{ \
+#define euler_ok() macro if (ex) { \
     fprintf(stderr, "Error: %d at %s line %d.\n", ex, __FILE__, __LINE__); \
     return ex; \
-} \
-end_macro
+} end_macro
 
 /**
  * Submits a solution for the problem with the given identifier.
@@ -38,7 +35,7 @@ void euler_swap(long* p, long* q);
  * @param n the number of terms in the sequence.
  * @return The sum of the first `n` natural numbers.
 */
-long math_triangular(long n);
+long math_natural_sum(long n);
 
 /**
  * Computes the binomial coefficient `n` "choose" `k`.

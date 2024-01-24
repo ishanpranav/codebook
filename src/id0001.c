@@ -8,9 +8,9 @@ long math_sum_multiples_3_5(long max)
 {
     max--;
 
-    return (3 * math_triangular(max / 3)) +
-        (5 * math_triangular(max / 5)) -
-        (15 * math_triangular(max / 15));
+    return (3 * math_natural_sum(max / 3)) +
+        (5 * math_natural_sum(max / 5)) -
+        (15 * math_natural_sum(max / 15));
 }
 
 int main(void)

@@ -242,5 +242,8 @@ id0060.o: src/id0060.c \
 	miller_rabin_primality_test.o boolean_set.o euler.o list.o math.o sieve.o
 	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o boolean_set.o euler.o list.o math.o sieve.o -lm
 
+id0061.o: src/id0061.c list.o math.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o list.o math.o -lm
+
 clean:
 	rm -rf *.o
