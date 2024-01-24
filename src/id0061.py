@@ -14,36 +14,33 @@ def math_is_polygonal(s: int, x: int) -> bool:
 
     return term == int(term)
 
-def math_is_octagonal_or_smaller_figurate(x: int) -> bool:
+def math_is_octagonal_or_smaller_polygonal(x: int) -> bool:
     for s in range(3, 6):
         if math_is_polygonal(s, x): return True
     
-    for s in range(7, 9):
-        if math_is_polygonal(s, x): return True
-                
-    return False
+    return math_is_polygonal(7, x) or math_is_polygonal(8, x)
 
-def math_is_permuted_polygonal(l: set) -> bool:
-    if len(l) != 6: return False
+def math_is_permuted_polygonal(values: set) -> bool:
+    if len(values) != 6: return False
     
-    polys = {}
+    flags = {}
     
     for i in range(3, 9):
-        polys[i] = False
+        flags[i] = False
         
-    for x in l:
+    for x in values:
         for s in range(8, 2, -1):
             if math_is_polygonal(s, x):
-                polys[s] = True
+                flags[s] = True
                 break
             
-    return all(polys.values())
+    return all(flags.values())
     
-def math_cyclical_figurate_sum() -> int:
+def math_cyclic_polygonal_sum() -> int:
     polygonals = set()
     
     for x in range(1000, 10000):
-        if math_is_octagonal_or_smaller_figurate(x):
+        if math_is_octagonal_or_smaller_polygonal(x):
             polygonals.add(x)
     
     for a in polygonals:
@@ -63,21 +60,21 @@ def math_cyclical_figurate_sum() -> int:
                             if not math_is_cyclic(e, f): continue
                             if not math_is_cyclic(f, a): continue
                             
-                            l = set()
-                            l.add(a)
-                            l.add(b)
-                            l.add(c)
-                            l.add(d)
-                            l.add(e)
-                            l.add(f)
+                            values = set()
+                            values.add(a)
+                            values.add(b)
+                            values.add(c)
+                            values.add(d)
+                            values.add(e)
+                            values.add(f)
                             
-                            if not math_is_permuted_polygonal(l): continue
+                            if not math_is_permuted_polygonal(values): continue
                             
-                            return sum(l)
+                            return sum(values)
 
     return -1
 
 start = time()
-result = math_cyclical_figurate_sum()
+result = math_cyclic_polygonal_sum()
 
 print(f"0061{result:>64}    {time() - start:.6f}")
