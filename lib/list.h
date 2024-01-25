@@ -70,6 +70,13 @@ void list_clear(List instance);
 void list_sort(List instance);
 
 /**
+ * Reverses the order of the elements in the list.
+ * 
+ * @param instance the `List` instance.
+*/
+void list_reverse(List instance);
+
+/**
  * Determines whether two lists are equal.
  * 
  * @param left  a list to compare to `right`. 

@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "euler.h"
 #include "list.h"
 #include "object.h"
 
@@ -104,6 +105,25 @@ void list_sort(List instance)
         instance->end - instance->begin,
         sizeof * instance->begin,
         long_long_compare);
+}
+
+void list_reverse(List instance)
+{
+    if (instance->begin == instance->end)
+    {
+        return;
+    }
+
+    long long* left = instance->begin;
+    long long* right = instance->end - 1;
+    
+    while (left < right)
+    {
+        euler_swap(left, right);
+
+        left++;
+        right--;
+    }
 }
 
 bool list_equals(List left, List right)

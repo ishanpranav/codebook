@@ -46,20 +46,14 @@ Exception math_prime_digit_replacement(
 
     for (sieve_begin(&it, primes); ; sieve_next(&it))
     {
-        char str[7];
-
-        sprintf(str, "%lld", *it.current);
         list_clear(mask);
 
-        for (char* q = str; *q; q++)
+        for (long long k = *it.current; k; k /= 10)
         {
-            Exception ex = list_add(mask, *q - '0');
-
-            if (ex)
-            {
-                return ex;
-            }
+            list_add(mask, k % 10);
         }
+
+        list_reverse(mask);
 
         if (!mask_list_mask(mask))
         {

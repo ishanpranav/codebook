@@ -25,16 +25,9 @@ int main(void)
 
         for (int j = 1; digits.end - digits.begin < 9; j++)
         {
-            char str[11];
-            long product = i * j;
-
-            sprintf(str, "%ld", product);
-
-            for (char* p = str; *p; p++)
+            for (long k = i * j; k; k /= 10)
             {
-                Exception ex = list_add(&digits, *p - '0');
-
-                euler_ok();
+                list_add(&digits, k % 10);
             }
         }
 

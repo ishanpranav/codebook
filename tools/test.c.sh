@@ -51,10 +51,9 @@ done
 
 cat ./../data/id0059.txt | ./../id0059.o
 
-for i in {0060..0064};
+for i in {0060..0065};
 do
     ./../id${i}.o
 done
 
-python3 ../src/id0065.py
 cat ./../data/id0067.txt | ./../id0018.o 67

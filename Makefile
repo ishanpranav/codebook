@@ -111,8 +111,8 @@ id0014.o: src/id0014.c euler.o
 id0015.o: src/id0015.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0016.o: src/id0016.c euler.o series.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o series.o -lgmp
+id0016.o: src/id0016.c euler.o lp_string.o series.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o series.o -lgmp
 
 id0017.o: src/id0017.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -123,8 +123,8 @@ id0018.o: src/id0018.c euler.o
 id0019.o: src/id0019.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0020.o: src/id0020.c euler.o series.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o series.o -lgmp
+id0020.o: src/id0020.c euler.o lp_string.o series.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o series.o -lgmp
 
 id0021.o: src/id0021.c divisor_iterator.o euler.o
 	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o euler.o -lm
@@ -259,8 +259,8 @@ id0063.o: src/id0063.c euler.o math.o
 id0064.o: src/id0064.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm
 
-id0065.o: src/id0065.c euler.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o
+id0065.o: src/id0065.c euler.o lp_string.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o -lgmp
 
 clean:
 	rm -rf *.o

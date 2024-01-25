@@ -1,39 +1,58 @@
+// Licensed under the MIT License.
+
+// Convergents of e
+
 #include <gmp.h>
 #include "../lib/euler.h"
+#include "../lib/exception.h"
+#include "../lib/lp_string.h"
 
 int main(void)
 {
-    mpz_t q;
     mpz_t a[3];
-    mpz_t b[3];
-    int count = 1;
     clock_t start = clock();
 
-    mpz_init_set_ui(a[0], 2);
-    mpz_init(a[1]);
-    mpz_init(a[2]);
-    mpz_init_set_ui(b[0], 1);
-    mpz_init(b[1]);
-    mpz_init(b[2]);
-    mpz_init(q);
+    mpz_init_set_ui(a[0], 0);
+    mpz_init_set_ui(a[1], 1264);
+    mpz_init_set_ui(a[2], 1457);
 
-    for (int i = 0; i < 92; i++)
+    for (int i = 11; i <= 100; i++)
     {
-        mpz_add(q);
-        mpz_add(a[2], a[0], q);
         mpz_set(a[0], a[1]);
-        mpz_set(b[0], b[1]);
+        mpz_set(a[1], a[2]);
 
-        if (math_huge_length(a[0]) > math_huge_length(b[0]))
+        if (i % 3 == 0)
         {
-            count++;
+            mpz_mul_ui(a[2], a[1], (2 * i) / 3);
+            mpz_add(a[2], a[2], a[0]);
         }
+        else
+        {
+            mpz_add(a[2], a[0], a[1]);
+        }
+    }
+
+    LPString digits = lp_string(mpz_sizeinbase(a[2], 10));
+
+    if (!digits)
+    {
+        Exception ex = EXCEPTION_OUT_OF_MEMORY;
+
+        euler_ok();
+    }
+
+    mpz_get_str(digits, 10, a[2]);
+
+    int sum = 0;
+
+    for (char* p = digits; *p; p++)
+    {
+        sum += *p - '0';
     }
 
     mpz_clear(a[0]);
     mpz_clear(a[1]);
-    mpz_clear(b[0]);
-    mpz_clear(b[1]);
+    mpz_clear(a[2]);
 
-    return euler_submit(57, count, start);
+    return euler_submit(57, sum, start);
 }

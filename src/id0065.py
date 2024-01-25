@@ -4,9 +4,9 @@
 
 from time import time
 
-a = [ 0, 1, 2 ]
+a = [ 0, 1264, 1457 ]
 
-for i in range(2, 100 + 1):
+for i in range(11, 100 + 1):
     a[0] = a[1]
     a[1] = a[2]
     
