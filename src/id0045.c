@@ -13,7 +13,7 @@ int main(void)
     {
         x = n * (2 * n - 1);
 
-        if (math_is_polygonal(5, x))
+        if (math_is_polygonal(5, x, NULL))
         {
             break;
         }

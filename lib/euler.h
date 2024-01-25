@@ -85,8 +85,11 @@ bool math_is_palindrome(long long n);
 /**
  * Determines if a given value is a polygonal number.
  * 
- * @param s the number of sides of the polygon.
- * @param x the value to test.
- * @return `true` if `n` is a `s`-gonal number; otherwise, `false`.
+ * @param s       the number of sides of the polygon.
+ * @param x       the value to test.
+ * @param approxN when this method returns, contaisn an approximation for `n`,
+ *                where `x` is the `n`-th `s`-gonal number. This argument is
+ *                passed uninitialized, or `NULL` if the value will not be used.
+ * @return `true` if `x` is a `s`-gonal number; otherwise, `false`.
 */
-bool math_is_polygonal(int s, long x);
+bool math_is_polygonal(int s, long x, long* approxN);

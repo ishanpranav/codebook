@@ -30,7 +30,7 @@ int main(void)
             x += *p - 'A' + 1;
         }
 
-        if (math_is_polygonal(3, x))
+        if (math_is_polygonal(3, x, NULL))
         {
             count++;
         }

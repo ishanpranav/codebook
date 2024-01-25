@@ -29,7 +29,8 @@ int main(void)
                 continue;
             }
 
-            if (!math_is_polygonal(5, d) || !math_is_polygonal(5, k + j))
+            if (!math_is_polygonal(5, d, NULL) || 
+                !math_is_polygonal(5, k + j, NULL))
             {
                 continue;
             }

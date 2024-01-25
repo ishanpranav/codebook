@@ -14,13 +14,13 @@ bool math_is_octagonal_or_smaller_polygonal(int x)
 {
     for (int s = 3; s < 6; s++)
     {
-        if (math_is_polygonal(s, x))
+        if (math_is_polygonal(s, x, NULL))
         {
             return true;
         }
     }
 
-    return math_is_polygonal(7, x) || math_is_polygonal(8, x);
+    return math_is_polygonal(7, x, NULL) || math_is_polygonal(8, x, NULL);
 }
 
 bool math_is_permuted_polygonal(int values[])
@@ -31,7 +31,7 @@ bool math_is_permuted_polygonal(int values[])
     {
         for (int s = 8; s >= 3; s--)
         {
-            if (math_is_polygonal(s, *x))
+            if (math_is_polygonal(s, *x, NULL))
             {
                 flags |= (1 << s);
 
