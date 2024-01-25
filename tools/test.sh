@@ -51,7 +51,7 @@ done
 
 cat ./../data/id0059.txt | ./../id0059.o
 
-for i in {0060..0064};
+for i in {0060..0065};
 do
     ./../id${i}.o
 done

@@ -106,9 +106,10 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 61-
 
-| Id  |                  Problem                  |    Domain     | Result  | Implementation                                                                                                                         |
-| :-: | :---------------------------------------: | :-----------: | :-----: | -------------------------------------------------------------------------------------------------------------------------------------- |
-| 61  | [Cyclical Figurate Numbers](src/id0061.c) | Number theory |   Sum   | [Polygonal number](https://en.wikipedia.org/wiki/Polygonal_number)                                                                     |
-| 62  |    [Cubic Permutations](src/id0062.c)     | Number theory | Minimum | [Multimap](https://en.wikipedia.org/wiki/Multimap), [Daniel J. Bernstein (djb2) hash algorithm](http://www.cse.yorku.ca/~oz/hash.html) |
-| 63  |   [Powerful Digit Counts](src/id0063.c)   | Number theory |  Count  |                                                                                                                                        |
-| 64  |  [Odd Period Square Roots](src/id0064.c)  | Number theory |  Count  | [Continued fraction expansion](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion) |
+| Id  |                  Problem                  |             Domain             | Result  | Implementation                                                                                                                         |
+| :-: | :---------------------------------------: | :----------------------------: | :-----: | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 61  | [Cyclical Figurate Numbers](src/id0061.c) |         Number theory          |   Sum   | [Polygonal number](https://en.wikipedia.org/wiki/Polygonal_number)                                                                     |
+| 62  |    [Cubic Permutations](src/id0062.c)     |         Number theory          | Minimum | [Multimap](https://en.wikipedia.org/wiki/Multimap), [Daniel J. Bernstein (djb2) hash algorithm](http://www.cse.yorku.ca/~oz/hash.html) |
+| 63  |   [Powerful Digit Counts](src/id0063.c)   |         Number theory          |  Count  |                                                                                                                                        |
+| 64  |  [Odd Period Square Roots](src/id0064.c)  |            Algebra             |  Count  | [Continued fraction expansion](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion)           |
+| 65  |     [Convergents of e](src/id0065.c)      | Arbitrary-precision arithmetic |  Count  |                                                                                                                                        |

@@ -9,26 +9,26 @@ int main(void)
     int count = 0;
     clock_t start = clock();
 
-    for (int n = 2; n < 10000; n++)
+    for (int s = 2; s < 10000; s++)
     {
         long isqrt = 0;
 
-        if (math_is_polygonal(4, n, &isqrt))
+        if (math_is_polygonal(4, s, &isqrt))
         {
             continue;
         }
 
-        int a = isqrt;
-        int dn = 0;
-        int k = 1;
+        int a = 0;
+        int r = 1;
         int i = 0;
-        int end = 2 * a;
+        int a0 = isqrt;
+        int end = 2 * a0;
 
-        while (a != end)
+        while (a0 != end)
         {
-            dn = a * k - dn;
-            k = (n - dn * dn) / k;
-            a = (isqrt + dn) / k;
+            a = a0 * r - a;
+            r = (s - a * a) / r;
+            a0 = (isqrt + a) / r;
             i++;
         }
     
