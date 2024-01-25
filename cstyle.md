@@ -47,6 +47,7 @@ is impractical, use numeric suffixes instead.
 | :----: | :------------------------------------------------------------------------------------------- |
 |  `a`   | arbitrary object, area                                                                       |
 |  `b`   | blue color component, boundary points in Pick\'s Theorem                                     |
+|  `cb`  | cube                                                                                         |
 |  `d`   | divisor                                                                                      |
 |  `e`   | arbitrary edge                                                                               |
 |  `ef`  | even Fibonacci number                                                                        |

@@ -75,6 +75,30 @@ LPString lp_string_builder_to_string(LPStringBuilder instance)
     return result;
 }
 
+bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right)
+{
+    size_t length = left->end - left->begin;
+
+    if ((size_t)(right->end - right->begin) != length)
+    {
+        return false;
+    }
+
+    return memcmp(left->begin, right->begin, length) == 0;
+}
+
+size_t lp_string_builder_get_hash_code(LPStringBuilder instance)
+{
+    size_t result = 5381;
+    
+    for (char* it = instance->begin; it < instance->end; it++)
+    {
+        result = (result << 5) + result + *it;
+    }
+
+    return result;
+}
+
 void finalize_lp_string_builder(LPStringBuilder instance)
 {
     free(instance->begin);

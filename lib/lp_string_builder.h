@@ -1,5 +1,6 @@
 // Licensed under the MIT License.
 
+#include <stdbool.h>
 #include <stddef.h>
 #include "exception.h"
 #include "lp_string.h"
@@ -50,6 +51,21 @@ void lp_string_builder_clear(LPStringBuilder instance);
  *         responsible.
 */
 LPString lp_string_builder_to_string(LPStringBuilder instance);
+
+/**
+ * 
+ * @param left
+ * @param right
+ * @return 
+*/
+bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right);
+
+/**
+ * 
+ * @param instance
+ * @return 
+*/
+size_t lp_string_builder_get_hash_code(LPStringBuilder instance);
 
 /**
  * Frees all resources.

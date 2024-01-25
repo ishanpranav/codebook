@@ -79,7 +79,7 @@ void list_clear(List instance)
     instance->end = instance->begin;
 }
 
-static int list_item_compare(Object left, Object right)
+static int long_long_compare(Object left, Object right)
 {
     long long leftValue = *(long long*)left;
     long long rightValue = *(long long*)right;
@@ -103,15 +103,14 @@ void list_sort(List instance)
         instance->begin,
         instance->end - instance->begin,
         sizeof * instance->begin,
-        list_item_compare);
+        long_long_compare);
 }
 
 bool list_equals(List left, List right)
 {
     size_t length = left->end - left->begin;
-    size_t rightLength = right->end - right->begin;
-
-    if (rightLength != length)
+    
+    if ((size_t)(right->end - right->begin) != length)
     {
         return false;
     }
