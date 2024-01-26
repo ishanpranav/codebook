@@ -53,17 +53,21 @@ void lp_string_builder_clear(LPStringBuilder instance);
 LPString lp_string_builder_to_string(LPStringBuilder instance);
 
 /**
+ * Determines whether two `LPStringBuilders` represent the same string value.
  * 
- * @param left
- * @param right
- * @return 
+ * @param left  a string builder to compare to `right`. 
+ * @param right a string builder to compare to `left`.
+ * @return `true` if the two string builders represent the same string values;
+ *         otherwise, `false`.
 */
 bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right);
 
 /**
+ * Returns the hash code for this string builder, computed using its string
+ * value.
  * 
- * @param instance
- * @return 
+ * @param instance the `LPStringBuilder` instance.
+ * @return An integer hash code.
 */
 size_t lp_string_builder_get_hash_code(LPStringBuilder instance);
 

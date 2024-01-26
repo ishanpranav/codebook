@@ -7,8 +7,7 @@
 
 int main(void)
 {
-    mpz_t sum;
-    mpz_t term;
+    mpz_t sum, term;
     clock_t start = clock();
 
     mpz_init_set_ui(sum, 1);
@@ -24,8 +23,7 @@ int main(void)
     
     double result = mpz_get_d(sum);
 
-    mpz_clear(sum);
-    mpz_clear(term);
+    mpz_clears(sum, term, NULL);
 
     return euler_submit(48, result, start);
 }

@@ -12,7 +12,7 @@ int main(void)
     mpz_t a[3];
     clock_t start = clock();
 
-    mpz_init_set_ui(a[0], 0);
+    mpz_init(a[0]);
     mpz_init_set_ui(a[1], 1264);
     mpz_init_set_ui(a[2], 1457);
 
@@ -50,9 +50,7 @@ int main(void)
         sum += *p - '0';
     }
 
-    mpz_clear(a[0]);
-    mpz_clear(a[1]);
-    mpz_clear(a[2]);
+    mpz_clears(a[0], a[1], a[2], NULL);
 
     return euler_submit(57, sum, start);
 }

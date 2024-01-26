@@ -245,7 +245,7 @@ id0059.o: src/id0059.c euler.o lp_string_builder.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string_builder.o
 
 id0060.o: src/id0060.c miller_rabin_primality_test.o euler.o math.o $(SIEVE_O)
-	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o math.SIEVE_O $(SIEVE_O) -lm
+	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o math.o $(SIEVE_O) -lm
 
 id0061.o: src/id0061.c euler.o list.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o math.o -lm
@@ -261,6 +261,9 @@ id0064.o: src/id0064.c euler.o math.o
 
 id0065.o: src/id0065.c euler.o lp_string.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o -lgmp
+
+id0066.o: src/id0066.c euler.o math.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lgmp -lm
 
 clean:
 	rm -rf *.o

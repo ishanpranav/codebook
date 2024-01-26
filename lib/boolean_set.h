@@ -18,7 +18,7 @@ typedef struct BooleanSet* BooleanSet;
  * Initializes a `BooleanSet` instance.
  *
  * @param instance the `BooleanSet` instance.
- * @param capacity the capacity.
+ * @param capacity the required minimum capacity.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
@@ -34,6 +34,16 @@ Exception boolean_set(BooleanSet instance, size_t capacity);
 */
 void boolean_set_from_array(BooleanSet instance, bool values[], size_t length);
 
+/**
+ * Ensures that the capacity of this set is at least the specified capacity.
+ * If the current capacity is less than the required minimum capacity, it is
+ * increased to at least the specified capacity.
+ * 
+ * @param instance the `BooleanSet` instance.
+ * @param capacity the required minimum capacity.
+ * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
+ *         the operation; otherwise `0`.
+*/
 Exception boolean_set_ensure_capacity(BooleanSet instance, size_t capacity);
 
 /**

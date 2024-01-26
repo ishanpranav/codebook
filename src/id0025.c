@@ -7,15 +7,11 @@
 
 int main(void)
 {
-    mpz_t f0;
-    mpz_t f1;
-    mpz_t f2;
     unsigned int n = 12;
+    mpz_t f0, f1, f2;
     clock_t start = clock();
 
-    mpz_init(f0);
-    mpz_init(f1);
-    mpz_init(f2);
+    mpz_inits(f0, f1, f2, NULL);
     mpz_fib2_ui(f1, f0, n - 1);
 
     while (mpz_sizeinbase(f2, 10) < 1000)
@@ -27,9 +23,7 @@ int main(void)
         n++;
     }
 
-    mpz_clear(f0);
-    mpz_clear(f1);
-    mpz_clear(f2);
+    mpz_clears(f0, f1, f2, NULL);
 
     return euler_submit(25, n, start);
 }

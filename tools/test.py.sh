@@ -2,7 +2,7 @@
 
 python3 ../src/id0051.py
 
-for i in {0060..0065};
+for i in {0060..0066};
 do
     python3 ../src/id${i}.py
 done

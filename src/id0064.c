@@ -11,27 +11,27 @@ int main(void)
 
     for (int s = 2; s < 10000; s++)
     {
-        long isqrt = 0;
+        long isqrt;
 
         if (math_is_polygonal(4, s, &isqrt))
         {
             continue;
         }
 
-        int a = 0;
-        int r = 1;
+        int a = isqrt;
+        int h = 0;
         int i = 0;
-        int a0 = isqrt;
-        int end = 2 * a0;
+        int k = 1;
+        int end = 2 * a;
 
-        while (a0 != end)
+        while (a != end)
         {
-            a = a0 * r - a;
-            r = (s - a * a) / r;
-            a0 = (isqrt + a) / r;
+            h = a * k - h;
+            k = (s - h * h) / k;
+            a = (isqrt + h) / k;
             i++;
         }
-    
+
         count += i % 2;
     }
 

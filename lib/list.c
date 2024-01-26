@@ -1,7 +1,5 @@
 // Licensed under the MIT License.
 
-#include <math.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include "euler.h"
 #include "list.h"

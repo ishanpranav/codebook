@@ -9,19 +9,20 @@ start = time()
 count = 0
 
 for n in range(2, 10000):
-    nthroot = integer_nthroot(n, 2)
+    isqrt, is_square = integer_nthroot(n, 2)
     
-    if nthroot[1]: continue
+    if is_square: continue
 
-    a = nthroot[0]
-    dn = 0
+    h = 0
     k = 1
     i = 0
+    a = isqrt
+    end = 2 * a
     
-    while a != 2 * nthroot[0]:
-        dn = a * k - dn
-        k = (n - dn * dn) // k
-        a = (nthroot[0] + dn) // k
+    while a != end:
+        h = a * k - h
+        k = (n - h * h) // k
+        a = (isqrt + h) // k
         i += 1
     
     count += i % 2

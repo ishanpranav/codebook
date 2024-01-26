@@ -2,6 +2,7 @@
 
 #ifndef LIST_95a94c0379b44bd3967523c81d4caa55
 #define LIST_95a94c0379b44bd3967523c81d4caa55
+#include <stdbool.h>
 #include <stddef.h>
 #include "exception.h"
 
