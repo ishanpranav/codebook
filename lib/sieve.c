@@ -15,15 +15,7 @@ static Exception sieve_extend(Sieve instance, long long max)
     
     long long end = sqrt(max);
 
-    for (long long* p = instance->primes.begin; p < instance->primes.end; p++)
-    {
-        for (long long n = *p * *p; n < max; n += *p)
-        {
-            instance->composites.begin[n - 2] = true;
-        }
-    }
-
-    for (long long m = instance->max; m <= end; m++)
+    for (long long m = 2; m <= end; m++)
     {
         if (instance->composites.begin[m - 2])
         {

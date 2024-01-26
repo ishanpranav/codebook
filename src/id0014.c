@@ -6,9 +6,9 @@
 
 int main(void)
 {
-    clock_t start = clock();
-    int maxLength = 10;
     int result = 0;
+    int maxLength = 10;
+    clock_t start = clock();
 
     for (long i = 13; i < 1000000l; i++)
     {

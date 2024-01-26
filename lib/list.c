@@ -96,15 +96,6 @@ static int long_long_compare(Object left, Object right)
     return 0;
 }
 
-void list_sort(List instance)
-{
-    qsort(
-        instance->begin,
-        instance->end - instance->begin,
-        sizeof * instance->begin,
-        long_long_compare);
-}
-
 void list_reverse(List instance)
 {
     if (instance->begin == instance->end)
@@ -122,6 +113,15 @@ void list_reverse(List instance)
         left++;
         right--;
     }
+}
+
+void list_sort(List instance)
+{
+    qsort(
+        instance->begin,
+        instance->end - instance->begin,
+        sizeof * instance->begin,
+        long_long_compare);
 }
 
 bool list_equals(List left, List right)

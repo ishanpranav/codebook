@@ -4,24 +4,7 @@
 
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/sieve_iterator.h"
-
-static long long math_max_prime_factor(Sieve primes, long long n) 
-{
-    long long result = -1;
-    struct SieveIterator it;
-
-    for (sieve_begin(&it, primes); n != 1; sieve_next(&it)) 
-    {
-        while (n % *it.current == 0)
-        {
-            result = *it.current;
-            n /= *it.current;
-        }
-    }
-
-    return result;
-}
+#include "../lib/factor_iterator.h"
 
 int main(void)
 {
@@ -31,7 +14,16 @@ int main(void)
 
     euler_ok();
 
-    long long max = math_max_prime_factor(&primes, 600851475143ll);
+    struct FactorIterator it;
 
-    return euler_submit(3, max, start);
+    factor_begin(&it, 600851475143ll, &primes);
+
+    while (!factor_end(&it))
+    {
+        factor_next(&it);
+    }
+
+    finalize_sieve(&primes);
+    
+    return euler_submit(3, it.current, start);
 }

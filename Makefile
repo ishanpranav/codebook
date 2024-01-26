@@ -28,11 +28,6 @@ miller_rabin_primality_test.o: \
 	lib/primality_tests/miller_rabin_primality_test.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-sieve_primality_test.o: \
-	lib/primality_tests/sieve_primality_test.c \
-	lib/primality_tests/sieve_primality_test.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
 boolean_set.o: lib/boolean_set.c lib/boolean_set.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -40,6 +35,9 @@ divisor_iterator.o: lib/divisor_iterator.c lib/divisor_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 euler.o: lib/euler.c lib/euler.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+factor_iterator.o: lib/factor_iterator.c lib/factor_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 list.o: lib/list.c lib/list.h
@@ -72,8 +70,8 @@ id0001.o: src/id0001.c euler.o
 id0002.o: src/id0002.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0003.o: src/id0003.c euler.o $(SIEVE_O)
-	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm
+id0003.o: src/id0003.c euler.o factor_iterator.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
 id0004.o: src/id0004.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -99,8 +97,8 @@ id0010.o: src/id0010.c euler.o $(SIEVE_O)
 id0011.o: src/id0011.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0012.o: src/id0012.c divisor_iterator.o euler.o $(SIEVE_O)
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o euler.o $(SIEVE_O) -lm
+id0012.o: src/id0012.c euler.o factor_iterator.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
 id0013.o: src/id0013.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -126,14 +124,14 @@ id0019.o: src/id0019.c euler.o
 id0020.o: src/id0020.c euler.o lp_string.o series.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o series.o -lgmp
 
-id0021.o: src/id0021.c divisor_iterator.o euler.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o euler.o -lm
+id0021.o: src/id0021.c euler.o factor_iterator.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
 id0022.o: src/id0022.c euler.o $(LP_STRING_COLLECTION_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(LP_STRING_COLLECTION_O)
 
-id0023.o: src/id0023.c boolean_set.o divisor_iterator.o euler.o list.o
-	$(CC) $(CFLAGS) $< -o $@ boolean_set.o divisor_iterator.o euler.o list.o -lm
+id0023.o: src/id0023.c euler.o factor_iterator.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
 id0024.o: src/id0024.c euler.o list.o permutation_iterator.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o permutation_iterator.o

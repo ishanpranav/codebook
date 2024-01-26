@@ -58,16 +58,3 @@ void divisor_next(DivisorIterator iterator)
         iterator->state = DIVISOR_ITERATOR_STATE_INITIAL;
     }
 }
-
-long long divisor_sum(long long n)
-{
-    int result = 0;
-    struct DivisorIterator it;
-
-    for (divisor_begin(&it, n); !divisor_end(&it); divisor_next(&it))
-    {
-        result += it.current;
-    }
-
-    return result;
-}
