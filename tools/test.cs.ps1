@@ -1,3 +1,4 @@
 # Licensed under the MIT License.
 
-./../id0061
+csi ../src/id0061.csx
+csi ../src/id0066.csx

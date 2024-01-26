@@ -32,7 +32,7 @@ for d in range(2, 1000 + 1):
         y[2] = a * y[1] + y[0]
 
     if x[2] > maxX: 
-        maxX = x[2]
         maxD = d
+        maxX = x[2]
         
 print(f"0066{maxD:>64}    {time() - start:.6f}")
