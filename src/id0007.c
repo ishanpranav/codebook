@@ -6,7 +6,7 @@
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 
-long math_max_prime(int k)
+static long math_max_prime(int k)
 {
     double logK = log(k);
 

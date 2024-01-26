@@ -72,8 +72,8 @@ id0001.o: src/id0001.c euler.o
 id0002.o: src/id0002.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0003.o: src/id0003.c euler.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o -lm
+id0003.o: src/id0003.c euler.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm
 
 id0004.o: src/id0004.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -99,8 +99,8 @@ id0010.o: src/id0010.c euler.o $(SIEVE_O)
 id0011.o: src/id0011.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0012.o: src/id0012.c divisor_iterator.o euler.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o euler.o -lm
+id0012.o: src/id0012.c divisor_iterator.o euler.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o euler.o $(SIEVE_O) -lm
 
 id0013.o: src/id0013.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o

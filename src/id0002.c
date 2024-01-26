@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-long math_even_fibonacci_sum(long n)
+static long math_even_fibonacci_sum(long n)
 {
     if (n < 2)
     {

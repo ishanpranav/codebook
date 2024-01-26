@@ -4,37 +4,34 @@
 
 #include <math.h>
 #include "../lib/euler.h"
+#include "../lib/sieve_iterator.h"
 
-long long math_max_prime_factor(long long n)
+static long long math_max_prime_factor(Sieve primes, long long n) 
 {
-    long long max = 0;
-    long long sqrtN = ceil(sqrt(n));
+    long long result = -1;
+    struct SieveIterator it;
 
-    for (long long i = 2; i <= sqrtN; i++) 
+    for (sieve_begin(&it, primes); n != 1; sieve_next(&it)) 
     {
-        while (n % i == 0) 
+        while (n % *it.current == 0)
         {
-            n /= i;
-
-            if (i > max) 
-            {
-                max = i;
-            }
+            result = *it.current;
+            n /= *it.current;
         }
     }
 
-    if (!max || (n > 1 && n > max)) 
-    {
-        return n;
-    }
-
-    return max;
+    return result;
 }
 
 int main(void)
 {
+    struct Sieve primes;
     clock_t start = clock();
-    long long max = math_max_prime_factor(600851475143);
+    Exception ex = sieve(&primes, 30);
+
+    euler_ok();
+
+    long long max = math_max_prime_factor(&primes, 600851475143ll);
 
     return euler_submit(3, max, start);
 }

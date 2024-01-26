@@ -4,7 +4,7 @@
 
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/sieve.h"
+#include "../lib/sieve_iterator.h"
 
 int main(void)
 {

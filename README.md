@@ -104,7 +104,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 59  |            [XOR Decryption](src/id0059.c)             |          Cryptography          |     Sum     | [Frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis)                                                                                                                                                                                                   |
 | 60  |            [Prime Pair Sets](src/id0060.c)            |         Number theory          |   Minimum   | [Miller–Rabin primality test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test), [Modular exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation), [Exponentiation by squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring) |
 
-### 61-
+### 61-66, 68-
 
 | Id  |                  Problem                  |             Domain             | Result  | Implementation                                                                                                                         |
 | :-: | :---------------------------------------: | :----------------------------: | :-----: | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -113,4 +113,4 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 63  |   [Powerful Digit Counts](src/id0063.c)   |         Number theory          |  Count  |                                                                                                                                        |
 | 64  |  [Odd Period Square Roots](src/id0064.c)  |            Algebra             |  Count  | [Continued fraction expansion](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion)           |
 | 65  |     [Convergents of e](src/id0065.c)      | Arbitrary-precision arithmetic |  Count  |                                                                                                                                        |
-| 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic | Maximum |                                                                                                                                        |
+| 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic | Maximum | [Pell\'s equation](https://mathworld.wolfram.com/PellEquation.html) |

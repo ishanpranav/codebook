@@ -6,7 +6,7 @@
 #include "../lib/euler.h"
 #include "../lib/series.h"
 
-long long series_max_product(Series series, int k)
+static long long series_max_product(Series series, int k)
 {
     long long result = 0;
 

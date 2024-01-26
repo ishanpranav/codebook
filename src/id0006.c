@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-long math_natural_sum_of_squares(long n)
+static long math_natural_sum_of_squares(long n)
 {
     return n * (n + 1) * (2 * n + 1) / 6;
 }

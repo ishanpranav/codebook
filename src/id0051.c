@@ -4,7 +4,7 @@
 
 #include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/sieve.h"
+#include "../lib/sieve_iterator.h"
 
 bool mask_list_mask(List value)
 {

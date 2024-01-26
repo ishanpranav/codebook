@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-long math_lcm(long a, long b)
+static long math_lcm(long a, long b)
 {
     return (a / math_gcd(a, b)) * b;
 }
