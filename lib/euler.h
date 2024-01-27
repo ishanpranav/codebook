@@ -9,6 +9,7 @@
     fprintf(stderr, "Error: %d at %s line %d.\n", ex, __FILE__, __LINE__); \
     return ex; \
 } end_macro
+#define math_concat(left, ...) math_concat_impl(left, __VA_ARGS__, 0);
 
 /**
  * Submits a solution for the problem with the given identifier.
@@ -67,14 +68,15 @@ long math_gcd(long a, long b);
 long long math_length(long long b, long long a);
 
 /**
- * Concatenates two integers.
+ * Concatenates a span of zero-terminated integers.
  * 
  * @param left  the left digits.
- * @param right the right digits.
+ * @param right the first segment of right digits.
  * @return An integer formed by writing out the digits of `left` immediately
- *         followed by the digits of `right`.
+ *         followed by the digits of `right`, then followed by any additional
+ *         integers in the order specified.
 */
-long long math_concat(long long left, long long right);
+long long math_concat_impl(long long left, long long right, ...);
 
 /**
  * Reverses the digits of a given value.

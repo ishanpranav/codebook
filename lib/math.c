@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdarg.h>
 #include "euler.h"
 
 bool math_is_polygonal(int s, long x, long* approxN)
@@ -21,7 +22,16 @@ long long math_length(long long b, long long a)
     return 1 + a * log10(b);
 }
 
-long long math_concat(long long left, long long right)
+long long math_concat_impl(long long left, long long right, ...)
 {
-    return left * pow(10, math_length(right, 1)) + right;
+    va_list argl;
+
+    for (va_start(argl, right); right; right = va_arg(argl, long long))
+    {
+        left = left * pow(10, math_length(right, 1)) + right;
+    }
+
+    va_end(argl);
+
+    return left;
 }

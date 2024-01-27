@@ -7,23 +7,18 @@ from time import time
 
 maxString = ""
 start = time()
+l = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 
-for l in permutations([ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]):
-    if l[0] > l[3] or l[0] > l[5] or l[0] > l[7] or l[0] > l[9]: continue
-    if l[3] != 10 and l[5] != 10 and l[7] != 10 and l[9] != 10: continue
+for a, b, c, d, e, f, g, h, i, j in permutations(l):
+    if a > d or a > f or a > h or a > j: continue
+    if d != 10 and f != 10 and h != 10 and j != 10: continue
     
-    sum = l[0] + l[1] + l[2]
+    sum = a + b + c
     
-    if l[2] + l[3] + l[4] != sum or l[4] + l[5] + l[6] != sum: continue
-    if l[6] + l[7] + l[8] != sum or l[8] + l[9] + l[1] != sum: continue
+    if c + d + e != sum or e + f + g != sum: continue
+    if g + h + i != sum or i + j + b != sum: continue
     
-    string = "".join(map(str, [
-        l[0], l[1], l[2], 
-        l[3], l[2], l[4], 
-        l[5], l[4], l[6], 
-        l[7], l[6], l[8], 
-        l[9], l[8], l[1]
-    ]))
+    string = "".join(map(str, [ a, b, c, d, c, e, f, e, g, h, g, i, j, i, b ]))
     
     if string > maxString:
         maxString = string
