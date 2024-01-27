@@ -1,3 +1,5 @@
+<!-- Licensed under the MIT License. -->
+
 # Project Euler
 
 Efficient Project Euler solutions in C language
@@ -17,7 +19,8 @@ languages. The most difficult problems are implemented in 10 languages.
 
 | Difficulty | Language                   |
 | :--------: | -------------------------- |
-|            | [C](tools/test.sh)         |
+| (Trivial)  | [Shell](tools/test.sh)     |
+|   \> 0%    | [C](tools/test.sh)         |
 |   \> 10%   | [Python](tools/test.py.sh) |
 |   \> 20%   | [C\#](tools/test.cs.ps1)   |
 
@@ -113,4 +116,4 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 63  |   [Powerful Digit Counts](src/id0063.c)   |         Number theory          |  Count  |                                                                                                                                        |
 | 64  |  [Odd Period Square Roots](src/id0064.c)  |            Algebra             |  Count  | [Continued fraction expansion](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion)           |
 | 65  |     [Convergents of e](src/id0065.c)      | Arbitrary-precision arithmetic |  Count  |                                                                                                                                        |
-| 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic | Maximum | [Pell\'s equation](https://mathworld.wolfram.com/PellEquation.html) |
+| 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic | Maximum | [Pell\'s equation](https://mathworld.wolfram.com/PellEquation.html)                                                                    |

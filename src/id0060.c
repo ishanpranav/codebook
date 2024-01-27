@@ -9,11 +9,6 @@
 #include "../lib/sieve.h"
 #define MAX_SEARCH 10000
 
-long math_concat(int a, int b)
-{
-    return a * pow(10, math_length(b, 1)) + b;
-}
-
 bool math_is_prime_pair(Sieve primes, int a, int b)
 {
     long concat = math_concat(a, b);

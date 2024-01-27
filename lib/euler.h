@@ -64,7 +64,17 @@ long math_gcd(long a, long b);
  * @param a the exponent.
  * @return The number of digits in the expanded expression `b^a`.
 */
-int math_length(int b, int a);
+long long math_length(long long b, long long a);
+
+/**
+ * Concatenates two integers.
+ * 
+ * @param left  the left digits.
+ * @param right the right digits.
+ * @return An integer formed by writing out the digits of `left` immediately
+ *         followed by the digits of `right`.
+*/
+long long math_concat(long long left, long long right);
 
 /**
  * Reverses the digits of a given value.

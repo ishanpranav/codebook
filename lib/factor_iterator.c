@@ -22,7 +22,7 @@ void factor_next(FactorIterator iterator)
     {
         iterator->current = *iterator->iterator.current;
         iterator->remainder = 0;
-        iterator->currentCount = 1;
+        iterator->exponent = 1;
 
         return;
     }
@@ -34,12 +34,12 @@ void factor_next(FactorIterator iterator)
 
     iterator->current = *iterator->iterator.current;
     iterator->remainder /= iterator->current;
-    iterator->currentCount = 1;
+    iterator->exponent = 1;
 
     while (iterator->remainder % iterator->current == 0)
     {
         iterator->remainder /= iterator->current;
-        iterator->currentCount++;
+        iterator->exponent++;
     }
 }
 
@@ -50,7 +50,7 @@ int factor_divisor_count(long long n, Sieve primes)
 
     for (factor_begin(&it, n, primes); !factor_end(&it); factor_next(&it))
     {
-        result *= it.currentCount + 1;
+        result *= it.exponent + 1;
     }
 
     return result;
@@ -63,7 +63,7 @@ int factor_divisor_sum(long long n, Sieve primes)
 
     for (factor_begin(&it, n, primes); !factor_end(&it); factor_next(&it))
     {
-        result *= (pow(it.current, it.currentCount + 1) - 1) / (it.current - 1);
+        result *= (pow(it.current, it.exponent + 1) - 1) / (it.current - 1);
     }
     
     return result;

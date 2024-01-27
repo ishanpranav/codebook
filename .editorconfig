@@ -1,3 +1,5 @@
+# Licensed under the MIT License.
+
 [*]
 cpp_indent_braces=false
 cpp_indent_multi_line_relative_to=innermost_parenthesis

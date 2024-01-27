@@ -9,13 +9,13 @@
 #define BUFFER_SIZE 512
 #define MAX_HEIGHT 100
 
-int main(int count, LPString args[])
+int main(int argc, LPString argv[])
 {
     int id;
 
-    if (count == 2)
+    if (argc == 2)
     {
-        id = strtol(args[1], NULL, 10);
+        id = strtol(argv[1], NULL, 10);
     }
     else
     {

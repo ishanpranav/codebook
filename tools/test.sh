@@ -58,4 +58,5 @@ done
 
 python3 ../src/id0065.py
 ./../id0066.o
-cat ./../data/id0067.txt | ./../id0018.o 67
+cat ./../data/id0067.txt | ./../src/id0067.sh
+./../id0068.o

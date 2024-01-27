@@ -8,7 +8,7 @@ struct FactorIterator
     struct SieveIterator iterator;
     long long current;
     long long remainder;
-    int currentCount;
+    int exponent;
 };
 
 /** Iterates over the prime factors of a positive integer. */

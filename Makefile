@@ -1,3 +1,5 @@
+# Licensed under the MIT License.
+
 CC = gcc
 CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 
@@ -262,6 +264,9 @@ id0065.o: src/id0065.c euler.o lp_string.o
 
 id0066.o: src/id0066.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lgmp -lm
+
+id0068.o: src/id0068.c euler.o list.o math.o permutation_iterator.o 
+	$(CC) $(CFLAGS) $< -o $@ euler.o list.o math.o permutation_iterator.o -lm
 
 clean:
 	rm -rf *.o

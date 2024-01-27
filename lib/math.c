@@ -16,7 +16,12 @@ bool math_is_polygonal(int s, long x, long* approxN)
     return n == localApproxN;
 }
 
-int math_length(int b, int a)
+long long math_length(long long b, long long a)
 {
-    return 1 + (int)(a * log10(b));
+    return 1 + a * log10(b);
+}
+
+long long math_concat(long long left, long long right)
+{
+    return left * pow(10, math_length(right, 1)) + right;
 }

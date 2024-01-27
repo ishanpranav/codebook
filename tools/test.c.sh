@@ -55,5 +55,3 @@ for i in {0060..0066};
 do
     ./../id${i}.o
 done
-
-cat ./../data/id0067.txt | ./../id0018.o 67
