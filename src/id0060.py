@@ -22,8 +22,9 @@ for i in range(len(primes)):
     for j in range(i + 1, len(primes)):
         b = primes[j]
         
-        if math_is_prime_pair(a, b):
-            candidates.append(b)
+        if not math_is_prime_pair(a, b): continue
+        
+        candidates.append(b)
     
     for j in range(len(candidates)):
         for k in range(j + 1, len(candidates)):

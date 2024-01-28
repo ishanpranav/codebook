@@ -1,3 +1,7 @@
+// Licensed under the MIT License.
+
+// Totient Maximum
+
 #include "../lib/euler.h"
 #include "../lib/sieve_iterator.h"
 

@@ -15,8 +15,9 @@ def mask_list_mask(value: list[int]) -> bool:
         if counts[i] < 2: continue
         
         for j in range(len(value)):
-            if value[j] == i:
-                value[j] = -1
+            if value[j] != i: continue
+
+            value[j] = -1
             
         return True
 

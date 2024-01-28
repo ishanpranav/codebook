@@ -19,7 +19,8 @@ for a, b, c, d, e, f, g, h, i, j in permutations(range(1, 10 + 1)):
     
     string = "".join(map(str, [ a, b, c, d, c, e, f, e, g, h, g, i, j, i, b ]))
     
-    if string > maxString:
-        maxString = string
+    if string <= maxString: continue
+
+    maxString = string
 
 print(f"0068{maxString:>64}    {time() - start:.6f}")

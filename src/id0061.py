@@ -29,9 +29,10 @@ def math_is_permuted_polygonal(values: list) -> bool:
         
     for x in values:
         for s in range(8, 2, -1):
-            if math_is_polygonal(s, x):
-                flags[s] = True
-                break
+            if not math_is_polygonal(s, x): continue
+            
+            flags[s] = True
+            break
             
     return all(flags.values())
     
