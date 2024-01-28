@@ -10,24 +10,20 @@ int main(void)
 {
     struct List digits;
     clock_t start = clock();
-    Exception ex = list(&digits, 9);
+    Exception ex = list(&digits, 10);
 
     euler_ok();
 
     for (int i = 1; i <= 3; i++)
     {
-        ex = list_add(&digits, i);
-
-        euler_ok();
+        list_add(&digits, i);
     }
 
     long max = 2143;
 
     for (int i = 4; i <= 9; i++)
     {
-        ex = list_add(&digits, i);
-
-        euler_ok();
+        list_add(&digits, i);
 
         struct PermutationIterator it;
 

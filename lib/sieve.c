@@ -3,7 +3,6 @@
 #include <math.h>
 #include "divisor_iterator.h"
 #include "sieve_iterator.h"
-#include "sieve.h"
 
 static Exception sieve_extend(Sieve instance, long long max)
 {

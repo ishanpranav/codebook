@@ -32,26 +32,44 @@ void list_from_array(List instance, long long values[], size_t length)
     instance->capacity = length;
 }
 
+Exception list_ensure_capacity(List instance, size_t capacity)
+{
+    if (instance->capacity >= capacity)
+    {
+        return 0;
+    }
+
+    size_t newCapacity = instance->capacity * 2;
+
+    if (capacity > newCapacity)
+    {
+        newCapacity = capacity;
+    }
+
+    long long* newBegin;
+
+    newBegin = realloc(instance->begin, newCapacity * sizeof * newBegin);
+
+    if (!newBegin)
+    {
+        return EXCEPTION_OUT_OF_MEMORY;
+    }
+
+    instance->capacity = newCapacity;
+    instance->end += newBegin - instance->begin;
+    instance->begin = newBegin;
+
+    return 0;
+}
+
 Exception list_add(List instance, long long item)
 {
-    size_t length = instance->end - instance->begin;
+    size_t capacity = instance->end - instance->begin + 1;
+    Exception ex = list_ensure_capacity(instance, capacity);
 
-    if (length + 1 > instance->capacity)
+    if (ex)
     {
-        long long* newBegin;
-        size_t newCapacity = instance->capacity * 2;
-        size_t newSize = newCapacity * sizeof * newBegin;
-
-        newBegin = realloc(instance->begin, newSize);
-
-        if (!newBegin)
-        {
-            return EXCEPTION_OUT_OF_MEMORY;
-        }
-
-        instance->capacity = newCapacity;
-        instance->begin = newBegin;
-        instance->end = newBegin + length;
+        return ex;
     }
 
     *instance->end = item;
@@ -105,7 +123,7 @@ void list_reverse(List instance)
 
     long long* left = instance->begin;
     long long* right = instance->end - 1;
-    
+
     while (left < right)
     {
         euler_swap(left, right);
@@ -127,7 +145,7 @@ void list_sort(List instance)
 bool list_equals(List left, List right)
 {
     size_t length = left->end - left->begin;
-    
+
     if ((size_t)(right->end - right->begin) != length)
     {
         return false;

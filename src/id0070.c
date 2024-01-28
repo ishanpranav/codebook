@@ -59,7 +59,6 @@ int main(void)
             }
 
             list_clear(&nDigits);
-            list_clear(&phiDigits);
 
             for (long k = n; k; k /= 10)
             {
@@ -67,6 +66,8 @@ int main(void)
 
                 euler_ok();
             }
+            
+            list_clear(&phiDigits);
 
             for (long k = phi; k; k /= 10)
             {

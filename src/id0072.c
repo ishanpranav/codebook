@@ -13,11 +13,13 @@ int main(void)
 
     euler_ok();
 
-    ex = totient_range(&totients, 1000001);
+    ex = totient_range(&totients, 1000001l);
 
     euler_ok();
 
     long long summatoryTotient = list_sum(&totients) - totients.begin[1];
     
+    finalize_list(&totients);
+
     return euler_submit(72, summatoryTotient, start);
 }

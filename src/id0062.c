@@ -91,14 +91,7 @@ Exception lookup_add(
         return ex;
     }
 
-    ex = list_add(&entry->values, value);
-
-    if (ex)
-    {
-        free(entry);
-
-        return ex;
-    }
+    list_add(&entry->values, value);
 
     if (!instance->begin[hash].firstEntry)
     {

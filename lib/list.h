@@ -42,10 +42,22 @@ void list_from_array(List instance, long long values[], size_t length);
  *
  * @param instance the `List` instance.
  * @param item     the item to add.
+ * @return An exception; otherwise `0`. This method always returns `0` if the
+ *         current capacity is sufficient.
+*/
+Exception list_add(List instance, long long item);
+
+/**
+ * Ensures that the capacity of this list is at least the specified capacity.
+ * If the current capacity is less than the required minimum capacity, it is
+ * increased to at least the specified capacity.
+ * 
+ * @param instance the `List` instance.
+ * @param capacity the required minimum capacity.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception list_add(List instance, long long item);
+Exception list_ensure_capacity(List instance, size_t capacity);
 
 /**
  * Determines whether an element is in the list.
