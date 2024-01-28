@@ -97,7 +97,7 @@ void sieve_jump(SieveIterator iterator, long long min)
     if (iterator->values->max > min)
     {
         long long* left = iterator->values->primes.begin;
-        long long* right = iterator->values->primes.end;
+        long long* right = iterator->values->primes.end - 1;
 
         while (left != right)
         {

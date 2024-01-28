@@ -13,3 +13,4 @@ do
 done
 
 python3 ../src/id0068.py
+python3 ../src/id0070.py

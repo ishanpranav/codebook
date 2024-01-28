@@ -73,7 +73,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |           Sum           |                                                                              |
 | 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |          Count          | Dynamic programming                                                          |
 | 32  |     [Pandigital Products](src/id0032.c)     | Number theory |           Sum           |                                                                              |
-| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest common divisor |                                                                              |
+| 33  | [Digit Cancelling Fractions](src/id0033.c)  |   Rationals   | Greatest common divisor |                                                                              |
 | 34  |      [Digit Factorials](src/id0034.c)       | Number theory |           Sum           | [Factorial](https://en.wikipedia.org/wiki/Factorial)                         |
 | 35  |       [Circular Primes](src/id0035.c)       | Number theory |          Count          | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime)               |
 | 36  |   [Double-base Palindromes](src/id0036.c)   | Number theory |           Sum           | [Radix](https://en.wikipedia.org/wiki/Radix)                                 |
@@ -109,14 +109,15 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 61-66, 68-
 
-| Id  |                  Problem                  |             Domain             | Result  | Implementation                                                                                                                         |
-| :-: | :---------------------------------------: | :----------------------------: | :-----: | -------------------------------------------------------------------------------------------------------------------------------------- |
-| 61  | [Cyclical Figurate Numbers](src/id0061.c) |         Number theory          |   Sum   | [Polygonal number](https://en.wikipedia.org/wiki/Polygonal_number)                                                                     |
-| 62  |    [Cubic Permutations](src/id0062.c)     |         Number theory          | Minimum | [Multimap](https://en.wikipedia.org/wiki/Multimap), [Daniel J. Bernstein (djb2) hash algorithm](http://www.cse.yorku.ca/~oz/hash.html) |
-| 63  |   [Powerful Digit Counts](src/id0063.c)   |         Number theory          |  Count  |                                                                                                                                        |
-| 64  |  [Odd Period Square Roots](src/id0064.c)  |            Algebra             |  Count  | [Continued fraction expansion](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion)           |
-| 65  |     [Convergents of e](src/id0065.c)      | Arbitrary-precision arithmetic |  Count  |                                                                                                                                        |
-| 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic | Maximum | [Pell\'s equation](https://mathworld.wolfram.com/PellEquation.html)                                                                    |
-| 68  |     [Magic 5-gon Ring](src/id0068.c)      |          Magic shapes          | Maximum | [Magic square](https://en.wikipedia.org/wiki/Magic_constant)                                                                           |
+| Id  |                  Problem                  |             Domain             |  Result   | Implementation                                                                                                                         |
+| :-: | :---------------------------------------: | :----------------------------: | :-------: | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 61  | [Cyclical Figurate Numbers](src/id0061.c) |         Number theory          |    Sum    | [Polygonal number](https://en.wikipedia.org/wiki/Polygonal_number)                                                                     |
+| 62  |    [Cubic Permutations](src/id0062.c)     |         Number theory          |  Minimum  | [Multimap](https://en.wikipedia.org/wiki/Multimap), [Daniel J. Bernstein (djb2) hash algorithm](http://www.cse.yorku.ca/~oz/hash.html) |
+| 63  |   [Powerful Digit Counts](src/id0063.c)   |         Number theory          |   Count   |                                                                                                                                        |
+| 64  |  [Odd Period Square Roots](src/id0064.c)  |            Algebra             |   Count   | [Continued fraction expansion](https://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Continued_fraction_expansion)           |
+| 65  |     [Convergents of e](src/id0065.c)      | Arbitrary-precision arithmetic |   Count   |                                                                                                                                        |
+| 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic |  Maximum  | [Pell\'s equation](https://mathworld.wolfram.com/PellEquation.html)                                                                    |
+| 68  |     [Magic 5-gon Ring](src/id0068.c)      |          Magic shapes          |  Maximum  | [Magic square](https://en.wikipedia.org/wiki/Magic_constant)                                                                           |
 | 69  |      [Totient Maximum](src/id0069.c)      |         Number theory          | Primorial | [Euler\'s Totient function](https://en.wikipedia.org/wiki/Euler%27s_totient_function)                                                  |
-| 70 | []
+| 70  |    [Totient Permutation](src/id0070.c)    |         Number theory          |  Minimum  |                                                                                                                                        |
+| 71  |     [Ordered Fractions](src/id0071.c)     |           Rationals            |           |

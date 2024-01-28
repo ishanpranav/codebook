@@ -55,3 +55,8 @@ for i in {0060..0066};
 do
     ./../id${i}.o
 done
+
+for i in {0068..0072};
+do
+    ./../id${i}.o
+done

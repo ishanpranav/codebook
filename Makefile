@@ -18,7 +18,7 @@ all: \
 	id0041.o id0042.o id0043.o id0044.o id0045.o id0046.o id0047.o id0048.o \
 	id0049.o id0050.o id0051.o id0052.o id0053.o id0054.o id0055.o id0056.o \
 	id0057.o id0058.o id0059.o id0060.o id0061.o id0062.o id0063.o id0064.o \
-	id0065.o id0066.o id0067.o id0068.o id0069.o id0070.o id0071.o id0072.o
+	id0065.o id0066.o id0068.o id0069.o id0070.o id0071.o id0072.o
 	
 divisor_primality_test.o: \
 	lib/primality_tests/divisor_primality_test.c \
@@ -273,6 +273,9 @@ id0069.o: src/id0069.c euler.o $(SIEVE_O)
 	
 id0070.o: src/id0070.c euler.o permutation_iterator.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o permutation_iterator.o $(SIEVE_O) -lm
+	
+id0071.o: src/id0071.c euler.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
 clean:
 	rm -rf *.o
