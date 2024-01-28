@@ -118,4 +118,5 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 65  |     [Convergents of e](src/id0065.c)      | Arbitrary-precision arithmetic |  Count  |                                                                                                                                        |
 | 66  |   [Diophantine Equation](src/id0066.c)    | Arbitrary-precision arithmetic | Maximum | [Pell\'s equation](https://mathworld.wolfram.com/PellEquation.html)                                                                    |
 | 68  |     [Magic 5-gon Ring](src/id0068.c)      |          Magic shapes          | Maximum | [Magic square](https://en.wikipedia.org/wiki/Magic_constant)                                                                           |
-| 69  |      [Totient Maximum](src/id0069.c)      |         Number theory          | Maximum | [Euler\'s Totient function](https://en.wikipedia.org/wiki/Euler%27s_totient_function)                                                  |
+| 69  |      [Totient Maximum](src/id0069.c)      |         Number theory          | Primorial | [Euler\'s Totient function](https://en.wikipedia.org/wiki/Euler%27s_totient_function)                                                  |
+| 70 | 

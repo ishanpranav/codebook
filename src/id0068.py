@@ -7,9 +7,8 @@ from time import time
 
 maxString = ""
 start = time()
-l = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 
-for a, b, c, d, e, f, g, h, i, j in permutations(l):
+for a, b, c, d, e, f, g, h, i, j in permutations(range(1, 10 + 1)):
     if a > d or a > f or a > h or a > j: continue
     if d != 10 and f != 10 and h != 10 and j != 10: continue
     

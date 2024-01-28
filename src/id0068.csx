@@ -8,9 +8,7 @@ using Combinatorics.Collections;
 string max = "";
 Stopwatch start = Stopwatch.StartNew();
 
-List<int> ring = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-foreach (var l in new Permutations<int>(ring))
+foreach (var l in new Permutations<int>(Enumerable.Range(1, 10)))
 {
     if (l[0] > l[3] || l[0] > l[5] || l[0] > l[7] || l[0] > l[9] ||
         (l[3] != 10 && l[5] != 10 && l[7] != 10 && l[9] != 10))

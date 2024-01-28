@@ -28,7 +28,7 @@ void sieve_begin(SieveIterator iterator, Sieve values);
  * @param count    the number of iterations to skip. This method may dynamically
  *                 extend the `values` argument.
 */
-void sieve_skip(SieveIterator iterator, long long count);
+void sieve_skip(SieveIterator iterator, size_t count);
 
 /**
  * Advances the iterator to the next prime.

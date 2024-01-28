@@ -28,7 +28,7 @@ static Exception sieve_extend(Sieve instance, long long max)
         }
     }
 
-    for (long long m = instance->max; m <= max; m++)
+    for (long long m = instance->max; m < max; m++)
     {
         if (instance->composites.begin[m - 2])
         {
@@ -50,9 +50,9 @@ static Exception sieve_extend(Sieve instance, long long max)
 
 Exception sieve(Sieve instance, long long max)
 {
-    if (max < 11)
+    if (max < 12)
     {
-        max = 11;
+        max = 12;
     }
 
     Exception ex = boolean_set(&instance->composites, max - 2);
@@ -92,40 +92,21 @@ void sieve_begin(SieveIterator iterator, Sieve values)
     iterator->current = values->primes.begin;
 }
 
-void sieve_skip(SieveIterator iterator, long long count)
+void sieve_skip(SieveIterator iterator, size_t count)
 {
-    long long min = *iterator->current + count;
-    long long max = iterator->values->max;
-
-    if (min > max)
+    for (size_t i = 0; i < count; i++)
     {
-        max *= 2;
-
-        if (min > max)
-        {
-            max = min;
-        }
-
-        size_t index = iterator->current - iterator->values->primes.begin;
-
-        if (sieve_extend(iterator->values, max))
-        {
-            iterator->current = iterator->values->primes.begin;
-
-            return;
-        }
-
-        iterator->current = iterator->values->primes.begin + index;
+        sieve_next(iterator);
     }
-
-    iterator->current += count;
 }
 
 void sieve_next(SieveIterator iterator)
 {
-    if (*iterator->current >= iterator->values->max)
+    long long* end = iterator->values->primes.end;
+
+    if (iterator->current + 1 == end)
     {
-        size_t index = iterator->current - iterator->values->primes.begin;
+        size_t length = end - iterator->values->primes.begin;
 
         if (sieve_extend(iterator->values, iterator->values->max * 2))
         {
@@ -134,7 +115,7 @@ void sieve_next(SieveIterator iterator)
             return;
         }
 
-        iterator->current = iterator->values->primes.begin + index;
+        iterator->current = iterator->values->primes.begin + length - 1;
     }
 
     iterator->current++;

@@ -22,7 +22,6 @@ int main(void)
             if (last)
             {
                 count += 2;
-                last = true;
             }
         }
 
