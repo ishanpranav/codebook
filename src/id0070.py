@@ -2,32 +2,30 @@
 
 # Totient Permutation
 
-from math import inf
-from sympy import totient, isprime
+from math import inf, sqrt
+from sympy import primerange
+from time import time
 
-def permutation_test(left, right):
-    if len(left) != len(right): return False
-    
-    i = 0
-    
-    while i < len(left) and left[i] == right[i]:
-        i += 1
-    
-    for item in left[i:]:
-        if left.count(item) != right.count(item): return False
-        
-    return True
+MAX_SEARCH = 0.375
 
+minN = -1
 minNRPhi = inf
+minPrime = int(sqrt(1e7) * (1 - MAX_SEARCH))
+maxPrime = int(sqrt(1e7) * (1 + MAX_SEARCH))
+start = time()
 
-for n in range(4, int(1e7)):
-    if isprime(n): continue
-    
-    phi = totient(n)
-    nRPhi = n / phi
-    
-    if nRPhi >= minNRPhi or not permutation_test(str(n), str(phi)): continue
-    
-    minNRPhi = nRPhi
-    
-    print(n)
+for p in primerange(minPrime, maxPrime):
+    for q in primerange(p):
+        n = p * q
+        
+        if n > 1e7: break
+        
+        phi = (p - 1) * (q - 1)
+        nRPhi = n / phi
+        
+        if nRPhi >= minNRPhi or sorted(str(n)) != sorted(str(phi)): continue
+        
+        minN = n
+        minNRPhi = nRPhi
+
+print(f"0070{minN:>64}    {time() - start:.6f}")

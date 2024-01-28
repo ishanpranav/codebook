@@ -12,7 +12,7 @@ static Exception sieve_extend(Sieve instance, long long max)
     {
         return ex;
     }
-    
+
     long long end = sqrt(max);
 
     for (long long m = 2; m <= end; m++)
@@ -90,6 +90,34 @@ void sieve_begin(SieveIterator iterator, Sieve values)
 {
     iterator->values = values;
     iterator->current = values->primes.begin;
+}
+
+void sieve_jump(SieveIterator iterator, long long min)
+{
+    if (iterator->values->max > min)
+    {
+        long long* left = iterator->values->primes.begin;
+        long long* right = iterator->values->primes.end;
+
+        while (left != right)
+        {
+            iterator->current = left + (right - left) / 2;
+
+            if (*iterator->current < min)
+            {
+                left = iterator->current + 1;
+            }
+            else
+            {
+                right = iterator->current;
+            }
+        }
+    }
+
+    while (*iterator->current < min)
+    {
+        sieve_next(iterator);
+    }
 }
 
 void sieve_skip(SieveIterator iterator, size_t count)

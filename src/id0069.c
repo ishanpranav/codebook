@@ -28,5 +28,7 @@ int main(void)
         primorial = product;
     }
 
+    finalize_sieve(&primes);
+    
     return euler_submit(69, primorial, start);
 }

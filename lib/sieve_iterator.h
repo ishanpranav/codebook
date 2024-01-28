@@ -22,6 +22,15 @@ typedef struct SieveIterator* SieveIterator;
 void sieve_begin(SieveIterator iterator, Sieve values);
 
 /**
+ * Advances the iterator to the first prime greater than or equal to a given
+ * minimum.
+ * 
+ * @param iterator the iterator.
+ * @param min      the required minimum value.
+*/
+void sieve_jump(SieveIterator iterator, long long min);
+
+/**
  * Advances the iterator by a given number of primes.
  *
  * @param iterator the iterator.

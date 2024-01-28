@@ -271,5 +271,8 @@ id0068.o: src/id0068.c euler.o list.o math.o permutation_iterator.o
 id0069.o: src/id0069.c euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm
 	
+id0070.o: src/id0070.c euler.o permutation_iterator.o $(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o permutation_iterator.o $(SIEVE_O) -lm
+	
 clean:
 	rm -rf *.o
