@@ -66,6 +66,9 @@ sieve.o: lib/sieve.c lib/sieve.h
 series.o: lib/series.c lib/series.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+totient.o: lib/totient.c lib/totient.h
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 id0001.o: src/id0001.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
@@ -277,5 +280,8 @@ id0070.o: src/id0070.c euler.o permutation_iterator.o $(SIEVE_O)
 id0071.o: src/id0071.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
+id0072.o: src/id0072.c euler.o totient.o list.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o totient.o list.o
+
 clean:
 	rm -rf *.o

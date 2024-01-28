@@ -3,6 +3,7 @@
 #include <math.h>
 #include "divisor_iterator.h"
 #include "sieve_iterator.h"
+#include "sieve.h"
 
 static Exception sieve_extend(Sieve instance, long long max)
 {
@@ -168,6 +169,7 @@ Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback)
 
     return PRIMALITY_PRIME;
 }
+
 
 void finalize_sieve(Sieve instance)
 {

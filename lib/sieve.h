@@ -30,9 +30,10 @@ Exception sieve(Sieve instance, long long max);
  *
  * @param instance the `Sieve` instance.
  * @param n        the number to test.
- * @param fallback a fallback algorithm for determining if a number is a prime.
- *                 The `fallback` argument is used if `n` is outside the
- *                 interval [2, `max`).
+ * @param fallback `NULL` or a fallback algorithm for determining if a number is
+ *                 a prime. The `fallback` argument may be used if `n` is
+ *                 outside the interval [2, `max`).
+ * @return The supposed primality of `n`.
 */
 Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback);
 
