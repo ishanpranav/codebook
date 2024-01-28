@@ -6,6 +6,6 @@ from sympy import sieve
 from time import time
 
 start = time()
-summatoryTotient = sum(sieve.totientrange(2, 1000000 + 1))
+count = sum(sieve.totientrange(2, 1000000 + 1))
 
-print(f"0072{summatoryTotient:>64}    {time() - start:.6f}")
+print(f"0072{count:>64}    {time() - start:.6f}")

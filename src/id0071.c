@@ -23,5 +23,5 @@ int main(void)
         }
     }
     
-    return euler_submit(72, nStar, start);
+    return euler_submit(71, nStar, start);
 }

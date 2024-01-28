@@ -13,4 +13,8 @@ do
 done
 
 python3 ../src/id0068.py
-python3 ../src/id0070.py
+
+for i in {0072..0073};
+do
+    python3 ../src/id${i}.py
+done
