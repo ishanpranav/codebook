@@ -45,5 +45,5 @@ int main(void)
         product *= champernowne_constant(pow);
     }
 
-    euler_submit(40, product, start);
+    return euler_submit(40, product, start);
 }

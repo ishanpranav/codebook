@@ -70,7 +70,6 @@ static size_t permutation_count(
     EqualityComparer itemComparer)
 {
     size_t result = 0;
-
     char* begin = list->items;
     char* end = begin + list->count * list->itemSize;
 
@@ -105,7 +104,7 @@ bool permutation_test(List left, List right, EqualityComparer itemComparer)
     char* leftEnd = leftBegin + count * itemSize;
     char* rightBegin = right->items;
 
-    while (leftBegin < leftEnd && itemComparer(leftBegin, rightBegin) == 0)
+    while (leftBegin < leftEnd && itemComparer(leftBegin, rightBegin))
     {
         leftBegin += itemSize;
         rightBegin += itemSize;

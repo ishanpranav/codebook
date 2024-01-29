@@ -7,8 +7,8 @@
 typedef bool (*EqualityComparer)(Object left, Object right);
 
 /**
- * 
- * 
+ * @param left
+ * @param right
 */
 bool int_equality_comparer(Object left, Object right);
 

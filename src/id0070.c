@@ -87,5 +87,6 @@ int main(void)
     finalize_list(&nDigits);
     finalize_list(&phiDigits);
     finalize_sieve(&primes);
-    euler_submit(70, minN, start);
+    
+    return euler_submit(70, minN, start);
 }

@@ -25,7 +25,6 @@ int main(void)
     long p = sieve_prime(&primes, 10000);
 
     finalize_sieve(&primes);
-    euler_submit(7, p, start);
     
-    return 0;
+    return euler_submit(7, p, start);
 }

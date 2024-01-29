@@ -65,5 +65,6 @@ int main(void)
     }
 
     finalize_list(&digits);
-    euler_submit(43, sum, start);
+    
+    return euler_submit(43, sum, start);
 }

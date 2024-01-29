@@ -48,5 +48,6 @@ int main(void)
     }
 
     finalize_list(&digits);
-    euler_submit(41, max, start);
+    
+    return euler_submit(41, max, start);
 }

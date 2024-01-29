@@ -9,8 +9,10 @@
 bool mask_list_mask(List value)
 {
     int counts[10] = { 0 };
+    int* begin = value->items;
+    int* end = begin + value->count;
 
-    for (long long* it = value->begin; it < value->end; it++)
+    for (int* it = begin; it < end; it++)
     {
         counts[*it]++;
     }
@@ -22,7 +24,7 @@ bool mask_list_mask(List value)
             continue;
         }
 
-        for (long long* it = value->begin; it < value->end; it++)
+        for (int* it = begin; it < end; it++)
         {
             if (*it == i)
             {
@@ -50,7 +52,13 @@ Exception math_prime_digit_replacement(
 
         for (long long k = *it.current; k; k /= 10)
         {
-            list_add(mask, k % 10);
+            int d = k % 10;
+            Exception ex = list_add(mask, &d);
+
+            if (ex)
+            {
+                return ex;
+            }
         }
 
         list_reverse(mask);
@@ -68,17 +76,20 @@ Exception math_prime_digit_replacement(
         {
             list_clear(image);
 
-            for (long long* it = mask->begin; it < mask->end; it++)
+            int* begin = mask->items;
+            int* end = begin + mask->count;
+
+            for (int* it = begin; it < end; it++)
             {
                 Exception ex;
 
                 if (*it == -1)
                 {
-                    ex = list_add(image, i);
+                    ex = list_add(image, &i);
                 }
                 else
                 {
-                    ex = list_add(image, *it);
+                    ex = list_add(image, it);
                 }
 
                 if (ex)
@@ -89,9 +100,12 @@ Exception math_prime_digit_replacement(
 
             long n = 0;
 
-            for (long long* q = image->begin; q < image->end; q++)
+            begin = image->items;
+            end = begin + image->count;
+
+            for (int* it = begin; it < end; it++)
             {
-                n = n * 10 + *q;
+                n = n * 10 + *it;
             }
 
             if (n <= 100000)
@@ -135,13 +149,13 @@ int main(void)
 
     struct List mask;
 
-    ex = list(&mask, 0);
+    ex = list(&mask, sizeof(int), 0);
 
     euler_ok();
 
     struct List image;
 
-    ex = list(&image, 0);
+    ex = list(&image, sizeof(int), 0);
 
     long first;
 

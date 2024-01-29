@@ -41,5 +41,6 @@ int main(void)
     }
 
     finalize_list(&words);
-    euler_submit(42, count, start);
+    
+    return euler_submit(42, count, start);
 }

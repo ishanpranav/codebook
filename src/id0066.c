@@ -65,5 +65,6 @@ int main(void)
     }
 
     mpz_clears(huge, maxX, a, h, k, x[0], x[1], x[2], y[0], y[1], y[2], NULL);
-    euler_submit(66, maxD, start);
+    
+    return euler_submit(66, maxD, start);
 }

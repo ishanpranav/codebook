@@ -32,7 +32,6 @@ Exception math_prime_permutation(
         for (int k = a; k; k /= 10)
         {
             int d = k % 10;
-
             Exception ex = list_add(aDigits, &d);
 
             if (ex)
@@ -46,7 +45,6 @@ Exception math_prime_permutation(
         for (int k = b; k; k /= 10)
         {
             int d = k % 10;
-
             Exception ex = list_add(bDigits, &d);
 
             if (ex)
@@ -65,7 +63,6 @@ Exception math_prime_permutation(
         for (int k = c; k; k /= 10)
         {
             int d = k % 10;
-
             Exception ex = list_add(cDigits, &d);
 
             if (ex)

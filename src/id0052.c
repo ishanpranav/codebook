@@ -17,7 +17,8 @@ Exception math_is_permuted_multiple(
 
         for (long k = a * x; k; k /= 10)
         {
-            Exception ex = list_add(digits, k % 10);
+            int d = k % 10;
+            Exception ex = list_add(digits, &d);
 
             if (ex)
             {
@@ -25,7 +26,7 @@ Exception math_is_permuted_multiple(
             }
         }
 
-        if (!permutation_test(image, digits))
+        if (!permutation_test(image, digits, int_equality_comparer))
         {
             *result = false;
 
@@ -46,7 +47,8 @@ Exception math_permuted_multiple(List digits, List image, long* result)
 
         for (long k = x; k; k /= 10)
         {
-            Exception ex = list_add(image, k % 10);
+            int d = k % 10;
+            Exception ex = list_add(image, &d);
 
             if (ex)
             {
@@ -78,13 +80,14 @@ Exception math_permuted_multiple(List digits, List image, long* result)
 int main(void)
 {
     struct List digits;
-    struct List image;
     clock_t start = clock();
-    Exception ex = list(&digits, 0);
+    Exception ex = list(&digits, sizeof(int), 0);
 
     euler_ok();
 
-    ex = list(&image, 0);
+    struct List image;
+    
+    ex = list(&image, sizeof(int), 0);
 
     euler_ok();
 
@@ -94,5 +97,8 @@ int main(void)
 
     euler_ok();
 
+    finalize_list(&digits);
+    finalize_list(&image);
+    
     return euler_submit(52, result, start);
 }

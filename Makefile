@@ -231,8 +231,8 @@ id0050.o: src/id0050.c miller_rabin_primality_test.o euler.o $(SIEVE_O)
 id0051.o: src/id0051.c miller_rabin_primality_test.o euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o $(SIEVE_O) -lm
 	
-id0052.o: src/id0052.c euler.o $(PERMUTATION_ITERATOR_O)
-	$(CC) $(CFLAGS) $< -o $@ euler.o $(PERMUTATION_ITERATOR_O) -lm
+id0052.o: src/id0052.c equality_comparer.o euler.o $(PERMUTATION_ITERATOR_O)
+	$(CC) $(CFLAGS) $< -o $@ equality_comparer.o euler.o $(PERMUTATION_ITERATOR_O) -lm
 	
 id0053.o: src/id0053.c euler.o
 	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ euler.o

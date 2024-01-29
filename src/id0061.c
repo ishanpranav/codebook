@@ -123,5 +123,6 @@ int main(void)
     int sum = math_cyclic_polygonal_sum(&polygonals);
 
     finalize_list(&polygonals);
-    euler_submit(61, sum, start);
+    
+    return euler_submit(61, sum, start);
 }

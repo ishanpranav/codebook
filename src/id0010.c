@@ -23,7 +23,6 @@ int main(void)
     }
     
     finalize_sieve(&primes);
-    euler_submit(10, sum, start);
-
-    return 0;
+    
+    return euler_submit(10, sum, start);
 }
