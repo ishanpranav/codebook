@@ -2,6 +2,7 @@
 
 #include "euler.h"
 #include "permutation_iterator.h"
+#include "swap.h"
 
 void permutation_begin(PermutationIterator iterator, List values)
 {
@@ -27,14 +28,14 @@ void permutation_next(PermutationIterator iterator)
             p--;
         }
 
-        euler_swap(last - 1, p);
+        swap(last - 1, p);
     }
 
     size_t max = (iterator->values->end - last) / 2;
 
     for (size_t i = 0; i < max; i++)
     {
-        euler_swap(last + i, iterator->values->end - i - 1);
+        swap(last + i, iterator->values->end - i - 1);
     }
 
     iterator->end = last == iterator->values->begin;

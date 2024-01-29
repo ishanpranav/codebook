@@ -22,14 +22,6 @@
 int euler_submit(int id, long long result, clock_t start);
 
 /**
- * Exchanges the given values.
- *
- * @param p a pointer to the first element to swap
- * @param q a pointer to the second element to swap
-*/
-void euler_swap(long long* p, long long* q);
-
-/**
  * Computes a partial summation of the natural numbers. This is equivalent to
  * computing the `n`-th triangular number.
  *
@@ -37,15 +29,6 @@ void euler_swap(long long* p, long long* q);
  * @return The sum of the first `n` natural numbers.
 */
 long math_natural_sum(long n);
-
-/**
- * Computes the greatest common divisor using Euclid's algorithm.
- *
- * @param a a natural number.
- * @param b a natural number.
- * @return The greatest common divisor of `a` and `b`.
-*/
-long math_gcd(long a, long b);
 
 /**
  * Determines the number of digits in the number resulting from `b` raised to

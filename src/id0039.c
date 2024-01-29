@@ -2,7 +2,6 @@
 
 // Integer Right Triangles
 
-#include <math.h>
 #include "../lib/euler.h"
 
 int math_pythagorean_triples(int sum)
@@ -14,9 +13,9 @@ int math_pythagorean_triples(int sum)
     {
         int difference = sum - a;
         int c = (a * a + difference * difference) / (2 * difference);
-        double b = sqrt(c * c - a * a);
+        long b;
 
-        if (b == (int)b && a + b + c == sum)
+        if (math_is_polygonal(4, c * c - a * a, &b) && a + b + c == sum)
         {
             result++;
         }
@@ -31,7 +30,7 @@ int main(void)
     int maxCount = 3;
     clock_t start = clock();
 
-    for (int sum = 500; sum <= 1000; sum++)
+    for (int sum = maxSum; sum <= 1000; sum++)
     {
         int count = math_pythagorean_triples(sum);
 

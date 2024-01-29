@@ -20,7 +20,7 @@ int main(void)
         euler_ok();
     }
 
-    Factorial factorial = factorial_range(10);
+    LPArray factorial = factorial_range(10);
 
     if (!factorial)
     {

@@ -2,8 +2,11 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "euler.h"
+#include "binomial.h"
 #include "exception.h"
+#include "factorial.h"
 
 Exception euler_submit(int id, long long result, clock_t start)
 {
@@ -14,20 +17,48 @@ Exception euler_submit(int id, long long result, clock_t start)
     return 0;
 }
 
-void euler_swap(long long* p, long long* q)
+long long binomial(int n, int k)
 {
-    long long swap = *p;
+    if (k > n - k)
+    {
+        k = n - k;
+    }
 
-    *p = *q;
-    *q = swap;
+    long long result = 1;
+
+    for (int i = 0; i < k; i++)
+    {
+        result = (result * (n - i)) / (i + 1);
+    }
+
+    return result;
 }
 
-long math_natural_sum(long n)
+LPArray factorial_range(int max)
 {
-    return n * (n + 1) / 2;
+    if (max < 1)
+    {
+        return 0;
+    }
+
+    LPArray result = malloc(max * sizeof * result);
+
+    if (!result)
+    {
+        return NULL;
+    }
+
+    result[0] = 1;
+
+    for (int i = 1; i < max; i++)
+    {
+        result[i] = i * result[i - 1];
+    }
+
+    return result;
 }
 
-long math_gcd(long a, long b)
+long gcd(long a, long b)
 {
     while (b > 0)
     {
@@ -38,6 +69,11 @@ long math_gcd(long a, long b)
     }
 
     return a;
+}
+
+long math_natural_sum(long n)
+{
+    return n * (n + 1) / 2;
 }
 
 long long math_reverse(long long n)
@@ -55,4 +91,12 @@ long long math_reverse(long long n)
 bool math_is_palindrome(long long n)
 {
     return n == math_reverse(n);
+}
+
+void swap(long long* p, long long* q)
+{
+    long long swap = *p;
+
+    *p = *q;
+    *q = swap;
 }

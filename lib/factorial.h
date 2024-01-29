@@ -1,7 +1,6 @@
 // Licensed under the MIT License.
 
-/** Provides cached access to the factorial function. */
-typedef long* Factorial;
+#include "lp_array.h"
 
 /**
  * Generates values of the factorial function for all inputs in the interval
@@ -11,4 +10,4 @@ typedef long* Factorial;
  * @return A `max`-element array, or `NULL` if the process is out of memory. The
  *         caller is responsible.
 */
-Factorial factorial_range(int max);
+LPArray factorial_range(int max);

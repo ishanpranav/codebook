@@ -2,11 +2,12 @@
 
 // Smallest Multiple
 
+#include "../lib/euclidean.h"
 #include "../lib/euler.h"
 
 static long math_lcm(long a, long b)
 {
-    return (a / math_gcd(a, b)) * b;
+    return (a / gcd(a, b)) * b;
 }
 
 int main(void)

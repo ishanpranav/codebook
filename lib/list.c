@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include "euler.h"
 #include "list.h"
+#include "lp_array.h"
 #include "object.h"
+#include "swap.h"
 
 Exception list(List instance, size_t capacity)
 {
@@ -46,7 +48,7 @@ Exception list_ensure_capacity(List instance, size_t capacity)
         newCapacity = capacity;
     }
 
-    long long* newBegin;
+    LPArray newBegin;
 
     newBegin = realloc(instance->begin, newCapacity * sizeof * newBegin);
 
@@ -126,7 +128,7 @@ void list_reverse(List instance)
 
     while (left < right)
     {
-        euler_swap(left, right);
+        swap(left, right);
 
         left++;
         right--;

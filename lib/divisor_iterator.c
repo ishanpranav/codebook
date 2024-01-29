@@ -3,6 +3,7 @@
 #include <math.h>
 #include "divisor_iterator.h"
 #include "euler.h"
+#include "swap.h"
 
 void divisor_begin(DivisorIterator iterator, long long n)
 {
@@ -30,12 +31,12 @@ void divisor_next(DivisorIterator iterator)
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_SWAP)
     {
-        euler_swap(&iterator->current, &iterator->next);
+        swap(&iterator->current, &iterator->next);
     }
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_YIELD)
     {
-        euler_swap(&iterator->current, &iterator->next);
+        swap(&iterator->current, &iterator->next);
 
         iterator->state = DIVISOR_ITERATOR_STATE_SWAP;
 

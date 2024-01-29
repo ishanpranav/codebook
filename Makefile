@@ -31,9 +31,6 @@ miller_rabin_primality_test.o: \
 	lib/primality_tests/miller_rabin_primality_test.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-binomial.o: lib/binomial.c lib/binomial.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
 boolean_set.o: lib/boolean_set.c lib/boolean_set.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -44,9 +41,6 @@ euler.o: lib/euler.c lib/euler.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 factor_iterator.o: lib/factor_iterator.c lib/factor_iterator.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-factorial.o: lib/factorial.c lib/factorial.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 list.o: lib/list.c lib/list.h
@@ -118,8 +112,8 @@ id0013.o: src/id0013.c euler.o
 id0014.o: src/id0014.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0015.o: src/id0015.c binomial.o euler.o
-	$(CC) $(CFLAGS) $< -o $@ binomial.o euler.o
+id0015.o: src/id0015.c euler.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o
 
 id0016.o: src/id0016.c euler.o lp_string.o series.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o series.o -lgmp
@@ -175,8 +169,8 @@ id0032.o: src/id0032.c euler.o $(PERMUTATION_ITERATOR_O)
 id0033.o: src/id0033.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0034.o: src/id0034.c euler.o factorial.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o factorial.o
+id0034.o: src/id0034.c euler.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
 id0035.o: src/id0035.c euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm
@@ -190,8 +184,8 @@ id0037.o: src/id0037.c euler.o $(SIEVE_O)
 id0038.o: src/id0038.c euler.o list.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o
 	
-id0039.o: src/id0039.c euler.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o -lm
+id0039.o: src/id0039.c euler.o math.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm
 	
 id0040.o: src/id0040.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -233,8 +227,8 @@ id0051.o: src/id0051.c miller_rabin_primality_test.o euler.o $(SIEVE_O)
 id0052.o: src/id0052.c euler.o $(PERMUTATION_ITERATOR_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(PERMUTATION_ITERATOR_O) -lm
 	
-id0053.o: src/id0053.c binomial.o euler.o
-	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ binomial.o euler.o
+id0053.o: src/id0053.c euler.o
+	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ euler.o
 	
 id0054.o: src/id0054.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -293,8 +287,11 @@ id0072.o: src/id0072.c euler.o
 id0073.o: src/id0073.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0074.o: src/id0074.c euler.o factorial.o list.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o factorial.o list.o
+id0074.o: src/id0074.c euler.o list.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o list.o
+	
+id0075.o: src/id0075.c euler.o math.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm
 
 clean:
 	rm -rf *.o

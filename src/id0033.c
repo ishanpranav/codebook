@@ -2,6 +2,7 @@
 
 // Digit Cancelling Fractions
 
+#include "../lib/euclidean.h"
 #include "../lib/euler.h"
 
 int main(void)
@@ -28,7 +29,7 @@ int main(void)
         }
     }
 
-    y /= math_gcd(x, y);
+    y /= gcd(x, y);
  
     return euler_submit(33, y, start);
 }
