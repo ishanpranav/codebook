@@ -6,7 +6,7 @@ from math import sqrt
 from time import time
 
 def math_is_cyclic(a: int, b: int) -> bool: 
-    return a != b and a // 100 == b % 100
+    return a != b and str(a)[2:] == str(b)[:2]
 
 def math_is_polygonal(s: int, x: int) -> bool:
     sM2 = s - 2

@@ -74,7 +74,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |          Count          | Dynamic programming                                                          |
 | 32  |     [Pandigital Products](src/id0032.c)     | Number theory |           Sum           | [Pandigital number](https://en.wikipedia.org/wiki/Pandigital_number)         |
 | 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest common divisor |                                                                              |
-| 34  |      [Digit Factorials](src/id0034.c)       | Number theory |           Sum           | [Factorial](https://en.wikipedia.org/wiki/Factorial)                         |
+| 34  |      [Digit Factorials](src/id0034.c)       | Combinatorics |           Sum           | [Factorial](https://en.wikipedia.org/wiki/Factorial)                         |
 | 35  |       [Circular Primes](src/id0035.c)       | Number theory |          Count          | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime)               |
 | 36  |   [Double-base Palindromes](src/id0036.c)   | Number theory |           Sum           | [Radix](https://en.wikipedia.org/wiki/Radix)                                 |
 | 37  |     [Truncatable Primes](src/id0037.c)      | Number theory |           Sum           | [Truncatable prime](https://en.wikipedia.org/wiki/Truncatable_prime)         |
@@ -123,4 +123,4 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 71  |       [Ordered Fractions](src/id0071.c)       |           Sequences            |   Term    | [Farey sequence](https://en.wikipedia.org/wiki/Farey_sequence)                                                                         |
 | 72  |      [Counting Fractions](src/id0072.c)       |         Number theory          |   Count   | [Totient summatory function](https://en.wikipedia.org/wiki/Totient_summatory_function)                                                 |
 | 73  | [Counting Fractions in a Range](src/id0073.c) |           Sequences            |   Count   |                                                                                                                                        |
-| 74  |    [Digit Factorial Chains](src/id0074.c)     |         Number theory          |   Count   |                                                                                                                                        |
+| 74  |    [Digit Factorial Chains](src/id0074.c)     |         Combinatorics          |   Count   |                                                                                                                                        |

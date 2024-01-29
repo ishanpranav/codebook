@@ -1,28 +1,36 @@
+# Licensed under the MIT License.
+
+# Digit Factorial Chains
+
+from math import factorial
 from time import time
 
 count = 0
-factorial = [ 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800 ]
+visited = {}
 start = time()
+factorials = { str(n): factorial(n) for n in range(10) }
 
-for n in range(1, 1000000):
+for m in range(1000000):
     terms = set()
-
+    visited[m] = 1
+    n = m
+  
     while len(terms) < 60:
         terms.add(n)
         
-        k = n
-        term = 0
-            
-        while k > 0:
-            term += factorial[k % 10]    
-            k //= 10
-            
-        if term in terms:
-            break
+        n = sum(factorials[c] for c in str(n))
+    
+        if n in terms: break
         
-        n = term
+        if n in visited: 
+            visited[m] += visited[n]
+        
+            break
 
-    if len(terms) == 60:
+        visited[m] += 1
+
+    if visited[m] == 60:
         count += 1
 
+print(len(visited))
 print(f"0074{count:>64}    {time() - start:.6f}")

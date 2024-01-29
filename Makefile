@@ -43,6 +43,9 @@ euler.o: lib/euler.c lib/euler.h
 factor_iterator.o: lib/factor_iterator.c lib/factor_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+factorial.o: lib/factorial.c lib/factorial.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 list.o: lib/list.c lib/list.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -286,6 +289,9 @@ id0072.o: src/id0072.c euler.o
 	
 id0073.o: src/id0073.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
+	
+id0074.o: src/id0074.c euler.o factorial.o list.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o factorial.o list.o
 
 clean:
 	rm -rf *.o

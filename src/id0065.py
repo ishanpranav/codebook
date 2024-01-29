@@ -14,13 +14,8 @@ for i in range(11, 100 + 1):
         a[2] = a[0] + (2 * i // 3) * a[1]
     else:
         a[2] = a[0] + a[1]
-    
-sum = 0
 
-while a[2] > 0:
-    sum += a[2] % 10
-    a[2] //= 10
-
+result = sum(int(c) for c in str(a[2]))
 start = time()
 
-print(f"0065{sum:>64}    {time() - start:.6f}")
+print(f"0065{result:>64}    {time() - start:.6f}")
