@@ -105,7 +105,7 @@ Suit suit_parse(char value)
     }
 }
 
-int card_compare(Object left, Object right)
+int card_compare(const void* left, const void* right)
 {
     const struct Card* leftCard = (const struct Card*)left;
     const struct Card* rightCard = (const struct Card*)right;
@@ -113,7 +113,7 @@ int card_compare(Object left, Object right)
     return leftCard->rank - rightCard->rank;
 }
 
-int frequency_compare(Object left, Object right)
+int frequency_compare(const void* left, const void* right)
 {
     const struct Frequency* leftFrequency = (const struct Frequency*)left;
     const struct Frequency* rightFrequency = (const struct Frequency*)right;

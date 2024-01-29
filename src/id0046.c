@@ -5,7 +5,7 @@
 #include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 
-bool math_is_goldbach_other_conjecture(long n)
+static bool math_is_goldbach_other_conjecture(long n)
 {
     long m;
 

@@ -6,7 +6,7 @@
 #include "../lib/euler.h"
 #include "../lib/factor_iterator.h"
 
-bool math_is_abundant_sum(int n, List list, BooleanSet set)
+static bool math_is_abundant_sum(int n, List list, BooleanSet set)
 {
     int* begin = list->items;
     int* end = begin + list->count;

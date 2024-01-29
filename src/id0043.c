@@ -5,7 +5,7 @@
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
 
-bool math_is_substring_divisible(List digits)
+static bool math_is_substring_divisible(List digits)
 {
     int* begin = digits->items;
     int mod[] = { 2, 3, 5, 7, 11, 13, 17 };

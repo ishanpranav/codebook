@@ -5,7 +5,7 @@
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
 
-Exception math_is_permuted_multiple(
+static Exception math_is_permuted_multiple(
     long x,
     List digits,
     List image,
@@ -39,7 +39,7 @@ Exception math_is_permuted_multiple(
     return 0;
 }
 
-Exception math_permuted_multiple(List digits, List image, long* result)
+static Exception math_permuted_multiple(List digits, List image, long* result)
 {
     for (long x = 1; ; x++)
     {
@@ -86,7 +86,7 @@ int main(void)
     euler_ok();
 
     struct List image;
-    
+
     ex = list(&image, sizeof(int), 0);
 
     euler_ok();

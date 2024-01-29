@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-int champernowne_constant(long k)
+static int champernowne_constant(long k)
 {
     int n = 1;
     long long pow = 1;

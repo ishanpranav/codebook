@@ -6,7 +6,7 @@
 #include "../lib/permutation_iterator.h"
 #include "../lib/sieve.h"
 
-Exception math_prime_permutation(
+static Exception math_prime_permutation(
     Sieve primes, 
     List aDigits, 
     List bDigits, 

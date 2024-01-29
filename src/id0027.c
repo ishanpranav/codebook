@@ -6,7 +6,7 @@
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 
-int math_quadratic_prime(Sieve primes, int a, int b)
+static int math_quadratic_prime(Sieve primes, int a, int b)
 {
     int n = 0;
 

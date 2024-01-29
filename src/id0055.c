@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-bool math_is_pseudo_lychrel(long long n)
+static bool math_is_pseudo_lychrel(long long n)
 {
     for (int i = 0; i < 50; i++)
     {

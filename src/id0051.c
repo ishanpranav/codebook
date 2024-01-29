@@ -6,7 +6,7 @@
 #include "../lib/euler.h"
 #include "../lib/sieve_iterator.h"
 
-bool mask_list_mask(List value)
+static bool mask_list_mask(List value)
 {
     int counts[10] = { 0 };
     int* begin = value->items;
@@ -38,7 +38,7 @@ bool mask_list_mask(List value)
     return false;
 }
 
-Exception math_prime_digit_replacement(
+static Exception math_prime_digit_replacement(
     Sieve primes,
     List mask,
     List image,

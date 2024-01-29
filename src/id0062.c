@@ -71,7 +71,7 @@ Exception lookup_add(
         {
             *values = &(*p)->values;
 
-            return list_add(&(*p)->values, value);
+            return list_add(&(*p)->values, &value);
         }
     }
 
@@ -82,7 +82,7 @@ Exception lookup_add(
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    Exception ex = list(&entry->values, 1);
+    Exception ex = list(&entry->values, sizeof(long long), 1);
 
     if (ex)
     {
@@ -91,7 +91,7 @@ Exception lookup_add(
         return ex;
     }
 
-    list_add(&entry->values, value);
+    list_add(&entry->values, &value);
 
     if (!instance->begin[hash].firstEntry)
     {
@@ -145,12 +145,12 @@ void finalize_lookup(Lookup instance)
     instance->end = NULL;
 }
 
-static int char_compare(Object left, Object right)
+static int char_compare(const void* left, const void* right)
 {
     return *((const char*)left) - *((const char*)right);
 }
 
-Exception math_cubic_permutation(Lookup lookup, long long* result)
+static Exception math_cubic_permutation(Lookup lookup, long long* result)
 {
     for (long long max = 1; ;)
     {
@@ -196,14 +196,17 @@ Exception math_cubic_permutation(Lookup lookup, long long* result)
                 return ex;
             }
 
-            if (matches->end - matches->begin != 5)
+            if (matches->count != 5)
             {
                 continue;
             }
 
             *result = LLONG_MAX;
 
-            for (long long* it = matches->begin; it < matches->end; it++)
+            long long* begin = matches->items;
+            long long* end = begin + matches->count;
+
+            for (long long* it = begin; it < end; it++)
             {
                 if (*it < *result)
                 {

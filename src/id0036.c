@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-bool math_is_binary_palindrome(unsigned long n)
+static bool math_is_binary_palindrome(unsigned long n)
 {
     unsigned long x = 0;
 
@@ -16,7 +16,7 @@ bool math_is_binary_palindrome(unsigned long n)
     return x == n;
 }
 
-long math_odd_palindrome(long n)
+static long math_odd_palindrome(long n)
 {
     long result = n;
 
@@ -28,7 +28,7 @@ long math_odd_palindrome(long n)
     return result;
 }
 
-long math_even_palindrome(long n)
+static long math_even_palindrome(long n)
 {
     long result = n;
 

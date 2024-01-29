@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-int math_pythagorean_triples(int sum)
+static int math_pythagorean_triples(int sum)
 {
     int result = 0;
     int end = sum / 2 - 1;

@@ -5,7 +5,7 @@
 #include <gmp.h>
 #include "../lib/euler.h"
 
-int math_huge_length(mpz_t huge)
+static int math_huge_length(mpz_t huge)
 {
     char unit;
 

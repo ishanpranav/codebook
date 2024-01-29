@@ -34,16 +34,5 @@ int main(void)
     long count = 0;
     clock_t start = clock();
 
-    for (long sum = 0; sum <= 1500000l; sum++)
-    {
-        if (sum % 10000 == 0) {
-            printf("%ld\n", sum);
-                    }
-        if (math_pythagorean_triples(sum))
-        {
-            count++;
-        }
-    }
-
     return euler_submit(39, count, start);
 }

@@ -31,7 +31,7 @@ int main(void)
 
     struct List terms;
 
-    ex = list(&terms, 60);
+    ex = list(&terms, sizeof(long), 60);
 
     euler_ok();
     
@@ -45,7 +45,7 @@ int main(void)
 
         for (long n = m; ; )
         {
-            ex = list_add(&terms, n);
+            ex = list_add(&terms, &n);
 
             euler_ok();
 
@@ -56,11 +56,16 @@ int main(void)
                 sum += factorial[k % 10];
             }
 
-            if (sum >= 1000000l || list_contains(&terms, sum))
+            if (sum >= 1000000l)
             {
                 break;
             }
 
+            if (list_contains(&terms, &sum, long_equality_comparer))
+            {
+                break;
+            }
+            
             if (visited[sum])
             {
                 visited[m] += visited[sum];

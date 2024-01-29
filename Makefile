@@ -37,9 +37,6 @@ boolean_set.o: lib/boolean_set.c lib/boolean_set.h
 comparer.o: lib/comparer.c lib/comparer.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-divisor_iterator.o: lib/divisor_iterator.c lib/divisor_iterator.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
 euler.o: lib/euler.c lib/euler.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -282,8 +279,9 @@ id0068.o: src/id0068.c euler.o math.o $(PERMUTATION_ITERATOR_O)
 id0069.o: src/id0069.c euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm
 	
-id0070.o: src/id0070.c euler.o permutation_iterator.o $(SIEVE_O)
-	$(CC) $(CFLAGS) $< -o $@ euler.o permutation_iterator.o $(SIEVE_O) -lm
+id0070.o: src/id0070.c euler.o equality_comparer.o permutation_iterator.o \
+	$(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o equality_comparer.o permutation_iterator.o $(SIEVE_O) -lm
 	
 id0071.o: src/id0071.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -294,8 +292,8 @@ id0072.o: src/id0072.c euler.o
 id0073.o: src/id0073.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0074.o: src/id0074.c euler.o list.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o list.o
+id0074.o: src/id0074.c equality_comparer.o euler.o list.o
+	$(CC) $(CFLAGS) $< -o $@ equality_comparer.o euler.o list.o
 	
 id0075.o: src/id0075.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm

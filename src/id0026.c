@@ -4,7 +4,7 @@
 
 #include "../lib/euler.h"
 
-int math_reptend_length(int d)
+static int math_reptend_length(int d)
 {
     int n = 10;
     int order = 0;

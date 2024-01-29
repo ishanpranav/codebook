@@ -31,12 +31,12 @@ void divisor_next(DivisorIterator iterator)
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_SWAP)
     {
-        swap(&iterator->current, &iterator->next);
+        swap(&iterator->current, &iterator->next, sizeof(long long));
     }
 
     if (iterator->state == DIVISOR_ITERATOR_STATE_YIELD)
     {
-        swap(&iterator->current, &iterator->next);
+        swap(&iterator->current, &iterator->next, sizeof(long long));
 
         iterator->state = DIVISOR_ITERATOR_STATE_SWAP;
 

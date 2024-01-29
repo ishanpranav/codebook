@@ -23,13 +23,13 @@ int main(void)
 
     struct List nDigits;
 
-    ex = list(&nDigits, 0);
+    ex = list(&nDigits, sizeof(int), 0);
 
     euler_ok();
 
     struct List phiDigits;
 
-    ex = list(&phiDigits, 0);
+    ex = list(&phiDigits, sizeof(int), 0);
 
     euler_ok();
 
@@ -62,7 +62,9 @@ int main(void)
 
             for (long k = n; k; k /= 10)
             {
-                ex = list_add(&nDigits, k % 10);
+                int d = k % 10;
+
+                ex = list_add(&nDigits, &d);
 
                 euler_ok();
             }
@@ -71,12 +73,14 @@ int main(void)
 
             for (long k = phi; k; k /= 10)
             {
-                ex = list_add(&phiDigits, k % 10);
+                int d = k % 10;
+
+                ex = list_add(&phiDigits, &d);
 
                 euler_ok();
             }
 
-            if (permutation_test(&nDigits, &phiDigits))
+            if (permutation_test(&nDigits, &phiDigits, int_equality_comparer))
             {
                 minN = n;
                 minNRPhi = nRPhi;

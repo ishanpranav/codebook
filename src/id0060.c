@@ -9,7 +9,7 @@
 #include "../lib/sieve.h"
 #define MAX_SEARCH 10000
 
-bool math_is_prime_pair(Sieve primes, int a, int b)
+static bool math_is_prime_pair(Sieve primes, int a, int b)
 {
     long concat = math_concat(a, b);
     PrimalityTest primalityTest = miller_rabin_primality_test;
@@ -39,36 +39,41 @@ int main(void)
 
     struct List candidates;
 
-    ex = list(&candidates, 0);
+    ex = list(&candidates, sizeof(long long), 0);
 
     euler_ok();
 
     int min = INT_MAX;
+    long long* primesBegin = primes.primes.items;
+    long long* primesEnd = primesBegin + primes.primes.count;
 
-    for (long long* a = primes.primes.begin; a < primes.primes.end; a++)
+    for (long long* a = primesBegin; a < primesEnd; a++)
     {
         list_clear(&candidates);
 
-        for (long long* b = a; b < primes.primes.end; b++)
+        for (long long* b = a; b < primesEnd; b++)
         {
             if (math_is_prime_pair(&primes, *a, *b))
             {
-                ex = list_add(&candidates, *b);
+                ex = list_add(&candidates, b);
 
                 euler_ok();
             }
         }
 
-        for (long long* b = candidates.begin; b < candidates.end; b++)
+        long long* candidatesBegin = candidates.items;
+        long long* candidatesEnd = candidatesBegin + candidates.count;
+
+        for (long long* b = candidatesBegin; b < candidatesEnd; b++)
         {
-            for (long long* c = b + 1; c < candidates.end; c++)
+            for (long long* c = b + 1; c < candidatesEnd; c++)
             {
                 if (!math_is_prime_pair(&primes, *b, *c))
                 {
                     continue;
                 }
 
-                for (long long* d = c + 1; d < candidates.end; d++)
+                for (long long* d = c + 1; d < candidatesEnd; d++)
                 {
                     if (!math_is_prime_pair(&primes, *b, *d) ||
                         !math_is_prime_pair(&primes, *c, *d))
@@ -76,7 +81,7 @@ int main(void)
                         continue;
                     }
 
-                    for (long long* e = d + 1; e < candidates.end; e++)
+                    for (long long* e = d + 1; e < candidatesEnd; e++)
                     {
                         int sum = *a + *b + *c + *d + *e;
 
