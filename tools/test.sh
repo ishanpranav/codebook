@@ -60,7 +60,7 @@ python3 ../src/id0065.py
 ./../id0066.o
 cat ./../data/id0067.txt | ./../src/id0067.sh
 
-for i in {0068..0072};
+for i in {0068..0080};
 do
     ./../id${i}.o
 done

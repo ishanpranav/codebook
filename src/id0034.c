@@ -7,15 +7,15 @@
 int main(void)
 {
     long sum = 0;
-    long factorials[10] = { [0] = 1 };
+    long factorial[10] = { [0] = 1 };
     clock_t start = clock();
 
     for (int i = 1; i <= 9; i++)
     {
-        factorials[i] = i * factorials[i - 1];
+        factorial[i] = i * factorial[i - 1];
     }
     
-    long end = 7 * factorials[9];
+    long end = 7 * factorial[9];
     
     for (long n = 10; n <= end; n++)
     {
@@ -23,7 +23,7 @@ int main(void)
 
         for (long k = n; k; k /= 10)
         {
-            factorialSum += factorials[k % 10];
+            factorialSum += factorial[k % 10];
         }
 
         if (n == factorialSum)
