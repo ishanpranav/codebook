@@ -7,6 +7,8 @@
 /** Iterates over the lexicographical permutations of a collection. */
 struct PermutationIterator
 {
+    int (*itemComparer)(const void* left, const void* right);
+
     struct List* values;
     bool end;
 };
@@ -19,8 +21,12 @@ typedef struct PermutationIterator* PermutationIterator;
  *
  * @param iterator the iterator.
  * @param values   the collection.
+ * @param itemComparer 
 */
-void permutation_begin(PermutationIterator iterator, List values);
+void permutation_begin(
+    PermutationIterator iterator,
+    List values,
+    Comparer itemComparer);
 
 /**
  * Advances the iterator to the next lexicographical permutation. This method
@@ -35,6 +41,7 @@ void permutation_next(PermutationIterator iterator);
  * 
  * @param left  a collection to compare to `right`.
  * @param right a collection to compare to `left`.
+ * @param itemComparer 
  * @return `true` if `left` and `right` are permutations; otherwise, `false`.
 */
-bool permutation_test(List left, List right);
+bool permutation_test(List left, List right, EqualityComparer itemComparer);

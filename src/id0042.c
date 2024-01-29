@@ -21,7 +21,7 @@ int main(void)
 
     int count = 0;
 
-    for (LPString* word = words.begin; word < words.end; word++)
+    for (LPString* word = words.items; word < words.end; word++)
     {
         int x = 0;
 

@@ -4,13 +4,17 @@
 #define LIST_95a94c0379b44bd3967523c81d4caa55
 #include <stdbool.h>
 #include <stddef.h>
+#include "comparer.h"
+#include "equality_comparer.h"
 #include "exception.h"
+#include "object.h"
 
 /** Represents a list of integers that can be accessed by index. */
 struct List
 {
-    long long* begin;
-    long long* end;
+    void* items;
+    size_t itemSize;
+    size_t count;
     size_t capacity;
 };
 
@@ -25,17 +29,7 @@ typedef struct List* List;
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception list(List instance, size_t capacity);
-
-/**
- * Intializes a `List` instance. Do not call `finalize_list`.
- *
- * @param instance the `List` instance.
- * @param values   the backing array for the list. The caller is responsible for
- *                 this argument.
- * @param length   the length of the `values` argument.
-*/
-void list_from_array(List instance, long long values[], size_t length);
+Exception list(List instance, size_t itemSize, size_t capacity);
 
 /**
  * Adds an item to the end of the list.
@@ -45,7 +39,7 @@ void list_from_array(List instance, long long values[], size_t length);
  * @return An exception; otherwise `0`. This method always returns `0` if the
  *         current capacity is sufficient.
 */
-Exception list_add(List instance, long long item);
+Exception list_add(List instance, Object item);
 
 /**
  * Ensures that the capacity of this list is at least the specified capacity.
@@ -64,9 +58,10 @@ Exception list_ensure_capacity(List instance, size_t capacity);
  *
  * @param instance the `List` instance.
  * @param item     the item to locate in the list.
+ * @param comparer 
  * @return `true` if the `item` is found in the list; otherwise, `false`.
 */
-bool list_contains(List instance, long long item);
+bool list_contains(List instance, Object item, EqualityComparer itemComparer);
 
 /**
  * Removes all elements from the list.
@@ -86,26 +81,19 @@ void list_reverse(List instance);
  * Sorts the elements in the list.
  * 
  * @param instance the `List` instance.
+ * @param itemComparer
 */
-void list_sort(List instance);
+void list_sort(List instance, Comparer itemComparer);
 
 /**
- * Determines whether two lists are equal.
+ * Determines whether two lists are equal in sequence.
  * 
  * @param left  a list to compare to `right`. 
  * @param right a list to compare to `left`.
  * @return `true` if the two lists are of equal length and their corresponding
  *         elements are equal; otherwise, `false`.
 */
-bool list_equals(List left, List right);
-
-/**
- * Computes the summation of the terms in the list.
- * 
- * @param instance the `List` instance.
- * @return the summation of `instance`.
-*/
-long long list_sum(List instance);
+bool list_sequence_equal(List left, List right, EqualityComparer itemComparer);
 
 /**
  * Frees all resources.

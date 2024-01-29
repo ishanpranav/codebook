@@ -2,6 +2,7 @@
 
 #include "boolean_set.h"
 #include "list.h"
+#include "lp_array.h"
 #include "object.h"
 #include "primality_test.h"
 
@@ -24,6 +25,11 @@ typedef struct Sieve* Sieve;
  * @return The exception; otherwise, `0`.
 */
 Exception sieve(Sieve instance, long long max);
+
+/**
+ * 
+*/
+long long sieve_prime(Sieve instance, size_t n);
 
 /**
  * Determines if a number is a prime.

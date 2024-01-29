@@ -7,24 +7,31 @@
 
 int main(void)
 {
-    long long values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-    struct List list;
+    struct List digits;
     struct PermutationIterator it;
     clock_t start = clock();
-    
-    list_from_array(&list, values, 10);
-    permutation_begin(&it, &list);
+    Exception ex = list(&digits, sizeof(int), 10);
+
+    euler_ok();
+
+    for (int i = 0; i < 10; i++)
+    {
+        list_add(&digits, &i);
+    }
+
+    permutation_begin(&it, &digits, int_comparer);
 
     for (long i = 0; i < 999999l; i++)
     {
         permutation_next(&it);
     }
-    
+
+    int* begin = it.values->items;
     long long result = 0;
 
     for (int i = 0; i < 10; i++)
     {
-        result = result * 10 + values[i];
+        result = result * 10 + begin[i];
     }
 
     return euler_submit(24, result, start);

@@ -11,7 +11,7 @@ int main(void)
     long sum = 0;
     struct LPStringCollection names;
     clock_t start = clock();
-    Exception ex = lp_string_collection(&names, 5000);
+    Exception ex = lp_string_collection(&names, sizeof(LPString), 5000);
 
     euler_ok();
 
@@ -21,20 +21,18 @@ int main(void)
 
     lp_string_collection_sort(&names);
 
-    size_t count = names.end - names.begin;
-
-    for (size_t i = 0; i < count; i++)
+    for (size_t i = 0; i < names.count; i++)
     {
         int rank = 0;
 
-        for (char* p = names.begin[i]; *p; p++)
+        for (char* p = ((char**)names.items)[i]; *p; p++)
         {
             rank += *p - 'A' + 1;
         }
 
         sum += rank * (i + 1);
 
-        free(names.begin[i]);
+        free(((char**)names.items)[i]);
     }
 
     finalize_lp_string_collection(&names);

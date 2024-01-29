@@ -6,37 +6,34 @@
 #include "lp_string_builder.h"
 #include "lp_string_collection.h"
 
-Exception lp_string_collection(LPStringCollection instance, size_t capacity)
+Exception lp_string_collection(LPStringCollection instance, size_t itemSize, size_t capacity)
 {
     if (capacity < 4)
     {
         capacity = 4;
     }
 
-    instance->begin = malloc(capacity * sizeof * instance->begin);
+    instance->items = malloc(capacity * itemSize);
 
-    if (!instance->begin)
+    if (!instance->items)
     {
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    instance->end = instance->begin;
+    instance->itemSize = itemSize;
+    instance->count = 0;
     instance->capacity = capacity;
 
     return 0;
 }
 
-Exception lp_string_collection_add(LPStringCollection instance, LPString value)
+Exception lp_string_collection_add(LPStringCollection instance, void* value)
 {
-    size_t length = instance->end - instance->begin;
-
-    if (length + 1 > instance->capacity)
+    if (instance->count + 1 > instance->capacity)
     {
-        LPString* newBegin;
         size_t newCapacity = instance->capacity * 2;
-        size_t newSize = newCapacity * sizeof * newBegin;
-
-        newBegin = realloc(instance->begin, newSize);
+        size_t newSize = newCapacity * instance->itemSize;
+        void* newBegin = realloc(instance->items, newSize);
 
         if (!newBegin)
         {
@@ -44,12 +41,15 @@ Exception lp_string_collection_add(LPStringCollection instance, LPString value)
         }
 
         instance->capacity = newCapacity;
-        instance->begin = newBegin;
-        instance->end = newBegin + length;
+        instance->items = newBegin;
     }
 
-    *instance->end = value;
-    instance->end++;
+    memcpy(
+        (char*)instance->items + instance->count * instance->itemSize,
+        value,
+        instance->itemSize);
+
+    instance->count++;
 
     return 0;
 }
@@ -57,9 +57,9 @@ Exception lp_string_collection_add(LPStringCollection instance, LPString value)
 void lp_string_collection_sort(LPStringCollection instance)
 {
     qsort(
-        instance->begin,
-        instance->end - instance->begin,
-        sizeof * instance->begin,
+        instance->items,
+        instance->count,
+        instance->itemSize,
         lp_string_compare);
 }
 
@@ -79,7 +79,7 @@ static Exception lp_string_collection_realize(
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    Exception ex = lp_string_collection_add(instance, value);
+    Exception ex = lp_string_collection_add(instance, &value);
 
     if (ex)
     {
@@ -143,9 +143,10 @@ Exception lp_string_collection_deserialize(
 
 void finalize_lp_string_collection(LPStringCollection instance)
 {
-    free(instance->begin);
+    free(instance->items);
 
-    instance->begin = NULL;
-    instance->end = NULL;
+    instance->items = NULL;
+    instance->itemSize = 0;
+    instance->count = 0;
     instance->capacity = 0;
 }

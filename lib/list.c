@@ -1,37 +1,32 @@
 // Licensed under the MIT License.
 
 #include <stdlib.h>
+#include <string.h>
 #include "euler.h"
 #include "list.h"
 #include "lp_array.h"
 #include "object.h"
 #include "swap.h"
 
-Exception list(List instance, size_t capacity)
+Exception list(List instance, size_t itemSize, size_t capacity)
 {
     if (capacity < 4)
     {
         capacity = 4;
     }
 
-    instance->begin = malloc(capacity * sizeof * instance->begin);
+    instance->items = malloc(capacity * itemSize);
 
-    if (!instance->begin)
+    if (!instance->items)
     {
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    instance->end = instance->begin;
+    instance->itemSize = itemSize;
+    instance->count = 0;
     instance->capacity = capacity;
 
     return 0;
-}
-
-void list_from_array(List instance, long long values[], size_t length)
-{
-    instance->begin = values;
-    instance->end = values + length;
-    instance->capacity = length;
 }
 
 Exception list_ensure_capacity(List instance, size_t capacity)
@@ -48,43 +43,45 @@ Exception list_ensure_capacity(List instance, size_t capacity)
         newCapacity = capacity;
     }
 
-    LPArray newBegin;
+    void* newItems = realloc(instance->items, newCapacity * instance->itemSize);
 
-    newBegin = realloc(instance->begin, newCapacity * sizeof * newBegin);
-
-    if (!newBegin)
+    if (!newItems)
     {
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
     instance->capacity = newCapacity;
-    instance->end += newBegin - instance->begin;
-    instance->begin = newBegin;
+    instance->items = newItems;
 
     return 0;
 }
 
-Exception list_add(List instance, long long item)
+Exception list_add(List instance, Object item)
 {
-    size_t capacity = instance->end - instance->begin + 1;
-    Exception ex = list_ensure_capacity(instance, capacity);
+    Exception ex = list_ensure_capacity(instance, instance->count + 1);
 
     if (ex)
     {
         return ex;
     }
 
-    *instance->end = item;
-    instance->end++;
+    void* end = (char*)instance->items + instance->count * instance->itemSize;
+
+    memcpy(end, item, instance->itemSize);
+
+    instance->count++;
 
     return 0;
 }
 
-bool list_contains(List instance, long long item)
+bool list_contains(List instance, Object item, EqualityComparer itemComparer)
 {
-    for (long long* it = instance->begin; it < instance->end; it++)
+    char* begin = instance->items;
+    char* end = begin + instance->count * instance->itemSize;
+
+    for (char* it = begin; it < end; it += instance->itemSize)
     {
-        if (*it == item)
+        if (itemComparer(it, item))
         {
             return true;
         }
@@ -95,67 +92,56 @@ bool list_contains(List instance, long long item)
 
 void list_clear(List instance)
 {
-    instance->end = instance->begin;
-}
-
-static int long_long_compare(Object left, Object right)
-{
-    long long leftValue = *(long long*)left;
-    long long rightValue = *(long long*)right;
-
-    if (leftValue < rightValue)
-    {
-        return -1;
-    }
-
-    if (leftValue > rightValue)
-    {
-        return 1;
-    }
-
-    return 0;
+    instance->count = 0;
 }
 
 void list_reverse(List instance)
 {
-    if (instance->begin == instance->end)
+    if (!instance->count)
     {
         return;
     }
 
-    long long* left = instance->begin;
-    long long* right = instance->end - 1;
+    char* left = instance->items;
+    char* right = left + (instance->count - 1) * instance->itemSize;
 
     while (left < right)
     {
-        swap(left, right);
+        swap(left, right, instance->itemSize);
 
-        left++;
-        right--;
+        left += instance->itemSize;
+        right -= instance->itemSize;
     }
 }
 
-void list_sort(List instance)
+void list_sort(List instance, Comparer itemComparer)
 {
-    qsort(
-        instance->begin,
-        instance->end - instance->begin,
-        sizeof * instance->begin,
-        long_long_compare);
+    qsort(instance->items, instance->count, instance->itemSize, itemComparer);
 }
 
-bool list_equals(List left, List right)
+bool list_sequence_equal(List left, List right, EqualityComparer itemComparer)
 {
-    size_t length = left->end - left->begin;
+    size_t itemSize = left->itemSize;
 
-    if ((size_t)(right->end - right->begin) != length)
+    if (right->itemSize != itemSize)
     {
         return false;
     }
 
-    for (size_t i = 0; i < length; i++)
+    size_t count = left->count;
+    
+    if (right->count != count)
     {
-        if (left->begin[i] != right->begin[i])
+        return false;
+    }
+
+    size_t length = count * itemSize;
+    char* leftBegin = (char*)left->items;
+    char* rightBegin = (char*)right->items;
+
+    for (size_t offset = 0; offset < length; offset += itemSize)
+    {
+        if (itemComparer(leftBegin + offset, rightBegin + offset))
         {
             return false;
         }
@@ -164,23 +150,12 @@ bool list_equals(List left, List right)
     return true;
 }
 
-long long list_sum(List instance)
-{
-    long long result = 0;
-
-    for (long long* it = instance->begin; it < instance->end; it++)
-    {
-        result += *it;
-    }
-
-    return result;
-}
-
 void finalize_list(List instance)
 {
-    free(instance->begin);
+    free(instance->items);
 
-    instance->begin = NULL;
-    instance->end = NULL;
+    instance->items = NULL;
+    instance->itemSize = 0;
+    instance->count = 0;
     instance->capacity = 0;
 }

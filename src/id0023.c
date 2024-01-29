@@ -8,7 +8,10 @@
 
 bool math_is_abundant_sum(int n, List list, BooleanSet set)
 {
-    for (long long* it = list->begin; it < list->end; it++)
+    int* begin = list->items;
+    int* end = begin + list->count;
+
+    for (int* it = begin; it < end; it++)
     {
         if (*it > n)
         {
@@ -28,7 +31,7 @@ int main(void)
 {
     struct List abundants;
     clock_t start = clock();
-    Exception ex = list(&abundants, 0);
+    Exception ex = list(&abundants, sizeof(int), 0);
 
     euler_ok();
 
@@ -53,7 +56,7 @@ int main(void)
 
         if (set.begin[n - 2])
         {
-            list_add(&abundants, n);
+            list_add(&abundants, &n);
         }
     }
 

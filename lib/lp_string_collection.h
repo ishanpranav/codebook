@@ -7,8 +7,9 @@
 /** Represents a collection of strings. */
 struct LPStringCollection
 {
-    char** begin;
-    char** end;
+    void* items;
+    size_t itemSize;
+    size_t count;
     size_t capacity;
 };
 
@@ -23,7 +24,7 @@ typedef struct LPStringCollection* LPStringCollection;
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception lp_string_collection(LPStringCollection instance, size_t capacity);
+Exception lp_string_collection(LPStringCollection instance, size_t itemSize, size_t capacity);
 
 /**
  * Adds a string to the end of the collection.
@@ -33,7 +34,7 @@ Exception lp_string_collection(LPStringCollection instance, size_t capacity);
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception lp_string_collection_add(LPStringCollection instance, LPString value);
+Exception lp_string_collection_add(LPStringCollection instance, void* value);
 
 /**
  * Sorts the collection.

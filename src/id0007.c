@@ -22,7 +22,7 @@ int main(void)
 
     euler_ok();
 
-    long p = primes.primes.begin[10000];
+    long p = sieve_prime(&primes, 10000);
 
     finalize_sieve(&primes);
     euler_submit(7, p, start);

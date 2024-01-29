@@ -20,7 +20,7 @@ all: \
 	id0057.o id0058.o id0059.o id0060.o id0061.o id0062.o id0063.o id0064.o \
 	id0065.o id0066.o id0068.o id0069.o id0070.o id0071.o id0072.o \
 	id0073.o id0074.o id0075.o id0076.o id0077.o id0078.o id0079.o id0080.o
-	
+
 divisor_primality_test.o: \
 	lib/primality_tests/divisor_primality_test.c \
 	lib/primality_tests/divisor_primality_test.h
@@ -32,6 +32,9 @@ miller_rabin_primality_test.o: \
 	$(CC) $(CFLAGS) -c $< -o $@
 
 boolean_set.o: lib/boolean_set.c lib/boolean_set.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+comparer.o: lib/comparer.c lib/comparer.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 divisor_iterator.o: lib/divisor_iterator.c lib/divisor_iterator.h
@@ -139,8 +142,8 @@ id0022.o: src/id0022.c euler.o $(LP_STRING_COLLECTION_O)
 id0023.o: src/id0023.c euler.o factor_iterator.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
-id0024.o: src/id0024.c euler.o list.o permutation_iterator.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o list.o permutation_iterator.o
+id0024.o: src/id0024.c comparer.o euler.o list.o permutation_iterator.o
+	$(CC) $(CFLAGS) $< -o $@ comparer.o euler.o list.o permutation_iterator.o
 
 id0025.o: src/id0025.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp

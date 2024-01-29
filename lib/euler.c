@@ -7,6 +7,7 @@
 #include "binomial.h"
 #include "exception.h"
 #include "factorial.h"
+#include "object.h"
 
 Exception euler_submit(int id, long long result, clock_t start)
 {
@@ -71,6 +72,20 @@ long gcd(long a, long b)
     return a;
 }
 
+void swap(Object left, Object right, size_t itemSize)
+{    
+    char* p = left;
+    char* q = right;
+    char* swap;
+
+    for (size_t i = 0; i < itemSize; i++)
+    {
+        swap = p[i];
+        p[i] = q[i];
+        q[i] = swap;
+    }
+}
+
 long math_natural_sum(long n)
 {
     return n * (n + 1) / 2;
@@ -91,12 +106,4 @@ long long math_reverse(long long n)
 bool math_is_palindrome(long long n)
 {
     return n == math_reverse(n);
-}
-
-void swap(long long* p, long long* q)
-{
-    long long swap = *p;
-
-    *p = *q;
-    *q = swap;
 }

@@ -13,8 +13,15 @@ int main(void)
 
     euler_ok();
 
-    long long sum = list_sum(&primes.primes);
-
+    long long sum = 0;
+    long long* begin = primes.primes.items;
+    long long* end = begin + primes.primes.count;
+    
+    for (long long* it = begin; it < end && *it < 2000000l; it++)
+    {
+        sum += *it;
+    }
+    
     finalize_sieve(&primes);
     euler_submit(10, sum, start);
 

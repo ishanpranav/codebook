@@ -35,7 +35,7 @@ static Exception sieve_extend(Sieve instance, long long max)
             continue;
         }
 
-        Exception ex = list_add(&instance->primes, m);
+        Exception ex = list_add(&instance->primes, &m);
 
         if (ex)
         {
@@ -62,7 +62,7 @@ Exception sieve(Sieve instance, long long max)
         return ex;
     }
 
-    ex = list(&instance->primes, 0);
+    ex = list(&instance->primes, sizeof(long long), 0);
 
     if (ex)
     {
@@ -86,18 +86,43 @@ Exception sieve(Sieve instance, long long max)
     return 0;
 }
 
+Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback)
+{
+    if (n < 2 || n >= instance->max)
+    {
+        if (fallback)
+        {
+            return fallback(n);
+        }
+
+        return PRIMALITY_UNKNOWN;
+    }
+
+    if (instance->composites.begin[n - 2])
+    {
+        return PRIMALITY_COMPOSITE;
+    }
+
+    return PRIMALITY_PRIME;
+}
+
+long long sieve_prime(Sieve instance, size_t n)
+{
+    return ((LPArray)instance->primes.items)[n];
+}
+
 void sieve_begin(SieveIterator iterator, Sieve values)
 {
     iterator->values = values;
-    iterator->current = values->primes.begin;
+    iterator->current = values->primes.items;
 }
 
 void sieve_jump(SieveIterator iterator, long long min)
 {
     if (iterator->values->max > min)
     {
-        long long* left = iterator->values->primes.begin;
-        long long* right = iterator->values->primes.end - 1;
+        long long* left = iterator->values->primes.items;
+        long long* right = left + iterator->values->primes.count - 1;
 
         while (left != right)
         {
@@ -130,45 +155,24 @@ void sieve_skip(SieveIterator iterator, size_t count)
 
 void sieve_next(SieveIterator iterator)
 {
-    long long* end = iterator->values->primes.end;
+    LPArray begin = (long long*)iterator->values->primes.items;
+    size_t count = iterator->values->primes.count;
 
-    if (iterator->current + 1 == end)
+    if (iterator->current + 1 == begin + iterator->values->primes.count)
     {
-        size_t length = end - iterator->values->primes.begin;
-
         if (sieve_extend(iterator->values, iterator->values->max * 2))
         {
-            iterator->current = iterator->values->primes.begin;
+            iterator->current = begin;
 
             return;
         }
 
-        iterator->current = iterator->values->primes.begin + length - 1;
+        begin = (long long*)iterator->values->primes.items;
+        iterator->current = begin + count - 1;
     }
 
     iterator->current++;
 }
-
-Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback)
-{
-    if (n < 2 || n >= instance->max)
-    {
-        if (fallback)
-        {
-            return fallback(n);
-        }
-
-        return PRIMALITY_UNKNOWN;
-    }
-
-    if (instance->composites.begin[n - 2])
-    {
-        return PRIMALITY_COMPOSITE;
-    }
-
-    return PRIMALITY_PRIME;
-}
-
 
 void finalize_sieve(Sieve instance)
 {
