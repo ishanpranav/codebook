@@ -2,6 +2,7 @@
 
 // Combinatoric Selections
 
+#include "../lib/binomial.h"
 #include "../lib/euler.h"
 
 int main(void)
@@ -15,7 +16,7 @@ int main(void)
 
         for (int r = 1; r <= n / 2; r++)
         {
-            long long c = math_binomial(n, r);
+            long long c = binomial(n, r);
 
             last = c > 1000000l || c < 0;
 

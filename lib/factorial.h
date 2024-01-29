@@ -1,12 +1,13 @@
 // Licensed under the MIT License.
 
+/** Provides cached access to the factorial function. */
 typedef long* Factorial;
 
 /**
  * Generates values of the factorial function for all inputs in the interval
  * [0, `max`).
  * 
- * @param max     the exclusive upper bound of the input range.
+ * @param max the exclusive upper bound of the input range.
  * @return A `max`-element array, or `NULL` if the process is out of memory. The
  *         caller is responsible.
 */

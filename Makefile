@@ -31,6 +31,9 @@ miller_rabin_primality_test.o: \
 	lib/primality_tests/miller_rabin_primality_test.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+binomial.o: lib/binomial.c lib/binomial.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 boolean_set.o: lib/boolean_set.c lib/boolean_set.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -115,8 +118,8 @@ id0013.o: src/id0013.c euler.o
 id0014.o: src/id0014.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 
-id0015.o: src/id0015.c euler.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o
+id0015.o: src/id0015.c binomial.o euler.o
+	$(CC) $(CFLAGS) $< -o $@ binomial.o euler.o
 
 id0016.o: src/id0016.c euler.o lp_string.o series.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o series.o -lgmp
@@ -230,8 +233,8 @@ id0051.o: src/id0051.c miller_rabin_primality_test.o euler.o $(SIEVE_O)
 id0052.o: src/id0052.c euler.o $(PERMUTATION_ITERATOR_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(PERMUTATION_ITERATOR_O) -lm
 	
-id0053.o: src/id0053.c euler.o
-	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ euler.o
+id0053.o: src/id0053.c binomial.o euler.o
+	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ binomial.o euler.o
 	
 id0054.o: src/id0054.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
