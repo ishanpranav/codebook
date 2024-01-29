@@ -172,8 +172,8 @@ id0032.o: src/id0032.c euler.o $(PERMUTATION_ITERATOR_O)
 id0033.o: src/id0033.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0034.o: src/id0034.c euler.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o
+id0034.o: src/id0034.c euler.o factorial.o
+	$(CC) $(CFLAGS) $< -o $@ euler.o factorial.o
 	
 id0035.o: src/id0035.c euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm

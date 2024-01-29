@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include <math.h>
 #include <stdarg.h>
 #include "euler.h"

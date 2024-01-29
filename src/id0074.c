@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/factorial.h"
+#include "../lib/list.h"
 
 int main(void)
 {
@@ -19,19 +20,20 @@ int main(void)
         euler_ok();
     }
 
+    Factorial factorial = factorial_range(10);
+
+    if (!factorial)
+    {
+        ex = EXCEPTION_OUT_OF_MEMORY;
+
+        euler_ok();
+    }
+
     struct List terms;
 
     ex = list(&terms, 60);
 
     euler_ok();
-
-    struct List factorial;
-
-    ex = list(&factorial, 9);
-    
-    euler_ok();
-    
-    factorial_range(&factorial, 10);
     
     int count = 0;
 
@@ -51,7 +53,7 @@ int main(void)
 
             for (long k = n; k; k /= 10)
             {
-                sum += factorial.begin[k % 10];
+                sum += factorial[k % 10];
             }
 
             if (sum >= 1000000l || list_contains(&terms, sum))
@@ -77,6 +79,7 @@ int main(void)
     }
     
     free(visited);
+    free(factorial);
     finalize_list(&terms);
 
     return euler_submit(74, count, start);

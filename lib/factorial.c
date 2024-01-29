@@ -1,25 +1,28 @@
+// Licensed under the MIT License.
+
+#include <stdlib.h>
 #include "factorial.h"
 
-Exception factorial_range(List results, int max)
+Factorial factorial_range(int max)
 {
     if (max < 1)
     {
         return 0;
     }
 
-    Exception ex = list_ensure_capacity(results, max);
+    Factorial result = malloc(max * sizeof * result);
 
-    if (ex)
+    if (!result)
     {
-        return ex;
+        return NULL;
     }
 
-    list_add(results, 1);
+    result[0] = 1;
 
     for (int i = 1; i < max; i++)
     {
-        results->begin[i] = i * results->begin[i - 1];
+        result[i] = i * result[i - 1];
     }
 
-    return 0;
+    return result;
 }

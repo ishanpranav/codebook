@@ -1,13 +1,13 @@
 // Licensed under the MIT License.
 
-#include "list.h"
+typedef long* Factorial;
 
 /**
  * Generates values of the factorial function for all inputs in the interval
  * [0, `max`).
  * 
- * @param results a list in which to store the results.
  * @param max     the exclusive upper bound of the input range.
- * @return An exception; otherwise, `0`.
+ * @return A `max`-element array, or `NULL` if the process is out of memory. The
+ *         caller is responsible.
 */
-Exception factorial_range(List results, int max);
+Factorial factorial_range(int max);
