@@ -5,8 +5,8 @@ CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra
 
 TWOS_COMPLEMENT = -fno-strict-overflow -fwrapv
 
-LP_STRING_COLLECTION_O = lp_string.o lp_string_builder.o lp_string_collection.o
-PERMUTATION_ITERATOR_O = list.o permutation_iterator.o
+LP_STRING_COLLECTION_O = list.o lp_string_builder.o lp_string_collection.o
+PERMUTATION_ITERATOR_O = comparer.o list.o permutation_iterator.o
 SIEVE_O = boolean_set.o list.o sieve.o
 
 all: \
@@ -41,6 +41,9 @@ divisor_iterator.o: lib/divisor_iterator.c lib/divisor_iterator.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 euler.o: lib/euler.c lib/euler.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+equality_comparer.o: lib/equality_comparer.c lib/equality_comparer.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 factor_iterator.o: lib/factor_iterator.c lib/factor_iterator.h
@@ -136,14 +139,14 @@ id0020.o: src/id0020.c euler.o lp_string.o series.o
 id0021.o: src/id0021.c euler.o factor_iterator.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
-id0022.o: src/id0022.c euler.o $(LP_STRING_COLLECTION_O)
-	$(CC) $(CFLAGS) $< -o $@ euler.o $(LP_STRING_COLLECTION_O)
+id0022.o: src/id0022.c euler.o lp_string.o $(LP_STRING_COLLECTION_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o lp_string.o $(LP_STRING_COLLECTION_O)
 
 id0023.o: src/id0023.c euler.o factor_iterator.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o factor_iterator.o $(SIEVE_O) -lm
 
-id0024.o: src/id0024.c comparer.o euler.o list.o permutation_iterator.o
-	$(CC) $(CFLAGS) $< -o $@ comparer.o euler.o list.o permutation_iterator.o
+id0024.o: src/id0024.c euler.o $(PERMUTATION_ITERATOR_O)
+	$(CC) $(CFLAGS) $< -o $@ euler.o $(PERMUTATION_ITERATOR_O)
 
 id0025.o: src/id0025.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp
@@ -157,8 +160,8 @@ id0027.o: src/id0027.c euler.o $(SIEVE_O)
 id0028.o: src/id0028.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0029.o: src/id0029.c divisor_iterator.o euler.o list.o
-	$(CC) $(CFLAGS) $< -o $@ divisor_iterator.o euler.o list.o -lm
+id0029.o: src/id0029.c equality_comparer.o divisor_iterator.o euler.o list.o
+	$(CC) $(CFLAGS) $< -o $@ equality_comparer.o divisor_iterator.o euler.o list.o -lm
 	
 id0030.o: src/id0030.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lm
@@ -166,8 +169,8 @@ id0030.o: src/id0030.c euler.o
 id0031.o: src/id0031.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
 	
-id0032.o: src/id0032.c euler.o $(PERMUTATION_ITERATOR_O) 
-	$(CC) $(CFLAGS) $< -o $@ euler.o $(PERMUTATION_ITERATOR_O)
+id0032.o: src/id0032.c equality_comparer.o euler.o $(PERMUTATION_ITERATOR_O) 
+	$(CC) $(CFLAGS) $< -o $@ equality_comparer.o euler.o $(PERMUTATION_ITERATOR_O)
 	
 id0033.o: src/id0033.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o
@@ -184,8 +187,8 @@ id0036.o: src/id0036.c euler.o
 id0037.o: src/id0037.c euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler.o $(SIEVE_O) -lm
 	
-id0038.o: src/id0038.c euler.o list.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o list.o
+id0038.o: src/id0038.c comparer.o equality_comparer.o euler.o list.o
+	$(CC) $(CFLAGS) $< -o $@ comparer.o equality_comparer.o euler.o list.o
 	
 id0039.o: src/id0039.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm
@@ -218,8 +221,9 @@ id0047.o: src/id0047.c euler.o
 id0048.o: src/id0048.c euler.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o -lgmp
 	
-id0049.o: src/id0049.c euler.o permutation_iterator.o $(SIEVE_O)
-	$(CC) $(CFLAGS) $< -o $@ euler.o permutation_iterator.o $(SIEVE_O) -lm
+id0049.o: src/id0049.c equality_comparer.o euler.o permutation_iterator.o \
+	$(SIEVE_O)
+	$(CC) $(CFLAGS) $< -o $@ equality_comparer.o euler.o permutation_iterator.o $(SIEVE_O) -lm
 	
 id0050.o: src/id0050.c miller_rabin_primality_test.o euler.o $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ miller_rabin_primality_test.o euler.o $(SIEVE_O) -lm

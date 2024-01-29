@@ -34,8 +34,10 @@ int main(void)
     euler_ok();
 
     int count = 0;
+    long long* begin = primes.primes.items;
+    long long* end = begin + primes.primes.count;
 
-    for (long long* it = primes.primes.begin; it < primes.primes.end; it++)
+    for (long long* it = begin; it < end; it++)
     {
         if (math_is_circular_prime(*it, &primes))
         {

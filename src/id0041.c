@@ -10,28 +10,32 @@ int main(void)
 {
     struct List digits;
     clock_t start = clock();
-    Exception ex = list(&digits, 10);
+    Exception ex = list(&digits, sizeof(int), 10);
 
     euler_ok();
 
     for (int i = 1; i <= 3; i++)
     {
-        list_add(&digits, i);
+        list_add(&digits, &i);
     }
 
     long max = 2143;
 
     for (int i = 4; i <= 9; i++)
     {
-        list_add(&digits, i);
+        list_add(&digits, &i);
 
         struct PermutationIterator it;
 
-        for (permutation_begin(&it, &digits); !it.end; permutation_next(&it))
+        for (permutation_begin(&it, &digits, int_comparer); 
+            !it.end; 
+            permutation_next(&it))
         {
             long n = 0;
+            int* begin = digits.items;
+            int* end = begin + digits.count;
 
-            for (long long* p = it.values->begin; p < it.values->end; p++)
+            for (int* p = begin; p < end; p++)
             {
                 n = n * 10 + *p;
             }

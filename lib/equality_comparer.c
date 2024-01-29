@@ -4,5 +4,15 @@
 
 bool int_equality_comparer(Object left, Object right)
 {
-    return *(int*)left - *(int*)right;
+    return *(int*)left == *(int*)right;
+}
+
+bool long_equality_comparer(Object left, Object right)
+{
+    return *(long*)left == *(long*)right;
+}
+
+bool double_equality_comparer(Object left, Object right)
+{
+    return *(double*)left == *(double*)right;
 }

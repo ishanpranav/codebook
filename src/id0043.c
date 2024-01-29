@@ -7,6 +7,7 @@
 
 bool math_is_substring_divisible(List digits)
 {
+    int* begin = digits->items;
     int mod[] = { 2, 3, 5, 7, 11, 13, 17 };
 
     for (int i = 0; i < 7; i++)
@@ -15,7 +16,7 @@ bool math_is_substring_divisible(List digits)
 
         for (int j = i + 1; j <= i + 3; j++)
         {
-            n = n * 10 + digits->begin[j];
+            n = n * 10 + begin[j];
         }
 
         if (n % mod[i] != 0)
@@ -29,28 +30,40 @@ bool math_is_substring_divisible(List digits)
 
 int main(void)
 {
-    struct List list;
+    struct List digits;
     struct PermutationIterator it;
     long long sum = 0;
-    long long digits[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
+    Exception ex = list(&digits, sizeof(int), 10);
 
-    list_from_array(&list, digits, 10);
+    euler_ok();
 
-    for (permutation_begin(&it, &list); !it.end; permutation_next(&it))
+    for (int i = 0; i < 10; i++)
     {
-        if (math_is_substring_divisible(&list))
-        {
-            long long n = 0;
-
-            for (long long* d = it.values->begin; d < it.values->end; d++)
-            {
-                n = n * 10 + *d;
-            }
-
-            sum += n;
-        }
+        list_add(&digits, &i);
     }
 
+    for (permutation_begin(&it, &digits, int_comparer);
+        !it.end;
+        permutation_next(&it))
+    {
+        if (!math_is_substring_divisible(&digits))
+        {
+            continue;
+        }
+
+        long long n = 0;
+        int* begin = digits.items;
+        int* end = begin + digits.count;
+
+        for (int* p = begin; p < end; p++)
+        {
+            n = n * 10 + *p;
+        }
+
+        sum += n;
+    }
+
+    finalize_list(&digits);
     euler_submit(43, sum, start);
 }

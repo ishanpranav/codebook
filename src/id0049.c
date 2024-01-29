@@ -31,7 +31,9 @@ Exception math_prime_permutation(
 
         for (int k = a; k; k /= 10)
         {
-            Exception ex = list_add(aDigits, k % 10);
+            int d = k % 10;
+
+            Exception ex = list_add(aDigits, &d);
 
             if (ex)
             {
@@ -43,7 +45,9 @@ Exception math_prime_permutation(
 
         for (int k = b; k; k /= 10)
         {
-            Exception ex = list_add(bDigits, k % 10);
+            int d = k % 10;
+
+            Exception ex = list_add(bDigits, &d);
 
             if (ex)
             {
@@ -51,7 +55,7 @@ Exception math_prime_permutation(
             }
         }
 
-        if (!permutation_test(aDigits, bDigits))
+        if (!permutation_test(aDigits, bDigits, int_equality_comparer))
         {
             continue;
         }
@@ -60,7 +64,9 @@ Exception math_prime_permutation(
 
         for (int k = c; k; k /= 10)
         {
-            Exception ex = list_add(cDigits, k % 10);
+            int d = k % 10;
+
+            Exception ex = list_add(cDigits, &d);
 
             if (ex)
             {
@@ -68,7 +74,7 @@ Exception math_prime_permutation(
             }
         }
 
-        if (!permutation_test(bDigits, cDigits))
+        if (!permutation_test(bDigits, cDigits, int_equality_comparer))
         {
             continue;
         }
@@ -89,19 +95,19 @@ int main(void)
     
     struct List a;
 
-    ex = list(&a, 0);
+    ex = list(&a, sizeof(int), 0);
 
     euler_ok();
     
     struct List b;
     
-    ex = list(&b, 0);
+    ex = list(&b, sizeof(int), 0);
 
     euler_ok();
 
     struct List c;
 
-    ex = list(&c, 0);
+    ex = list(&c, sizeof(int), 0);
 
     euler_ok();
     
@@ -113,9 +119,12 @@ int main(void)
 
     if (result < 0)
     {
-        long last = primes.primes.end[-1];
+        long long* begin = primes.primes.items;
+        int last = begin[primes.primes.count - 1];
 
         ex = math_prime_permutation(&primes, &a, &b, &c, 1488, last, &result);
+
+        euler_ok();
     }
 
     return euler_submit(49, result, start);

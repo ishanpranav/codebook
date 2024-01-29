@@ -30,10 +30,7 @@ LPString lp_string_clone(LPString instance)
     return strcpy(result, instance);
 }
 
-int lp_string_compare(Object left, Object right)
+int lp_string_compare(const void* left, const void* right)
 {
-    const char* a = *(const char**)left;
-    const char* b = *(const char**)right;
-
-    return strcmp(a, b);
+    return strcmp(*(const char**)left, *(const char**)right);
 }

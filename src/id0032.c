@@ -7,19 +7,29 @@
 
 int main(void)
 {
-    struct List discovered;
+    struct List set;
     struct PermutationIterator it;
-    long long digits[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
-    Exception ex = list(&discovered, 0);
+    Exception ex = list(&set, sizeof(long), 0);
 
     euler_ok();
 
-    struct List l;
-    
-    list_from_array(&l, digits, 9);
-    
-    for (permutation_begin(&it, &l); !it.end; permutation_next(&it))
+    struct List digits;
+
+    ex = list(&digits, sizeof(int), 9);
+
+    euler_ok();
+
+    for (int i = 1; i <= 9; i++)
+    {
+        list_add(&digits, &i);
+    }
+
+    int* digitsBegin = digits.items;
+
+    for (permutation_begin(&it, &digits, int_comparer);
+        !it.end;
+        permutation_next(&it))
     {
         for (int i = 1; i < 7; i++)
         {
@@ -31,17 +41,17 @@ int main(void)
 
                 for (int k = 0; k < i; k++)
                 {
-                    a = 10 * a + it.values->begin[k];
+                    a = 10 * a + digitsBegin[k];
                 }
 
                 for (int k = i; k < j; k++)
                 {
-                    b = 10 * b + it.values->begin[k];
+                    b = 10 * b + digitsBegin[k];
                 }
 
                 for (int k = j; k < 9; k++)
                 {
-                    c = 10 * c + it.values->begin[k];
+                    c = 10 * c + digitsBegin[k];
                 }
 
                 long product = a * b;
@@ -51,19 +61,30 @@ int main(void)
                     break;
                 }
 
-                if (product != c || list_contains(&discovered, product))
+                if (product != c)
                 {
                     continue;
                 }
 
-                list_add(&discovered, product);
+                if (!list_contains(&set, &product, long_equality_comparer))
+                {
+                    list_add(&set, &product);
+                }
             }
         }
     }
 
-    long long sum = list_sum(&discovered);
+    long long sum = 0;
+    long* setBegin = set.items;
+    long* setEnd = setBegin + set.count;
 
-    finalize_list(&discovered);
+    for (long* it = setBegin; it < setEnd; it++)
+    {
+        sum += *it;
+    }
+    
+    finalize_list(&digits);
+    finalize_list(&set);
 
     return euler_submit(32, sum, start);
 }

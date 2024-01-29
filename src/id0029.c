@@ -2,6 +2,7 @@
 
 // Distinct Powers
 
+#include <math.h>
 #include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
 #include "../lib/list.h"
@@ -9,56 +10,25 @@
 int main(void)
 {
     struct List values;
-    int exponents[101] = { 0 };
     clock_t start = clock();
-    Exception ex = list(&values, 0);
+    Exception ex = list(&values, sizeof(double), 0);
 
     euler_ok();
 
-    for (int n = 2; n <= 10; n++)
+    for (int a = 2; a <= 100; a++)
     {
-        int exponent = 2;
-        int pow = n * n;
-
-        while (pow <= 100)
-        {
-            if (exponents[pow] < exponent)
-            {
-                exponents[pow] = exponent;
-                ex = list_add(&values, pow);
-
-                euler_ok();
-            }
-
-            pow *= n;
-            exponent++;
-        }
-    }
-
-    int count = 0;
-
-    for (long long* it = values.begin; it < values.end; it++)
-    {
-        int exponent = exponents[*it];
-
         for (int b = 2; b <= 100; b++)
         {
-            int n = exponent * b;
-            struct DivisorIterator it;
+            double result = pow(a, b);
 
-            for (divisor_begin(&it, n); !divisor_end(&it); divisor_next(&it)) 
+            if (!list_contains(&values, &result, double_equality_comparer))
             {
-                if (it.current < exponent && n / it.current <= 100) 
-                {
-                    count++;
-
-                    break;
-                }
+                list_add(&values, &result);
             }
         }
     }
 
-    count = 99 * 99 - count;
+    size_t count = values.count;
 
     finalize_list(&values);
 

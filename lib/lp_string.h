@@ -36,6 +36,6 @@ LPString lp_string_clone(LPString instance);
  * @return A signed integer that indicates the relative values of `left` and 
  *         `right`. 
 */
-int lp_string_compare(Object left, Object right);
+int lp_string_compare(const void* left, const void* right);
 
 #endif

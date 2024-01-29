@@ -9,9 +9,9 @@
 
 int main(void)
 {
-    struct LPStringCollection words;
+    struct List words;
     clock_t start = clock();
-    Exception ex = lp_string_collection(&words, 5000);
+    Exception ex = list(&words, sizeof(LPString), 2000);
 
     euler_ok();
 
@@ -20,8 +20,10 @@ int main(void)
     euler_ok();
 
     int count = 0;
+    LPString* begin = words.items;
+    LPString* end = begin + words.count;
 
-    for (LPString* word = words.items; word < words.end; word++)
+    for (LPString* word = begin; word < end; word++)
     {
         int x = 0;
 
@@ -38,6 +40,6 @@ int main(void)
         free(*word);
     }
 
-    finalize_lp_string_collection(&words);
+    finalize_list(&words);
     euler_submit(42, count, start);
 }

@@ -34,5 +34,7 @@ int main(void)
         result = result * 10 + begin[i];
     }
 
+    finalize_list(&digits);
+
     return euler_submit(24, result, start);
 }

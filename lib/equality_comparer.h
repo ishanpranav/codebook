@@ -11,3 +11,15 @@ typedef bool (*EqualityComparer)(Object left, Object right);
  * 
 */
 bool int_equality_comparer(Object left, Object right);
+
+/**
+ * 
+ * 
+*/
+bool long_equality_comparer(Object left, Object right);
+
+/**
+ * 
+ * 
+*/
+bool double_equality_comparer(Object left, Object right);

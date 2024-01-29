@@ -3,15 +3,16 @@
 // Names Scores
 
 #include <stdlib.h>
+#include <string.h>
 #include "../lib/euler.h"
 #include "../lib/lp_string_collection.h"
 
 int main(void)
 {
     long sum = 0;
-    struct LPStringCollection names;
+    struct List names;
     clock_t start = clock();
-    Exception ex = lp_string_collection(&names, sizeof(LPString), 5000);
+    Exception ex = list(&names, sizeof(LPString), 5000);
 
     euler_ok();
 
@@ -19,23 +20,25 @@ int main(void)
 
     euler_ok();
 
-    lp_string_collection_sort(&names);
+    list_sort(&names, lp_string_compare);
+
+    LPString* begin = names.items;
 
     for (size_t i = 0; i < names.count; i++)
     {
         int rank = 0;
 
-        for (char* p = ((char**)names.items)[i]; *p; p++)
+        for (char* p = begin[i]; *p; p++)
         {
             rank += *p - 'A' + 1;
         }
 
         sum += rank * (i + 1);
 
-        free(((char**)names.items)[i]);
+        free(begin[i]);
     }
 
-    finalize_lp_string_collection(&names);
+    finalize_list(&names);
 
     return euler_submit(22, sum, start);
 }

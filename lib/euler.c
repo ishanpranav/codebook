@@ -76,7 +76,7 @@ void swap(Object left, Object right, size_t itemSize)
 {    
     char* p = left;
     char* q = right;
-    char* swap;
+    char swap;
 
     for (size_t i = 0; i < itemSize; i++)
     {

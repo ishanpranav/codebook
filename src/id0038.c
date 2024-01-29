@@ -8,32 +8,42 @@
 int main(void)
 {
     long max = 918273645l;
-    long long array[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     struct List digits;
     clock_t start = clock();
-    Exception ex = list(&digits, 0);
+    Exception ex = list(&digits, sizeof(int), 9);
 
     euler_ok();
     
     struct List pandigital;
     
-    list_from_array(&pandigital, array, 9);
+    ex = list(&pandigital, sizeof(int), 9);
+    
+    euler_ok();
+
+    for (int i = 1; i < 9; i++)
+    {
+        list_add(&pandigital, &i);
+    }
 
     for (int i = 2; i < 10000; i++)
     {
         list_clear(&digits);
 
-        for (int j = 1; digits.end - digits.begin < 9; j++)
+        for (int j = 1; digits.count < 9; j++)
         {
             for (long k = i * j; k; k /= 10)
             {
-                list_add(&digits, k % 10);
+                int digit = k % 10;
+
+                list_add(&digits, &digit);
             }
         }
 
         long long n = 0;
+        int* begin = digits.items; 
+        int* end = begin + digits.count;
 
-        for (long long* it = digits.begin; it < digits.end; it++)
+        for (int* it = begin; it < end; it++)
         {
             n = n * 10 + *it;
         }
@@ -43,9 +53,9 @@ int main(void)
             continue;
         }
 
-        list_sort(&digits);
+        list_sort(&digits, int_comparer);
 
-        if (!list_equals(&digits, &pandigital))
+        if (!list_sequence_equal(&digits, &pandigital, int_equality_comparer))
         {
             continue;
         }
@@ -54,6 +64,7 @@ int main(void)
     }
 
     finalize_list(&digits);
+    finalize_list(&pandigital);
     
     return euler_submit(38, max, start);
 }
