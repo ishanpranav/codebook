@@ -4,6 +4,10 @@
 
 Efficient Project Euler solutions in C language
 
+Thanks to the depth and breadth of the Project Euler problem set, this
+repository has become home to a [diverse library](lib/) including mathematical
+functions as well as data structures and algorithms.
+
 ## Constraints
 
 - Adhere to the [project style guide](cstyle.md).
