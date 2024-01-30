@@ -24,7 +24,7 @@ all: \
 djb2_hash.o: lib/hashes/djb2_hash.c lib/hashes/djb2_hash.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-elf_hash.o: lib/hashes/elf_hash.c lib/hashes/elf_hash.h
+pjw_hash.o: lib/hashes/pjw_hash.c lib/hashes/pjw_hash.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 sdbm_hash.o: lib/hashes/sdbm_hash.c lib/hashes/sdbm_hash.h

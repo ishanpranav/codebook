@@ -28,7 +28,7 @@ languages. The most difficult problems are implemented in 10 languages.
 |   \> 10%   | [Python](tools/test.py.sh) |
 |   \> 20%   | [C\#](tools/test.cs.ps1)   |
 
-## Attribution
+## Dependencies
 
 This repository depends on the
 [GNU Multiple Precision Arithmetic Library (GMP)](https://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library),
