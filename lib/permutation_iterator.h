@@ -2,14 +2,17 @@
 
 #include <stdbool.h>
 #include <stddef.h>
-#include "list.h"
+#include "comparer.h"
+#include "equality_comparer.h"
 
 /** Iterates over the lexicographical permutations of a collection. */
 struct PermutationIterator
 {
     int (*itemComparer)(const void* left, const void* right);
 
-    struct List* values;
+    void* items;
+    size_t itemSize;
+    size_t length;
     bool end;
 };
 
@@ -25,7 +28,9 @@ typedef struct PermutationIterator* PermutationIterator;
 */
 void permutation_begin(
     PermutationIterator iterator,
-    List values,
+    void* items,
+    size_t itemSize,
+    size_t length,
     Comparer itemComparer);
 
 /**
@@ -44,4 +49,10 @@ void permutation_next(PermutationIterator iterator);
  * @param itemComparer the comparer used to determine if two elements are equal.
  * @return `true` if `left` and `right` are permutations; otherwise, `false`.
 */
-bool permutation_test(List left, List right, EqualityComparer itemComparer);
+bool permutation_test(
+    void* left,
+    size_t leftLength,
+    void* right,
+    size_t rightLength,
+    size_t itemSize,
+    EqualityComparer itemComparer);

@@ -3,31 +3,20 @@
 // Pandigital Products
 
 #include "../lib/euler.h"
+#include "../lib/list.h"
 #include "../lib/permutation_iterator.h"
 
 int main(void)
 {
     struct List set;
     struct PermutationIterator it;
+    int digits[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
     Exception ex = list(&set, sizeof(long), 0);
 
     euler_ok();
 
-    struct List digits;
-
-    ex = list(&digits, sizeof(int), 9);
-
-    euler_ok();
-
-    for (int i = 1; i <= 9; i++)
-    {
-        list_add(&digits, &i);
-    }
-
-    int* digitsBegin = digits.items;
-
-    for (permutation_begin(&it, &digits, int_comparer);
+    for (permutation_begin(&it, digits, sizeof * digits, 9, int_comparer);
         !it.end;
         permutation_next(&it))
     {
@@ -38,20 +27,20 @@ int main(void)
                 long a = 0;
                 long b = 0;
                 long c = 0;
-
+                
                 for (int k = 0; k < i; k++)
                 {
-                    a = 10 * a + digitsBegin[k];
+                    a = 10 * a + digits[k];
                 }
 
                 for (int k = i; k < j; k++)
                 {
-                    b = 10 * b + digitsBegin[k];
+                    b = 10 * b + digits[k];
                 }
 
                 for (int k = j; k < 9; k++)
                 {
-                    c = 10 * c + digitsBegin[k];
+                    c = 10 * c + digits[k];
                 }
 
                 long product = a * b;
@@ -83,7 +72,6 @@ int main(void)
         sum += *it;
     }
     
-    finalize_list(&digits);
     finalize_list(&set);
 
     return euler_submit(32, sum, start);

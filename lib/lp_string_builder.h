@@ -38,6 +38,8 @@ void lp_string_builder_from_string(LPStringBuilder instance, LPString value);
 */
 Exception lp_string_builder_append_char(LPStringBuilder instance, char value);
 
+Exception lp_string_builder_append_string(LPStringBuilder instance, LPString value);
+
 Exception lp_string_builder_append_format(
     LPStringBuilder instance, 
     LPString format,

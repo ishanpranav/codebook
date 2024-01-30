@@ -108,7 +108,7 @@ Primality sieve_test(Sieve instance, long long n, PrimalityTest fallback)
 
 long long sieve_prime(Sieve instance, size_t n)
 {
-    return ((LPArray)instance->primes.items)[n];
+    return ((long long*)instance->primes.items)[n];
 }
 
 void sieve_begin(SieveIterator iterator, Sieve values)
@@ -155,7 +155,7 @@ void sieve_skip(SieveIterator iterator, size_t count)
 
 void sieve_next(SieveIterator iterator)
 {
-    LPArray begin = (long long*)iterator->values->primes.items;
+    long long* begin = (long long*)iterator->values->primes.items;
     size_t count = iterator->values->primes.count;
 
     if (iterator->current + 1 == begin + iterator->values->primes.count)

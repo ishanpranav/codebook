@@ -2,12 +2,13 @@
 
 // Sub-string Divisiblity
 
+#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
+#include "../lib/lp_string_builder.h"
 
-static bool math_is_substring_divisible(List digits)
+static bool math_is_substring_divisible(LPStringBuilder digits)
 {
-    int* begin = digits->items;
     int mod[] = { 2, 3, 5, 7, 11, 13, 17 };
 
     for (int i = 0; i < 7; i++)
@@ -16,7 +17,7 @@ static bool math_is_substring_divisible(List digits)
 
         for (int j = i + 1; j <= i + 3; j++)
         {
-            n = n * 10 + begin[j];
+            n = n * 10 + digits->buffer[j] - '0';
         }
 
         if (n % mod[i] != 0)
@@ -30,20 +31,15 @@ static bool math_is_substring_divisible(List digits)
 
 int main(void)
 {
-    struct List digits;
+    struct LPStringBuilder digits;
     struct PermutationIterator it;
     long long sum = 0;
     clock_t start = clock();
-    Exception ex = list(&digits, sizeof(int), 10);
+    
+    lp_string_builder(&digits, 0);
+    lp_string_builder_append_string(&digits, "0123456789");
 
-    euler_ok();
-
-    for (int i = 0; i < 10; i++)
-    {
-        list_add(&digits, &i);
-    }
-
-    for (permutation_begin(&it, &digits, int_comparer);
+    for (permutation_begin(&it, digits.buffer, 1, digits.length, char_comparer);
         !it.end;
         permutation_next(&it))
     {
@@ -52,19 +48,8 @@ int main(void)
             continue;
         }
 
-        long long n = 0;
-        int* begin = digits.items;
-        int* end = begin + digits.count;
-
-        for (int* p = begin; p < end; p++)
-        {
-            n = n * 10 + *p;
-        }
-
-        sum += n;
+        sum += atoll(digits.buffer);
     }
-
-    finalize_list(&digits);
     
     return euler_submit(43, sum, start);
 }

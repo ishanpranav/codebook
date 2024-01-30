@@ -4,29 +4,32 @@
 
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
+#include "../lib/lp_string_builder.h"
 
 static Exception math_is_permuted_multiple(
     long x,
-    List digits,
-    List image,
+    LPStringBuilder digits,
+    LPStringBuilder image,
     bool* result)
 {
     for (int a = 2; a <= 6; a++)
     {
-        list_clear(digits);
+        lp_string_builder_clear(digits);
 
-        for (long k = a * x; k; k /= 10)
+        Exception ex = lp_string_builder_append_format(digits, "%ld", a * x);
+
+        if (ex)
         {
-            int d = k % 10;
-            Exception ex = list_add(digits, &d);
-
-            if (ex)
-            {
-                return ex;
-            }
+            return ex;
         }
 
-        if (!permutation_test(image, digits, int_equality_comparer))
+        if (!permutation_test(
+            image->buffer,
+            image->length,
+            digits->buffer,
+            digits->length,
+            1,
+            char_equality_comparer))
         {
             *result = false;
 
@@ -39,25 +42,24 @@ static Exception math_is_permuted_multiple(
     return 0;
 }
 
-static Exception math_permuted_multiple(List digits, List image, long* result)
+static Exception math_permuted_multiple(
+    LPStringBuilder digits, 
+    LPStringBuilder image, 
+    long* result)
 {
     for (long x = 1; ; x++)
     {
-        list_clear(image);
+        lp_string_builder_clear(image);
 
-        for (long k = x; k; k /= 10)
+        Exception ex = lp_string_builder_append_format(image, "%ld", x);
+
+        if (ex)
         {
-            int d = k % 10;
-            Exception ex = list_add(image, &d);
-
-            if (ex)
-            {
-                return ex;
-            }
+            return ex;
         }
 
         bool is;
-        Exception ex = math_is_permuted_multiple(x, digits, image, &is);
+        ex = math_is_permuted_multiple(x, digits, image, &is);
 
         if (ex)
         {
@@ -79,15 +81,15 @@ static Exception math_permuted_multiple(List digits, List image, long* result)
 
 int main(void)
 {
-    struct List digits;
+    struct LPStringBuilder digits;
     clock_t start = clock();
-    Exception ex = list(&digits, sizeof(int), 0);
+    Exception ex = lp_string_builder(&digits, 0);
 
     euler_ok();
 
-    struct List image;
+    struct LPStringBuilder image;
 
-    ex = list(&image, sizeof(int), 0);
+    ex = lp_string_builder(&image, 0);
 
     euler_ok();
 
@@ -97,8 +99,8 @@ int main(void)
 
     euler_ok();
 
-    finalize_list(&digits);
-    finalize_list(&image);
-    
+    finalize_lp_string_builder(&digits);
+    finalize_lp_string_builder(&image);
+
     return euler_submit(52, result, start);
 }

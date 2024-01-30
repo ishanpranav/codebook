@@ -11,7 +11,7 @@ int main(void)
 {
     long sum = 0;
     clock_t start = clock();
-    LPArray factorial = factorial_range(10);
+    long long* factorial = factorial_range(10);
 
     if (!factorial)
     {

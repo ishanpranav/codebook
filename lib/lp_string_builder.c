@@ -36,7 +36,7 @@ void lp_string_builder_from_string(LPStringBuilder instance, LPString value)
 }
 
 Exception lp_string_builder_ensure_capacity(
-    LPStringBuilder instance, 
+    LPStringBuilder instance,
     size_t capacity)
 {
     if (instance->capacity >= capacity)
@@ -76,14 +76,33 @@ Exception lp_string_builder_append_char(LPStringBuilder instance, char item)
     }
 
     instance->buffer[instance->length] = item;
-    instance->buffer[instance->length + 1] = '\0';
     instance->length++;
+    instance->buffer[instance->length] = '\0';
+
+    return 0;
+}
+
+Exception lp_string_builder_append_string(LPStringBuilder instance, LPString value)
+{
+    size_t length = strlen(value);
+    size_t newCount = instance->length + length;
+    Exception ex = lp_string_builder_ensure_capacity(instance, newCount);
+
+    if (ex)
+    {
+        return ex;
+    }
+
+    memcpy(instance->buffer + instance->length, value, length);
+
+    instance->length += length;
+    instance->buffer[instance->length] = '\0';
 
     return 0;
 }
 
 Exception lp_string_builder_append_format(
-    LPStringBuilder instance, 
+    LPStringBuilder instance,
     LPString format,
     ...)
 {
@@ -102,12 +121,12 @@ Exception lp_string_builder_append_format(
 
     size_t capacity = instance->length + size + 1;
     Exception ex = lp_string_builder_ensure_capacity(instance, capacity);
-    
+
     if (ex)
     {
         return ex;
     }
-    
+
     va_start(argl, format);
 
     int newSize = vsprintf(instance->buffer + instance->length, format, argl);

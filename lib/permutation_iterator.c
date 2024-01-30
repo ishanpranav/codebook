@@ -6,28 +6,24 @@
 
 void permutation_begin(
     PermutationIterator iterator,
-    List values,
+    void* items,
+    size_t itemSize,
+    size_t length,
     Comparer itemComparer)
 {
-    iterator->end = false;
-    iterator->values = values;
+    iterator->items = items;
+    iterator->itemSize = itemSize;
+    iterator->length = length;
     iterator->itemComparer = itemComparer;
+    iterator->end = !length;
 }
 
 void permutation_next(PermutationIterator iterator)
 {
-    char* begin = iterator->values->items;
-    size_t count = iterator->values->count;
+    char* begin = iterator->items;
 
-    if (!count)
-    {
-        iterator->end = true;
-
-        return;
-    }
-
-    size_t i = count - 1;
-    size_t n = iterator->values->itemSize;
+    size_t i = iterator->length - 1;
+    size_t n = iterator->itemSize;
     Comparer comparer = iterator->itemComparer;
 
     while (i > 0 && comparer(begin + (i - 1) * n, begin + i * n) >= 0)
@@ -42,7 +38,7 @@ void permutation_next(PermutationIterator iterator)
         return;
     }
 
-    size_t j = count - 1;
+    size_t j = iterator->length - 1;
 
     while (comparer(begin + j * n, begin + (i - 1) * n) <= 0)
     {
@@ -51,7 +47,7 @@ void permutation_next(PermutationIterator iterator)
     
     swap(begin + (i - 1) * n, begin + j * n, n);
 
-    j = count - 1;
+    j = iterator->length - 1;
     
     while (i < j) 
     {
@@ -65,15 +61,17 @@ void permutation_next(PermutationIterator iterator)
 }
 
 static size_t permutation_count(
-    List list,
+    void* items,
+    size_t itemSize,
+    size_t length,
     Object item,
     EqualityComparer itemComparer)
 {
     size_t result = 0;
-    char* begin = list->items;
-    char* end = begin + list->count * list->itemSize;
+    char* begin = items;
+    char* end = begin + length * itemSize;
 
-    for (char* it = begin; it < end; it += list->itemSize)
+    for (char* it = begin; it < end; it += itemSize)
     {
         if (itemComparer(item, it))
         {
@@ -84,25 +82,22 @@ static size_t permutation_count(
     return result;
 }
 
-bool permutation_test(List left, List right, EqualityComparer itemComparer)
+bool permutation_test(
+    void* left,
+    size_t leftLength,
+    void* right,
+    size_t rightLength,
+    size_t itemSize,
+    EqualityComparer itemComparer)
 {
-    size_t itemSize = left->itemSize;
-
-    if (right->itemSize != itemSize)
+    if (leftLength != rightLength)
     {
         return false;
     }
 
-    size_t count = left->count;
-
-    if (right->count != count)
-    {
-        return false;
-    }
-
-    char* leftBegin = left->items;
-    char* leftEnd = leftBegin + count * itemSize;
-    char* rightBegin = right->items;
+    char* leftBegin = left;
+    char* leftEnd = leftBegin + leftLength * itemSize;
+    char* rightBegin = right;
 
     while (leftBegin < leftEnd && itemComparer(leftBegin, rightBegin))
     {
@@ -112,8 +107,18 @@ bool permutation_test(List left, List right, EqualityComparer itemComparer)
 
     for (char* it = leftBegin; it < leftEnd; it += itemSize)
     {
-        size_t leftCount = permutation_count(left, it, itemComparer);
-        size_t rightCount = permutation_count(right, it, itemComparer);
+        size_t leftCount = permutation_count(
+            left, 
+            itemSize, 
+            leftLength, 
+            it, 
+            itemComparer);
+        size_t rightCount = permutation_count(
+            right, 
+            itemSize, 
+            rightLength, 
+            it, 
+            itemComparer);
 
         if (leftCount != rightCount)
         {

@@ -10,4 +10,4 @@
  * @return A `max`-element array, or `NULL` if the process is out of memory. The
  *         caller is responsible.
 */
-LPArray factorial_range(int max);
+long long* factorial_range(int max);

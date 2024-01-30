@@ -4,6 +4,7 @@
 
 #include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
+#include "../lib/list.h"
 #include "../lib/permutation_iterator.h"
 
 int main(void)
@@ -27,7 +28,12 @@ int main(void)
 
         struct PermutationIterator it;
 
-        for (permutation_begin(&it, &digits, int_comparer); 
+        for (permutation_begin(
+            &it, 
+            digits.items, 
+            digits.itemSize, 
+            digits.count, 
+            int_comparer); 
             !it.end; 
             permutation_next(&it))
         {

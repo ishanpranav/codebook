@@ -2,6 +2,11 @@
 
 #include "equality_comparer.h"
 
+bool char_equality_comparer(Object left, Object right)
+{
+    return *(char*)left == *(char*)right;
+}
+
 bool int_equality_comparer(Object left, Object right)
 {
     return *(int*)left == *(int*)right;

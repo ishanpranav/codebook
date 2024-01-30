@@ -3,15 +3,16 @@
 // Prime Permutations
 
 #include "../lib/euler.h"
+#include "../lib/lp_string_builder.h"
 #include "../lib/permutation_iterator.h"
 #include "../lib/sieve.h"
 
 static Exception math_prime_permutation(
-    Sieve primes, 
-    List aDigits, 
-    List bDigits, 
-    List cDigits,
-    int min, 
+    Sieve primes,
+    LPStringBuilder aDigits,
+    LPStringBuilder bDigits,
+    LPStringBuilder cDigits,
+    int min,
     int max,
     long long* result)
 {
@@ -27,51 +28,51 @@ static Exception math_prime_permutation(
             continue;
         }
 
-        list_clear(aDigits);
+        lp_string_builder_clear(aDigits);
 
-        for (int k = a; k; k /= 10)
+        Exception ex = lp_string_builder_append_format(aDigits, "%d", a);
+
+        if (ex)
         {
-            int d = k % 10;
-            Exception ex = list_add(aDigits, &d);
-
-            if (ex)
-            {
-                return ex;
-            }
-        }
-        
-        list_clear(bDigits);
-
-        for (int k = b; k; k /= 10)
-        {
-            int d = k % 10;
-            Exception ex = list_add(bDigits, &d);
-
-            if (ex)
-            {
-                return ex;
-            }
+            return ex;
         }
 
-        if (!permutation_test(aDigits, bDigits, int_equality_comparer))
+        lp_string_builder_clear(bDigits);
+
+        ex = lp_string_builder_append_format(bDigits, "%d", b);
+
+        if (ex)
+        {
+            return ex;
+        }
+
+        if (!permutation_test(
+            aDigits->buffer, 
+            aDigits->length, 
+            bDigits->buffer,
+            bDigits->length,
+            1,
+            char_equality_comparer))
         {
             continue;
         }
 
-        list_clear(cDigits);
+        lp_string_builder_clear(cDigits);
 
-        for (int k = c; k; k /= 10)
+        ex = lp_string_builder_append_format(cDigits, "%d", c);
+
+        if (ex)
         {
-            int d = k % 10;
-            Exception ex = list_add(cDigits, &d);
-
-            if (ex)
-            {
-                return ex;
-            }
+            return ex;
         }
 
-        if (!permutation_test(bDigits, cDigits, int_equality_comparer))
+        if (!permutation_test(
+            bDigits->buffer,
+            bDigits->length,
+            cDigits->buffer,
+            cDigits->length,
+            1,
+            char_equality_comparer))
         {
             continue;
         }
@@ -89,29 +90,29 @@ int main(void)
     Exception ex = sieve(&primes, 10000);
 
     euler_ok();
-    
-    struct List a;
 
-    ex = list(&a, sizeof(int), 0);
+    struct LPStringBuilder a;
 
-    euler_ok();
-    
-    struct List b;
-    
-    ex = list(&b, sizeof(int), 0);
+    ex = lp_string_builder(&a, 0);
 
     euler_ok();
 
-    struct List c;
+    struct LPStringBuilder b;
 
-    ex = list(&c, sizeof(int), 0);
+    ex = lp_string_builder(&b, 0);
 
     euler_ok();
-    
+
+    struct LPStringBuilder c;
+
+    ex = lp_string_builder(&c, 0);
+
+    euler_ok();
+
     long long result = -1;
 
     ex = math_prime_permutation(&primes, &a, &b, &c, 2, 1487, &result);
-    
+
     euler_ok();
 
     if (result < 0)
@@ -123,6 +124,10 @@ int main(void)
 
         euler_ok();
     }
+
+    finalize_lp_string_builder(&a);
+    finalize_lp_string_builder(&b);
+    finalize_lp_string_builder(&c);
 
     return euler_submit(49, result, start);
 }

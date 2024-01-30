@@ -35,14 +35,14 @@ long long binomial(int n, int k)
     return result;
 }
 
-LPArray factorial_range(int max)
+long long* factorial_range(int max)
 {
     if (max < 1)
     {
         return 0;
     }
 
-    LPArray result = malloc(max * sizeof * result);
+    long long* result = malloc(max * sizeof * result);
 
     if (!result)
     {

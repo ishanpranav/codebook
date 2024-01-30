@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include "../lib/euler.h"
+#include "../lib/lp_string_builder.h"
 #include "../lib/permutation_iterator.h"
 #include "../lib/sieve_iterator.h"
 #define MAX_SEARCH 0.375
@@ -21,15 +22,15 @@ int main(void)
 
     euler_ok();
 
-    struct List nDigits;
+    struct LPStringBuilder nDigits;
 
-    ex = list(&nDigits, sizeof(int), 0);
+    ex = lp_string_builder(&nDigits, 0);
 
     euler_ok();
 
-    struct List phiDigits;
+    struct LPStringBuilder phiDigits;
 
-    ex = list(&phiDigits, sizeof(int), 0);
+    ex = lp_string_builder(&phiDigits, 0);
 
     euler_ok();
 
@@ -58,29 +59,23 @@ int main(void)
                 continue;
             }
 
-            list_clear(&nDigits);
+            lp_string_builder_clear(&nDigits);
 
-            for (long k = n; k; k /= 10)
-            {
-                int d = k % 10;
-
-                ex = list_add(&nDigits, &d);
-
-                euler_ok();
-            }
+            ex = lp_string_builder_append_format(&nDigits, "%ld", n);
             
-            list_clear(&phiDigits);
+            euler_ok();
 
-            for (long k = phi; k; k /= 10)
-            {
-                int d = k % 10;
+            lp_string_builder_clear(&phiDigits);
 
-                ex = list_add(&phiDigits, &d);
+            ex = lp_string_builder_append_format(&phiDigits, "%ld", phi);
 
-                euler_ok();
-            }
-
-            if (permutation_test(&nDigits, &phiDigits, int_equality_comparer))
+            if (permutation_test(
+                nDigits.buffer,
+                nDigits.length,
+                phiDigits.buffer,
+                phiDigits.length,
+                1,
+                char_equality_comparer))
             {
                 minN = n;
                 minNRPhi = nRPhi;
@@ -88,8 +83,8 @@ int main(void)
         }
     }
 
-    finalize_list(&nDigits);
-    finalize_list(&phiDigits);
+    finalize_lp_string_builder(&nDigits);
+    finalize_lp_string_builder(&phiDigits);
     finalize_sieve(&primes);
     
     return euler_submit(70, minN, start);
