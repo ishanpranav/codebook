@@ -16,3 +16,5 @@ typedef int (*Comparer)(const void* left, const void* right);
  *         `right`.
 */
 int int_comparer(const void* left, const void* right);
+
+int char_comparer(const void* left, const void* right);

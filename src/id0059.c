@@ -36,15 +36,15 @@ int main(void)
     int frequencies[3][256] = { 0 };
     char key[3] = { 0 };
 
-    for (char* it = message.begin; it < message.end; it++)
+    for (size_t j = 0; j < message.length; j++)
     {
-        int* frequency = frequencies[i] + *it;
+        int* frequency = frequencies[i] + message.buffer[j];
 
         *frequency = *frequency + 1;
 
         if (*frequency > frequencies[i][(int)key[i]])
         {
-            key[i] = *it;
+            key[i] = message.buffer[j];
         }
 
         i++;
@@ -62,14 +62,14 @@ int main(void)
 
     long sum = 0;
 
-    for (char* it = message.begin; it < message.end; it++)
+    for (size_t j = 0; j < message.length; j++)
     {
         if (i == 3)
         {
             i = 0;
         }
 
-        sum += *it ^ key[i];
+        sum += message.buffer[j] ^ key[i];
         i++;
     }
 

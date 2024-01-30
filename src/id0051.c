@@ -2,19 +2,19 @@
 
 // Prime Digit Replacements
 
+#include <stdlib.h>
 #include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
+#include "../lib/lp_string_builder.h"
 #include "../lib/sieve_iterator.h"
 
-static bool mask_list_mask(List value)
+static bool mask_list_mask(LPStringBuilder value)
 {
     int counts[10] = { 0 };
-    int* begin = value->items;
-    int* end = begin + value->count;
 
-    for (int* it = begin; it < end; it++)
+    for (size_t i = 0; i < value->length; i++)
     {
-        counts[*it]++;
+        counts[value->buffer[i] - '0']++;
     }
 
     for (int i = 0; i <= 2; i++)
@@ -24,11 +24,11 @@ static bool mask_list_mask(List value)
             continue;
         }
 
-        for (int* it = begin; it < end; it++)
+        for (size_t j = 0; j < value->length; j++)
         {
-            if (*it == i)
+            if (value->buffer[j] - '0' == i)
             {
-                *it = -1;
+                value->buffer[j] = '*';
             }
         }
 
@@ -40,28 +40,23 @@ static bool mask_list_mask(List value)
 
 static Exception math_prime_digit_replacement(
     Sieve primes,
-    List mask,
-    List image,
+    LPStringBuilder mask,
+    LPStringBuilder image,
     long* first)
 {
+    Exception ex;
     struct SieveIterator it;
 
     for (sieve_begin(&it, primes); ; sieve_next(&it))
     {
-        list_clear(mask);
+        lp_string_builder_clear(mask);
+        
+        ex = lp_string_builder_append_format(mask, "%lld", *it.current);
 
-        for (long long k = *it.current; k; k /= 10)
+        if (ex)
         {
-            int d = k % 10;
-            Exception ex = list_add(mask, &d);
-
-            if (ex)
-            {
-                return ex;
-            }
+            return ex;
         }
-
-        list_reverse(mask);
 
         if (!mask_list_mask(mask))
         {
@@ -74,22 +69,17 @@ static Exception math_prime_digit_replacement(
 
         for (int i = 0; i < 10; i++)
         {
-            list_clear(image);
+            lp_string_builder_clear(image);
 
-            int* begin = mask->items;
-            int* end = begin + mask->count;
-
-            for (int* it = begin; it < end; it++)
+            for (size_t j = 0; j < mask->length; j++)
             {
-                Exception ex;
-
-                if (*it == -1)
+                if (mask->buffer[j] == '*')
                 {
-                    ex = list_add(image, &i);
+                    ex = lp_string_builder_append_char(image, i + '0');
                 }
                 else
                 {
-                    ex = list_add(image, it);
+                    ex = lp_string_builder_append_char(image, mask->buffer[j]);
                 }
 
                 if (ex)
@@ -98,16 +88,8 @@ static Exception math_prime_digit_replacement(
                 }
             }
 
-            long n = 0;
-
-            begin = image->items;
-            end = begin + image->count;
-
-            for (int* it = begin; it < end; it++)
-            {
-                n = n * 10 + *it;
-            }
-
+            long n = atol(image->buffer);
+            
             if (n <= 100000)
             {
                 continue;
@@ -147,15 +129,15 @@ int main(void)
 
     euler_ok();
 
-    struct List mask;
+    struct LPStringBuilder mask;
 
-    ex = list(&mask, sizeof(int), 0);
+    ex = lp_string_builder(&mask, 0);
 
     euler_ok();
 
-    struct List image;
+    struct LPStringBuilder image;
 
-    ex = list(&image, sizeof(int), 0);
+    ex = lp_string_builder(&image, 0);
 
     long first;
 
@@ -164,8 +146,8 @@ int main(void)
     euler_ok();
 
     finalize_sieve(&primes);
-    finalize_list(&mask);
-    finalize_list(&image);
+    finalize_lp_string_builder(&mask);
+    finalize_lp_string_builder(&image);
 
     return euler_submit(51, first, start);
 }

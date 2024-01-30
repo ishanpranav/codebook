@@ -8,8 +8,8 @@
 /** Represents a mutable string of characters. */
 struct LPStringBuilder
 {
-    char* begin;
-    char* end;
+    char* buffer;
+    size_t length;
     size_t capacity;
 };
 
@@ -26,6 +26,8 @@ typedef struct LPStringBuilder* LPStringBuilder;
 */
 Exception lp_string_builder(LPStringBuilder instance, size_t capacity);
 
+void lp_string_builder_from_string(LPStringBuilder instance, LPString value);
+
 /**
  * Appends a specified char to this instance.
  * 
@@ -35,6 +37,11 @@ Exception lp_string_builder(LPStringBuilder instance, size_t capacity);
  *         the operation; otherwise `0`.
 */
 Exception lp_string_builder_append_char(LPStringBuilder instance, char value);
+
+Exception lp_string_builder_append_format(
+    LPStringBuilder instance, 
+    LPString format,
+    ...);
 
 /**
  * Removes all characters from this instance.
@@ -61,15 +68,6 @@ LPString lp_string_builder_to_string(LPStringBuilder instance);
  *         otherwise, `false`.
 */
 bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right);
-
-/**
- * Returns the hash code for this string builder, computed using its string
- * value.
- * 
- * @param instance the `LPStringBuilder` instance.
- * @return An integer hash code.
-*/
-size_t lp_string_builder_get_hash_code(LPStringBuilder instance);
 
 /**
  * Frees all resources.

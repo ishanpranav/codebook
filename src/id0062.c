@@ -64,7 +64,7 @@ Exception lookup_add(
 {
     LookupEntry* p;
     size_t buckets = instance->end - instance->begin;
-    size_t hash = sdbm_hash(key->begin, key->end - key->begin) % buckets;
+    size_t hash = sdbm_hash(key->buffer, key->length) % buckets;
 
     for (p = &instance->begin[hash].firstEntry; *p; p = &(*p)->nextEntry)
     {
@@ -146,11 +146,6 @@ void finalize_lookup(Lookup instance)
     instance->end = NULL;
 }
 
-static int char_compare(const void* left, const void* right)
-{
-    return *((const char*)left) - *((const char*)right);
-}
-
 static Exception math_cubic_permutation(Lookup lookup, long long* result)
 {
     for (long long max = 1; ;)
@@ -171,22 +166,15 @@ static Exception math_cubic_permutation(Lookup lookup, long long* result)
             }
 
             lp_string_builder_clear(&keyBuilder);
+            
+            ex = lp_string_builder_append_format(&keyBuilder, "%lld", cb);
 
-            for (long long k = cb; k; k /= 10)
+            if (ex)
             {
-                ex = lp_string_builder_append_char(&keyBuilder, '0' + k % 10);
-
-                if (ex)
-                {
-                    return ex;
-                }
+                return ex;
             }
 
-            qsort(
-                keyBuilder.begin,
-                keyBuilder.end - keyBuilder.begin,
-                sizeof * keyBuilder.begin,
-                char_compare);
+            qsort(keyBuilder.buffer, keyBuilder.length, 1, char_comparer);
 
             List matches;
 

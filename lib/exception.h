@@ -8,6 +8,9 @@ enum Exception
 {
     /** There is not enough memory to continue the program. */
     EXCEPTION_OUT_OF_MEMORY = -1,
+
+    /** */
+    EXCEPTION_FORMAT = -2
 };
 
 /** Specifies an error that occurs at runtime. */
