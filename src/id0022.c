@@ -20,7 +20,7 @@ int main(void)
 
     euler_ok();
 
-    list_sort(&names, lp_string_compare);
+    list_sort(&names, lp_string_comparer);
 
     LPString* begin = names.items;
 

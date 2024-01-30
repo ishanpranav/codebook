@@ -7,9 +7,8 @@
 #include "comparer.h"
 #include "equality_comparer.h"
 #include "exception.h"
-#include "object.h"
 
-/** Represents a list of integers that can be accessed by index. */
+/** Represents a list of objects that can be accessed by index. */
 struct List
 {
     void* items;
@@ -18,13 +17,14 @@ struct List
     size_t capacity;
 };
 
-/** Represents a list of integers that can be accessed by index. */
+/** Represents a list of objects that can be accessed by index. */
 typedef struct List* List;
 
 /**
  * Initializes a `List` instance.
  *
  * @param instance the `List` instance.
+ * @param itemSize the size of each element in the list.
  * @param capacity the required minimum capacity.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
@@ -54,11 +54,12 @@ Exception list_add(List instance, Object item);
 Exception list_ensure_capacity(List instance, size_t capacity);
 
 /**
- * Determines whether an element is in the list.
+ * Determines whether an element is in the list. This method performs a linear
+ * search.
  *
- * @param instance the `List` instance.
- * @param item     the item to locate in the list.
- * @param comparer 
+ * @param instance     the `List` instance.
+ * @param item         the item to locate in the list.
+ * @param itemComparer the comparer used to determine if two items are equal.
  * @return `true` if the `item` is found in the list; otherwise, `false`.
 */
 bool list_contains(List instance, Object item, EqualityComparer itemComparer);
@@ -80,16 +81,17 @@ void list_reverse(List instance);
 /**
  * Sorts the elements in the list.
  * 
- * @param instance the `List` instance.
- * @param itemComparer
+ * @param instance     the `List` instance.
+ * @param itemComparer the comparer used to detemrine the sort order.
 */
 void list_sort(List instance, Comparer itemComparer);
 
 /**
  * Determines whether two lists are equal in sequence.
  * 
- * @param left  a list to compare to `right`. 
- * @param right a list to compare to `left`.
+ * @param left         a list to compare to `right`. 
+ * @param right        a list to compare to `left`.
+ * @param itemComparer the comparer used to determine if two items are equal.
  * @return `true` if the two lists are of equal length and their corresponding
  *         elements are equal; otherwise, `false`.
 */

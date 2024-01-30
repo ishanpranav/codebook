@@ -72,13 +72,13 @@ long gcd(long a, long b)
     return a;
 }
 
-void swap(Object left, Object right, size_t itemSize)
+void swap(Object left, Object right, size_t size)
 {    
     char* p = left;
     char* q = right;
     char swap;
 
-    for (size_t i = 0; i < itemSize; i++)
+    for (size_t i = 0; i < size; i++)
     {
         swap = p[i];
         p[i] = q[i];

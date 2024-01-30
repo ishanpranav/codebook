@@ -27,7 +27,12 @@ typedef struct Sieve* Sieve;
 Exception sieve(Sieve instance, long long max);
 
 /**
+ * Returns the `n`-th prime. The `n`-th prime is approximately `n log n`.
+ * For convenience, `n` is a zero-based index.
  * 
+ * @param instance the `Sieve` instance.
+ * @param n        the zero-based term number in the prime sequence.
+ * @return The `n`-th prime.
 */
 long long sieve_prime(Sieve instance, size_t n);
 

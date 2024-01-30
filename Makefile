@@ -21,6 +21,15 @@ all: \
 	id0065.o id0066.o id0068.o id0069.o id0070.o id0071.o id0072.o \
 	id0073.o id0074.o id0075.o id0076.o id0077.o id0078.o id0079.o id0080.o
 
+djb2_hash.o: lib/hashes/djb2_hash.c lib/hashes/djb2_hash.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+elf_hash.o: lib/hashes/elf_hash.c lib/hashes/elf_hash.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+sdbm_hash.o: lib/hashes/sdbm_hash.c lib/hashes/sdbm_hash.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 divisor_primality_test.o: \
 	lib/primality_tests/divisor_primality_test.c \
 	lib/primality_tests/divisor_primality_test.h
@@ -258,8 +267,8 @@ id0060.o: src/id0060.c miller_rabin_primality_test.o euler.o math.o $(SIEVE_O)
 id0061.o: src/id0061.c euler.o list.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o list.o math.o -lm
 
-id0062.o: src/id0062.c euler.o list.o lp_string_builder.o
-	$(CC) $(CFLAGS) $< -o $@ euler.o list.o lp_string_builder.o
+id0062.o: src/id0062.c sdbm_hash.o euler.o list.o lp_string_builder.o
+	$(CC) $(CFLAGS) $< -o $@ sdbm_hash.o euler.o list.o lp_string_builder.o
 
 id0063.o: src/id0063.c euler.o math.o
 	$(CC) $(CFLAGS) $< -o $@ euler.o math.o -lm

@@ -87,18 +87,6 @@ bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right)
     return memcmp(left->begin, right->begin, length) == 0;
 }
 
-size_t lp_string_builder_get_hash_code(LPStringBuilder instance)
-{
-    size_t result = 5381;
-    
-    for (char* it = instance->begin; it < instance->end; it++)
-    {
-        result = (result << 5) + result + *it;
-    }
-
-    return result;
-}
-
 void finalize_lp_string_builder(LPStringBuilder instance)
 {
     free(instance->begin);

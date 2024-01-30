@@ -5,8 +5,8 @@
 /**
  * Exchanges the given values.
  *
- * @param left     a pointer to the first element to swap.
- * @param right    a pointer to the second element to swap.
- * @param itemSize  
+ * @param left  a pointer to the first element to swap.
+ * @param right a pointer to the second element to swap.
+ * @param size  the size of each element.
 */
-void swap(Object left, Object right, size_t itemSize);
+void swap(Object left, Object right, size_t size);

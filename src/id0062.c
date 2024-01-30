@@ -4,6 +4,7 @@
 
 #include <limits.h>
 #include <stdlib.h>
+#include "../lib/hashes/sdbm_hash.h"
 #include "../lib/euler.h"
 #include "../lib/list.h"
 #include "../lib/lp_string_builder.h"
@@ -63,7 +64,7 @@ Exception lookup_add(
 {
     LookupEntry* p;
     size_t buckets = instance->end - instance->begin;
-    size_t hash = lp_string_builder_get_hash_code(key) % buckets;
+    size_t hash = sdbm_hash(key->begin, key->end - key->begin) % buckets;
 
     for (p = &instance->begin[hash].firstEntry; *p; p = &(*p)->nextEntry)
     {

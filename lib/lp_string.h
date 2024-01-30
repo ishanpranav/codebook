@@ -9,10 +9,11 @@
 typedef char* LPString;
 
 /**
+ * Initializes a new `LPString` instance with the given length.
  * 
- * @param instance
+ * @param length the string length.
  * @return A new string with the given length, or `NULL` if the process is out
- *         of memory.
+ *         of memory. The caller is responsible.
 */
 LPString lp_string(size_t length);
 
@@ -34,8 +35,8 @@ LPString lp_string_clone(LPString instance);
  * @param left  a string to compare to `right`.
  * @param right a string to compare to `left`.
  * @return A signed integer that indicates the relative values of `left` and 
- *         `right`. 
+ *         `right`.
 */
-int lp_string_compare(const void* left, const void* right);
+int lp_string_comparer(const void* left, const void* right);
 
 #endif
