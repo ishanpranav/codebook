@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "lp_string.h"
+#include "string.h"
 
 /** Represents a series of decimal digits. */
 struct Series
@@ -20,7 +20,7 @@ typedef struct Series* Series;
  *                 This method corrupts the `value` argument. The caller is
  *                 responsible for this argument.
 */
-void series_from_string(Series instance, LPString value);
+void series_from_string(Series instance, String value);
 
 /**
  * Computes a summation of the elements in the series.

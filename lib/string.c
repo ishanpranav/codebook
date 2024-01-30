@@ -2,11 +2,11 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "lp_string.h"
+#include "string.h"
 
-LPString lp_string(size_t length)
+String string(size_t length)
 {
-    LPString result = malloc((length + 1) * sizeof * result);
+    String result = malloc((length + 1) * sizeof * result);
 
     if (result == NULL)
     {
@@ -18,9 +18,9 @@ LPString lp_string(size_t length)
     return result;
 }
 
-LPString lp_string_clone(LPString instance)
+String string_clone(String instance)
 {
-    LPString result = malloc((strlen(instance) + 1) * sizeof * result);
+    String result = malloc((strlen(instance) + 1) * sizeof * result);
 
     if (!result)
     {
@@ -30,7 +30,7 @@ LPString lp_string_clone(LPString instance)
     return strcpy(result, instance);
 }
 
-int lp_string_comparer(const void* left, const void* right)
+int string_comparer(const void* left, const void* right)
 {
     return strcmp(*(const char**)left, *(const char**)right);
 }

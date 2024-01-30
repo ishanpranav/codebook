@@ -3,15 +3,15 @@
 // Prime Permutations
 
 #include "../lib/euler.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 #include "../lib/permutation_iterator.h"
 #include "../lib/sieve.h"
 
 static Exception math_prime_permutation(
     Sieve primes,
-    LPStringBuilder aDigits,
-    LPStringBuilder bDigits,
-    LPStringBuilder cDigits,
+    StringBuilder aDigits,
+    StringBuilder bDigits,
+    StringBuilder cDigits,
     int min,
     int max,
     long long* result)
@@ -28,18 +28,18 @@ static Exception math_prime_permutation(
             continue;
         }
 
-        lp_string_builder_clear(aDigits);
+        string_builder_clear(aDigits);
 
-        Exception ex = lp_string_builder_append_format(aDigits, "%d", a);
+        Exception ex = string_builder_append_format(aDigits, "%d", a);
 
         if (ex)
         {
             return ex;
         }
 
-        lp_string_builder_clear(bDigits);
+        string_builder_clear(bDigits);
 
-        ex = lp_string_builder_append_format(bDigits, "%d", b);
+        ex = string_builder_append_format(bDigits, "%d", b);
 
         if (ex)
         {
@@ -57,9 +57,9 @@ static Exception math_prime_permutation(
             continue;
         }
 
-        lp_string_builder_clear(cDigits);
+        string_builder_clear(cDigits);
 
-        ex = lp_string_builder_append_format(cDigits, "%d", c);
+        ex = string_builder_append_format(cDigits, "%d", c);
 
         if (ex)
         {
@@ -91,21 +91,21 @@ int main(void)
 
     euler_ok();
 
-    struct LPStringBuilder a;
+    struct StringBuilder a;
 
-    ex = lp_string_builder(&a, 0);
-
-    euler_ok();
-
-    struct LPStringBuilder b;
-
-    ex = lp_string_builder(&b, 0);
+    ex = string_builder(&a, 0);
 
     euler_ok();
 
-    struct LPStringBuilder c;
+    struct StringBuilder b;
 
-    ex = lp_string_builder(&c, 0);
+    ex = string_builder(&b, 0);
+
+    euler_ok();
+
+    struct StringBuilder c;
+
+    ex = string_builder(&c, 0);
 
     euler_ok();
 
@@ -125,9 +125,9 @@ int main(void)
         euler_ok();
     }
 
-    finalize_lp_string_builder(&a);
-    finalize_lp_string_builder(&b);
-    finalize_lp_string_builder(&c);
+    finalize_string_builder(&a);
+    finalize_string_builder(&b);
+    finalize_string_builder(&c);
 
     return euler_submit(49, result, start);
 }

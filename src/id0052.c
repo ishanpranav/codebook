@@ -4,19 +4,19 @@
 
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 
 static Exception math_is_permuted_multiple(
     long x,
-    LPStringBuilder digits,
-    LPStringBuilder image,
+    StringBuilder digits,
+    StringBuilder image,
     bool* result)
 {
     for (int a = 2; a <= 6; a++)
     {
-        lp_string_builder_clear(digits);
+        string_builder_clear(digits);
 
-        Exception ex = lp_string_builder_append_format(digits, "%ld", a * x);
+        Exception ex = string_builder_append_format(digits, "%ld", a * x);
 
         if (ex)
         {
@@ -43,15 +43,15 @@ static Exception math_is_permuted_multiple(
 }
 
 static Exception math_permuted_multiple(
-    LPStringBuilder digits, 
-    LPStringBuilder image, 
+    StringBuilder digits, 
+    StringBuilder image, 
     long* result)
 {
     for (long x = 1; ; x++)
     {
-        lp_string_builder_clear(image);
+        string_builder_clear(image);
 
-        Exception ex = lp_string_builder_append_format(image, "%ld", x);
+        Exception ex = string_builder_append_format(image, "%ld", x);
 
         if (ex)
         {
@@ -81,15 +81,15 @@ static Exception math_permuted_multiple(
 
 int main(void)
 {
-    struct LPStringBuilder digits;
+    struct StringBuilder digits;
     clock_t start = clock();
-    Exception ex = lp_string_builder(&digits, 0);
+    Exception ex = string_builder(&digits, 0);
 
     euler_ok();
 
-    struct LPStringBuilder image;
+    struct StringBuilder image;
 
-    ex = lp_string_builder(&image, 0);
+    ex = string_builder(&image, 0);
 
     euler_ok();
 
@@ -99,8 +99,8 @@ int main(void)
 
     euler_ok();
 
-    finalize_lp_string_builder(&digits);
-    finalize_lp_string_builder(&image);
+    finalize_string_builder(&digits);
+    finalize_string_builder(&image);
 
     return euler_submit(52, result, start);
 }

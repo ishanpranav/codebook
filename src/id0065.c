@@ -5,7 +5,7 @@
 #include <gmp.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
-#include "../lib/lp_string.h"
+#include "../lib/string.h"
 
 int main(void)
 {
@@ -32,7 +32,7 @@ int main(void)
         }
     }
 
-    LPString digits = lp_string(mpz_sizeinbase(a[2], 10));
+    String digits = string(mpz_sizeinbase(a[2], 10));
 
     if (!digits)
     {

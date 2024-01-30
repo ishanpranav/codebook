@@ -5,10 +5,10 @@
 #include <stdlib.h>
 #include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 #include "../lib/sieve_iterator.h"
 
-static bool mask_list_mask(LPStringBuilder value)
+static bool mask_list_mask(StringBuilder value)
 {
     int counts[10] = { 0 };
 
@@ -40,8 +40,8 @@ static bool mask_list_mask(LPStringBuilder value)
 
 static Exception math_prime_digit_replacement(
     Sieve primes,
-    LPStringBuilder mask,
-    LPStringBuilder image,
+    StringBuilder mask,
+    StringBuilder image,
     long* first)
 {
     Exception ex;
@@ -49,9 +49,9 @@ static Exception math_prime_digit_replacement(
 
     for (sieve_begin(&it, primes); ; sieve_next(&it))
     {
-        lp_string_builder_clear(mask);
+        string_builder_clear(mask);
         
-        ex = lp_string_builder_append_format(mask, "%lld", *it.current);
+        ex = string_builder_append_format(mask, "%lld", *it.current);
 
         if (ex)
         {
@@ -69,17 +69,17 @@ static Exception math_prime_digit_replacement(
 
         for (int i = 0; i < 10; i++)
         {
-            lp_string_builder_clear(image);
+            string_builder_clear(image);
 
             for (size_t j = 0; j < mask->length; j++)
             {
                 if (mask->buffer[j] == '*')
                 {
-                    ex = lp_string_builder_append_char(image, i + '0');
+                    ex = string_builder_append_char(image, i + '0');
                 }
                 else
                 {
-                    ex = lp_string_builder_append_char(image, mask->buffer[j]);
+                    ex = string_builder_append_char(image, mask->buffer[j]);
                 }
 
                 if (ex)
@@ -129,15 +129,15 @@ int main(void)
 
     euler_ok();
 
-    struct LPStringBuilder mask;
+    struct StringBuilder mask;
 
-    ex = lp_string_builder(&mask, 0);
+    ex = string_builder(&mask, 0);
 
     euler_ok();
 
-    struct LPStringBuilder image;
+    struct StringBuilder image;
 
-    ex = lp_string_builder(&image, 0);
+    ex = string_builder(&image, 0);
 
     long first;
 
@@ -146,8 +146,8 @@ int main(void)
     euler_ok();
 
     finalize_sieve(&primes);
-    finalize_lp_string_builder(&mask);
-    finalize_lp_string_builder(&image);
+    finalize_string_builder(&mask);
+    finalize_string_builder(&image);
 
     return euler_submit(51, first, start);
 }

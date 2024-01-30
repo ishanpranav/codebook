@@ -5,14 +5,14 @@
 #include <gmp.h>
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/lp_string.h"
+#include "../lib/string.h"
 
 int main(void)
 {
     int max = 0;
     mpz_t megahuge;
     clock_t start = clock();
-    LPString str = lp_string(math_length(99, 99));
+    String str = string(math_length(99, 99));
 
     mpz_init(megahuge);
 

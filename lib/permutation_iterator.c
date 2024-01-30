@@ -21,7 +21,6 @@ void permutation_begin(
 void permutation_next(PermutationIterator iterator)
 {
     char* begin = iterator->items;
-
     size_t i = iterator->length - 1;
     size_t n = iterator->itemSize;
     Comparer comparer = iterator->itemComparer;

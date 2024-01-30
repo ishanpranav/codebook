@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include "series.h"
 
-void series_from_string(Series instance, LPString value)
+void series_from_string(Series instance, String value)
 {
     char* end = value;
 

@@ -4,7 +4,7 @@
 #include <string.h>
 #include "euler.h"
 #include "list.h"
-#include "lp_array.h"
+#include "array.h"
 #include "object.h"
 #include "swap.h"
 

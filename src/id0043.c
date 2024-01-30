@@ -5,9 +5,9 @@
 #include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 
-static bool math_is_substring_divisible(LPStringBuilder digits)
+static bool math_is_substring_divisible(StringBuilder digits)
 {
     int mod[] = { 2, 3, 5, 7, 11, 13, 17 };
 
@@ -31,13 +31,13 @@ static bool math_is_substring_divisible(LPStringBuilder digits)
 
 int main(void)
 {
-    struct LPStringBuilder digits;
+    struct StringBuilder digits;
     struct PermutationIterator it;
     long long sum = 0;
     clock_t start = clock();
     
-    lp_string_builder(&digits, 0);
-    lp_string_builder_append_string(&digits, "0123456789");
+    string_builder(&digits, 0);
+    string_builder_append_string(&digits, "0123456789");
 
     for (permutation_begin(&it, digits.buffer, 1, digits.length, char_comparer);
         !it.end;

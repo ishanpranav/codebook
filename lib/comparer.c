@@ -4,7 +4,7 @@
 
 int int_comparer(const void* left, const void* right)
 {
-    return *(int*)left - *(int*)right;
+    return *(const int*)left - *(const int*)right;
 }
 
 int char_comparer(const void* left, const void* right)

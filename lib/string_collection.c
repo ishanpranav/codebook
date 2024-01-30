@@ -3,19 +3,19 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lp_string_builder.h"
-#include "lp_string_collection.h"
+#include "string_builder.h"
+#include "string_collection.h"
 
-static Exception lp_string_collection_realize(
+static Exception string_collection_realize(
     List instance,
-    LPStringBuilder builder)
+    StringBuilder builder)
 {
-    if (builder->end - builder->begin == 0)
+    if (builder->length == 0)
     {
         return 0;
     }
 
-    LPString value = lp_string_builder_to_string(builder);
+    String value = string_builder_to_string(builder);
 
     if (!value)
     {
@@ -29,16 +29,16 @@ static Exception lp_string_collection_realize(
         return ex;
     }
 
-    lp_string_builder_clear(builder);
+    string_builder_clear(builder);
 
     return 0;
 }
 
-Exception lp_string_collection_deserialize(List instance, Stream input)
+Exception string_collection_deserialize(List instance, Stream input)
 {
-    struct LPStringBuilder builder;
+    struct StringBuilder builder;
 
-    Exception ex = lp_string_builder(&builder, 0);
+    Exception ex = string_builder(&builder, 0);
 
     if (ex)
     {
@@ -52,22 +52,22 @@ Exception lp_string_collection_deserialize(List instance, Stream input)
             case '"': continue;
 
             case ',':
-                ex = lp_string_collection_realize(instance, &builder);
+                ex = string_collection_realize(instance, &builder);
 
                 if (ex)
                 {
-                    finalize_lp_string_builder(&builder);
+                    finalize_string_builder(&builder);
 
                     return ex;
                 }
                 break;
 
             default:
-                ex = lp_string_builder_append_char(&builder, read);
+                ex = string_builder_append_char(&builder, read);
 
                 if (ex)
                 {
-                    finalize_lp_string_builder(&builder);
+                    finalize_string_builder(&builder);
 
                     return ex;
                 }
@@ -75,9 +75,9 @@ Exception lp_string_collection_deserialize(List instance, Stream input)
         }
     }
 
-    ex = lp_string_collection_realize(instance, &builder);
+    ex = string_collection_realize(instance, &builder);
 
-    finalize_lp_string_builder(&builder);
+    finalize_string_builder(&builder);
 
     return ex;
 }

@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
 #include "list.h"
-#include "lp_string.h"
+#include "string.h"
 #include "stream.h"
 
 /**
@@ -12,4 +12,4 @@
  * @param input    the input stream.
  * @return The exception; otherwise, `0`.
 */
-Exception lp_string_collection_deserialize(List instance, Stream input);
+Exception string_collection_deserialize(List instance, Stream input);

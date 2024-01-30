@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../lib/euler.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 
 int main(void)
 {
@@ -17,14 +17,14 @@ int main(void)
     assert(read != 0);
     assert(!ferror(stdin));
 
-    struct LPStringBuilder message;
-    Exception ex = lp_string_builder(&message, 0);
+    struct StringBuilder message;
+    Exception ex = string_builder(&message, 0);
 
     euler_ok();
 
-    for (LPString tok = strtok(buffer, ","); tok; tok = strtok(NULL, ","))
+    for (String tok = strtok(buffer, ","); tok; tok = strtok(NULL, ","))
     {
-        ex = lp_string_builder_append_char(&message, strtol(tok, NULL, 10));
+        ex = string_builder_append_char(&message, strtol(tok, NULL, 10));
 
         euler_ok();
     }

@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "lp_array.h"
+#include "array.h"
 
 /**
  * Generates values of the factorial function for all inputs in the interval

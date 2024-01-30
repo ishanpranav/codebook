@@ -5,9 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "lp_string_builder.h"
+#include "string_builder.h"
 
-Exception lp_string_builder(LPStringBuilder instance, size_t capacity)
+Exception string_builder(StringBuilder instance, size_t capacity)
 {
     if (capacity < 4)
     {
@@ -23,20 +23,20 @@ Exception lp_string_builder(LPStringBuilder instance, size_t capacity)
 
     instance->length = 0;
     instance->capacity = capacity;
-    instance->buffer[capacity] = '\0';
+    instance->buffer[0] = '\0';
 
     return 0;
 }
 
-void lp_string_builder_from_string(LPStringBuilder instance, LPString value)
+void string_builder_from_string(StringBuilder instance, String value)
 {
     instance->buffer = value;
     instance->length = strlen(value);
     instance->capacity = 0;
 }
 
-Exception lp_string_builder_ensure_capacity(
-    LPStringBuilder instance,
+Exception string_builder_ensure_capacity(
+    StringBuilder instance,
     size_t capacity)
 {
     if (instance->capacity >= capacity)
@@ -44,7 +44,7 @@ Exception lp_string_builder_ensure_capacity(
         return 0;
     }
 
-    size_t newCapacity = instance->capacity * 2;
+    size_t newCapacity = (instance->capacity - 1) * 2;
 
     if (capacity > newCapacity)
     {
@@ -65,10 +65,10 @@ Exception lp_string_builder_ensure_capacity(
     return 0;
 }
 
-Exception lp_string_builder_append_char(LPStringBuilder instance, char item)
+Exception string_builder_append_char(StringBuilder instance, char item)
 {
     size_t newCount = instance->length + 1;
-    Exception ex = lp_string_builder_ensure_capacity(instance, newCount);
+    Exception ex = string_builder_ensure_capacity(instance, newCount);
 
     if (ex)
     {
@@ -82,11 +82,11 @@ Exception lp_string_builder_append_char(LPStringBuilder instance, char item)
     return 0;
 }
 
-Exception lp_string_builder_append_string(LPStringBuilder instance, LPString value)
+Exception string_builder_append_string(StringBuilder instance, String value)
 {
     size_t length = strlen(value);
     size_t newCount = instance->length + length;
-    Exception ex = lp_string_builder_ensure_capacity(instance, newCount);
+    Exception ex = string_builder_ensure_capacity(instance, newCount);
 
     if (ex)
     {
@@ -101,9 +101,9 @@ Exception lp_string_builder_append_string(LPStringBuilder instance, LPString val
     return 0;
 }
 
-Exception lp_string_builder_append_format(
-    LPStringBuilder instance,
-    LPString format,
+Exception string_builder_append_format(
+    StringBuilder instance,
+    String format,
     ...)
 {
     va_list argl;
@@ -120,7 +120,7 @@ Exception lp_string_builder_append_format(
     }
 
     size_t capacity = instance->length + size + 1;
-    Exception ex = lp_string_builder_ensure_capacity(instance, capacity);
+    Exception ex = string_builder_ensure_capacity(instance, capacity);
 
     if (ex)
     {
@@ -143,14 +143,14 @@ Exception lp_string_builder_append_format(
     return 0;
 }
 
-void lp_string_builder_clear(LPStringBuilder instance)
+void string_builder_clear(StringBuilder instance)
 {
     instance->length = 0;
 }
 
-LPString lp_string_builder_to_string(LPStringBuilder instance)
+String string_builder_to_string(StringBuilder instance)
 {
-    LPString result = malloc((instance->length + 1) * sizeof * result);
+    String result = malloc((instance->length + 1) * sizeof * result);
 
     if (!result)
     {
@@ -164,7 +164,7 @@ LPString lp_string_builder_to_string(LPStringBuilder instance)
     return result;
 }
 
-bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right)
+bool string_builder_equals(StringBuilder left, StringBuilder right)
 {
     if (left->length != right->length)
     {
@@ -174,7 +174,7 @@ bool lp_string_builder_equals(LPStringBuilder left, LPStringBuilder right)
     return memcmp(left->buffer, right->buffer, left->length) == 0;
 }
 
-void finalize_lp_string_builder(LPStringBuilder instance)
+void finalize_string_builder(StringBuilder instance)
 {
     free(instance->buffer);
 

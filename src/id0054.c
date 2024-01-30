@@ -4,7 +4,7 @@
 
 #include <stdlib.h>
 #include "../lib/euler.h"
-#include "../lib/lp_string.h"
+#include "../lib/string.h"
 
 enum HandType
 {
@@ -274,7 +274,7 @@ void hand_classify(Hand instance)
     instance->pairs[1] = MAX_RANK;
 }
 
-void hand_parse(Hand instance, LPString value)
+void hand_parse(Hand instance, String value)
 {
     for (int i = 0; i < 5; i++)
     {

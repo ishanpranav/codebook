@@ -7,13 +7,13 @@
 #include "../lib/hashes/sdbm_hash.h"
 #include "../lib/euler.h"
 #include "../lib/list.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 #define LOOKUP_BUCKETS 12289 // https://planetmath.org/goodhashtableprimes
 
 struct LookupEntry
 {
     struct LookupEntry* nextEntry;
-    struct LPStringBuilder key;
+    struct StringBuilder key;
     struct List values;
 };
 
@@ -58,7 +58,7 @@ Exception lookup(Lookup instance, size_t buckets)
 
 Exception lookup_add(
     Lookup instance,
-    LPStringBuilder key,
+    StringBuilder key,
     long long value,
     List* values)
 {
@@ -68,7 +68,7 @@ Exception lookup_add(
 
     for (p = &instance->begin[hash].firstEntry; *p; p = &(*p)->nextEntry)
     {
-        if (lp_string_builder_equals(&(*p)->key, key))
+        if (string_builder_equals(&(*p)->key, key))
         {
             *values = &(*p)->values;
 
@@ -122,7 +122,7 @@ void lookup_clear(Lookup instance)
         {
             LookupEntry next = current->nextEntry;
 
-            finalize_lp_string_builder(&current->key);
+            finalize_string_builder(&current->key);
             finalize_list(&current->values);
             free(current);
 
@@ -157,17 +157,17 @@ static Exception math_cubic_permutation(Lookup lookup, long long* result)
         for (; b < max; b++)
         {
             long long cb = b * b * b;
-            struct LPStringBuilder keyBuilder;
-            Exception ex = lp_string_builder(&keyBuilder, 0);
+            struct StringBuilder keyBuilder;
+            Exception ex = string_builder(&keyBuilder, 0);
 
             if (ex)
             {
                 return ex;
             }
 
-            lp_string_builder_clear(&keyBuilder);
+            string_builder_clear(&keyBuilder);
             
-            ex = lp_string_builder_append_format(&keyBuilder, "%lld", cb);
+            ex = string_builder_append_format(&keyBuilder, "%lld", cb);
 
             if (ex)
             {

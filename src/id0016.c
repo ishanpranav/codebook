@@ -5,7 +5,7 @@
 #include <gmp.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
-#include "../lib/lp_string.h"
+#include "../lib/string.h"
 #include "../lib/series.h"
 
 int main(void)
@@ -17,7 +17,7 @@ int main(void)
     mpz_init_set_ui(megahuge, 2);
     mpz_pow_ui(megahuge, megahuge, 1000);
     
-    LPString digits = lp_string(mpz_sizeinbase(megahuge, 10));
+    String digits = string(mpz_sizeinbase(megahuge, 10));
 
     if (!digits)
     {

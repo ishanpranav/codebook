@@ -4,7 +4,7 @@
 
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/lp_string_builder.h"
+#include "../lib/string_builder.h"
 #include "../lib/permutation_iterator.h"
 #include "../lib/sieve_iterator.h"
 #define MAX_SEARCH 0.375
@@ -22,15 +22,15 @@ int main(void)
 
     euler_ok();
 
-    struct LPStringBuilder nDigits;
+    struct StringBuilder nDigits;
 
-    ex = lp_string_builder(&nDigits, 0);
+    ex = string_builder(&nDigits, 0);
 
     euler_ok();
 
-    struct LPStringBuilder phiDigits;
+    struct StringBuilder phiDigits;
 
-    ex = lp_string_builder(&phiDigits, 0);
+    ex = string_builder(&phiDigits, 0);
 
     euler_ok();
 
@@ -59,15 +59,15 @@ int main(void)
                 continue;
             }
 
-            lp_string_builder_clear(&nDigits);
+            string_builder_clear(&nDigits);
 
-            ex = lp_string_builder_append_format(&nDigits, "%ld", n);
+            ex = string_builder_append_format(&nDigits, "%ld", n);
             
             euler_ok();
 
-            lp_string_builder_clear(&phiDigits);
+            string_builder_clear(&phiDigits);
 
-            ex = lp_string_builder_append_format(&phiDigits, "%ld", phi);
+            ex = string_builder_append_format(&phiDigits, "%ld", phi);
 
             if (permutation_test(
                 nDigits.buffer,
@@ -83,8 +83,8 @@ int main(void)
         }
     }
 
-    finalize_lp_string_builder(&nDigits);
-    finalize_lp_string_builder(&phiDigits);
+    finalize_string_builder(&nDigits);
+    finalize_string_builder(&phiDigits);
     finalize_sieve(&primes);
     
     return euler_submit(70, minN, start);

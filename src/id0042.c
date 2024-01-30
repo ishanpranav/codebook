@@ -5,25 +5,25 @@
 #include <math.h>
 #include <stdlib.h>
 #include "../lib/euler.h"
-#include "../lib/lp_string_collection.h"
+#include "../lib/string_collection.h"
 
 int main(void)
 {
     struct List words;
     clock_t start = clock();
-    Exception ex = list(&words, sizeof(LPString), 2000);
+    Exception ex = list(&words, sizeof(String), 2000);
 
     euler_ok();
 
-    ex = lp_string_collection_deserialize(&words, stdin);
+    ex = string_collection_deserialize(&words, stdin);
 
     euler_ok();
 
     int count = 0;
-    LPString* begin = words.items;
-    LPString* end = begin + words.count;
+    String* begin = words.items;
+    String* end = begin + words.count;
 
-    for (LPString* word = begin; word < end; word++)
+    for (String* word = begin; word < end; word++)
     {
         int x = 0;
 
