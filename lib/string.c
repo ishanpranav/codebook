@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "string.h"
+#include "_/../string.h"
 
 String string(size_t length)
 {

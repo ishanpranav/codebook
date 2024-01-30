@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
+#include "_/../string.h"
 #include "list.h"
-#include "string.h"
 #include "stream.h"
 
 /**

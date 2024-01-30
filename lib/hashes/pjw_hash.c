@@ -1,20 +1,20 @@
 // Licensed under the MIT License.
 
-#include "elf_hash.h"
+#include "pjw_hash.h"
 
-size_t elf_hash(Object item, size_t size)
+size_t pjw_hash(Object item, size_t size)
 {
     return elf_hash32(item, size);
 }
 
-uint32_t elf_hash32(Object item, size_t size)
+uint32_t pjw_hash32(Object item, size_t size)
 {
     uint32_t result = 0;
     uint32_t high;
-    char* begin = item;
-    char* end = begin + size;
+    unsigned char* begin = item;
+    unsigned char* end = begin + size;
 
-    for (char* p = begin; p < end; p++)
+    for (unsigned char* p = begin; p < end; p++)
     {
         result = (result << 4) + *p++;
 

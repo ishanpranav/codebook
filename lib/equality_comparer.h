@@ -8,6 +8,14 @@
 /** Defines methods to support the comparison of objects for equality. */
 typedef bool (*EqualityComparer)(Object left, Object right);
 
+/**
+ * Returns a value indicating whether `left` is equal to `right`.
+ * 
+ * @param left  a character to compare to `left`.
+ * @param right a character to compare to `right`.
+ * @param return `true` if `left` has the same value as `right`; otherwise,
+ *               `false.`
+*/
 bool char_equality_comparer(Object left, Object right);
 
 /**

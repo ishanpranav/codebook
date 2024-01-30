@@ -10,7 +10,7 @@
  * @param size the size of the `item` argument.
  * @return A hash code for the given item.
 */
-size_t elf_hash(Object item, size_t size);
+size_t pjw_hash(Object item, size_t size);
 
 /**
  * Computes the PJW hash function used for Unix ELF files and returns a value
@@ -20,4 +20,4 @@ size_t elf_hash(Object item, size_t size);
  * @param size the size of the `item` argument.
  * @return A 32-bit hash code for the given item.
 */
-uint32_t elf_hash32(Object item, size_t size);
+uint32_t pjw_hash32(Object item, size_t size);

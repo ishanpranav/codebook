@@ -2,6 +2,7 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include "array.h"
 #include "comparer.h"
 #include "equality_comparer.h"
 
@@ -28,7 +29,7 @@ typedef struct PermutationIterator* PermutationIterator;
 */
 void permutation_begin(
     PermutationIterator iterator,
-    void* items,
+    Array items,
     size_t itemSize,
     size_t length,
     Comparer itemComparer);
@@ -50,9 +51,9 @@ void permutation_next(PermutationIterator iterator);
  * @return `true` if `left` and `right` are permutations; otherwise, `false`.
 */
 bool permutation_test(
-    void* left,
+    Array left,
     size_t leftLength,
-    void* right,
+    Array right,
     size_t rightLength,
     size_t itemSize,
     EqualityComparer itemComparer);

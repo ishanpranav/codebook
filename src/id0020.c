@@ -5,8 +5,8 @@
 #include <gmp.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
-#include "../lib/string.h"
 #include "../lib/series.h"
+#include "../lib/string.h"
 
 int main(void)
 {

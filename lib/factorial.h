@@ -1,7 +1,5 @@
 // Licensed under the MIT License.
 
-#include "array.h"
-
 /**
  * Generates values of the factorial function for all inputs in the interval
  * [0, `max`).

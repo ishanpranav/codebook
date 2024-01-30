@@ -58,15 +58,6 @@ factor_iterator.o: lib/factor_iterator.c lib/factor_iterator.h
 list.o: lib/list.c lib/list.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-string.o: lib/string.c lib/string.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-string_builder.o: lib/string_builder.c lib/string_builder.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-string_collection.o: lib/string_collection.c lib/string_collection.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
 math.o: lib/math.c lib/euler.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -77,6 +68,15 @@ sieve.o: lib/sieve.c lib/sieve.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 series.o: lib/series.c lib/series.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+string.o: lib/string.c lib/string.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+string_builder.o: lib/string_builder.c lib/string_builder.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+string_collection.o: lib/string_collection.c lib/string_collection.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 totient.o: lib/totient.c lib/totient.h

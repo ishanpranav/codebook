@@ -6,7 +6,7 @@
 
 void permutation_begin(
     PermutationIterator iterator,
-    void* items,
+    Array items,
     size_t itemSize,
     size_t length,
     Comparer itemComparer)
@@ -60,7 +60,7 @@ void permutation_next(PermutationIterator iterator)
 }
 
 static size_t permutation_count(
-    void* items,
+    Array items,
     size_t itemSize,
     size_t length,
     Object item,
@@ -82,9 +82,9 @@ static size_t permutation_count(
 }
 
 bool permutation_test(
-    void* left,
+    Array left,
     size_t leftLength,
-    void* right,
+    Array right,
     size_t rightLength,
     size_t itemSize,
     EqualityComparer itemComparer)

@@ -2,9 +2,9 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include "array.h"
 #include "euler.h"
 #include "list.h"
-#include "array.h"
 #include "object.h"
 #include "swap.h"
 

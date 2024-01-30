@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "string.h"
+#include "_/../string.h"
 
 /** Represents a series of decimal digits. */
 struct Series

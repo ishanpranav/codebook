@@ -25,7 +25,8 @@ typedef struct BooleanSet* BooleanSet;
 Exception boolean_set(BooleanSet instance, size_t capacity);
 
 /**
- * Intializes a `BooleanSet` instance. Do not call `finalize_boolean_set`.
+ * Intializes a static. `BooleanSet` instance. Do not call
+ * `finalize_boolean_set`.
  *
  * @param instance the `BooleanSet` instance.
  * @param values   the backing array for the set. The caller is responsible for

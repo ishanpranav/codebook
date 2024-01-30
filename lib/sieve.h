@@ -2,7 +2,6 @@
 
 #include "boolean_set.h"
 #include "list.h"
-#include "array.h"
 #include "object.h"
 #include "primality_test.h"
 
