@@ -39,6 +39,8 @@ int main(void)
 
     struct Series series;
 
+    buffer[read] = '\0';
+
     series_from_string(&series, buffer);
 
     long long max = series_max_product(&series, 13);

@@ -2,7 +2,7 @@
 
 for i in {0001..0007};
 do
-    ./../id${i}.o
+    ${}./../id${i}.o
 done
 
 cat ./../data/id0008.txt | ./../id0008.o

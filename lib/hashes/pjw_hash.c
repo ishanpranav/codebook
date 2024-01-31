@@ -4,7 +4,7 @@
 
 size_t pjw_hash(Object item, size_t size)
 {
-    return elf_hash32(item, size);
+    return pjw_hash32(item, size);
 }
 
 uint32_t pjw_hash32(Object item, size_t size)
