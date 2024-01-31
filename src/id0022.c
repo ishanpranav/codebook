@@ -5,6 +5,7 @@
 #include <string.h>
 #include "../lib/euler.h"
 #include "../lib/string_collection.h"
+#include "../lib/sort.h"
 
 int main(void)
 {
@@ -15,7 +16,8 @@ int main(void)
     euler_ok(list(&names, sizeof(String), 5000));
     euler_ok(string_collection_deserialize(&names, stdin));
 
-    list_sort(&names, string_comparer);
+    selection_sort(names.items, names.count, names.itemSize, string_comparer);
+    // list_sort(&names, string_comparer);
 
     String* begin = names.items;
 

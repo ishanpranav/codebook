@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "pjw_hash.h"
+#include "../hash.h"
 
 size_t pjw_hash(Object item, size_t size)
 {

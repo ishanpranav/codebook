@@ -45,5 +45,5 @@ int main(void)
 
     mpz_clears(a[0], a[1], a[2], NULL);
 
-    return euler_submit(57, sum, start);
+    return euler_submit(65, sum, start);
 }

@@ -3,8 +3,8 @@
 // Cubic Permutations
 
 #include <limits.h>
-#include "../lib/hashes/sdbm_hash.h"
 #include "../lib/euler.h"
+#include "../lib/hash.h"
 #include "../lib/list.h"
 #include "../lib/string_builder.h"
 #define LOOKUP_BUCKETS 12289 // https://planetmath.org/goodhashtableprimes

@@ -30,23 +30,23 @@ all: \
 	id0068$(E) id0069$(E) id0070$(E) id0071$(E) id0072$(E) id0073$(E) \
 	id0074$(E) #id0075$(E) id0076$(E) id0077$(E) id0078$(E) id0079$(E)
 
-djb2_hash$(O): lib/hashes/djb2_hash.c lib/hashes/djb2_hash.h
+djb2_hash$(O): lib/hashes/djb2_hash.c lib/hash.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-pjw_hash$(O): lib/hashes/pjw_hash.c lib/hashes/pjw_hash.h
+pjw_hash$(O): lib/hashes/pjw_hash.c lib/hash.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-sdbm_hash$(O): lib/hashes/sdbm_hash.c lib/hashes/sdbm_hash.h
+sdbm_hash$(O): lib/hashes/sdbm_hash.c lib/hash.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-divisor_primality_test$(O): \
-	lib/primality_tests/divisor_primality_test.c \
-	lib/primality_tests/divisor_primality_test.h
+divisor_primality_test$(O): lib/primality_tests/divisor_primality_test.c
 	$(CC) $(CFLAGS) -c $< -o $@
 	
 miller_rabin_primality_test$(O): \
-	lib/primality_tests/miller_rabin_primality_test.c \
-	lib/primality_tests/miller_rabin_primality_test.h
+	lib/primality_tests/miller_rabin_primality_test.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+selection_sort$(O): lib/sorts/selection_sort.c lib/sort.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 boolean_set$(O): lib/boolean_set.c lib/boolean_set.h
@@ -154,8 +154,8 @@ id0020$(E): src/id0020.c euler$(O) string$(O) series$(O)
 id0021$(E): src/id0021.c euler$(O) factor_iterator$(O) $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler$(O) factor_iterator$(O) $(SIEVE_O) $(LM)
 
-id0022$(E): src/id0022.c euler$(O) string$(O) $(STRING_COLLECTION_O)
-	$(CC) $(CFLAGS) $< -o $@ euler$(O) string$(O) $(STRING_COLLECTION_O)
+id0022$(E): src/id0022.c selection_sort$(O) euler$(O) string$(O) $(STRING_COLLECTION_O)
+	$(CC) $(CFLAGS) $< -o $@ selection_sort$(O) euler$(O) string$(O) $(STRING_COLLECTION_O)
 
 id0023$(E): src/id0023.c euler$(O) factor_iterator$(O) $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler$(O) factor_iterator$(O) $(SIEVE_O) $(LM)

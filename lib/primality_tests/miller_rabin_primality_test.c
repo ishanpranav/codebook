@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <stdbool.h>
-#include "miller_rabin_primality_test.h"
+#include "../primality_test.h"
 
 static long long miller_rabin_mod_pow(long long a, long long n, long long mod)
 {

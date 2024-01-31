@@ -2,10 +2,10 @@
 
 // Prime Digit Replacements
 
-#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
-#include "../lib/string_builder.h"
+#include "../lib/hash.h"
 #include "../lib/sieve_iterator.h"
+#include "../lib/string_builder.h"
 
 static bool mask_list_mask(StringBuilder value)
 {

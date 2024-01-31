@@ -1,7 +1,6 @@
 // Licensed under the MIT License.
 
 #include "../divisor_iterator.h"
-#include "divisor_primality_test.h"
 
 Primality divisor_primality_test(long n)
 {

@@ -4,7 +4,6 @@
 
 #include <limits.h>
 #include <math.h>
-#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 #define MAX_SEARCH 10000

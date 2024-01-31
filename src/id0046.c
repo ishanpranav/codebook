@@ -2,8 +2,8 @@
 
 // Goldbach's Other Conjecture
 
-#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
+#include "../lib/primality_test.h"
 
 static bool math_is_goldbach_other_conjecture(long n)
 {

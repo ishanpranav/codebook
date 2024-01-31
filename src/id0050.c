@@ -2,7 +2,6 @@
 
 // Consecutive Prime Sum
 
-#include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 

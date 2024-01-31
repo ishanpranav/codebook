@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "djb2_hash.h"
+#include "../hash.h"
 
 size_t djb2_hash(Object item, size_t size)
 {
