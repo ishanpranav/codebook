@@ -49,7 +49,7 @@ long long math_length(long long b, long long a);
  *         followed by the digits of `right`, then followed by any additional
  *         integers in the order specified.
 */
-long long math_concat_impl(long long left, long long right, ...);
+unsigned long long math_concat_impl(int left, int right, ...);
 
 /**
  * Reverses the digits of a given value.

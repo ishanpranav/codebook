@@ -9,7 +9,7 @@
 int main(void)
 {
     int l[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    long long max = 0;
+    unsigned long long max = 0;
     struct PermutationIterator it;
     clock_t start = clock();
     
@@ -31,7 +31,7 @@ int main(void)
             continue;
         }
         
-        long long value = math_concat(
+        unsigned long long value = math_concat(
             l[0], l[1], l[2], 
             l[3], l[2], l[4], 
             l[5], l[5], l[6],

@@ -15,7 +15,7 @@ bool math_is_polygonal(int s, long x, long* approxN)
     {
         *approxN = localApproxN;
     }
-    
+
     return n == localApproxN;
 }
 
@@ -24,16 +24,17 @@ long long math_length(long long b, long long a)
     return 1 + a * log10(b);
 }
 
-long long math_concat_impl(long long left, long long right, ...)
+unsigned long long math_concat_impl(int left, int right, ...)
 {
+    unsigned long long result = left;
     va_list argl;
 
-    for (va_start(argl, right); right; right = va_arg(argl, long long))
+    for (va_start(argl, right); right; right = va_arg(argl, int))
     {
-        left = left * pow(10, math_length(right, 1)) + right;
+        result = result * pow(10, math_length(right, 1)) + right;
     }
 
     va_end(argl);
 
-    return left;
+    return result;
 }
