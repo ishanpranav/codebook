@@ -1,9 +1,10 @@
 # Licensed under the MIT License.
 
-O = 
-E = .exe
+O = .o
+E = .o
 
 CC = gcc
+EXTRAS = 
 CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra $(EXTRAS)
 TWOS_COMPLEMENT = -fno-strict-overflow -fwrapv
 

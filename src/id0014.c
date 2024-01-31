@@ -13,7 +13,7 @@ int main(void)
     for (long i = 13; i < 1000000l; i++)
     {
         int length = 0;
-        long n = i;
+        long long n = i;
 
         while (n != 1)
         {
