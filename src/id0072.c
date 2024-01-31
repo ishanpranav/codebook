@@ -2,7 +2,6 @@
 
 // Counting Fractions
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
 
@@ -50,12 +49,7 @@ int main(void)
     clock_t start = clock();
     long long result = math_summatory_totient(1000001);
 
-    if (result == -1)
-    {
-        Exception ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
+    euler_assert(result != -1);
 
     result--;
 

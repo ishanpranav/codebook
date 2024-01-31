@@ -14,7 +14,7 @@ Exception string_builder(StringBuilder instance, size_t capacity)
         capacity = 4;
     }
 
-    instance->buffer = malloc(capacity + 1);
+    instance->buffer = malloc((capacity + 1) * sizeof instance->buffer);
 
     if (!instance->buffer)
     {
@@ -51,7 +51,10 @@ Exception string_builder_ensure_capacity(
         newCapacity = capacity;
     }
 
-    char* newBuffer = realloc(instance->buffer, newCapacity + 1);
+    char* newBuffer;
+    size_t newSize = (newCapacity + 1) * sizeof * newBuffer;
+
+    newBuffer = realloc(instance->buffer, newSize);
 
     if (!newBuffer)
     {
@@ -146,6 +149,24 @@ Exception string_builder_append_format(
 void string_builder_clear(StringBuilder instance)
 {
     instance->length = 0;
+}
+
+Exception string_builder_clone(StringBuilder result, StringBuilder instance)
+{
+    result->buffer = malloc((instance->length + 1) * sizeof * result->buffer);
+
+    if (!result)
+    {
+        return EXCEPTION_OUT_OF_MEMORY;
+    }
+
+    memcpy(result->buffer, instance->buffer, instance->length);
+
+    result->buffer[instance->length] = '\0';
+    result->capacity = instance->length;
+    result->length = instance->length;
+
+    return 0;
 }
 
 String string_builder_to_string(StringBuilder instance)

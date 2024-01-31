@@ -7,14 +7,12 @@
 
 int main(void)
 {
-    struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 0);
-
-    euler_ok();
-
     long primorial = 1;
+    struct Sieve primes;
     struct SieveIterator it;
+    clock_t start = clock();
+
+    euler_ok(sieve(&primes, 0));
 
     for (sieve_begin(&it, &primes); ; sieve_next(&it))
     {

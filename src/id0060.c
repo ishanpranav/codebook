@@ -31,19 +31,14 @@ static bool math_is_prime_pair(Sieve primes, int a, int b)
 
 int main(void)
 {
-    struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, MAX_SEARCH);
-
-    euler_ok();
-
-    struct List candidates;
-
-    ex = list(&candidates, sizeof(long long), 0);
-
-    euler_ok();
-
     int min = INT_MAX;
+    struct Sieve primes;
+    struct List candidates;
+    clock_t start = clock();
+
+    euler_ok(sieve(&primes, MAX_SEARCH));
+    euler_ok(list(&candidates, sizeof(long long), 0));
+
     long long* primesBegin = primes.primes.items;
     long long* primesEnd = primesBegin + primes.primes.count;
 
@@ -55,9 +50,7 @@ int main(void)
         {
             if (math_is_prime_pair(&primes, *a, *b))
             {
-                ex = list_add(&candidates, b);
-
-                euler_ok();
+                euler_ok(list_add(&candidates, b));
             }
         }
 

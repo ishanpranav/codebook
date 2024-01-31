@@ -29,26 +29,13 @@ static Exception math_prime_permutation(
         }
 
         string_builder_clear(aDigits);
-
-        Exception ex = string_builder_append_format(aDigits, "%d", a);
-
-        if (ex)
-        {
-            return ex;
-        }
-
+        euler_ok(string_builder_append_format(aDigits, "%d", a));
         string_builder_clear(bDigits);
-
-        ex = string_builder_append_format(bDigits, "%d", b);
-
-        if (ex)
-        {
-            return ex;
-        }
+        euler_ok(string_builder_append_format(bDigits, "%d", b));
 
         if (!permutation_test(
-            aDigits->buffer, 
-            aDigits->length, 
+            aDigits->buffer,
+            aDigits->length,
             bDigits->buffer,
             bDigits->length,
             1,
@@ -58,13 +45,7 @@ static Exception math_prime_permutation(
         }
 
         string_builder_clear(cDigits);
-
-        ex = string_builder_append_format(cDigits, "%d", c);
-
-        if (ex)
-        {
-            return ex;
-        }
+        euler_ok(string_builder_append_format(cDigits, "%d", c));
 
         if (!permutation_test(
             bDigits->buffer,
@@ -85,44 +66,29 @@ static Exception math_prime_permutation(
 
 int main(void)
 {
-    struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 10000);
-
-    euler_ok();
-
-    struct StringBuilder a;
-
-    ex = string_builder(&a, 0);
-
-    euler_ok();
-
-    struct StringBuilder b;
-
-    ex = string_builder(&b, 0);
-
-    euler_ok();
-
-    struct StringBuilder c;
-
-    ex = string_builder(&c, 0);
-
-    euler_ok();
-
     long long result = -1;
-
-    ex = math_prime_permutation(&primes, &a, &b, &c, 2, 1487, &result);
-
-    euler_ok();
+    struct Sieve primes;
+    struct StringBuilder a;
+    struct StringBuilder b;
+    struct StringBuilder c;
+    clock_t start = clock();
+    
+    euler_ok(sieve(&primes, 10000));
+    euler_ok(string_builder(&a, 0));
+    euler_ok(string_builder(&b, 0));
+    euler_ok(string_builder(&c, 0));
+    euler_ok(math_prime_permutation(&primes, &a, &b, &c, 2, 1487, &result));
 
     if (result < 0)
     {
         long long* begin = primes.primes.items;
         int last = begin[primes.primes.count - 1];
 
+        Exception ex;
+        
         ex = math_prime_permutation(&primes, &a, &b, &c, 1488, last, &result);
 
-        euler_ok();
+        euler_ok(ex);
     }
 
     finalize_string_builder(&a);

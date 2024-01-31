@@ -9,13 +9,10 @@
 int main(void)
 {
     struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 30);
-
-    euler_ok();
-
     struct FactorIterator it;
-
+    clock_t start = clock();
+    
+    euler_ok(sieve(&primes, 30));
     factor_begin(&it, 600851475143ll, &primes);
 
     while (!factor_end(&it))

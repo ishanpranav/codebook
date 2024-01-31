@@ -3,7 +3,6 @@
 // Maximum Path Sum I
 // Maximum Path Sum II
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/string.h"
 #define BUFFER_SIZE 512

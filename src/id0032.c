@@ -12,9 +12,8 @@ int main(void)
     struct PermutationIterator it;
     int digits[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
-    Exception ex = list(&set, sizeof(long), 0);
 
-    euler_ok();
+    euler_ok(list(&set, sizeof(long), 0));
 
     for (permutation_begin(&it, digits, sizeof * digits, 9, int_comparer);
         !it.end;
@@ -57,7 +56,7 @@ int main(void)
 
                 if (!list_contains(&set, &product, long_equality_comparer))
                 {
-                    list_add(&set, &product);
+                    euler_ok(list_add(&set, &product));
                 }
             }
         }

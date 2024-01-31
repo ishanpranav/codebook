@@ -108,15 +108,14 @@ int main(void)
 {
     struct List polygonals;
     clock_t start = clock();
-    Exception ex = list(&polygonals, sizeof(int), 0);
 
-    euler_ok();
+    euler_ok(list(&polygonals, sizeof(int), 0));
 
     for (int x = 1000; x < 10000; x++)
     {
         if (math_is_octagonal_or_smaller_polygonal(x))
         {
-            list_add(&polygonals, &x);
+            euler_ok(list_add(&polygonals, &x));
         }
     }
 

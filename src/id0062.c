@@ -3,7 +3,6 @@
 // Cubic Permutations
 
 #include <limits.h>
-#include <stdlib.h>
 #include "../lib/hashes/sdbm_hash.h"
 #include "../lib/euler.h"
 #include "../lib/list.h"
@@ -25,32 +24,35 @@ struct LookupBucket
 
 struct Lookup
 {
-    struct LookupBucket* begin;
-    struct LookupBucket* end;
+    struct LookupBucket* buckets;
     struct LookupBucket* firstBucket;
     size_t count;
     size_t bucketCount;
+    size_t usedBucketCount;
 };
 
 typedef struct LookupEntry* LookupEntry;
 typedef struct LookupBucket* LookupBucket;
 typedef struct Lookup* Lookup;
 
-Exception lookup(Lookup instance, size_t buckets)
+Exception lookup(Lookup instance, size_t bucketCount)
 {
-    instance->begin = malloc(buckets * sizeof * instance->begin);
+    instance->buckets = malloc(bucketCount * sizeof * instance->buckets);
 
-    if (!instance->begin)
+    if (!instance->buckets)
     {
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    instance->end = instance->begin + buckets;
+    instance->firstBucket = NULL;
+    instance->count = 0;
+    instance->bucketCount = bucketCount;
+    instance->usedBucketCount = 0;
 
-    for (LookupBucket it = instance->begin; it < instance->end; it++)
+    for (size_t i = 0; i < bucketCount; i++)
     {
-        it->firstEntry = NULL;
-        it->nextBucket = NULL;
+        instance->buckets[i].firstEntry = NULL;
+        instance->buckets[i].nextBucket = NULL;
     }
 
     return 0;
@@ -63,10 +65,9 @@ Exception lookup_add(
     List* values)
 {
     LookupEntry* p;
-    size_t buckets = instance->end - instance->begin;
-    size_t hash = sdbm_hash(key->buffer, key->length) % buckets;
+    size_t hash = sdbm_hash(key->buffer, key->length) % instance->bucketCount;
 
-    for (p = &instance->begin[hash].firstEntry; *p; p = &(*p)->nextEntry)
+    for (p = &instance->buckets[hash].firstEntry; *p; p = &(*p)->nextEntry)
     {
         if (string_builder_equals(&(*p)->key, key))
         {
@@ -94,16 +95,17 @@ Exception lookup_add(
 
     list_add(&entry->values, &value);
 
-    if (!instance->begin[hash].firstEntry)
+    if (!instance->buckets[hash].firstEntry)
     {
         LookupBucket first = instance->firstBucket;
 
-        instance->begin[hash].nextBucket = first;
-        instance->firstBucket = instance->begin + hash;
-        instance->bucketCount++;
+        instance->buckets[hash].nextBucket = first;
+        instance->firstBucket = instance->buckets + hash;
+        instance->usedBucketCount++;
     }
 
-    entry->key = *key;
+    string_builder_clone(&entry->key, key);
+
     entry->nextEntry = NULL;
     *p = entry;
     instance->count++;
@@ -133,21 +135,25 @@ void lookup_clear(Lookup instance)
     }
 
     instance->count = 0;
-    instance->bucketCount = 0;
+    instance->usedBucketCount = 0;
     instance->firstBucket = NULL;
 }
 
 void finalize_lookup(Lookup instance)
 {
     lookup_clear(instance);
-    free(instance->begin);
+    free(instance->buckets);
 
-    instance->begin = NULL;
-    instance->end = NULL;
+    instance->buckets = NULL;
+    instance->bucketCount = 0;
 }
 
-static Exception math_cubic_permutation(Lookup lookup, long long* result)
+static long long math_cubic_permutation(Lookup lookup)
 {
+    struct StringBuilder keyBuilder;
+    
+    euler_ok(string_builder(&keyBuilder, 0));
+
     for (long long max = 1; ;)
     {
         long long b = max;
@@ -156,72 +162,48 @@ static Exception math_cubic_permutation(Lookup lookup, long long* result)
 
         for (; b < max; b++)
         {
+            List matches;
             long long cb = b * b * b;
-            struct StringBuilder keyBuilder;
-            Exception ex = string_builder(&keyBuilder, 0);
-
-            if (ex)
-            {
-                return ex;
-            }
 
             string_builder_clear(&keyBuilder);
-            
-            ex = string_builder_append_format(&keyBuilder, "%lld", cb);
-
-            if (ex)
-            {
-                return ex;
-            }
-
+            euler_ok(string_builder_append_format(&keyBuilder, "%lld", cb));
             qsort(keyBuilder.buffer, keyBuilder.length, 1, char_comparer);
-
-            List matches;
-
-            ex = lookup_add(lookup, &keyBuilder, cb, &matches);
-
-            if (ex)
-            {
-                return ex;
-            }
+            euler_ok(lookup_add(lookup, &keyBuilder, cb, &matches));
 
             if (matches->count != 5)
             {
                 continue;
             }
 
-            *result = LLONG_MAX;
-
+            long long result = LLONG_MAX;
             long long* begin = matches->items;
             long long* end = begin + matches->count;
 
             for (long long* it = begin; it < end; it++)
             {
-                if (*it < *result)
+                if (*it < result)
                 {
-                    *result = *it;
+                    result = *it;
                 }
             }
 
-            return 0;
+            finalize_string_builder(&keyBuilder);
+
+            return result;
         }
     }
 }
 
 int main(void)
 {
+    long long min = -1;
     struct Lookup l;
     clock_t start = clock();
-    Exception ex = lookup(&l, LOOKUP_BUCKETS);
 
-    euler_ok();
-
-    long long min = -1;
-
-    ex = math_cubic_permutation(&l, &min);
-
-    euler_ok();
-
+    euler_ok(lookup(&l, LOOKUP_BUCKETS));
+    
+    min = math_cubic_permutation(&l);
+    
     finalize_lookup(&l);
 
     return euler_submit(62, min, start);

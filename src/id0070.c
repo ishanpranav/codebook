@@ -17,24 +17,14 @@ int main(void)
     int min = mid * (1 - MAX_SEARCH);
     int max = mid * (1 + MAX_SEARCH);
     struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, max);
-
-    euler_ok();
-
-    struct StringBuilder nDigits;
-
-    ex = string_builder(&nDigits, 0);
-
-    euler_ok();
-
-    struct StringBuilder phiDigits;
-
-    ex = string_builder(&phiDigits, 0);
-
-    euler_ok();
-
     struct SieveIterator p;
+    struct StringBuilder nDigits;
+    struct StringBuilder phiDigits;
+    clock_t start = clock();
+
+    euler_ok(sieve(&primes, max));
+    euler_ok(string_builder(&nDigits, 0));
+    euler_ok(string_builder(&phiDigits, 0));
 
     sieve_begin(&p, &primes);
 
@@ -60,14 +50,9 @@ int main(void)
             }
 
             string_builder_clear(&nDigits);
-
-            ex = string_builder_append_format(&nDigits, "%ld", n);
-            
-            euler_ok();
-
+            euler_ok(string_builder_append_format(&nDigits, "%ld", n));
             string_builder_clear(&phiDigits);
-
-            ex = string_builder_append_format(&phiDigits, "%ld", phi);
+            euler_ok(string_builder_append_format(&phiDigits, "%ld", phi));
 
             if (permutation_test(
                 nDigits.buffer,

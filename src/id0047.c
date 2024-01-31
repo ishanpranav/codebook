@@ -2,7 +2,6 @@
 
 // Distinct Primes Factors
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
 #define MAX_SEARCH 1000000l
@@ -12,12 +11,7 @@ int main(void)
     clock_t start = clock();
     int* divisors = calloc(MAX_SEARCH, sizeof * divisors);
 
-    if (!divisors)
-    {
-        Exception ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
+    euler_assert(divisors);
 
     long n;
     int length = 0;

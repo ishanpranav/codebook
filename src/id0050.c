@@ -8,14 +8,13 @@
 
 int main(void)
 {
-    struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 1000000l);
-
-    euler_ok();
-
     long maxSum = 0;
     long maxLength = 0;
+    struct Sieve primes;
+    clock_t start = clock();
+
+    euler_ok(sieve(&primes, 1000000l));
+
     long long* begin = primes.primes.items;
     long long* end = begin + primes.primes.count;
 
@@ -45,8 +44,8 @@ int main(void)
             }
 
             Primality test = sieve_test(
-                &primes, 
-                sum, 
+                &primes,
+                sum,
                 miller_rabin_primality_test);
 
             if (test != PRIMALITY_PRIME)

@@ -2,7 +2,6 @@
 
 // Sub-string Divisiblity
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/permutation_iterator.h"
 #include "../lib/string_builder.h"

@@ -2,7 +2,6 @@
 
 // Pandigital Multiples
 
-#include <stdlib.h>
 #include "../lib/comparer.h"
 #include "../lib/euler.h"
 #include "../lib/string_builder.h"
@@ -13,21 +12,17 @@ int main(void)
     struct StringBuilder digits;
     struct StringBuilder pandigital;
     clock_t start = clock();
-    Exception ex = string_builder(&digits, 9);
     
+    euler_ok(string_builder(&digits, 9));
     string_builder_from_string(&pandigital, "123456789");
     
-    euler_ok();
-
     for (int i = 2; i < 10000; i++)
     {
         string_builder_clear(&digits);
 
         for (int j = 1; digits.length < 9; j++)
         {
-            ex = string_builder_append_format(&digits, "%ld", i * j);
-
-            euler_ok();
+            euler_ok(string_builder_append_format(&digits, "%ld", i * j));
         }
 
         long long n = atoll(digits.buffer);

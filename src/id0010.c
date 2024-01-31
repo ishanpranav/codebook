@@ -7,13 +7,12 @@
 
 int main(void)
 {
+    long long sum = 0;
     struct Sieve primes;
     clock_t start = clock();
-    Exception ex = sieve(&primes, 2000000l);
+    
+    euler_ok(sieve(&primes, 2000000l));
 
-    euler_ok();
-
-    long long sum = 0;
     long long* begin = primes.primes.items;
     long long* end = begin + primes.primes.count;
     

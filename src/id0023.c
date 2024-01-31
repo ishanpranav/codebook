@@ -2,7 +2,6 @@
 
 // Non-Abundant Sums
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/factor_iterator.h"
 
@@ -29,23 +28,15 @@ static bool math_is_abundant_sum(int n, List list, BooleanSet set)
 
 int main(void)
 {
-    struct List abundants;
-    clock_t start = clock();
-    Exception ex = list(&abundants, sizeof(int), 0);
-
-    euler_ok();
-
-    struct BooleanSet set;
-
-    ex = boolean_set(&set, 28123 - 2);
-
-    euler_ok();
-
+    long sum = 1;
     struct Sieve primes;
+    struct List abundants;
+    struct BooleanSet set;
+    clock_t start = clock();
 
-    ex = sieve(&primes, 0);
-
-    euler_ok();
+    euler_ok(list(&abundants, sizeof(int), 0));
+    euler_ok(boolean_set(&set, 28123 - 2));
+    euler_ok(sieve(&primes, 0));
 
     for (int n = 12; n < 28123; n++)
     {
@@ -56,11 +47,9 @@ int main(void)
 
         if (set.begin[n - 2])
         {
-            list_add(&abundants, &n);
+            euler_ok(list_add(&abundants, &n));
         }
     }
-
-    long sum = 1;
 
     for (int n = 2; n < 28123; n++)
     {

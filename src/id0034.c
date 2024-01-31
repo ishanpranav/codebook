@@ -2,7 +2,6 @@
 
 // Digit Factorials
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
 #include "../lib/factorial.h"
@@ -13,12 +12,7 @@ int main(void)
     clock_t start = clock();
     long long* factorial = factorial_range(10);
 
-    if (!factorial)
-    {
-        Exception ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
+    euler_assert(factorial);
 
     long end = 7 * factorial[9];
     

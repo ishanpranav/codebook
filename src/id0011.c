@@ -2,7 +2,6 @@
 
 // Largest Product in a Grid
 
-#include <assert.h>
 #include "../lib/euler.h"
 
 int main(void)
@@ -15,7 +14,7 @@ int main(void)
         {
             int scan = scanf("%d", &grid[i][j]);
 
-            assert(scan == 1);
+            euler_assert(scan == 1);
         }
     }
 

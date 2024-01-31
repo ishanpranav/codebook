@@ -18,9 +18,8 @@ int main(void)
     struct Sieve primes;
     clock_t start = clock();
     long max = math_max_prime(10001);
-    Exception ex = sieve(&primes, max);
-
-    euler_ok();
+    
+    euler_ok(sieve(&primes, max));
 
     long p = sieve_prime(&primes, 10000);
 

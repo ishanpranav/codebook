@@ -6,22 +6,16 @@
 #include "../lib/permutation_iterator.h"
 #include "../lib/string_builder.h"
 
-static Exception math_is_permuted_multiple(
+static bool math_is_permuted_multiple(
     long x,
     StringBuilder digits,
-    StringBuilder image,
-    bool* result)
+    StringBuilder image)
 {
     for (int a = 2; a <= 6; a++)
     {
         string_builder_clear(digits);
 
-        Exception ex = string_builder_append_format(digits, "%ld", a * x);
-
-        if (ex)
-        {
-            return ex;
-        }
+        euler_ok(string_builder_append_format(digits, "%ld", a * x));
 
         if (!permutation_test(
             image->buffer,
@@ -31,73 +25,40 @@ static Exception math_is_permuted_multiple(
             1,
             char_equality_comparer))
         {
-            *result = false;
-
-            return 0;
+            return false;
         }
     }
 
-    *result = true;
-
-    return 0;
+    return true;
 }
 
-static Exception math_permuted_multiple(
-    StringBuilder digits, 
-    StringBuilder image, 
-    long* result)
+static long math_permuted_multiple(StringBuilder digits, StringBuilder image)
 {
     for (long x = 1; ; x++)
     {
         string_builder_clear(image);
 
-        Exception ex = string_builder_append_format(image, "%ld", x);
+        euler_ok(string_builder_append_format(image, "%ld", x));
 
-        if (ex)
+        if (math_is_permuted_multiple(x, digits, image))
         {
-            return ex;
-        }
-
-        bool is;
-        ex = math_is_permuted_multiple(x, digits, image, &is);
-
-        if (ex)
-        {
-            return ex;
-        }
-
-        if (is)
-        {
-            *result = x;
-
-            return 0;
+            return x;
         }
     }
 
-    *result = -1;
-
-    return 0;
+    return -1;
 }
 
 int main(void)
 {
+    struct StringBuilder image;
     struct StringBuilder digits;
     clock_t start = clock();
-    Exception ex = string_builder(&digits, 0);
+    
+    euler_ok(string_builder(&digits, 0));
+    euler_ok(string_builder(&image, 0));
 
-    euler_ok();
-
-    struct StringBuilder image;
-
-    ex = string_builder(&image, 0);
-
-    euler_ok();
-
-    long result;
-
-    ex = math_permuted_multiple(&digits, &image, &result);
-
-    euler_ok();
+    long result = math_permuted_multiple(&digits, &image);
 
     finalize_string_builder(&digits);
     finalize_string_builder(&image);

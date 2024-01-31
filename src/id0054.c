@@ -2,7 +2,6 @@
 
 // Poker Hands
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/string.h"
 

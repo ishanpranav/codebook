@@ -11,13 +11,12 @@ int main(void)
 {
     struct List digits;
     clock_t start = clock();
-    Exception ex = list(&digits, sizeof(int), 10);
 
-    euler_ok();
+    euler_ok(list(&digits, sizeof(int), 10));
 
     for (int i = 1; i <= 3; i++)
     {
-        list_add(&digits, &i);
+        euler_ok(list_add(&digits, &i));
     }
 
     long max = 2143;
@@ -29,12 +28,12 @@ int main(void)
         struct PermutationIterator it;
 
         for (permutation_begin(
-            &it, 
-            digits.items, 
-            digits.itemSize, 
-            digits.count, 
-            int_comparer); 
-            !it.end; 
+            &it,
+            digits.items,
+            digits.itemSize,
+            digits.count,
+            int_comparer);
+            !it.end;
             permutation_next(&it))
         {
             long n = 0;
@@ -54,6 +53,6 @@ int main(void)
     }
 
     finalize_list(&digits);
-    
+
     return euler_submit(41, max, start);
 }

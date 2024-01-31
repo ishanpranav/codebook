@@ -2,7 +2,6 @@
 
 // Counting Fractions in a Range
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/exception.h"
 
@@ -42,25 +41,14 @@ long math_farey_count(int maxD, int n, int d)
 
 int main(void)
 {
-    Exception ex;
     clock_t start = clock();
     long lessThanOneHalf = math_farey_count(12001, 1, 2);
 
-    if (lessThanOneHalf == -1)
-    {
-        ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
+    euler_assert(lessThanOneHalf != -1);
 
     long lessThanOneThird = math_farey_count(12001, 1, 3);
 
-    if (lessThanOneThird == -1)
-    {
-        ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
+    euler_assert(lessThanOneThird != -1);
     
     long count = lessThanOneHalf - lessThanOneThird - 1;
 

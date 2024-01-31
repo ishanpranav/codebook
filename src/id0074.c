@@ -2,39 +2,23 @@
 
 // Digit Factorial Chains
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/factorial.h"
 #include "../lib/list.h"
 
 int main(void)
 {
-    Exception ex;
+    struct List terms;
     clock_t start = clock();
     int* visited = calloc(1000000l, sizeof * visited);
 
-    if (!visited)
-    {
-        ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
+    euler_assert(visited);
 
     long long* factorial = factorial_range(10);
 
-    if (!factorial)
-    {
-        ex = EXCEPTION_OUT_OF_MEMORY;
+    euler_assert(factorial);
+    euler_ok(list(&terms, sizeof(long), 60));
 
-        euler_ok();
-    }
-
-    struct List terms;
-
-    ex = list(&terms, sizeof(long), 60);
-
-    euler_ok();
-    
     int count = 0;
 
     for (long m = 0; m < 1000000l; m++)
@@ -45,10 +29,8 @@ int main(void)
 
         for (long n = m; ; )
         {
-            ex = list_add(&terms, &n);
-
-            euler_ok();
-
+            euler_ok(list_add(&terms, &n));
+            
             long sum = 0;
 
             for (long k = n; k; k /= 10)
@@ -65,11 +47,11 @@ int main(void)
             {
                 break;
             }
-            
+
             if (visited[sum])
             {
                 visited[m] += visited[sum];
-            
+
                 break;
             }
 
@@ -82,7 +64,7 @@ int main(void)
             count++;
         }
     }
-    
+
     free(visited);
     free(factorial);
     finalize_list(&terms);

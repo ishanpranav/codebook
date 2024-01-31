@@ -4,7 +4,6 @@
 
 #include <gmp.h>
 #include "../lib/euler.h"
-#include "../lib/exception.h"
 #include "../lib/string.h"
 
 int main(void)
@@ -34,13 +33,7 @@ int main(void)
 
     String digits = string(mpz_sizeinbase(a[2], 10));
 
-    if (!digits)
-    {
-        Exception ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
-
+    euler_assert(digits);
     mpz_get_str(digits, 10, a[2]);
 
     int sum = 0;

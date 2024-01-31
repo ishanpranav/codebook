@@ -8,15 +8,13 @@
 
 int main(void)
 {
-    struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 0);
-
-    euler_ok();
-
     int i = 7;
     long n = 28;
+    struct Sieve primes;
+    clock_t start = clock();
     
+    euler_ok(sieve(&primes, 0));
+
     while (factor_divisor_count(n, &primes) <= 500)
     {
         i++;

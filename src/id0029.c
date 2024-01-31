@@ -11,9 +11,8 @@ int main(void)
 {
     struct List values;
     clock_t start = clock();
-    Exception ex = list(&values, sizeof(double), 0);
-
-    euler_ok();
+    
+    euler_ok(list(&values, sizeof(double), 0));
 
     for (int a = 2; a <= 100; a++)
     {
@@ -23,7 +22,7 @@ int main(void)
 
             if (!list_contains(&values, &result, double_equality_comparer))
             {
-                list_add(&values, &result);
+                euler_ok(list_add(&values, &result));
             }
         }
     }

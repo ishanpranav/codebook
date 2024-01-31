@@ -90,6 +90,14 @@ Exception string_builder_append_format(
 void string_builder_clear(StringBuilder instance);
 
 /**
+ * 
+ * @param result
+ * @param instance
+ * @return 
+*/
+Exception string_builder_clone(StringBuilder result, StringBuilder instance);
+
+/**
  * Converts the value of an `StringBuilder` to a new `String`.
  * 
  * @param instance the `StringBuilder` instance.

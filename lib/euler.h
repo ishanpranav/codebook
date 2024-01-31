@@ -2,13 +2,18 @@
 
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #define macro do {
-#define end_macro } while (false)
-#define euler_ok() macro if (ex) { \
-    fprintf(stderr, "Error: %d at %s line %d.\n", ex, __FILE__, __LINE__); \
-    return ex; \
-} end_macro
+#define end_macro } while (0)
+#define euler_ok(ex) macro \
+    Exception _ex = (ex); \
+    if (_ex) { \
+    fprintf(stderr, "Error: %d at %s line %d.\n", _ex, __FILE__, __LINE__); \
+    exit(_ex); } end_macro
+#define euler_assert(condition) macro if (!(condition)) { \
+    fprintf(stderr, "Faulted: %s line %d.\n", __FILE__, __LINE__); \
+    exit(1); } end_macro
 #define math_concat(left, ...) math_concat_impl(left, __VA_ARGS__, 0);
 
 /**

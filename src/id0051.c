@@ -2,7 +2,6 @@
 
 // Prime Digit Replacements
 
-#include <stdlib.h>
 #include "../lib/primality_tests/miller_rabin_primality_test.h"
 #include "../lib/euler.h"
 #include "../lib/string_builder.h"
@@ -38,34 +37,26 @@ static bool mask_list_mask(StringBuilder value)
     return false;
 }
 
-static Exception math_prime_digit_replacement(
+static long math_prime_digit_replacement(
     Sieve primes,
     StringBuilder mask,
-    StringBuilder image,
-    long* first)
+    StringBuilder image)
 {
-    Exception ex;
     struct SieveIterator it;
 
     for (sieve_begin(&it, primes); ; sieve_next(&it))
     {
         string_builder_clear(mask);
         
-        ex = string_builder_append_format(mask, "%lld", *it.current);
-
-        if (ex)
-        {
-            return ex;
-        }
-
+        euler_ok(string_builder_append_format(mask, "%lld", *it.current));
+        
         if (!mask_list_mask(mask))
         {
             continue;
         }
 
+        long result = 0;
         long length = 0;
-
-        *first = 0;
 
         for (int i = 0; i < 10; i++)
         {
@@ -75,16 +66,11 @@ static Exception math_prime_digit_replacement(
             {
                 if (mask->buffer[j] == '*')
                 {
-                    ex = string_builder_append_char(image, i + '0');
+                    euler_ok(string_builder_append_char(image, i + '0'));
                 }
                 else
                 {
-                    ex = string_builder_append_char(image, mask->buffer[j]);
-                }
-
-                if (ex)
-                {
-                    return ex;
+                    euler_ok(string_builder_append_char(image, mask->buffer[j]));
                 }
             }
 
@@ -104,7 +90,7 @@ static Exception math_prime_digit_replacement(
 
             if (!length)
             {
-                *first = n;
+                result = n;
             }
 
             length++;
@@ -112,38 +98,25 @@ static Exception math_prime_digit_replacement(
 
         if (length == 8)
         {
-            return 0;
+            return result;
         }
     }
 
-    *first = -1;
-
-    return 0;
+    return -1;
 }
 
 int main(void)
 {
     struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 0);
-
-    euler_ok();
-
     struct StringBuilder mask;
-
-    ex = string_builder(&mask, 0);
-
-    euler_ok();
-
     struct StringBuilder image;
+    clock_t start = clock();
 
-    ex = string_builder(&image, 0);
-
-    long first;
-
-    ex = math_prime_digit_replacement(&primes, &mask, &image, &first);
-
-    euler_ok();
+    euler_ok(sieve(&primes, 0));
+    euler_ok(string_builder(&mask, 0));
+    euler_ok(string_builder(&image, 0));
+    
+    long first = math_prime_digit_replacement(&primes, &mask, &image);
 
     finalize_sieve(&primes);
     finalize_string_builder(&mask);

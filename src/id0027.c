@@ -2,7 +2,6 @@
 
 // Quadratic Primes
 
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/sieve.h"
 
@@ -20,15 +19,13 @@ static int math_quadratic_prime(Sieve primes, int a, int b)
 
 int main(void)
 {
-    struct Sieve primes;
-    clock_t start = clock();
-    Exception ex = sieve(&primes, 1001);
-
-    euler_ok();
-
     int maxA = 0;
     int maxB = 0;
     int maxN = 0;
+    struct Sieve primes;
+    clock_t start = clock();
+    
+    euler_ok(sieve(&primes, 1001));
 
     for (int a = -999; a < 1000; a += 2)
     {
@@ -48,9 +45,9 @@ int main(void)
         }
     }
 
-    finalize_sieve(&primes);
-
     long product = maxA * maxB;
+
+    finalize_sieve(&primes);
 
     return euler_submit(27, product, start);
 }

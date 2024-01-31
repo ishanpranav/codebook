@@ -2,7 +2,6 @@
 
 // Names Scores
 
-#include <stdlib.h>
 #include <string.h>
 #include "../lib/euler.h"
 #include "../lib/string_collection.h"
@@ -12,13 +11,9 @@ int main(void)
     long sum = 0;
     struct List names;
     clock_t start = clock();
-    Exception ex = list(&names, sizeof(String), 5000);
-
-    euler_ok();
-
-    ex = string_collection_deserialize(&names, stdin);
-
-    euler_ok();
+    
+    euler_ok(list(&names, sizeof(String), 5000));
+    euler_ok(string_collection_deserialize(&names, stdin));
 
     list_sort(&names, string_comparer);
 

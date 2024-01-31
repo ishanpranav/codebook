@@ -27,13 +27,12 @@ static bool math_is_circular_prime(long n, Sieve primes)
 
 int main(void)
 {
+    int count = 0;
     struct Sieve primes;
     clock_t start = clock();
-    Exception ex = sieve(&primes, MAX_SEARCH);
-
-    euler_ok();
-
-    int count = 0;
+    
+    euler_ok(sieve(&primes, MAX_SEARCH));
+    
     long long* begin = primes.primes.items;
     long long* end = begin + primes.primes.count;
 

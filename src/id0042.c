@@ -3,23 +3,18 @@
 // Coded Triangle Numbers
 
 #include <math.h>
-#include <stdlib.h>
 #include "../lib/euler.h"
 #include "../lib/string_collection.h"
 
 int main(void)
 {
+    int count = 0;
     struct List words;
     clock_t start = clock();
-    Exception ex = list(&words, sizeof(String), 2000);
+    
+    euler_ok(list(&words, sizeof(String), 2000));
+    euler_ok(string_collection_deserialize(&words, stdin));
 
-    euler_ok();
-
-    ex = string_collection_deserialize(&words, stdin);
-
-    euler_ok();
-
-    int count = 0;
     String* begin = words.items;
     String* end = begin + words.count;
 

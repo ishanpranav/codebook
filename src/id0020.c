@@ -19,13 +19,7 @@ int main(void)
     
     String digits = string(mpz_sizeinbase(megahuge, 10));
     
-    if (!digits)
-    {
-        Exception ex = EXCEPTION_OUT_OF_MEMORY;
-
-        euler_ok();
-    }
-    
+    euler_assert(digits);
     mpz_get_str(digits, 10, megahuge);
     mpz_clear(megahuge);
     series_from_string(&series, digits);
