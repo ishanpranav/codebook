@@ -28,20 +28,20 @@ int main(void)
 
     sieve_begin(&p, &primes);
 
-    for (sieve_jump(&p, min); *p.current < max; sieve_next(&p))
+    for (sieve_jump(&p, min); p.current < max; sieve_next(&p))
     {
         struct SieveIterator q;
 
         for (q = p; ; sieve_next(&q))
         {
-            long n = *p.current * *q.current;
+            long n = p.current * q.current;
 
             if (n > 10000000l)
             {
                 break;
             }
 
-            long phi = n - *p.current - *q.current + 1;
+            long phi = n - p.current - q.current + 1;
             double nRPhi = (double)n / phi;
 
             if (nRPhi >= minNRPhi)
@@ -68,9 +68,9 @@ int main(void)
         }
     }
 
+    finalize_sieve(&primes);
     finalize_string_builder(&nDigits);
     finalize_string_builder(&phiDigits);
-    finalize_sieve(&primes);
     
     return euler_submit(70, minN, start);
 }

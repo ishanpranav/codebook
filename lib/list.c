@@ -15,7 +15,7 @@ Exception list(List instance, size_t itemSize, size_t capacity)
         capacity = 4;
     }
 
-    instance->items = malloc(capacity * itemSize);
+    instance->items = malloc(itemSize * capacity);
 
     if (!instance->items)
     {

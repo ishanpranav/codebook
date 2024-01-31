@@ -20,19 +20,19 @@ void factor_next(FactorIterator iterator)
 {
     if (iterator->remainder == 1)
     {
-        iterator->current = *iterator->iterator.current;
+        iterator->current = iterator->iterator.current;
         iterator->remainder = 0;
         iterator->exponent = 1;
 
         return;
     }
 
-    while (iterator->remainder % *iterator->iterator.current != 0)
+    while (iterator->remainder % iterator->iterator.current != 0)
     {
         sieve_next(&iterator->iterator);
     }
 
-    iterator->current = *iterator->iterator.current;
+    iterator->current = iterator->iterator.current;
     iterator->remainder /= iterator->current;
     iterator->exponent = 1;
 

@@ -47,9 +47,9 @@ static long math_prime_digit_replacement(
     for (sieve_begin(&it, primes); ; sieve_next(&it))
     {
         string_builder_clear(mask);
-        
-        euler_ok(string_builder_append_format(mask, "%lld", *it.current));
-        
+
+        euler_ok(string_builder_append_format(mask, "%lld", it.current));
+
         if (!mask_list_mask(mask))
         {
             continue;
@@ -64,18 +64,22 @@ static long math_prime_digit_replacement(
 
             for (size_t j = 0; j < mask->length; j++)
             {
+                char c;
+
                 if (mask->buffer[j] == '*')
                 {
-                    euler_ok(string_builder_append_char(image, i + '0'));
+                    c = i + '0';
                 }
                 else
                 {
-                    euler_ok(string_builder_append_char(image, mask->buffer[j]));
+                    c = mask->buffer[j];
                 }
+
+                euler_ok(string_builder_append_char(image, c));
             }
 
             long n = atol(image->buffer);
-            
+
             if (n <= 100000)
             {
                 continue;
@@ -115,7 +119,7 @@ int main(void)
     euler_ok(sieve(&primes, 0));
     euler_ok(string_builder(&mask, 0));
     euler_ok(string_builder(&image, 0));
-    
+
     long first = math_prime_digit_replacement(&primes, &mask, &image);
 
     finalize_sieve(&primes);

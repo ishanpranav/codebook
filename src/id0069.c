@@ -16,7 +16,7 @@ int main(void)
 
     for (sieve_begin(&it, &primes); ; sieve_next(&it))
     {
-        long product = primorial * *it.current;
+        long product = primorial * it.current;
 
         if (product > 1000000l)
         {

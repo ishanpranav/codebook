@@ -6,7 +6,8 @@
 struct SieveIterator
 {
     struct Sieve* values;
-    long long* current;
+    size_t index;
+    long long current;
 };
 
 /** Provides an iterator over all primes. */

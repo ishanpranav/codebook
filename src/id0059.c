@@ -8,7 +8,7 @@
 
 int main(void)
 {
-    char buffer[8192];
+    char buffer[8192] = { 0 };
     struct StringBuilder message;
     clock_t start = clock();
     int read = fread(buffer, 1, sizeof buffer, stdin);

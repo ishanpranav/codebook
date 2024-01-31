@@ -20,7 +20,7 @@ int main(void)
 
     for (sieve_skip(&it, 4); count < 11; sieve_next(&it))
     {
-        long right = *it.current;
+        long right = it.current;
 
         while (right && sieve_test(&primes, right, NULL) == PRIMALITY_PRIME)
         {
@@ -32,7 +32,7 @@ int main(void)
             continue;
         }
 
-        long left = *it.current;
+        long left = it.current;
         long orderOfMagnitude = pow(10, (int)log10(left));
 
         while (left && sieve_test(&primes, left, NULL) == PRIMALITY_PRIME)
@@ -46,7 +46,7 @@ int main(void)
             continue;
         }
 
-        sum += *it.current;
+        sum += it.current;
         count++;
     }
 

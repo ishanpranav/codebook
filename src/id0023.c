@@ -17,7 +17,7 @@ static bool math_is_abundant_sum(int n, List list, BooleanSet set)
             return false;
         }
 
-        if (set->begin[n - *it - 2])
+        if (set->begin[n - *it])
         {
             return true;
         }
@@ -35,17 +35,17 @@ int main(void)
     clock_t start = clock();
 
     euler_ok(list(&abundants, sizeof(int), 0));
-    euler_ok(boolean_set(&set, 28123 - 2));
+    euler_ok(boolean_set(&set, 28123));
     euler_ok(sieve(&primes, 0));
 
     for (int n = 12; n < 28123; n++)
     {
         if ((factor_divisor_sum(n, &primes) - n) > n)
         {
-            set.begin[n - 2] = true;
+            set.begin[n] = true;
         }
 
-        if (set.begin[n - 2])
+        if (set.begin[n])
         {
             euler_ok(list_add(&abundants, &n));
         }

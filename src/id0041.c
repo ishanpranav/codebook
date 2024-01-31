@@ -23,7 +23,7 @@ int main(void)
 
     for (int i = 4; i <= 9; i++)
     {
-        list_add(&digits, &i);
+        euler_ok(list_add(&digits, &i));
 
         struct PermutationIterator it;
 

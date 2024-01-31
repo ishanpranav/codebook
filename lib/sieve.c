@@ -45,7 +45,22 @@ static Exception sieve_extend(Sieve instance, long long max)
 
     instance->max = max;
 
-    return ex;
+    return 0;
+}
+
+static void sieve_next_impl(SieveIterator iterator)
+{
+    if (iterator->index + 1 == iterator->values->primes.count)
+    {
+        if (sieve_extend(iterator->values, iterator->values->max * 2))
+        {
+            iterator->index = 0;
+
+            return;
+        }
+    }
+
+    iterator->index++;
 }
 
 Exception sieve(Sieve instance, long long max)
@@ -72,7 +87,6 @@ Exception sieve(Sieve instance, long long max)
     }
 
     instance->max = 2;
-
     ex = sieve_extend(instance, max);
 
     if (ex)
@@ -114,64 +128,63 @@ long long sieve_prime(Sieve instance, size_t n)
 void sieve_begin(SieveIterator iterator, Sieve values)
 {
     iterator->values = values;
-    iterator->current = values->primes.items;
+    iterator->index = 0;
+    iterator->current = 2;
 }
 
 void sieve_jump(SieveIterator iterator, long long min)
 {
+    long long* primes = iterator->values->primes.items;
+
     if (iterator->values->max > min)
     {
-        long long* left = iterator->values->primes.items;
-        long long* right = left + iterator->values->primes.count - 1;
+        size_t left = 0;
+        size_t right = iterator->values->primes.count - 1;
 
         while (left != right)
         {
-            iterator->current = left + (right - left) / 2;
+            iterator->index = left + (right - left) / 2;
 
-            if (*iterator->current < min)
+            if (primes[iterator->index] < min)
             {
-                left = iterator->current + 1;
+                left = iterator->index + 1;
             }
             else
             {
-                right = iterator->current;
+                right = iterator->index;
             }
         }
     }
 
-    while (*iterator->current < min)
+    while (primes[iterator->index] < min)
     {
-        sieve_next(iterator);
+        sieve_next_impl(iterator);
+    
+        primes = iterator->values->primes.items;
     }
+
+    iterator->current = primes[iterator->index];
 }
 
 void sieve_skip(SieveIterator iterator, size_t count)
 {
     for (size_t i = 0; i < count; i++)
     {
-        sieve_next(iterator);
+        sieve_next_impl(iterator);
     }
+
+    long long* primes = iterator->values->primes.items;
+
+    iterator->current = primes[iterator->index];
 }
 
 void sieve_next(SieveIterator iterator)
 {
-    long long* begin = (long long*)iterator->values->primes.items;
-    size_t count = iterator->values->primes.count;
+    sieve_next_impl(iterator);
 
-    if (iterator->current + 1 == begin + iterator->values->primes.count)
-    {
-        if (sieve_extend(iterator->values, iterator->values->max * 2))
-        {
-            iterator->current = begin;
+    long long* primes = iterator->values->primes.items;
 
-            return;
-        }
-
-        begin = (long long*)iterator->values->primes.items;
-        iterator->current = begin + count - 1;
-    }
-
-    iterator->current++;
+    iterator->current = primes[iterator->index];
 }
 
 void finalize_sieve(Sieve instance)
