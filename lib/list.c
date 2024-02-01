@@ -114,11 +114,6 @@ void list_reverse(List instance)
     }
 }
 
-void list_sort(List instance, Comparer itemComparer)
-{
-    qsort(instance->items, instance->count, instance->itemSize, itemComparer);
-}
-
 bool list_sequence_equal(List left, List right, EqualityComparer itemComparer)
 {
     size_t itemSize = left->itemSize;

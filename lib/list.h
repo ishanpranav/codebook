@@ -4,7 +4,6 @@
 #define LIST_95a94c0379b44bd3967523c81d4caa55
 #include <stdbool.h>
 #include <stddef.h>
-#include "comparer.h"
 #include "equality_comparer.h"
 #include "exception.h"
 
@@ -77,14 +76,6 @@ void list_clear(List instance);
  * @param instance the `List` instance.
 */
 void list_reverse(List instance);
-
-/**
- * Sorts the elements in the list.
- * 
- * @param instance     the `List` instance.
- * @param itemComparer the comparer used to detemrine the sort order.
-*/
-void list_sort(List instance, Comparer itemComparer);
 
 /**
  * Determines whether two lists are equal in sequence.

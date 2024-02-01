@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../exception.h"
-#include "../merge.h"
 #include "../sort.h"
 
 void merge_sort(
@@ -15,30 +14,37 @@ void merge_sort(
     char* begin = items;
     char* buffer = malloc(count * itemSize);
 
+    if (!buffer)
+    {
+        quick_sort(items, count, itemSize, itemComparer);
+
+        return;
+    }
+
     for (size_t size = 1; size < count; size *= 2)
     {
-        size_t leftMin = 0;
-        size_t rightMax = 0;
+        size_t leftFirst = 0;
+        size_t rightLast = 0;
         size_t k = 0;
 
-        while (leftMin + size < count)
+        while (leftFirst + size < count)
         {
-            size_t rightMin = leftMin + size;
-            size_t leftMax = rightMin - 1;
+            size_t rightFirst = leftFirst + size;
+            size_t leftLast = rightFirst - 1;
 
-            if (leftMax + size < count)
+            if (leftLast + size < count)
             {
-                rightMax = leftMax + size;
+                rightLast = leftLast + size;
             }
             else
             {
-                rightMax = count - 1;
+                rightLast = count - 1;
             }
 
-            size_t i = leftMin;
-            size_t j = rightMin;
+            size_t i = leftFirst;
+            size_t j = rightFirst;
 
-            while (i <= leftMax && j <= rightMax)
+            while (i <= leftLast && j <= rightLast)
             {
                 char* p = begin + i * itemSize;
                 char* q = begin + j * itemSize;
@@ -57,7 +63,7 @@ void merge_sort(
                 }
             }
 
-            while (i <= leftMax)
+            while (i <= leftLast)
             {
                 char* p = begin + i * itemSize;
 
@@ -66,7 +72,7 @@ void merge_sort(
                 i++;
             }
 
-            while (j <= rightMax)
+            while (j <= rightLast)
             {
                 char* q = begin + j * itemSize;
 
@@ -75,10 +81,10 @@ void merge_sort(
                 j++;
             }
 
-            leftMin = rightMax + 1;
+            leftFirst = rightLast + 1;
         }
 
-        memcpy(begin, buffer, (rightMax + 1) * itemSize);
+        memcpy(begin, buffer, (rightLast + 1) * itemSize);
     }
 
     free(buffer);
