@@ -49,3 +49,16 @@ void insertion_sort(
     size_t count, 
     size_t itemSize, 
     Comparer itemComparer);
+
+/**
+ * 
+ * @param items
+ * @param count
+ * @param itemSize
+ * @param itemComparer
+*/
+void merge_sort(
+    Array items, 
+    size_t count, 
+    size_t itemSize, 
+    Comparer itemComparer);

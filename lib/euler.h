@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "exception.h"
 #define macro do {
 #define end_macro } while (0)
 #define euler_ok(ex) macro \
@@ -24,7 +25,7 @@
  * @param start  the program start time.
  * @return `0` always.
 */
-int euler_submit(int id, long long result, clock_t start);
+Exception euler_submit(int id, long long result, clock_t start);
 
 /**
  * Computes a partial summation of the natural numbers. This is equivalent to

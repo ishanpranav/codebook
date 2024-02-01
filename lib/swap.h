@@ -1,5 +1,6 @@
 // Licensed under the MIT License.
 
+#include <stddef.h>
 #include "object.h"
 
 /**

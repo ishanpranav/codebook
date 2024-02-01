@@ -21,7 +21,7 @@ int main(void)
     euler_ok(list(&names, sizeof(struct LongString), 5000));
     euler_ok(string_collection_deserialize(&names, stdin));
 
-    bubble_sort(names.items, names.count, names.itemSize, string_comparer);
+    merge_sort(names.items, names.count, names.itemSize, string_comparer);
     //list_sort(&names, string_comparer);
 
     struct LongString* begin = names.items;

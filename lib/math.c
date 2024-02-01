@@ -4,6 +4,28 @@
 #include <stdarg.h>
 #include "euler.h"
 
+long math_natural_sum(long n)
+{
+    return n * (n + 1) / 2;
+}
+
+long long math_reverse(long long n)
+{
+    long long x = 0;
+
+    for (long long y = n; y; y /= 10)
+    {
+        x = (x * 10) + y % 10;
+    }
+
+    return x;
+}
+
+bool math_is_palindrome(long long n)
+{
+    return n == math_reverse(n);
+}
+
 bool math_is_polygonal(int s, long x, long* approxN)
 {
     double sM2 = s - 2;
