@@ -3,6 +3,7 @@
 a.out
 *.exe
 *.obj
+*.a
 *.o
 .vscode/
 key.txt
