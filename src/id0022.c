@@ -9,7 +9,7 @@
 
 struct LongString {
     char* value;
-    int extrabits;
+    // int extrabits;
 };
 
 int main(void)

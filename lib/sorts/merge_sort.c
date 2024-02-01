@@ -1,67 +1,10 @@
 // Licensed under the MIT License.
 
 #include <stdlib.h>
+#include <string.h>
 #include "../exception.h"
 #include "../merge.h"
 #include "../sort.h"
-
-static Exception merge_sort_impl(
-    Array items,
-    size_t count,
-    size_t itemSize,
-    Comparer itemComparer)
-{
-    for (size_t length = 1; length < count; length *= 2)
-    {
-        for (size_t left = 0; left < count - 1; left += length * 2)
-        {
-            size_t mid = left + length - 1;
-
-            if (count <= mid)
-            {
-                mid = count - 1;
-            }
-
-            size_t right = left + (length * 2) - 1;
-
-            if (count <= right)
-            {
-                right = count - 1;
-            }
-
-            size_t leftLength = mid - left + 1;
-            size_t rightLength = right - mid;
-            char* leftBuffer = malloc(leftLength * itemSize);
-
-            if (!leftBuffer)
-            {
-                return EXCEPTION_OUT_OF_MEMORY;
-            }
-
-            char* rightBuffer = malloc(rightLength * itemSize);
-
-            if (!rightBuffer)
-            {
-                free(leftBuffer);
-
-                return EXCEPTION_OUT_OF_MEMORY;
-            }
-
-            merge(
-                items, 
-                leftBuffer, 
-                leftLength, 
-                rightBuffer, 
-                rightLength, 
-                itemSize, 
-                itemComparer);
-            free(leftBuffer);
-            free(rightBuffer);
-        }
-    }
-
-    return 0;
-}
 
 void merge_sort(
     Array items,
@@ -69,8 +12,74 @@ void merge_sort(
     size_t itemSize,
     Comparer itemComparer)
 {
-    if (merge_sort_impl(items, count, itemSize, itemComparer))
-    {
+    char* begin = items;
+    char* buffer = malloc(count * itemSize);
 
+    for (size_t size = 1; size < count; size *= 2)
+    {
+        size_t k = 0;
+        size_t leftMin = 0;
+        size_t rightMax = 0;
+
+        while (leftMin + size < count)
+        {
+            size_t rightMin = leftMin + size;
+            size_t leftMax = rightMin - 1;
+
+            if (leftMax + size < count)
+            {
+                rightMax = leftMax + size;
+            }
+            else
+            {
+                rightMax = count - 1;
+            }
+
+            size_t i = leftMin;
+            size_t j = rightMin;
+
+            while (i <= leftMax && j <= rightMax)
+            {
+                char* p = begin + i * itemSize;
+                char* q = begin + j * itemSize;
+
+                if (itemComparer(p, q) < 0)
+                {
+                    memcpy(buffer + (k++) * itemSize, p, itemSize);
+
+                    i++;
+                }
+                else
+                {
+                    memcpy(buffer + (k++) * itemSize, q, itemSize);
+
+                    j++;
+                }
+            }
+
+            while (i <= leftMax)
+            {
+                char* p = begin + i * itemSize;
+
+                memcpy(buffer + (k++) * itemSize, p, itemSize);
+
+                i++;
+            }
+
+            while (j <= rightMax)
+            {
+                char* q = begin + j * itemSize;
+
+                memcpy(buffer + (k++) * itemSize, q, itemSize);
+
+                j++;
+            }
+
+            leftMin = rightMax + 1;
+        }
+
+        memcpy(begin, buffer, (rightMax + 1) * itemSize);
     }
+
+    free(buffer);
 }
