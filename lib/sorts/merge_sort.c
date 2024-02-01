@@ -17,9 +17,9 @@ void merge_sort(
 
     for (size_t size = 1; size < count; size *= 2)
     {
-        size_t k = 0;
         size_t leftMin = 0;
         size_t rightMax = 0;
+        size_t k = 0;
 
         while (leftMin + size < count)
         {
