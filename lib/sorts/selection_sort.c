@@ -4,9 +4,9 @@
 #include "../swap.h"
 
 void selection_sort(
-    Array items, 
-    size_t count, 
-    size_t itemSize, 
+    Array items,
+    size_t count,
+    size_t itemSize,
     Comparer itemComparer)
 {
     char* begin = items;
@@ -23,9 +23,6 @@ void selection_sort(
             }
         }
 
-        if (min != i)
-        {
-            swap(begin + min * itemSize, begin + i * itemSize, itemSize);
-        }
+        swap(begin + min * itemSize, begin + i * itemSize, itemSize);
     }
 }

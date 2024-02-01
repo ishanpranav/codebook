@@ -73,6 +73,11 @@ long gcd(long a, long b)
 
 void swap(Object left, Object right, size_t size)
 {    
+    if (left == right)
+    {
+        return;
+    }
+    
     char* p = left;
     char* q = right;
     char swap;

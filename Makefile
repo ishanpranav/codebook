@@ -46,6 +46,12 @@ miller_rabin_primality_test$(O): \
 	lib/primality_tests/miller_rabin_primality_test.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bubble_sort$(O): lib/sorts/bubble_sort.c lib/sort.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+insertion_sort$(O): lib/sorts/insertion_sort.c lib/sort.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 selection_sort$(O): lib/sorts/selection_sort.c lib/sort.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -154,8 +160,8 @@ id0020$(E): src/id0020.c euler$(O) string$(O) series$(O)
 id0021$(E): src/id0021.c euler$(O) factor_iterator$(O) $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler$(O) factor_iterator$(O) $(SIEVE_O) $(LM)
 
-id0022$(E): src/id0022.c selection_sort$(O) euler$(O) string$(O) $(STRING_COLLECTION_O)
-	$(CC) $(CFLAGS) $< -o $@ selection_sort$(O) euler$(O) string$(O) $(STRING_COLLECTION_O)
+id0022$(E): src/id0022.c insertion_sort$(O) selection_sort$(O) bubble_sort$(O) euler$(O) string$(O) $(STRING_COLLECTION_O)
+	$(CC) $(CFLAGS) $< -o $@ insertion_sort$(O) selection_sort$(O) bubble_sort$(O) euler$(O) string$(O) $(STRING_COLLECTION_O)
 
 id0023$(E): src/id0023.c euler$(O) factor_iterator$(O) $(SIEVE_O)
 	$(CC) $(CFLAGS) $< -o $@ euler$(O) factor_iterator$(O) $(SIEVE_O) $(LM)
