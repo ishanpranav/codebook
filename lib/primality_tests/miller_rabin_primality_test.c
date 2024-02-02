@@ -2,26 +2,8 @@
 
 #include <math.h>
 #include <stdbool.h>
+#include "../pow.h"
 #include "../primality_test.h"
-
-static long long miller_rabin_mod_pow(long long a, long long n, long long mod)
-{
-    long long exponent = a;
-    long long result = 1;
-
-    while (n)
-    {
-        if (n % 2 == 1)
-        {
-            result = (result * exponent) % mod;
-        }
-
-        exponent = (exponent * exponent) % mod;
-        n /= 2;
-    }
-
-    return result;
-}
 
 static bool miller_rabin_witness(
     long long n,
@@ -29,7 +11,7 @@ static bool miller_rabin_witness(
     long long d,
     long long a)
 {
-    long long x = miller_rabin_mod_pow(a, d, n);
+    long long x = mod_pow(a, d, n);
     long long y = 1;
 
     while (s)

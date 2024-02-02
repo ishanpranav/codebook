@@ -11,7 +11,7 @@ int main(void)
     int digits[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     clock_t start = clock();
 
-    permutation_begin(&it, digits, sizeof * digits, 10, int_comparer);
+    permutation_begin(&it, digits, 10, sizeof * digits, int_comparer);
 
     for (long i = 0; i < 999999l; i++)
     {

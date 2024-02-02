@@ -52,20 +52,6 @@ void insertion_sort(
 
 /**
  *
- *
- * @param items
- * @param count
- * @param itemSize
- * @param itemComparer
-*/
-void quick_sort(
-    Array items,
-    size_t count,
-    size_t itemSize,
-    Comparer itemComparer);
-
-/**
- *
  * @param items
  * @param count
  * @param itemSize

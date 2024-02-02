@@ -12,8 +12,8 @@ struct PermutationIterator
     int (*itemComparer)(const void* left, const void* right);
 
     void* items;
-    size_t itemSize;
     size_t length;
+    size_t itemSize;
     bool end;
 };
 
@@ -30,8 +30,8 @@ typedef struct PermutationIterator* PermutationIterator;
 void permutation_begin(
     PermutationIterator iterator,
     Array items,
-    size_t itemSize,
     size_t length,
+    size_t itemSize,
     Comparer itemComparer);
 
 /**

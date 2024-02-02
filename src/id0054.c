@@ -3,7 +3,6 @@
 // Poker Hands
 
 #include "../lib/euler.h"
-#include "../lib/string.h"
 
 enum HandType
 {

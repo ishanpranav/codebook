@@ -5,7 +5,6 @@
 #include <gmp.h>
 #include <math.h>
 #include "../lib/euler.h"
-#include "../lib/string.h"
 
 int main(void)
 {

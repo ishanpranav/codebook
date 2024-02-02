@@ -6,7 +6,8 @@ Efficient Project Euler solutions in C language
 
 Thanks to the depth and breadth of the Project Euler problem set, this
 repository has become home to a [diverse library](lib/) including mathematical
-functions as well as data structures and algorithms.
+functions as well as data structures and algorithms. Some of these solutions can
+also be used to solve [LeetCode](#leetcode) problems as well.
 
 ## Constraints
 
@@ -129,3 +130,26 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 73  |  [Counting Fractions in a Range](src/id0073.c)   |           Sequences            |   Count   |                                                                                                                                        |
 | 74  |      [Digit Factorial Chains](src/id0074.c)      |         Combinatorics          |   Count   |                                                                                                                                        |
 | 75  | [Singular Integer Right Triangles](src/id0075.c) |            Geometry            |   Count   |                                                                                                                                        |
+
+# LeetCode
+
+## Summary
+
+|  Id  |                                 Problem                                  |    Domain     |        Result        | Implementation        |
+| :--: | :----------------------------------------------------------------------: | :-----------: | :------------------: | --------------------- |
+|  7   |                     [Reverse Integer](src/lc0007.c)                      |  Mathematics  |       Integer        | `math_reverse`        |
+|  8   |                    [String to Integer](src/lc0008.c)                     |    Strings    |       Integer        | `atoll`               |
+|  9   |                    [Palindrome Number](src/lc0009.c)                     |  Mathematics  |       Boolean        | `math_is_palindrome`  |
+|  28  |    [Find the Index of the First Occurrence in a String](src/lc0028.c)    |    Strings    |        Index         | `strstr`              |
+|  29  |                   [Divide Two Integers](src/lc0029.c)                    |  Mathematics  |       Quotient       |                       |
+|  31  |                     [Next Permutation](src/lc0031.c)                     |     Array     |     Permutation      | `PermutationIterator` |
+|  46  |                       [Permutations](src/lc0046.c)                       |     Array     |     Permutation      | `PermutationIterator` |
+|  50  |                        [Pow(x, n)](src/lc0050.c)                         |  Mathematics  |        Power         | `pow`                 |
+|  60  |                   [Permutation Sequence](src/lc0060.c)                   |  Mathematics  |     Permutation      | `PermutationIterator` |
+|  62  |                       [Unique Paths](src/lc0062.c)                       | Combinatorics | Binomial coefficient | `binomial`            |
+|  69  |                         [Sqrt(x)](src/lc0069.c)                          |  Mathematics  |     Square root      | `sqrt`                |
+|  75  |                       [Sort Colors](src/lc0075.c)                        |    Sorting    |         Sort         | `qsort`               |
+| 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `is_polygonal`        |
+| 2119 |             [A Number After a Double Reversal](src/lc2119.c)             |  Mathematics  |       Boolean        | `math_reverse`        |
+| 2400 | [Number of Ways to Reach a Position After Exactly k Steps](src/lc2400.c) | Combinatorics | Binomial coefficient | `binomial`            |
+| 2550 |                       [Monkey Move](src/lc2550.c)                        | Combinatorics |        Power         | `mod_pow`             |

@@ -2,8 +2,7 @@
 
 #include <stdbool.h>
 #include <stddef.h>
-#include "_/../string.h"
-#include "exception.h"
+#include "euler.h"
 
 /** Represents a mutable string of characters. */
 struct StringBuilder

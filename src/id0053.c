@@ -12,24 +12,26 @@ int main(void)
 
     for (int n = 1; n <= 100; n++)
     {
-        bool last = false;
+        long long* binomials = binomial_mod_range(n, 0);
+        
+        euler_assert(binomials);
 
-        for (int r = 1; r <= n / 2; r++)
+        for (int r = 1; r <= n; r++)
         {
-            long long c = binomial(n, r);
+            int k = r;
 
-            last = c > 1000000l || c < 0;
-
-            if (last)
+            if (k > n - k)
             {
-                count += 2;
+                k = n - k;
+            }
+
+            if (binomials[k] > 1000000l)
+            {
+                count++;
             }
         }
 
-        if (n % 2 == 1 && last)
-        {
-            count--;
-        }
+        free(binomials);
     }
 
     return euler_submit(53, count, start);

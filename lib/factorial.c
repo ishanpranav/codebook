@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include <stddef.h>
+#include <stdlib.h>
 #include "factorial.h"
 
 long long* factorial_range(int max)

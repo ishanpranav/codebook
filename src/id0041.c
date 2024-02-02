@@ -30,8 +30,8 @@ int main(void)
         for (permutation_begin(
             &it,
             digits.items,
-            digits.itemSize,
             digits.count,
+            digits.itemSize,
             int_comparer);
             !it.end;
             permutation_next(&it))

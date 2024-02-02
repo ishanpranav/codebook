@@ -10,11 +10,11 @@ int main(void)
 {
     long sum = 0;
     clock_t start = clock();
-    long long* factorial = factorial_range(10);
+    long long* factorials = factorial_range(10);
 
-    euler_assert(factorial);
+    euler_assert(factorials);
 
-    long end = 7 * factorial[9];
+    long end = 7 * factorials[9];
     
     for (long n = 10; n <= end; n++)
     {
@@ -22,7 +22,7 @@ int main(void)
 
         for (long k = n; k; k /= 10)
         {
-            factorialSum += factorial[k % 10];
+            factorialSum += factorials[k % 10];
         }
 
         if (n == factorialSum)
@@ -31,7 +31,7 @@ int main(void)
         }
     }
 
-    free(factorial);
+    free(factorials);
 
     return euler_submit(34, sum, start);
 }

@@ -3,7 +3,6 @@
 #ifndef COMPARER_05e673bfc1d2477a8b652e51bb55e547
 #define COMPARER_05e673bfc1d2477a8b652e51bb55e547
 #include <stdbool.h>
-#include "object.h"
 
 /** Defines a method that a type implements to compare two objects. */
 typedef int (*Comparer)(const void* left, const void* right);

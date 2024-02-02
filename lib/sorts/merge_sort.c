@@ -16,7 +16,7 @@ void merge_sort(
 
     if (!buffer)
     {
-        quick_sort(items, count, itemSize, itemComparer);
+        qsort(items, count, itemSize, itemComparer);
 
         return;
     }

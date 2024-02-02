@@ -13,7 +13,7 @@ int main(void)
     struct PermutationIterator it;
     clock_t start = clock();
     
-    for (permutation_begin(&it, l, sizeof * l, 10, int_comparer);
+    for (permutation_begin(&it, l, 10, sizeof * l, int_comparer);
         !it.end;
         permutation_next(&it))
     {

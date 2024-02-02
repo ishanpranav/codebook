@@ -13,7 +13,13 @@ TWOS_COMPLEMENT = -fno-strict-overflow -fwrapv
 LM = -lm
 LGMP = -lgmp
 
+LEULER = -leuler $(LM)
+
+RECURSE = $(foreach d,$(wildcard $(1:=/*)),$(call RECURSE,$d,$2) $(filter $(subst *,%,$2),$d))
+LEETCODE = $(wildcard src/lc*.c)
+
 all: \
+	libeuler$(A) libleetcode$(A) \
 	id0001$(E) id0002$(E) id0003$(E) id0004$(E) id0005$(E) id0006$(E) \
 	id0007$(E) id0008$(E) id0009$(E) id0010$(E) id0011$(E) id0012$(E) \
 	id0013$(E) id0014$(E) id0015$(E) id0016$(E) id0017$(E) id0018$(E) \
@@ -28,231 +34,234 @@ all: \
 	id0068$(E) id0069$(E) id0070$(E) id0071$(E) id0072$(E) id0073$(E) \
 	id0074$(E) #id0075$(E) id0076$(E) id0077$(E) id0078$(E) id0079$(E)
 
-libeuler$(A):
-	$(CC) $(CFLAGS) -c lib/**/*.c
+libeuler$(A): $(call RECURSE,lib,*.c)
+	$(CC) $(CFLAGS) -c $(call RECURSE,lib,*.c)
 	ar -r $@ *$(O)
 
+libleetcode$(A): $(LEETCODE)
+	$(CC) $(CFLAGS) -c $(LEETCODE)
+
 id0001$(E): src/id0001.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0002$(E): src/id0002.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0003$(E): src/id0003.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0004$(E): src/id0004.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0005$(E): src/id0005.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0006$(E): src/id0006.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	 
 id0007$(E): src/id0007.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	 
 id0008$(E): src/id0008.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0009$(E): src/id0009.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0010$(E): src/id0010.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0011$(E): src/id0011.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0012$(E): src/id0012.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0013$(E): src/id0013.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0014$(E): src/id0014.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0015$(E): src/id0015.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0016$(E): src/id0016.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 
 id0017$(E): src/id0017.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0018$(E): src/id0018.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0019$(E): src/id0019.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0020$(E): src/id0020.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 
 id0021$(E): src/id0021.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0022$(E): src/id0022.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0023$(E): src/id0023.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0024$(E): src/id0024.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0025$(E): src/id0025.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 
 id0026$(E): src/id0026.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0027$(E): src/id0027.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0028$(E): src/id0028.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0029$(E): src/id0029.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0030$(E): src/id0030.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0031$(E): src/id0031.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0032$(E): src/id0032.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0033$(E): src/id0033.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0034$(E): src/id0034.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0035$(E): src/id0035.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0036$(E): src/id0036.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0037$(E): src/id0037.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0038$(E): src/id0038.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0039$(E): src/id0039.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0040$(E): src/id0040.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0041$(E): src/id0041.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0042$(E): src/id0042.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0043$(E): src/id0043.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0044$(E): src/id0044.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0045$(E): src/id0045.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0046$(E): src/id0046.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0047$(E): src/id0047.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0048$(E): src/id0048.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 	
 id0049$(E): src/id0049.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0050$(E): src/id0050.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0051$(E): src/id0051.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0052$(E): src/id0052.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0053$(E): src/id0053.c libeuler$(A)
-	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ $(LEULER)
 	
 id0054$(E): src/id0054.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0055$(E): src/id0055.c libeuler$(A)
-	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $(TWOS_COMPLEMENT) $< -o $@ $(LEULER)
 	
 id0056$(E): src/id0056.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP) $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 	
 id0057$(E): src/id0057.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 	
 id0058$(E): src/id0058.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0059$(E): src/id0059.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0060$(E): src/id0060.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0061$(E): src/id0061.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0062$(E): src/id0062.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0063$(E): src/id0063.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0064$(E): src/id0064.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0065$(E): src/id0065.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 
 id0066$(E): src/id0066.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LGMP) $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP)
 
 id0068$(E): src/id0068.c libeuler$(A) 
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 id0069$(E): src/id0069.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0070$(E): src/id0070.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0071$(E): src/id0071.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0072$(E): src/id0072.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0073$(E): src/id0073.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0074$(E): src/id0074.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 	
 id0075$(E): src/id0075.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ -leuler $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER)
 
 clean:
 	$(RM) *$(A) *$(O)

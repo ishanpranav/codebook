@@ -1,5 +1,7 @@
 // Licensed under the MIT License.
 
+#include "euclidean.h"
+
 long gcd(long a, long b)
 {
     while (b > 0)
@@ -11,4 +13,9 @@ long gcd(long a, long b)
     }
 
     return a;
+}
+
+long lcm(long a, long b)
+{
+    return (a / gcd(a, b)) * b;
 }

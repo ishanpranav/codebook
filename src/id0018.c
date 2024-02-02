@@ -4,7 +4,6 @@
 // Maximum Path Sum II
 
 #include "../lib/euler.h"
-#include "../lib/string.h"
 #define BUFFER_SIZE 512
 #define MAX_HEIGHT 100
 

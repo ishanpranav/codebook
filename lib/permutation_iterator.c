@@ -7,8 +7,8 @@
 void permutation_begin(
     PermutationIterator iterator,
     Array items,
-    size_t itemSize,
     size_t length,
+    size_t itemSize,
     Comparer itemComparer)
 {
     iterator->items = items;

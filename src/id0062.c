@@ -3,6 +3,7 @@
 // Cubic Permutations
 
 #include <limits.h>
+#include "../lib/comparer.h"
 #include "../lib/euler.h"
 #include "../lib/hash.h"
 #include "../lib/list.h"

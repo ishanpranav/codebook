@@ -14,9 +14,9 @@ int main(void)
 
     euler_assert(visited);
 
-    long long* factorial = factorial_range(10);
+    long long* factorials = factorial_range(10);
 
-    euler_assert(factorial);
+    euler_assert(factorials);
     euler_ok(list(&terms, sizeof(long), 60));
 
     int count = 0;
@@ -35,7 +35,7 @@ int main(void)
 
             for (long k = n; k; k /= 10)
             {
-                sum += factorial[k % 10];
+                sum += factorials[k % 10];
             }
 
             if (sum >= 1000000l)
@@ -66,7 +66,7 @@ int main(void)
     }
 
     free(visited);
-    free(factorial);
+    free(factorials);
     finalize_list(&terms);
 
     return euler_submit(74, count, start);

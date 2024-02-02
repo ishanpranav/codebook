@@ -15,7 +15,7 @@ int main(void)
 
     euler_ok(list(&set, sizeof(long), 0));
 
-    for (permutation_begin(&it, digits, sizeof * digits, 9, int_comparer);
+    for (permutation_begin(&it, digits, 9, sizeof * digits, int_comparer);
         !it.end;
         permutation_next(&it))
     {

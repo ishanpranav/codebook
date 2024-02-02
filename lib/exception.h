@@ -9,7 +9,7 @@ enum Exception
     /** There is not enough memory to continue the program. */
     EXCEPTION_OUT_OF_MEMORY = -1,
 
-    /** */
+    /** A composite format string is not well formed. */
     EXCEPTION_FORMAT = -2
 };
 

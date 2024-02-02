@@ -38,7 +38,12 @@ int main(void)
     string_builder(&digits, 0);
     string_builder_append_string(&digits, "0123456789");
 
-    for (permutation_begin(&it, digits.buffer, 1, digits.length, char_comparer);
+    for (permutation_begin(
+        &it, 
+        digits.buffer, 
+        digits.length, 
+        sizeof * digits.buffer,
+        char_comparer);
         !it.end;
         permutation_next(&it))
     {

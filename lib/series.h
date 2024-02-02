@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "_/../string.h"
+#include "euler.h"
 
 /** Represents a series of decimal digits. */
 struct Series

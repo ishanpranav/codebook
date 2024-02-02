@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "../swap.h"
+#include "swap.h"
 
 void swap(Object left, Object right, size_t size)
 {    
