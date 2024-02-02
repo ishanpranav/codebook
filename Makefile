@@ -15,10 +15,9 @@ LGMP = -lgmp
 LM = -lm
 
 RECURSE = $(foreach d,$(wildcard $(1:=/*)),$(call RECURSE,$d,$2) $(filter $(subst *,%,$2),$d))
-LEETCODE = $(wildcard src/lc*.c)
 
 all: \
-	libeuler$(A) \
+	libeuler$(A) libleetcode$(A) \
 	id0001$(E) id0002$(E) id0003$(E) id0004$(E) id0005$(E) id0006$(E) \
 	id0007$(E) id0008$(E) id0009$(E) id0010$(E) id0011$(E) id0012$(E) \
 	id0013$(E) id0014$(E) id0015$(E) id0016$(E) id0017$(E) id0018$(E) \
@@ -37,10 +36,12 @@ libeuler$(A): $(call RECURSE,lib,*.c)
 	$(RM) *.o
 	$(CC) $(CFLAGS) -c $(call RECURSE,lib,*.c)
 	$(AR) *.o
+	$(RM) *.o
 
-libleetcode: $(LEETCODE)
-	$(CC) $(CFLAGS) -c $(LEETCODE) $(LM)
-	rm lc*.o
+libleetcode$(A): $(wildcard src/lc*.c)
+	$(RM) lc*.o
+	$(CC) $(CFLAGS) -c $(wildcard src/lc*.c) $(LM)
+	$(RM) lc*.o
 
 id0001$(E): src/id0001.c libeuler$(A)
 	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
