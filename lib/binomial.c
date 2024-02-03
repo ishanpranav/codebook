@@ -21,20 +21,30 @@ long long binomial(int n, int k)
     return result;
 }
 
-long long* binomial_mod_range(int n, long long mod)
+long long* binomial_mod_range(int max, long long mod)
 {
+    if (max < 1)
+    {
+        return NULL;
+    }
+
+    long long* result = calloc(max, sizeof * result);
+
+    if (!result)
+    {
+        return NULL;
+    }
+
     if (!mod)
     {
         mod = 1000000007l;
     }
 
-    long long* result = calloc(n + 1, sizeof * result);
-
     result[0] = 1;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i < max; i++)
     {
-        for (int j = n; j > 0; j--)
+        for (int j = max - 1; j > 0; j--)
         {
             result[j] = ((result[j] % mod) + (result[j - 1] % mod)) % mod;
         }

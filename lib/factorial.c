@@ -7,7 +7,7 @@ long long* factorial_range(int max)
 {
     if (max < 1)
     {
-        return 0;
+        return NULL;
     }
 
     long long* result = malloc(max * sizeof * result);

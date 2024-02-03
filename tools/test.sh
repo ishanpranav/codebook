@@ -1,7 +1,7 @@
 # Licensed under the MIT License.
 
-#run="valgrind -q"
-run=""
+run="valgrind -q"
+#run=""
 
 for i in {0001..0007};
 do

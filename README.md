@@ -64,28 +64,28 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ### 21-40
 
-| Id  |                   Problem                   |    Domain     |         Result          | Implementation                                                               |
-| :-: | :-----------------------------------------: | :-----------: | :---------------------: | ---------------------------------------------------------------------------- |
-| 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |           Sum           | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)           |
-| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |           Sum           | [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)         |
-| 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |           Sum           | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)            |
-| 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics |       Permutation       | [Permutation](https://en.wikipedia.org/wiki/Permutation)                     |
-| 25  | [1000-digit Fibonacci Number](src/id0025.c) |   Sequences   |       Term number       | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)       |
-| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |         Maximum         | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)       |
-| 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |         Product         |                                                                              |
-| 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |           Sum           | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression)  |
-| 29  |       [Distinct Powers](src/id0029.c)       | Number theory |          Count          |                                                                              |
-| 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |           Sum           |                                                                              |
-| 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |          Count          | Dynamic programming                                                          |
-| 32  |     [Pandigital Products](src/id0032.c)     | Number theory |           Sum           | [Pandigital number](https://en.wikipedia.org/wiki/Pandigital_number)         |
-| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest common divisor |                                                                              |
-| 34  |      [Digit Factorials](src/id0034.c)       | Combinatorics |           Sum           | [Factorial](https://en.wikipedia.org/wiki/Factorial)                         |
-| 35  |       [Circular Primes](src/id0035.c)       | Number theory |          Count          | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime)               |
-| 36  |   [Double-base Palindromes](src/id0036.c)   | Number theory |           Sum           | [Radix](https://en.wikipedia.org/wiki/Radix)                                 |
-| 37  |     [Truncatable Primes](src/id0037.c)      | Number theory |           Sum           | [Truncatable prime](https://en.wikipedia.org/wiki/Truncatable_prime)         |
-| 38  |    [Pandigital Multiples](src/id0038.c)     | Number theory |         Maximum         |                                                                              |
-| 39  |   [Integer Right Triangles](src/id0039.c)   |   Geometry    |         Maximum         |                                                                              |
-| 40  |  [Champernowne\'s Constant](src/id0040.c)   | Number theory |         Product         | [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant) |
+| Id  |                   Problem                   |    Domain     |         Result          | Implementation                                                                           |
+| :-: | :-----------------------------------------: | :-----------: | :---------------------: | ---------------------------------------------------------------------------------------- |
+| 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |           Sum           | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)                       |
+| 22  |        [Names Scores](src/id0022.c)         |    Sorting    |           Sum           | [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)                     |
+| 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |           Sum           | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)                        |
+| 24  | [Lexicographic Permutations](src/id0024.c)  | Combinatorics |       Permutation       | [Permutation](https://en.wikipedia.org/wiki/Permutation)                                 |
+| 25  | [1000-digit Fibonacci Number](src/id0025.c) |   Sequences   |       Term number       | [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence)                   |
+| 26  |      [Reciprocal Cycles](src/id0026.c)      | Number theory |         Maximum         | [Full reptend prime](https://en.wikipedia.org/wiki/Full_reptend_prime)                   |
+| 27  |      [Quadratic Primes](src/id0027.c)       | Number theory |         Product         |                                                                                          |
+| 28  |   [Number Spiral Diagonals](src/id0028.c)   |   Sequences   |           Sum           | [Arithmetic sequence](https://en.wikipedia.org/wiki/Arithmetic_progression)              |
+| 29  |       [Distinct Powers](src/id0029.c)       | Number theory |          Count          |                                                                                          |
+| 30  |     [Digit Fifth Powers](src/id0030.c)      | Number theory |           Sum           |                                                                                          |
+| 31  |          [Coin Sums](src/id0031.c)          | Combinatorics |        Partition        | [Partition function](<https://en.wikipedia.org/wiki/Partition_function_(number_theory)>) |
+| 32  |     [Pandigital Products](src/id0032.c)     | Number theory |           Sum           | [Pandigital number](https://en.wikipedia.org/wiki/Pandigital_number)                     |
+| 33  | [Digit Cancelling Fractions](src/id0033.c)  | Number theory | Greatest common divisor |                                                                                          |
+| 34  |      [Digit Factorials](src/id0034.c)       | Combinatorics |           Sum           | [Factorial](https://en.wikipedia.org/wiki/Factorial)                                     |
+| 35  |       [Circular Primes](src/id0035.c)       | Number theory |          Count          | [Circular prime](https://en.wikipedia.org/wiki/Circular_prime)                           |
+| 36  |   [Double-base Palindromes](src/id0036.c)   | Number theory |           Sum           | [Radix](https://en.wikipedia.org/wiki/Radix)                                             |
+| 37  |     [Truncatable Primes](src/id0037.c)      | Number theory |           Sum           | [Truncatable prime](https://en.wikipedia.org/wiki/Truncatable_prime)                     |
+| 38  |    [Pandigital Multiples](src/id0038.c)     | Number theory |         Maximum         |                                                                                          |
+| 39  |   [Integer Right Triangles](src/id0039.c)   |   Geometry    |         Maximum         |                                                                                          |
+| 40  |  [Champernowne\'s Constant](src/id0040.c)   | Number theory |         Product         | [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant)             |
 
 ### 41-60
 
@@ -149,7 +149,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  62  |                       [Unique Paths](src/lc0062.c)                       | Combinatorics | Binomial coefficient | `binomial`            |
 |  69  |                         [Sqrt(x)](src/lc0069.c)                          |  Mathematics  |     Square root      | `sqrt`                |
 |  75  |                       [Sort Colors](src/lc0075.c)                        |    Sorting    |         Sort         | `qsort`               |
-| 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `math_is_polygonal`        |
+| 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `math_is_polygonal`   |
 | 2119 |             [A Number After a Double Reversal](src/lc2119.c)             |  Mathematics  |       Boolean        | `math_reverse`        |
 | 2400 | [Number of Ways to Reach a Position After Exactly k Steps](src/lc2400.c) | Combinatorics | Binomial coefficient | `binomial`            |
 | 2550 |                       [Monkey Move](src/lc2550.c)                        | Combinatorics |        Power         | `mod_pow`             |

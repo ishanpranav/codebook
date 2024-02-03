@@ -14,7 +14,7 @@ int numberOfWays(int start, int end, int k)
         return 0;
     }
 
-    long long* binomials = binomial_mod_range(k, 0);
+    long long* binomials = binomial_mod_range(k + 1, 0);
 
     euler_assert(binomials);
 

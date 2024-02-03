@@ -12,7 +12,7 @@ int main(void)
 
     for (int n = 1; n <= 100; n++)
     {
-        long long* binomials = binomial_mod_range(n, 0);
+        long long* binomials = binomial_mod_range(n + 1, 0);
         
         euler_assert(binomials);
 

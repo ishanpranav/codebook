@@ -12,11 +12,11 @@ long long binomial(int n, int k);
 
 /**
  * Generates values of the binomial coefficient `n` "choose" `k` mod `mod` for
- * all `k` in the interval [0, `n`].
+ * all `n` and `k` in the interval [0, `max`).
  * 
- * @param n   the cardinality of the superset.
+ * @param max the exclusive upper bound for the cardinality of the superset.
  * @param mod the modulus, or `0` for the default modulus. 
- * @return A (`n` + 1)-element array, or `NULL` if the process is out of
- *         memory. The caller is responsible.
+ * @return A `max`-element array, or `NULL` if the process is out of memory.
+ *         The caller is responsible.
 */
-long long* binomial_mod_range(int n, long long mod);
+long long* binomial_mod_range(int max, long long mod);

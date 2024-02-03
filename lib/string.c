@@ -8,7 +8,7 @@ String string(size_t length)
 {
     String result = malloc((length + 1) * sizeof * result);
 
-    if (result == NULL)
+    if (!result)
     {
         return NULL;
     }
