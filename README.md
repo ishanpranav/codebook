@@ -130,6 +130,9 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 73  |  [Counting Fractions in a Range](src/id0073.c)   |           Sequences            |   Count   |                                                                                                                                        |
 | 74  |      [Digit Factorial Chains](src/id0074.c)      |         Combinatorics          |   Count   |                                                                                                                                        |
 | 75  | [Singular Integer Right Triangles](src/id0075.c) |            Geometry            |   Count   |                                                                                                                                        |
+| 76  |       [Counting Summations](src/id0076.c)        |         Combinatorics          | Partition |                                                                                                                                        |
+| 77  |         [Prime Summations](src/id0077.c)         |         Combinatorics          |   Term    |                                                                                                                                        |
+| 78  |         [Coin Partitions](src/id0078.c)          |         Combinatorics          |   Term    | [Pentagonal number theorem](https://en.wikipedia.org/wiki/Pentagonal_number_theorem)                                                   |
 
 # LeetCode
 

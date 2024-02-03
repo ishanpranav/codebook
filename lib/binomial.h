@@ -19,4 +19,4 @@ long long binomial(int n, int k);
  * @return A `max`-element array, or `NULL` if the process is out of memory.
  *         The caller is responsible.
 */
-long long* binomial_mod_range(int max, long long mod);
+long long* mod_binomial_range(int max, long long mod);

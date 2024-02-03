@@ -21,7 +21,7 @@ long long binomial(int n, int k)
     return result;
 }
 
-long long* binomial_mod_range(int max, long long mod)
+long long* mod_binomial_range(int max, long long mod)
 {
     if (max < 1)
     {

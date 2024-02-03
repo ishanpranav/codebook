@@ -264,6 +264,15 @@ id0074$(E): src/id0074.c libeuler$(A)
 	
 id0075$(E): src/id0075.c libeuler$(A)
 	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
+	
+id0076$(E): src/id0076.c libeuler$(A)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
+	
+id0077$(E): src/id0077.c libeuler$(A)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
+
+id0078$(E): src/id0078.c libeuler$(A)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
 
 clean:
 	$(RM) *$(A) *.o
