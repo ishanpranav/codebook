@@ -15,10 +15,10 @@ int main(void)
 
     euler_ok(sieve(&primes, MAX_SEARCH));
 
-    long long* constraints = primes.primes.items;
+    long long* parts = primes.primes.items;
     long long* partitions = restricted_partition_range(
-        MAX_SEARCH, 
-        constraints,
+        MAX_SEARCH,
+        parts,
         primes.primes.count);
 
     euler_assert(partitions);

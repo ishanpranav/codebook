@@ -1,3 +1,7 @@
+// Licensed under the MIT License.
+
+// Magic 5-gon Ring
+
 #r "nuget: Combinatorics, 2.0.0"
 
 using System;

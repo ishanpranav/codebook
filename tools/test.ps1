@@ -47,7 +47,7 @@ for ($i = 55; $i -le 58; $i++)
 
 Get-Content './../data/id0059.txt' | ./../id0059.exe
 
-for ($i = 60; $i -le 64; $i++)
+for ($i = 60; $i -le 65; $i++)
 {
     Invoke-Expression "./../id00${i}.exe"
 }
@@ -56,7 +56,14 @@ Python3 ../src/id0065.py
 ./../id0066.exe
 Get-Content './../data/id0067.txt' | ./../id0018.exe 67
 
-for ($i = 68; $i -le 80; $i++)
+for ($i = 68; $i -le 77; $i++)
+{
+    Invoke-Expression "./../id00${i}.exe"
+}
+
+Python3 ../src/id0077.py
+
+for ($i = 78; $i -le 80; $i++)
 {
     Invoke-Expression "./../id00${i}.exe"
 }

@@ -20,14 +20,16 @@ also be used to solve [LeetCode](#leetcode) problems as well.
 ## Languages
 
 As a challenge, higher-difficulty problems must be implemented in multiple
-languages. The most difficult problems are implemented in 10 languages.
+languages. The most difficult problems are implemented in 10 languages. Files
+which required I/O operations are not implemented in multiple languages.
 
-| Difficulty | Language                   |
-| :--------: | -------------------------- |
-| (Trivial)  | [Shell](tools/test.sh)     |
-|   \> 0%    | [C](tools/test.sh)         |
-|   \> 10%   | [Python](tools/test.py.sh) |
-|   \> 20%   | [C\#](tools/test.cs.ps1)   |
+| Difficulty | Language                    |
+| :--------: | --------------------------- |
+| (Trivial)  | [Shell](tools/test.sh)      |
+|   \> 0%    | [C](tools/test.sh)          |
+|   \> 10%   | [Python](tools/test.py.ps1) |
+|   \> 20%   | [C\#](tools/test.cs.ps1)    |
+|   \> 30%   | JavaScript                  |
 
 ## Dependencies
 

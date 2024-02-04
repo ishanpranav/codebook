@@ -32,5 +32,4 @@ for m in range(1000000):
     if visited[m] == 60:
         count += 1
 
-print(len(visited))
 print(f"0074{count:>64}    {time() - start:.6f}")

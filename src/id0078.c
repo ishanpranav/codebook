@@ -16,9 +16,9 @@ int main(void)
 
     euler_assert(partitions);
 
-    for (int n = 0; n < MAX_SEARCH; n++)
+    for (long n = 0; n < MAX_SEARCH; n++)
     {
-        if (partitions[n] % 1000000l == 0)
+        if (!partitions[n])
         {
             term = n;
 

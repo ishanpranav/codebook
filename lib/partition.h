@@ -31,14 +31,11 @@ long long* mod_partition_range(long max, long long mod);
  * Generates values of the restricted partition function for all inputs in the
  * interval [0, `max`), using only a constrained set of legal addends.
  * 
- * @param max         the exclusive upper bound of the input range.
- * @param constraints the set of constraints; that is, the elements which may be
- *                    used as addends summing to `n` when computing `p(n)`.
- * @param length      the cardinality of the constraints set.
+ * @param max    the exclusive upper bound of the input range.
+ * @param parts  the set of parts; that is, the elements which may be used as
+ *               addends summing to `n` when computing `p(n)`.
+ * @param length the cardinality of the constraints set.
  * @return A `max`-element array, or `NULL` if the process is out of memory. The
  *         caller is responsible.
 */
-long long* restricted_partition_range(
-    long max, 
-    long long constraints[], 
-    long length);
+long long* restricted_partition_range(long max, long long parts[], long length);

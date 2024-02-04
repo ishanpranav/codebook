@@ -54,7 +54,7 @@ done
 
 cat ./../data/id0059.txt | $run ./../id0059
 
-for i in {0060..0064};
+for i in {0060..0065};
 do
     $run ./../id${i}
 done
@@ -63,7 +63,14 @@ python3 ../src/id0065.py
 $run ./../id0066
 cat ./../data/id0067.txt | $run ./../id0018 67
 
-for i in {0068..0080};
+for i in {0068..0077};
+do
+    $run ./../id${i}
+done
+
+python3 ../src/id0077.py
+
+for i in {0078..0080}:
 do
     $run ./../id${i}
 done

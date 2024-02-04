@@ -93,10 +93,7 @@ long long* mod_partition_range(long max, long long mod)
     return result;
 }
 
-long long* restricted_partition_range(
-    long max, 
-    long long constraints[], 
-    long length)
+long long* restricted_partition_range(long max, long long parts[], long length)
 {
     if (max < 1)
     {
@@ -114,9 +111,9 @@ long long* restricted_partition_range(
 
     for (long i = 0; i < length; i++)
     {
-        for (long j = constraints[i]; j < max; j++)
+        for (long j = parts[i]; j < max; j++)
         {
-            result[j] += result[j - constraints[i]];
+            result[j] += result[j - parts[i]];
         }
     }
 

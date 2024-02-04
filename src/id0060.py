@@ -2,7 +2,7 @@
 
 # Prime Pair Sets
 
-from math import inf, log10
+from math import inf
 from sympy import isprime, primerange
 from time import time
 
@@ -12,7 +12,7 @@ def math_is_prime_pair(a: int, b: int) -> int:
     return isprime(int(str(a) + str(b))) and isprime(int(str(b) + str(a)))
 
 start = time()
-primes = list(primerange(2, MAX_SEARCH))
+primes = list(primerange(MAX_SEARCH))
 min = inf
 
 for i in range(len(primes)):
