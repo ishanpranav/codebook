@@ -135,6 +135,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 76  |       [Counting Summations](src/id0076.c)        |         Combinatorics          | Partition |                                                                                                                                        |
 | 77  |         [Prime Summations](src/id0077.c)         |         Combinatorics          |   Term    |                                                                                                                                        |
 | 78  |         [Coin Partitions](src/id0078.c)          |         Combinatorics          |   Term    | [Pentagonal number theorem](https://en.wikipedia.org/wiki/Pentagonal_number_theorem)                                                   |
+| 79  |       [Passcode Derivation](src/id0079.c)        |          Graph theory          |  Minimum  | [Adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix)                                                                     |
 
 # LeetCode
 

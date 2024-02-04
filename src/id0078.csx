@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 
 const int MaxSearch = 100000;
+int term = -1;
 long[] partitions = new long[MaxSearch];
 
 partitions[0] = 1;
@@ -51,8 +52,6 @@ for (int i = 1; i < MaxSearch; i++)
 
     partitions[i] = current;
 }
-
-int term = -1;
 
 for (int n = 0; n < MaxSearch; n++)
 {

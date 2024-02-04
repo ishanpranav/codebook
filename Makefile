@@ -30,7 +30,7 @@ all: \
 	id0055$(E) id0056$(E) id0057$(E) id0058$(E) id0059$(E) id0060$(E) \
 	id0061$(E) id0062$(E) id0063$(E) id0064$(E) id0065$(E) id0066$(E) \
 	id0068$(E) id0069$(E) id0070$(E) id0071$(E) id0072$(E) id0073$(E) \
-	id0074$(E) id0075$(E) id0076$(E) id0077$(E) #id0078$(E) id0079$(E)
+	id0074$(E) id0075$(E) id0076$(E) id0077$(E) id0078$(E) id0079$(E)
 
 libeuler$(A): $(call RECURSE,lib,*.c)
 	$(RM) *.o
@@ -272,6 +272,9 @@ id0077$(E): src/id0077.c libeuler$(A)
 	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
 
 id0078$(E): src/id0078.c libeuler$(A)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
+
+id0079$(E): src/id0079.c libeuler$(A)
 	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
 
 clean:
