@@ -87,14 +87,14 @@ int main(void)
     }
 
     int leaf;
-    long long result = 0;
+    long min = 0;
 
     while ((leaf = graph_first_leaf(&g)) != -1)
     {
-        result = (result * 10) + leaf;
+        min = (min * 10) + leaf;
 
         graph_remove_leaf(&g, leaf);
     }
 
-    return euler_submit(79, result, start);
+    return euler_submit(79, min, start);
 }
