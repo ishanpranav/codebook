@@ -2,34 +2,29 @@
 
 // Path Sum: Two Ways
 
+#include <string.h>
 #include "../lib/euler.h"
-
-struct Grid
-{
-    int m;
-    int n;
-    
-};
-
-typedef struct Grid* Grid;
-
-int minDistance(int mdist[], int vset[], int V)
-{
-    int minVal = INT_MAX;
-    static int minInd = -1; //remembers the previous value if not modified in the loop
-    for (int i = 0; i < V; i++)
-        if (vset[i] == 0 && mdist[i] < minVal)
-        {
-            minVal = mdist[i];
-            minInd = i;
-        }
-
-    return minInd;
-}
+#include "../lib/graphs/grid_graph.h"
 
 int main(void)
 {
+    char lineBuffer[512];
+    struct GridGraph graph;
     clock_t start = clock();
+
+    euler_ok(grid_graph(&graph, 80, 80));
+
+    grid_graph_deserialize(&graph, stdin, lineBuffer, sizeof lineBuffer);
+
+    // for (size_t i = 0; i < graph.m; i++)
+    // {
+    //     for (size_t j = 0; j < graph.n; j++)
+    //     {
+    //         printf("%d ", graph.costs[i * graph.n + j]);
+    //     }
+
+    //     printf("\n");
+    // }
 
     return euler_submit(81, 0, start);
 }
