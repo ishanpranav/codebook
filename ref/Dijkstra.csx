@@ -99,10 +99,10 @@ IEnumerable<Coordinate> Neighbors(
         yield return new Coordinate(vertex.I - 1, vertex.J);
     }
 
-    if (vertex.J > 0)
-    {
-        yield return new Coordinate(vertex.I, vertex.J - 1);
-    }
+    // if (vertex.J > 0)
+    // {
+    //     yield return new Coordinate(vertex.I, vertex.J - 1);
+    // }
 
     if (vertex.I < grid.GetLength(0) - 1)
     {
@@ -120,50 +120,70 @@ int Weight(int[,] grid, Coordinate source, Coordinate target)
     return grid[target.I, target.J];
 }
 
-int[,] grid = new int[,]
-{
-    { 131, 673, 234, 103,  18 },
-    { 201,  96, 342, 965, 150 },
-    { 630, 803, 746, 422, 111 },
-    { 537, 699, 497, 121, 956 },
-    { 805, 732, 524,  37, 331 }
-};
-
-// int[,] grid = new int[80, 80];
-
-// using (StreamReader streamReader = File.OpenText("data/id0081.txt"))
+// int[,] grid = new int[,]
 // {
-//     int i = 0;
-//     string line;
+//     { 131, 673, 234, 103,  18 },
+//     { 201,  96, 342, 965, 150 },
+//     { 630, 803, 746, 422, 111 },
+//     { 537, 699, 497, 121, 956 },
+//     { 805, 732, 524,  37, 331 }
+// };
 
-//     while ((line = streamReader.ReadLine()) != null)
-//     {
-//         string[] segments = line.Split(',');
+int[,] grid = new int[80, 80];
 
-//         for (int j = 0; j < segments.Length; j++)
-//         {
-//             grid[i, j] = int.Parse(segments[j]);
-//         }
+using (StreamReader streamReader = File.OpenText("data/id0081.txt"))
+{
+    int i = 0;
+    string line;
 
-//         i++;
-//     }
-// }
+    while ((line = streamReader.ReadLine()) != null)
+    {
+        string[] segments = line.Split(',');
 
-Coordinate s = new Coordinate(0, 0);
-Coordinate t = new Coordinate(grid.GetLength(0) - 1, grid.GetLength(1) - 1);
+        for (int j = 0; j < segments.Length; j++)
+        {
+            grid[i, j] = int.Parse(segments[j]);
+        }
 
-Dijkstra(
-    grid,
-    s,
-    Neighbors,
-    Weight,
-    out IDictionary<Coordinate, int> distances,
-    out IDictionary<Coordinate, Coordinate> path);
+        i++;
+    }
+}
 
-foreach (Coordinate u in Path(grid, s, t, path))
+Coordinate minSource;
+Coordinate minTarget;
+int minDistance = int.MaxValue;
+IDictionary<Coordinate, Coordinate> minPath;
+
+for (int sourceI = 0; sourceI < grid.GetLength(0); sourceI++)
+{
+    Coordinate s = new Coordinate(sourceI, 0);
+
+    Dijkstra(
+        grid,
+        s,
+        Neighbors,
+        Weight,
+        out IDictionary<Coordinate, int> distances,
+        out IDictionary<Coordinate, Coordinate> path);
+
+    for (int targetI = 0; targetI < grid.GetLength(0); targetI++)
+    {
+        Coordinate t = new Coordinate(targetI, grid.GetLength(1) - 1);
+        
+        if (distances[t] < minDistance)
+        {
+            minSource = s;
+            minTarget = t;
+            minPath = path;
+            minDistance = distances[t];
+        }
+    }
+}
+
+foreach (Coordinate u in Path(grid, minSource, minTarget, minPath))
 {
     Console.Write(" -> ({0}, {1}) ${2}", u.I, u.J, grid[u.I, u.J]);
 }
 
 Console.WriteLine();
-Console.WriteLine(grid[s.I, s.J] + distances[t]);
+Console.WriteLine(grid[minSource.I, minSource.J] + minDistance);
