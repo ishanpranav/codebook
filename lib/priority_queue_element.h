@@ -1,4 +1,6 @@
+// Licensed under the MIT License.
 
+/** */
 struct PriorityQueueElement
 {
     void* item;

@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include <stdlib.h>
 #include <string.h>
 #include "priority_queue.h"
@@ -143,8 +145,8 @@ bool priority_queue_try_dequeue(
 
     instance->count--;
 
-    memcpy(result->item, items + itemSize, itemSize);
-    memcpy(result->priority, keys + keySize, keySize);
+    memcpy(&result->item, items + itemSize, itemSize);
+    memcpy(&result->priority, keys + keySize, keySize);
     memcpy(items, items + instance->count * itemSize, itemSize);
     memcpy(keys, keys + instance->count * keySize, keySize);
 
