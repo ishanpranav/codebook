@@ -20,22 +20,30 @@ int main(void)
 
     euler_ok(priority_queue(&heap, sizeof(double), sizeof(int), 0, int_comparer));
 
-    int a = 2, b = 6, c = 3, d = 1;
-    double ak = 2.1, bk = 6.2, ck = 3.3, dk = 1.4;
+    int a = 6, b = 2, c = 3, d = 1;
+    double ak = 6.2, bk = 2.1, ck = 3.3, dk = 1.4;
 
     euler_assert(!heap.count);
     euler_ok(priority_queue_enqueue(&heap, &ak, &a));
     euler_assert(heap.count == 1);
-    // euler_ok(priority_queue_enqueue(&heap, &bk, &b));
-    // euler_ok(priority_queue_enqueue(&heap, &ck, &c));
-    // euler_ok(priority_queue_enqueue(&heap, &dk, &d));
+    euler_ok(priority_queue_enqueue(&heap, &bk, &b));
+    euler_ok(priority_queue_enqueue(&heap, &ck, &c));
+    euler_ok(priority_queue_enqueue(&heap, &dk, &d));
+    euler_assert(heap.count == 4);
 
-    // struct PriorityQueueElement result;
+    int x;
+    double y;
 
-    // euler_assert(priority_queue_try_dequeue(&result, &heap));
-    // printf("%d?\n", *(int*)result.item);
-    // euler_assert(*(int*)result.item == 1);
-    // euler_assert(result.priority == 1);
+    struct PriorityQueueElement result =
+    {
+        .item = &y,
+        .priority = &x
+    };
+
+    euler_assert(priority_queue_try_dequeue(&result, &heap));
+    printf("%lf?\n", *(double*)result.item);
+    euler_assert(y == 1.4);
+    euler_assert(x == 1);
     // euler_ok(priority_queue_enqueue(&heap, arr + 4, 8));
     // euler_ok(priority_queue_enqueue(&heap, arr + 5, 12));
     // euler_ok(priority_queue_enqueue(&heap, arr + 6, 14));

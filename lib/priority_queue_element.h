@@ -2,7 +2,7 @@
 struct PriorityQueueElement
 {
     void* item;
-    int priority;
+    void* priority;
 };
 
 typedef struct PriorityQueueElement* PriorityQueueElement;

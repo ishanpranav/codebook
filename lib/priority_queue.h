@@ -32,4 +32,8 @@ Exception priority_queue_enqueue(
     Object item, 
     Object priority);
 
+bool priority_queue_try_dequeue(
+    PriorityQueueElement result, 
+    PriorityQueue instance);
+
 void finalize_priority_queue(PriorityQueue instance);
