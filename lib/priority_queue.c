@@ -109,7 +109,7 @@ Exception priority_queue_enqueue(
     size_t keySize = instance->prioritySize;
     Comparer compare = instance->priorityComparer;
 
-    while (i != 1 && compare(priority, keys + i * keySize / 2) < 0)
+    while (i != 1 && compare(priority, keys + (i / 2) * keySize) < 0)
     {
         size_t j = i / 2;
 
@@ -126,8 +126,9 @@ Exception priority_queue_enqueue(
 }
 
 bool priority_queue_try_dequeue(
-    PriorityQueueElement result, 
-    PriorityQueue instance)
+    PriorityQueue instance, 
+    Object item, 
+    Object priority)
 {
 	size_t i = 1;
     size_t child = 2;
@@ -143,16 +144,22 @@ bool priority_queue_try_dequeue(
     size_t keySize = instance->prioritySize;
     Comparer compare = instance->priorityComparer;
 
-    instance->count--;
-
-    memcpy(&result->item, items + itemSize, itemSize);
-    memcpy(&result->priority, keys + keySize, keySize);
+    if (item)
+    {
+        memcpy(item, items + itemSize, itemSize);
+    }
+    
+    if (priority)
+    {
+        memcpy(priority, keys + keySize, keySize);
+    }
+    
     memcpy(items, items + instance->count * itemSize, itemSize);
     memcpy(keys, keys + instance->count * keySize, keySize);
 
-	while (child <= instance->count)
+	while (child < instance->count)
     {
-		if (child < instance->count &&
+		if (child < instance->count - 1 &&
             compare(keys + child * keySize, keys + (child + 1) * keySize) > 0)
         {
 			child++;
@@ -172,6 +179,8 @@ bool priority_queue_try_dequeue(
 
     memcpy(items + i * itemSize, items, itemSize);
     memcpy(keys + i * keySize, keys, keySize);
+
+    instance->count--;
 
     return true;
 }

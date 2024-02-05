@@ -1,7 +1,7 @@
 // Licensed under the MIT License.
 
 #include "comparer.h"
-#include "list.h"
+#include "exception.h"
 #include "priority_queue_element.h"
 
 /**
@@ -66,16 +66,21 @@ Exception priority_queue_enqueue(
     Object priority);
 
 /**
- * Removes the minimal item from the `PriorityQueue`, and copies it and its
- * associated priority to the given `result`.
+ * Removes the minimal item from the `PriorityQueue`, and copies it to the given
+ * `item` pointer and its associated priority to the given `priority` poitner.
  * 
- * @param result   when this method returns, contains the minimal element. This
- *                 argument is passed uninitialized.
+ * @param result   when this method returns, contains the minimal item. This
+ *                 argument is passed uninitialized, or `NULL` if the value will
+ *                 not be used.
+ * @param priority when this method returns, contains the minimal priority. This
+ *                 argument is passed uninitialized, or `NULL` if the value will
+ *                 not be used.
  * @param instance the `PriorityQueue` instance.
 */
 bool priority_queue_try_dequeue(
-    PriorityQueueElement result, 
-    PriorityQueue instance);
+    PriorityQueue instance, 
+    Object item, 
+    Object priority);
 
 /**
  * Frees all resources.
