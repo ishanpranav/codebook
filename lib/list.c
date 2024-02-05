@@ -67,8 +67,11 @@ Exception list_add(List instance, Object item)
 
     void* end = (char*)instance->items + instance->count * instance->itemSize;
 
-    memcpy(end, item, instance->itemSize);
-
+    if (item)
+    {
+        memcpy(end, item, instance->itemSize);
+    }
+    
     instance->count++;
 
     return 0;

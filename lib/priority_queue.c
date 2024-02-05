@@ -5,7 +5,7 @@
 #include "priority_queue.h"
 
 Exception priority_queue(
-    PriorityQueue instance, 
+    PriorityQueue instance,
     size_t itemSize,
     size_t prioritySize,
     size_t capacity,
@@ -42,7 +42,7 @@ Exception priority_queue(
 }
 
 Exception priority_queue_ensure_capacity(
-    PriorityQueue instance, 
+    PriorityQueue instance,
     size_t capacity)
 {
     if (instance->capacity >= capacity)
@@ -58,7 +58,7 @@ Exception priority_queue_ensure_capacity(
     }
 
     void* newItems = realloc(
-        instance->items, 
+        instance->items,
         (newCapacity + 1) * instance->itemSize);
 
     if (!newItems)
@@ -67,13 +67,13 @@ Exception priority_queue_ensure_capacity(
     }
 
     void* newPriorities = realloc(
-        instance->priorities, 
+        instance->priorities,
         (newCapacity + 1) * instance->prioritySize);
 
     if (!newPriorities)
     {
         instance->items = realloc(
-            instance->items, 
+            instance->items,
             (instance->capacity + 1) * instance->itemSize);
 
         return EXCEPTION_OUT_OF_MEMORY;
@@ -87,12 +87,12 @@ Exception priority_queue_ensure_capacity(
 }
 
 Exception priority_queue_enqueue(
-    PriorityQueue instance, 
-    Object item, 
+    PriorityQueue instance,
+    Object item,
     Object priority)
 {
     Exception ex = priority_queue_ensure_capacity(
-        instance, 
+        instance,
         instance->count + 1);
 
     if (ex)
@@ -102,35 +102,42 @@ Exception priority_queue_enqueue(
 
     instance->count++;
 
-    char* items = instance->items;
-    char* keys = instance->priorities;
+    char* p = instance->items;
+    char* q = instance->priorities;
     size_t i = instance->count;
     size_t itemSize = instance->itemSize;
-    size_t keySize = instance->prioritySize;
+    size_t prioritySize = instance->prioritySize;
     Comparer compare = instance->priorityComparer;
 
-    while (i != 1 && compare(priority, keys + (i / 2) * keySize) < 0)
+    while (i != 1 && compare(priority, q + (i / 2) * prioritySize) < 0)
     {
         size_t j = i / 2;
 
-        memcpy(items + i * itemSize, items + j * itemSize, itemSize);
-        memcpy(keys + i * keySize, keys + j * keySize, keySize);
+        memcpy(p + i * itemSize, p + j * itemSize, itemSize);
+        memcpy(q + i * prioritySize, q + j * prioritySize, prioritySize);
 
         i = j;
     }
 
-    memcpy(items + i * itemSize, item, instance->itemSize);
-    memcpy(keys + i * keySize, priority, instance->prioritySize);
+    if (item)
+    {
+        memcpy(p + i * itemSize, item, instance->itemSize);
+    }
+
+    if (priority)
+    {
+        memcpy(q + i * prioritySize, priority, instance->prioritySize);
+    }
 
     return 0;
 }
 
 bool priority_queue_try_dequeue(
-    PriorityQueue instance, 
-    Object item, 
+    PriorityQueue instance,
+    Object item,
     Object priority)
 {
-	size_t i = 1;
+    size_t i = 1;
     size_t child = 2;
 
     if (!instance->count)
@@ -138,47 +145,48 @@ bool priority_queue_try_dequeue(
         return false;
     }
 
-    char* items = instance->items;
-    char* keys = instance->priorities;
+    char* p = instance->items;
+    char* q = instance->priorities;
     size_t itemSize = instance->itemSize;
-    size_t keySize = instance->prioritySize;
+    size_t prioritySize = instance->prioritySize;
     Comparer compare = instance->priorityComparer;
 
     if (item)
     {
-        memcpy(item, items + itemSize, itemSize);
+        memcpy(item, p + itemSize, itemSize);
     }
-    
+
     if (priority)
     {
-        memcpy(priority, keys + keySize, keySize);
+        memcpy(priority, q + prioritySize, prioritySize);
     }
-    
-    memcpy(items, items + instance->count * itemSize, itemSize);
-    memcpy(keys, keys + instance->count * keySize, keySize);
 
-	while (child < instance->count)
+    memcpy(p, p + instance->count * itemSize, itemSize);
+    memcpy(q, q + instance->count * prioritySize, prioritySize);
+
+    while (child < instance->count)
     {
-		if (child < instance->count - 1 &&
-            compare(keys + child * keySize, keys + (child + 1) * keySize) > 0)
+        if (child < instance->count - 1 && compare(
+            q + child * prioritySize, 
+            q + (child + 1) * prioritySize) > 0)
         {
-			child++;
-		}
+            child++;
+        }
 
-		if (compare(keys, keys + child * keySize) <= 0) 
+        if (compare(q, q + child * prioritySize) <= 0)
         {
-			break;
-		}
+            break;
+        }
 
-        memcpy(items + i * itemSize, items + child * itemSize, itemSize);
-        memcpy(keys + i * keySize, keys + child * keySize, keySize);
+        memcpy(p + i * itemSize, p + child * itemSize, itemSize);
+        memcpy(q + i * prioritySize, q + child * prioritySize, prioritySize);
 
-		i = child;
-		child *= 2;
-	}
+        i = child;
+        child *= 2;
+    }
 
-    memcpy(items + i * itemSize, items, itemSize);
-    memcpy(keys + i * keySize, keys, keySize);
+    memcpy(p + i * itemSize, p, itemSize);
+    memcpy(q + i * prioritySize, q, prioritySize);
 
     instance->count--;
 

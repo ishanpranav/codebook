@@ -2,7 +2,7 @@
 
 #include "comparer.h"
 #include "exception.h"
-#include "priority_queue_element.h"
+#include "object.h"
 
 /**
  * Represents a collection of items that have a value and a priority. On
