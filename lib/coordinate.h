@@ -1,9 +1,11 @@
 // Licensed under the MIT License.
 
+#include <stddef.h>
+
 struct Coordinate
 {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
 };
 
-typedef struct Coordinate Coordinate;
+typedef struct Coordinate* Coordinate;
