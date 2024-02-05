@@ -1,135 +1,136 @@
+#include <stdlib.h>
+#include <string.h>
 #include "priority_queue.h"
 
 Exception priority_queue(
     PriorityQueue instance, 
-    size_t itemSize, 
+    size_t itemSize,
+    size_t prioritySize,
+    size_t capacity,
+    Comparer priorityComparer)
+{
+    if (capacity < 4)
+    {
+        capacity = 4;
+    }
+
+    instance->items = malloc(itemSize * capacity);
+
+    if (!instance->items)
+    {
+        return EXCEPTION_OUT_OF_MEMORY;
+    }
+
+    instance->priorities = malloc(prioritySize * capacity);
+
+    if (!instance->priorities)
+    {
+        free(instance->items);
+
+        return EXCEPTION_OUT_OF_MEMORY;
+    }
+
+    instance->itemSize = itemSize;
+    instance->prioritySize = prioritySize;
+    instance->count = 0;
+    instance->capacity = capacity;
+    instance->priorityComparer = priorityComparer;
+
+    return 0;
+}
+
+Exception priority_queue_ensure_capacity(
+    PriorityQueue instance, 
     size_t capacity)
 {
-    return list(instance, itemSize, capacity);
-}
-
-static void priority_queue_swap(
-    struct PriorityQueueElement heap[], 
-    size_t i, 
-    size_t j)
-{
-    struct PriorityQueueElement swap;
-
-    swap = heap[i];
-    heap[i] = heap[j];
-    heap[j] = swap;
-}
-
-static void priority_queue_sift_up(PriorityQueue instance, size_t index)
-{
-    struct PriorityQueueElement* heap = instance->items;
-    int priority = heap[index - 1].priority;
-
-    while (heap[index / 2].priority > priority)
+    if (instance->capacity >= capacity)
     {
-        priority_queue_swap(heap, index - 1, index / 2 - 1);
-
-        index /= 2;
-    }
-}
-
-static bool priority_queue_test(PriorityQueue instance, size_t index)
-{
-    struct PriorityQueueElement* heap = instance->items;
-    int priority = heap[index - 1].priority;
-
-    if (priority > heap[index * 2 - 1].priority)
-    {
-        return false;
+        return 0;
     }
 
-    size_t min = index * 2;
+    size_t newCapacity = instance->capacity * 2;
 
-    if (instance->count < min)
+    if (capacity > newCapacity)
     {
-        min = instance->count;
+        newCapacity = capacity;
     }
 
-    return priority <= heap[min - 1].priority;
-}
+    void* newItems = realloc(instance->items, newCapacity * instance->itemSize);
 
-static void priority_queue_sift_down(PriorityQueue instance, size_t index)
-{
-    struct PriorityQueueElement* heap = instance->items;
-
-    while (2 * index <= instance->count && 
-        !priority_queue_test(instance, index))
+    if (!newItems)
     {
-        if (2 * index < instance->count &&
-            heap[index * 2].priority < heap[index * 2 - 1].priority)
-        {
-            priority_queue_swap(heap, index - 1, 2 * index);
-
-            index = 2 * index + 1;
-        }
-        else
-        {
-            priority_queue_swap(heap, index - 1, 2 * index - 1);
-
-            index *= 2;
-        }
-    }
-}
-
-static void priority_queue_remove_at(PriorityQueue instance, size_t index)
-{
-    struct PriorityQueueElement* heap = instance->items;
-
-    heap[index - 1] = heap[instance->count - 1];
-    instance->count--;
-
-    if (heap[index - 1].priority < heap[index / 2 - 1].priority)
-    {
-        priority_queue_sift_up(instance, index);
-    }
-    else
-    {
-        priority_queue_sift_down(instance, index);
-    }
-}
-
-bool priority_queue_try_dequeue(
-    PriorityQueueElement result, 
-    PriorityQueue instance)
-{
-    if (!instance->count)
-    {
-        return false;
+        return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    struct PriorityQueueElement* heap = instance->items;
+    void* newPriorities = realloc(
+        instance->priorities, 
+        newCapacity * instance->prioritySize);
 
-    *result = heap[0];
+    if (!newPriorities)
+    {
+        instance->items = realloc(
+            instance->items, 
+            instance->capacity * instance->itemSize);
 
-    priority_queue_remove_at(instance, 0);
+        return EXCEPTION_OUT_OF_MEMORY;
+    }
 
-    return true;
+    instance->capacity = newCapacity;
+    instance->items = newItems;
+    instance->priorities = newPriorities;
+
+    return 0;
 }
 
 Exception priority_queue_enqueue(
     PriorityQueue instance, 
     Object item, 
-    int priority)
+    Object priority)
 {
-    struct PriorityQueueElement element =
-    {
-        .item = item,
-        .priority = priority
-    };
-
-    Exception ex = list_add(instance, &element);
+    Exception ex = priority_queue_ensure_capacity(
+        instance, 
+        instance->count + 1);
 
     if (ex)
     {
         return ex;
     }
 
-    priority_queue_sift_up(instance, instance->count);
+    instance->count++;
+
+    char* items = instance->items;
+    char* priorities = instance->priorities;
+    size_t i = instance->count;
+    size_t itemSize = instance->itemSize;
+    size_t keySize = instance->prioritySize;
+    Comparer compare = instance->priorityComparer;
+
+    while (i != 1 && compare(priority, priorities + i * keySize / 2))
+    {
+        size_t j = i / 2;
+
+        memcpy(items + i * itemSize, items + j * itemSize, itemSize);
+        memcpy(priorities + i * keySize, priorities + j * keySize, keySize);
+
+        i = j;
+    }
+
+    memcpy(items + i * itemSize, item, instance->itemSize);
+    memcpy(priorities + i * keySize, priority, instance->prioritySize);
 
     return 0;
+}
+
+void finalize_priority_queue(PriorityQueue instance)
+{
+    free(instance->items);
+    free(instance->priorities);
+
+    instance->items = NULL;
+    instance->itemSize = 0;
+    instance->priorities = NULL;
+    instance->prioritySize = 0;
+    instance->count = 0;
+    instance->capacity = 0;
+    instance->priorityComparer = NULL;
 }
