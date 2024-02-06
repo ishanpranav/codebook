@@ -1,6 +1,5 @@
 // Licensed under the MIT License.
 
-#include <limits.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../euler.h"
@@ -19,40 +18,6 @@ Exception grid_graph(GridGraph instance, size_t m, size_t n)
     instance->m = m;
     instance->n = n;
     
-    return 0;
-}
-
-static Exception grid_graph_neighbors(
-    List result,
-    GridGraph instance,
-    Object vertex,
-    int weight)
-{
-    Coordinate u = vertex;
-    struct Coordinate v;
-    Exception ex = list_ensure_capacity(result, result->count + 4);
-
-    if (ex)
-    {
-        return ex;
-    }
-
-    if (u->i + 1 < instance->m)
-    {
-        v.i = u->i + 1;
-        v.j = u->j;
-
-        list_add(result, &v);
-    }
-
-    if (u->j + 1 < instance->n)
-    {
-        v.i = u->i;
-        v.j = u->j + 1;
-
-        list_add(result, &v);
-    }
-
     return 0;
 }
 

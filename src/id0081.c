@@ -2,75 +2,134 @@
 
 // Path Sum: Two Ways
 
+#include <limits.h>
 #include <string.h>
+#include "../lib/coordinate.h"
 #include "../lib/euler.h"
 #include "../lib/graphs/grid_graph.h"
 
-int main(void)
+struct GridNeighborIterator
 {
-    // char lineBuffer[512];
-    // struct GridGraph graph;
-    // clock_t start = clock();
+    struct GridGraph* grid;
+    struct Coordinate u;
+    struct Coordinate v;
+    int step;
+    bool end;
+};
 
-    // euler_ok(grid_graph(&graph, 80, 80));
+typedef struct GridNeighborIterator* GridNeighborIterator;
 
-    // grid_graph_deserialize(&graph, stdin, lineBuffer, sizeof lineBuffer);
-
-    struct PriorityQueue heap;
-
-    euler_ok(priority_queue(&heap, sizeof(double), sizeof(int), 0, int_comparer));
-
-    int a = 6, b = 2, c = 3, d = 1;
-    double ak = 6.2, bk = 2.1, ck = 3.3, dk = 1.4;
-
-    euler_assert(!heap.count);
-    euler_ok(priority_queue_enqueue(&heap, &ak, &a));
-    euler_assert(heap.count == 1);
-    euler_ok(priority_queue_enqueue(&heap, &bk, &b));
-    euler_ok(priority_queue_enqueue(&heap, &ck, &c));
-    euler_ok(priority_queue_enqueue(&heap, &dk, &d));
-    euler_assert(heap.count == 4);
-
-    int x;
-    double y;
-
-    struct PriorityQueueElement result =
+void grid_neighbor_next(GridNeighborIterator iterator)
+{
+    switch (iterator->step)
     {
-        .item = &y,
-        .priority = &x
-    };
+        case 0:
+            iterator->step++;
 
-    euler_assert(priority_queue_try_dequeue(&result, &heap));
-    printf("%lf?\n", *(double*)result.item);
-    euler_assert(y == 1.4);
-    euler_assert(x == 1);
-    // euler_ok(priority_queue_enqueue(&heap, arr + 4, 8));
-    // euler_ok(priority_queue_enqueue(&heap, arr + 5, 12));
-    // euler_ok(priority_queue_enqueue(&heap, arr + 6, 14));
-    
-    double* items = heap.items;
-    int* priorities = heap.priorities;
+            if (iterator->u.i + 1 < iterator->grid->m)
+            {
+                iterator->v.i = iterator->u.i + 1;
+                iterator->v.j = iterator->u.j;
 
-    for (size_t i = 1; i < heap.count + 1; i++)
-    {
-        printf("%lf (%d), ", items[i], priorities[i]);
+                return;
+            }
+            euler_fallthrough();
+
+        case 1:
+            iterator->step++;
+
+            if (iterator->u.j + 1 < iterator->grid->n)
+            {
+                iterator->v.i = iterator->u.i;
+                iterator->v.j = iterator->u.j + 1;
+
+                return;
+            }
+            euler_fallthrough();
+
+        default:
+            iterator->end = true;
+            break;
     }
 
-    // list_clear(&heap);
-    // euler_assert(!heap.count);
+}
+
+void grid_neighbor_begin(
+    GridNeighborIterator iterator, 
+    GridGraph instance, 
+    Coordinate source)
+{
+    iterator->grid = instance;
+    iterator->u = *source;
+    iterator->step = 0;
+    iterator->end = false;
+
+    grid_neighbor_next(iterator);
+}
+
+int main(void)
+{
+    char lineBuffer[512];
+    struct GridGraph grid;
+    struct PriorityQueue priorityQueue;
+    clock_t start = clock();
+
+    euler_ok(grid_graph(&grid, 80, 80));
+
+    grid_graph_deserialize(&grid, stdin, lineBuffer, sizeof lineBuffer);
+
+    euler_ok(priority_queue(
+        &priorityQueue,
+        sizeof(struct Coordinate),
+        sizeof(int),
+        0,
+        int_comparer));
+
+    for (size_t i = 0; i < grid.m; i++)
+    {
+        for (size_t j = 0; j < grid.n; j++)
+        {
+            grid.edges[i * grid.m + j].distance = INT_MAX;
+        }
+    }
+
+    int distance = 0;
+    struct Coordinate u;
+    struct Coordinate source = { 0 };
+
+    grid.edges[source.i * grid.m + source.j].distance = 0;
+
+    priority_queue_enqueue(&priorityQueue, &source, &distance);
+
+    while (priority_queue_try_dequeue(&priorityQueue, &u, &distance))
+    {
+        if (distance != grid.edges[u.i * grid.m + u.j].distance)
+        {
+            continue;
+        }
+
+        struct GridNeighborIterator v;
+
+        for (grid_neighbor_begin(&v, &grid, &u); !v.end; grid_neighbor_next(&v))
+        {
+            GridEdge edge = grid.edges + v.v.i * grid.m + v.v.j;
+            
+            distance = grid.edges[u.i * grid.m + u.j].distance;
+
+            int alternative = distance + edge->weight;
+            
+            if (alternative < edge->distance)
+            {
+                edge->distance = alternative;
+                
+                priority_queue_enqueue(&priorityQueue, &v.v, &alternative);
+            }
+        }
+    }
+
+    int sourceWeight = grid.edges[source.i * grid.m + source.j].weight;
     
-    finalize_priority_queue(&heap);
-    // finalize_grid_graph(&graph);
+    distance = grid.edges[(grid.m - 1) * grid.m + grid.n - 1].distance;
 
-    // for (size_t i = 0; i < graph.m; i++)
-    // {
-    //     for (size_t j = 0; j < graph.n; j++)
-    //     {
-    //         printf("%d ", graph.costs[i * graph.n + j]);
-    //     }
-
-    //     printf("\n");
-    // }
-
-    // return euler_submit(81, 0, start);
+    return euler_submit(81, sourceWeight + distance, start);
 }

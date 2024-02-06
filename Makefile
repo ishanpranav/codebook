@@ -7,7 +7,7 @@ AR = ar -r libeuler$(A)
 
 CC = gcc
 EXTRAS = -L.
-CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra $(EXTRAS)
+CFLAGS = -O3 -pedantic -std=c99 -Wall -Wextra -Wimplicit-fallthrough $(EXTRAS)
 TWOS_COMPLEMENT = -fno-strict-overflow -fwrapv
 
 LEULER = -leuler

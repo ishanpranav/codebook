@@ -1,9 +1,9 @@
 // Licensed under the MIT License.
 
-struct GridGraphEdge
+struct GridEdge
 {
     int weight;
     int distance;
 };
 
-typedef struct GridGraphEdge* GridGraphEdge;
+typedef struct GridEdge* GridEdge;

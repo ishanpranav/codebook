@@ -3,11 +3,11 @@
 #include "../object.h"
 #include "../priority_queue.h"
 #include "../stream.h"
-#include "grid_graph_edge.h"
+#include "grid_edge.h"
 
 struct GridGraph
 {
-    struct GridGraphEdge* edges;
+    struct GridEdge* edges;
     size_t m;
     size_t n;
 };

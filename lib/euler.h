@@ -18,6 +18,11 @@
     fprintf(stderr, "Faulted: %s line %d.\n", __FILE__, __LINE__); \
     exit(1); } end_macro
 #define math_concat(left, ...) math_concat_impl(left, __VA_ARGS__, 0);
+#ifdef __GNUC__
+#define euler_fallthrough() __attribute__ ((fallthrough))
+#else
+#define euler_fallthrough()
+#endif
 
 /**
  * Submits a solution for the problem with the given identifier.
