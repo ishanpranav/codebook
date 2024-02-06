@@ -48,6 +48,8 @@ Exception priority_queue(
  * 
  * @param instance the `PriorityQueue` instance.
  * @param capacity the required minimum capacity.
+ * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
+ *         the operation; otherwise `0`.
 */
 Exception priority_queue_ensure_capacity(
     PriorityQueue instance,
@@ -59,6 +61,8 @@ Exception priority_queue_ensure_capacity(
  * @param instance the `PriorityQueue` instance.
  * @param item     the item.
  * @param priority the priority.
+ * @return An exception; otherwise `0`. This method always returns `0` if the
+ *         current capacity is sufficient.
 */
 Exception priority_queue_enqueue(
     PriorityQueue instance, 
@@ -76,6 +80,8 @@ Exception priority_queue_enqueue(
  *                 argument is passed uninitialized, or `NULL` if the value will
  *                 not be used.
  * @param instance the `PriorityQueue` instance.
+ * @return `true` if the minimal item was dequeued successfully; `false` if
+ *         the priority queue was empty.
 */
 bool priority_queue_try_dequeue(
     PriorityQueue instance, 

@@ -17,7 +17,8 @@ typedef struct FactorIterator* FactorIterator;
 /**
  * Provides an iterator over the prime factors of `n`.
  * 
- * @param iterator the iterator.
+ * @param iterator when this method returns, contains the iterator. This
+ *                 argument is passed uninitialized.
  * @param n        the number whose factors to enumerate.
  * @param primes   the prime sequence.
 */

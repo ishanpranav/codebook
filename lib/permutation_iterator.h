@@ -23,7 +23,8 @@ typedef struct PermutationIterator* PermutationIterator;
 /**
  * Provides an iterator over the lexicographical permutations of a collection.
  *
- * @param iterator     the iterator.
+ * @param iterator     when this method returns, contains the iterator. This
+ *                     argument is passed uninitialized.
  * @param values       the collection.
  * @param itemComparer the comparer used to determine the lexicographical order.
 */

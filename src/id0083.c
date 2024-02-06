@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-// Path Sum: Two Ways
+// Path Sum: Four Ways
 
 #include "../lib/grid_neighbor_iterator.h"
 #include "../lib/euler.h"
@@ -15,12 +15,12 @@ int main(void)
 
     euler_ok(grid_graph(&grid, 80, 80));
     grid_graph_deserialize(&grid, stdin, lineBuffer, sizeof lineBuffer);
-    euler_ok(grid_min_path(&grid, &source, DIRECTIONS_BOTTOM_RIGHT));
+    euler_ok(grid_min_path(&grid, &source, DIRECTIONS_ALL));
 
     int sourceWeight = grid.edges[source.i * grid.m + source.j].weight;
     int distance = grid.edges[(grid.m - 1) * grid.m + grid.n - 1].distance;
 
     finalize_grid_graph(&grid);
 
-    return euler_submit(81, sourceWeight + distance, start);
+    return euler_submit(83, sourceWeight + distance, start);
 }

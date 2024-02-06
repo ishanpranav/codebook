@@ -19,7 +19,8 @@ typedef struct DivisorIterator* DivisorIterator;
 /**
  * Provides an iterator over the proper divisors of `n`.
  * 
- * @param iterator the iterator.
+ * @param iterator when this method returns, contains the iterator. This
+ *                 argument is passed uninitialized.
  * @param n        the number whose divisors to enumerate.
 */
 void divisor_begin(DivisorIterator iterator, long long n);

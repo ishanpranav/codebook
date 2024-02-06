@@ -16,7 +16,8 @@ typedef struct SieveIterator* SieveIterator;
 /**
  * Provides an iterator over all primes.
  *
- * @param iterator the iterator.
+ * @param iterator when this method returns, contains the iterator. This
+ *                 argument is passed uninitialized.
  * @param values   the sieve whose elements to enumerate. This method may
  *                 dynamically extend the `values` argument.
 */

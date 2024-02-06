@@ -7,7 +7,7 @@
  * Deserializes a collection of strings from a formatted input stream. The
  * caller is responsible for the generated strings.
  * 
- * @param instance the `List` instance.
+ * @param instance the `List` instance to which strings are added.
  * @param input    the input stream.
  * @return The exception; otherwise, `0`.
 */
