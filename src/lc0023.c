@@ -5,7 +5,7 @@
 #include "../lib/euler.h"
 #include "../lib/priority_queue.h"
 
-static struct ListNode
+struct ListNode
 {
     int val;
     struct ListNode* next;
@@ -13,8 +13,8 @@ static struct ListNode
 
 static int list_node_comparer(const void* left, const void* right)
 {
-    struct ListNode* p = *(const struct ListNode**)left;
-    struct ListNode* q = *(const struct ListNode**)right;
+    const struct ListNode* p = *(const struct ListNode**)left;
+    const struct ListNode* q = *(const struct ListNode**)right;
 
     return p->val - q->val;
 }

@@ -10,3 +10,4 @@ key.txt
 obj/
 id*
 !id*.*
+id*.exe

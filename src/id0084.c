@@ -66,6 +66,10 @@ Square monopoly_next_square(Monopoly instance)
             return SQUARE_JAIL;
         }
     }
+    else
+    {
+        instance->doubles = 0;
+    }
 
     Square square = (instance->square + a + b) % MAX_SQUARE;
     Square utilitySquares[] = { 12, 28, 0 };
@@ -120,9 +124,9 @@ int main(void)
     struct Monopoly game;
     clock_t start = clock();
 
-    monopoly(&game, 6);
+    monopoly(&game, 4);
 
-    for (long long i = 0; i < 10000; i++)
+    for (long i = 0; i < 100000l; i++)
     {
         game.square = monopoly_next_square(&game);
         counts[game.square]++;
