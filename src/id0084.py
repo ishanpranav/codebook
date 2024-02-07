@@ -20,8 +20,7 @@ RAILROAD_SQUARES = [ 5, 15, 25, 35 ]
 
 def monopoly_next(square, others) -> int:
     for other in others:
-        if square < other:
-            return other
+        if square < other: return other
     return others[0]
     
 def monopoly_play_turn(dieFaces, square, doubles) -> (int, int):
@@ -37,7 +36,7 @@ def monopoly_play_turn(dieFaces, square, doubles) -> (int, int):
 
     square = (square + a + b) % 40
     
-    if square == SQUARE_GO_TO_JAIL:return SQUARE_JAIL, 0
+    if square == SQUARE_GO_TO_JAIL: return SQUARE_JAIL, 0
     
     if square in CHANCE_SQUARES:
         match randrange(16):

@@ -1,3 +1,5 @@
+// Licensed under the MIT License.
+
 #include <stdbool.h>
 #include "coordinate.h"
 #include "directions.h"

@@ -29,4 +29,6 @@ int char_comparer(const void* left, const void* right);
 */
 int int_comparer(const void* left, const void* right);
 
+int reverse_int_comparer(const void* left, const void* right);
+
 #endif 
