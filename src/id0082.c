@@ -1,36 +1,5 @@
 // Licensed under the MIT License.
 
-// Coordinate minSource;
-// Coordinate minTarget;
-// int minDistance = int.MaxValue;
-// IDictionary<Coordinate, Coordinate> minPath;
-
-// for (int sourceI = 0; sourceI < grid.GetLength(0); sourceI++)
-// {
-//     Coordinate s = new Coordinate(sourceI, 0);
-
-//     Dijkstra(
-//         grid,
-//         s,
-//         Neighbors,
-//         Weight,
-//         out IDictionary<Coordinate, int> distances,
-//         out IDictionary<Coordinate, Coordinate> path);
-
-//     for (int targetI = 0; targetI < grid.GetLength(0); targetI++)
-//     {
-//         Coordinate t = new Coordinate(targetI, grid.GetLength(1) - 1);
-        
-//         if (distances[t] < minDistance)
-//         {
-//             minSource = s;
-//             minTarget = t;
-//             minPath = path;
-//             minDistance = distances[t];
-//         }
-//     }
-// }
-
 // Path Sum: Three Ways
 
 #include "../lib/grid_neighbor_iterator.h"

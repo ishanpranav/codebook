@@ -138,11 +138,13 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 79  |       [Passcode Derivation](src/id0079.c)        |                 Graph theory                  |  Minimum  | [Adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix)                                                                     |
 | 80  |  [Square Root Digital Expansion](src/id0080.c)   | Arbitrary-precision floating point arithmetic |    Sum    |                                                                                                                                        |
 
-### 81-
+### 81-83
 
-| Id  |              Problem               | Domain | Result | Implementation |
-| :-: | :--------------------------------: | :----: | :----: | -------------- |
-| 81  | [Path Sum: Two Ways](src/id0081.c) |        |  Sum   |                |
+| Id  |               Problem                |    Domain    |    Result    | Implementation |
+| :-: | :----------------------------------: | :----------: | :----------: | -------------- |
+| 81  |  [Path Sum: Two Ways](src/id0081.c)  | Graph theory | Minimum path |                |
+| 82  | [Path Sum: Three Ways](src/id0082.c) | Graph theory | Minimum path |                |
+| 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                |
 
 # LeetCode
 
