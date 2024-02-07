@@ -18,11 +18,11 @@ COMMUNITY_CHEST_SQUARES = [ 2, 17, 33 ]
 UTILITY_SQUARES = [ 12, 28 ]
 RAILROAD_SQUARES = [ 5, 15, 25, 35 ]
 
-def monopoly_next(square, squares) -> int:
-    for other in range(0, len(squares)):
-        if square < squares[other]:
-            return squares[other]
-    return squares[0]
+def monopoly_next(square, others) -> int:
+    for other in others:
+        if square < other:
+            return other
+    return others[0]
     
 def monopoly_play_turn(dieFaces, square, doubles) -> (int, int):
     a = randrange(1, dieFaces + 1)

@@ -145,6 +145,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 81  |  [Path Sum: Two Ways](src/id0081.c)  | Graph theory | Minimum path |                |
 | 82  | [Path Sum: Three Ways](src/id0082.c) | Graph theory | Minimum path |                |
 | 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                |
+| 84  |    [Monopoly Odds](src/id0084.c)     |  Simulation  |    Maxima    |                |
 
 # LeetCode
 
