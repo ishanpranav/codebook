@@ -7,23 +7,21 @@
 
 int main(void)
 {
-    clock_t start = clock();    
     int a = 0;
     int b = 0;
     int c = 0;
-    int m = 0;
-    int n = 0;
-    int sqrtHalfSum = sqrt(500);
+    clock_t start = clock();
 
-    for (int i = sqrtHalfSum; i <= 500; i++)
+    for (int i = sqrt(500); i <= 500; i++)
     {
         if (500 % i != 0)
         {
             continue;
         }
 
-        m = 500 / i;
-        n = i - m;
+        int m = 500 / i;
+        int n = i - m;
+        
         a = m * m - n * n;
         b = 2 * m * n;
         c = m * m + n * n;
@@ -34,7 +32,7 @@ int main(void)
         }
     }
 
-    long product = a * b * (m * m + n * n);
-    
+    long product = a * b * c;
+
     return euler_submit(9, product, start);
 }

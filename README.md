@@ -132,6 +132,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 82  | [Path Sum: Three Ways](src/id0082.c) | Graph theory | Minimum path |                                                                                                      |
 | 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                                                                                                      |
 | 84  |    [Monopoly Odds](src/id0084.c)     |  Simulation  |    Maxima    | Blackman and Vigna's [xoshiro256\*\*](https://en.wikipedia.org/wiki/Xorshift#xoshiro256**) algorithm |
+| 85  | [Counting Rectangles](src/id0085.c)  |   Geometry   |     Area     |                                                                                                      |
 
 # LeetCode
 
@@ -142,6 +143,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  7   |                     [Reverse Integer](src/lc0007.c)                      |  Mathematics  |       Integer        | `math_reverse`        |
 |  8   |                    [String to Integer](src/lc0008.c)                     |    Strings    |       Integer        | `atoll`               |
 |  9   |                    [Palindrome Number](src/lc0009.c)                     |  Mathematics  |       Boolean        | `math_is_palindrome`  |
+|  23  |                   [Merge k Sorted Lists](src/lc0023.c)                   | Linked Lists  |     Linked List      | `PriorityQueue`       |
 |  28  |    [Find the Index of the First Occurrence in a String](src/lc0028.c)    |    Strings    |        Index         | `strstr`              |
 |  29  |                   [Divide Two Integers](src/lc0029.c)                    |  Mathematics  |       Quotient       |                       |
 |  31  |                     [Next Permutation](src/lc0031.c)                     |     Array     |     Permutation      | `PermutationIterator` |

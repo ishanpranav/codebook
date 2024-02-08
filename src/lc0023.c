@@ -35,12 +35,12 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
         listsSize,
         list_node_comparer));
 
-    struct ListNode* head = calloc(1, sizeof * head);
-
-    head->val = 1;
-
     int out;
-    struct ListNode* tail = head;
+    struct ListNode head =
+    {
+        .val = 1
+    };
+    struct ListNode* tail = &head;
 
     for (int i = 0; i < listsSize; i++)
     {
@@ -62,5 +62,5 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
         }
     }
 
-    return head->next;
+    return head.next;
 }
