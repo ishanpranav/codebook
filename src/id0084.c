@@ -4,6 +4,7 @@
 
 #include "../lib/euler.h"
 #include "../lib/priority_queue.h"
+#include "../lib/random.h"
 
 enum Square
 {
@@ -24,6 +25,9 @@ enum Square
 
 struct Monopoly
 {
+    long long (*random)(void* instance, long long max);
+
+    void* randomState;
     enum Square square;
     int doubles;
     int dieFaces;
@@ -31,13 +35,6 @@ struct Monopoly
 
 typedef enum Square Square;
 typedef struct Monopoly* Monopoly;
-
-void monopoly(Monopoly instance, int dieFaces)
-{
-    instance->square = SQUARE_GO;
-    instance->doubles = 0;
-    instance->dieFaces = dieFaces;
-}
 
 static Square square_next(Square square, Square others[])
 {
@@ -52,10 +49,24 @@ static Square square_next(Square square, Square others[])
     return others[0];
 }
 
+void monopoly(Monopoly instance, Random random, Object seed, int dieFaces)
+{
+    instance->random = random;
+    instance->randomState = seed;
+    instance->square = SQUARE_GO;
+    instance->doubles = 0;
+    instance->dieFaces = dieFaces;
+}
+
+static int monopoly_random(Monopoly instance, int max)
+{
+    return instance->random(instance->randomState, max);
+}
+
 Square monopoly_next_square(Monopoly instance)
 {
-    int a = rand() % instance->dieFaces + 1;
-    int b = rand() % instance->dieFaces + 1;
+    int a = monopoly_random(instance, instance->dieFaces) + 1;
+    int b = monopoly_random(instance, instance->dieFaces) + 1;
 
     if (a == b)
     {
@@ -85,7 +96,7 @@ Square monopoly_next_square(Monopoly instance)
         case SQUARE_CHANCE_1:
         case SQUARE_CHANCE_2:
         case SQUARE_CHANCE_3:
-            switch (rand() % 16)
+            switch (monopoly_random(instance, 16))
             {
                 case 0: return SQUARE_GO;
                 case 1: return SQUARE_JAIL;
@@ -104,7 +115,7 @@ Square monopoly_next_square(Monopoly instance)
         case SQUARE_COMMUNITY_CHEST_1:
         case SQUARE_COMMUNITY_CHEST_2:
         case SQUARE_COMMUNITY_CHEST_3:
-            switch (rand() % 16)
+            switch (monopoly_random(instance, 16))
             {
                 case 0: return SQUARE_GO;
                 case 1: return SQUARE_JAIL;
@@ -120,11 +131,13 @@ Square monopoly_next_square(Monopoly instance)
 int main(void)
 {
     long result = 0;
-    int counts[MAX_SQUARE] = { 0 };
     struct Monopoly game;
+    struct PriorityQueue priorityQueue;
+    int counts[MAX_SQUARE] = { 0 };
+    uint64_t seed[4] = { 12004, 1, 20, 2004 };
     clock_t start = clock();
 
-    monopoly(&game, 4);
+    monopoly(&game, xoshiro256_star_star_random, seed, 4);
 
     for (long i = 0; i < 100000l; i++)
     {
@@ -132,15 +145,13 @@ int main(void)
         counts[game.square]++;
     }
 
-    struct PriorityQueue priorityQueue;
-
     euler_ok(priority_queue(
-        &priorityQueue, 
-        sizeof(Square), 
-        sizeof(int), 
-        MAX_SQUARE, 
+        &priorityQueue,
+        sizeof(Square),
+        sizeof(int),
+        MAX_SQUARE,
         reverse_int_comparer));
-    
+
     for (Square square = 0; square < MAX_SQUARE; square++)
     {
         priority_queue_enqueue(&priorityQueue, &square, counts + square);

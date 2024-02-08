@@ -17,20 +17,6 @@ also be used to solve [LeetCode](#leetcode) problems as well.
     EBCDIC).
   - Assume that signed integer overflow is defined based on two's complement.
 
-## Languages
-
-As a challenge, higher-difficulty problems must be implemented in multiple
-languages. The most difficult problems are implemented in 10 languages. Files
-which required I/O operations are not implemented in multiple languages.
-
-| Difficulty | Language                    |
-| :--------: | --------------------------- |
-| (Trivial)  | [Shell](tools/test.sh)      |
-|   \> 0%    | [C](tools/test.sh)          |
-|   \> 10%   | [Python](tools/test.py.ps1) |
-|   \> 20%   | [C\#](tools/test.cs.ps1)    |
-|   \> 30%   | JavaScript                  |
-
 ## Dependencies
 
 This repository depends on the
@@ -138,14 +124,14 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 79  |       [Passcode Derivation](src/id0079.c)        |                 Graph theory                  |  Minimum  | [Adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix)                                                                     |
 | 80  |  [Square Root Digital Expansion](src/id0080.c)   | Arbitrary-precision floating point arithmetic |    Sum    |                                                                                                                                        |
 
-### 81-83
+### 81-
 
-| Id  |               Problem                |    Domain    |    Result    | Implementation |
-| :-: | :----------------------------------: | :----------: | :----------: | -------------- |
-| 81  |  [Path Sum: Two Ways](src/id0081.c)  | Graph theory | Minimum path |                |
-| 82  | [Path Sum: Three Ways](src/id0082.c) | Graph theory | Minimum path |                |
-| 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                |
-| 84  |    [Monopoly Odds](src/id0084.c)     |  Simulation  |    Maxima    |                |
+| Id  |               Problem                |    Domain    |    Result    | Implementation                                                                                       |
+| :-: | :----------------------------------: | :----------: | :----------: | ---------------------------------------------------------------------------------------------------- |
+| 81  |  [Path Sum: Two Ways](src/id0081.c)  | Graph theory | Minimum path |                                                                                                      |
+| 82  | [Path Sum: Three Ways](src/id0082.c) | Graph theory | Minimum path |                                                                                                      |
+| 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                                                                                                      |
+| 84  |    [Monopoly Odds](src/id0084.c)     |  Simulation  |    Maxima    | Blackman and Vigna's [xoshiro256\*\*](https://en.wikipedia.org/wiki/Xorshift#xoshiro256**) algorithm |
 
 # LeetCode
 

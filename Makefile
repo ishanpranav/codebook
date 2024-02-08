@@ -279,7 +279,7 @@ id0079$(E): src/id0079.c libeuler$(A)
 	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)
 
 id0080$(E): src/id0080.c libeuler$(A)
-	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LGMP) $(LM)
+	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM) $(LGMP)
 
 id0081$(E): src/id0081.c libeuler$(A)
 	$(CC) $(CFLAGS) $< -o $@ $(LEULER) $(LM)

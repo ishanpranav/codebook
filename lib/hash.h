@@ -27,7 +27,7 @@ size_t pjw_hash(Object item, size_t size);
 
 /**
  * Computes the PJW hash function used for Unix ELF files and returns a value
- * aligned to exactly 32 bits.
+ * truncated to exactly 32 bits.
  * 
  * @param item the object.
  * @param size the size of the `item` argument.
