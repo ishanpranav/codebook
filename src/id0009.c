@@ -4,35 +4,22 @@
 
 #include <math.h>
 #include "../lib/euler.h"
+#include "../lib/pythagorean_iterator.h"
 
 int main(void)
 {
-    int a = 0;
-    int b = 0;
-    int c = 0;
+    struct PythagoreanIterator it;
     clock_t start = clock();
 
-    for (int i = sqrt(500); i <= 500; i++)
+    for (pythagorean_begin(&it, 500); !it.end; pythagorean_next(&it))
     {
-        if (500 % i != 0)
-        {
-            continue;
-        }
-
-        int m = 500 / i;
-        int n = i - m;
-        
-        a = m * m - n * n;
-        b = 2 * m * n;
-        c = m * m + n * n;
-
-        if (a + b + c == 1000)
+        if (it.a + it.b + it.c == 1000)
         {
             break;
         }
     }
 
-    long product = a * b * c;
+    long product = it.a * it.b * it.c;
 
     return euler_submit(9, product, start);
 }

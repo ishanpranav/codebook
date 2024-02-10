@@ -1,13 +1,14 @@
 <!-- Licensed under the MIT License. -->
 
-# Project Euler
+# Codebook
 
-Efficient Project Euler solutions in C language
-
-Thanks to the depth and breadth of the Project Euler problem set, this
+This is my C-language "book of code" for competitive programming problems.
+Thanks to the depth and breadth of competitive programming problems, this
 repository has become home to a [diverse library](lib/) including mathematical
-functions as well as data structures and algorithms. Some of these solutions can
-also be used to solve [LeetCode](#leetcode) problems as well.
+functions, data structures, and algorithms.
+
+- [Project Euler](#project-euler)
+- [LeetCode](#leetcode)
 
 ## Constraints
 
@@ -23,9 +24,7 @@ This repository depends on the
 [GNU Multiple Precision Arithmetic Library (GMP)](https://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library),
 which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
-## Summary
-
-### 1-20, 67
+## Project Euler
 
 |   Id   |                      Problem                       |             Domain             |        Result         | Implementation                                                                                 |
 | :----: | :------------------------------------------------: | :----------------------------: | :-------------------: | ---------------------------------------------------------------------------------------------- |
@@ -49,11 +48,6 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 18, 67 |          [Maximum Path Sum](src/id0018.c)          |      Dynamic programming       |        Maximum        | Bottom-up approach                                                                             |
 |   19   |          [Counting Sundays](src/id0019.c)          |         Combinatorics          |         Count         |
 |   20   |        [Factorial Digit Sum](src/id0020.c)         | Arbitrary-precision arithmetic |          Sum          |                                                                                                |
-
-### 21-40
-
-| Id  |                   Problem                   |    Domain     |         Result          | Implementation                                                                           |
-| :-: | :-----------------------------------------: | :-----------: | :---------------------: | ---------------------------------------------------------------------------------------- |
 | 21  |      [Amicable Numbers](src/id0021.c)       | Number theory |           Sum           | [Amicable numbers](https://en.wikipedia.org/wiki/Amicable_numbers)                       |
 | 22  |        [Names Scores](src/id0022.c)         |    Sorting    |           Sum           | [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)                     |
 | 23  |      [Non-Abundant Sums](src/id0023.c)      | Number theory |           Sum           | [Abundant numbers](https://en.wikipedia.org/wiki/Abundant_number)                        |
@@ -74,11 +68,6 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 38  |    [Pandigital Multiples](src/id0038.c)     | Number theory |         Maximum         |                                                                                          |
 | 39  |   [Integer Right Triangles](src/id0039.c)   |   Geometry    |         Maximum         |                                                                                          |
 | 40  |  [Champernowne\'s Constant](src/id0040.c)   | Number theory |         Product         | [Champernowne constant](https://en.wikipedia.org/wiki/Champernowne_constant)             |
-
-### 41-60
-
-| Id  |                        Problem                        |             Domain             |   Result    | Implementation                                                                                                                                                                                                                                                           |
-| :-: | :---------------------------------------------------: | :----------------------------: | :---------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 41  |           [Pandigital Prime](src/id0041.c)            |         Number theory          |   Maximum   |                                                                                                                                                                                                                                                                          |
 | 42  |        [Coded Triangle Numbers](src/id0042.c)         |           Sequences            |    Count    |                                                                                                                                                                                                                                                                          |
 | 43  |        [Sub-string Divisibility](src/id0043.c)        |         Number theory          |     Sum     |                                                                                                                                                                                                                                                                          |
@@ -99,11 +88,6 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 58  |             [Spiral Primes](src/id0058.c)             |           Sequences            | Term number |                                                                                                                                                                                                                                                                          |
 | 59  |            [XOR Decryption](src/id0059.c)             |          Cryptography          |     Sum     | [Frequency analysis](https://en.wikipedia.org/wiki/Frequency_analysis)                                                                                                                                                                                                   |
 | 60  |            [Prime Pair Sets](src/id0060.c)            |         Number theory          |   Minimum   | [Miller–Rabin primality test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test), [Modular exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation), [Exponentiation by squaring](https://en.wikipedia.org/wiki/Exponentiation_by_squaring) |
-
-### 61-66, 68-80
-
-| Id  |                     Problem                      |                    Domain                     |  Result   | Implementation                                                                                                                         |
-| :-: | :----------------------------------------------: | :-------------------------------------------: | :-------: | -------------------------------------------------------------------------------------------------------------------------------------- |
 | 61  |    [Cyclical Figurate Numbers](src/id0061.c)     |                 Number theory                 |    Sum    | [Polygonal number](https://en.wikipedia.org/wiki/Polygonal_number)                                                                     |
 | 62  |        [Cubic Permutations](src/id0062.c)        |                 Number theory                 |  Minimum  | [Multimap](https://en.wikipedia.org/wiki/Multimap), [Daniel J. Bernstein (djb2) hash algorithm](http://www.cse.yorku.ca/~oz/hash.html) |
 | 63  |      [Powerful Digit Counts](src/id0063.c)       |                 Number theory                 |   Count   |                                                                                                                                        |
@@ -123,20 +107,13 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 78  |         [Coin Partitions](src/id0078.c)          |                 Combinatorics                 |   Term    | [Pentagonal number theorem](https://en.wikipedia.org/wiki/Pentagonal_number_theorem)                                                   |
 | 79  |       [Passcode Derivation](src/id0079.c)        |                 Graph theory                  |  Minimum  | [Adjacency matrix](https://en.wikipedia.org/wiki/Adjacency_matrix)                                                                     |
 | 80  |  [Square Root Digital Expansion](src/id0080.c)   | Arbitrary-precision floating point arithmetic |    Sum    |                                                                                                                                        |
-
-### 81-
-
-| Id  |               Problem                |    Domain    |    Result    | Implementation                                                                                       |
-| :-: | :----------------------------------: | :----------: | :----------: | ---------------------------------------------------------------------------------------------------- |
 | 81  |  [Path Sum: Two Ways](src/id0081.c)  | Graph theory | Minimum path |                                                                                                      |
 | 82  | [Path Sum: Three Ways](src/id0082.c) | Graph theory | Minimum path |                                                                                                      |
 | 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                                                                                                      |
 | 84  |    [Monopoly Odds](src/id0084.c)     |  Simulation  |    Maxima    | Blackman and Vigna's [xoshiro256\*\*](https://en.wikipedia.org/wiki/Xorshift#xoshiro256**) algorithm |
 | 85  | [Counting Rectangles](src/id0085.c)  |   Geometry   |     Area     |                                                                                                      |
 
-# LeetCode
-
-## Summary
+## LeetCode
 
 |  Id  |                                 Problem                                  |    Domain     |        Result        | Implementation        |
 | :--: | :----------------------------------------------------------------------: | :-----------: | :------------------: | --------------------- |

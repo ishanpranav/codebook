@@ -4,7 +4,7 @@
 #include "array.h"
 #include "comparer.h"
 
-/** Represents a sorting algorithm. */
+/** Defines a sorting algorithm. */
 typedef void (*Sort)(
     Array items,
     size_t count,
@@ -12,11 +12,12 @@ typedef void (*Sort)(
     Comparer itemComparer);
 
 /**
- *
- * @param items
- * @param count
- * @param itemSize
- * @param itemComparer
+ * Sorts a collection using the bubble sort algorithm.
+ * 
+ * @param items        the collection of items.
+ * @param count        the number of items.
+ * @param itemSize     the size of each item.
+ * @param itemComparer the item comparer.
 */
 void bubble_sort(
     Array items,
@@ -25,11 +26,12 @@ void bubble_sort(
     Comparer itemComparer);
 
 /**
- *
- * @param items
- * @param count
- * @param itemSize
- * @param itemComparer
+ * Sorts a collection using the selection sort algorithm.
+ * 
+ * @param items        the collection of items.
+ * @param count        the number of items.
+ * @param itemSize     the size of each item.
+ * @param itemComparer the item comparer.
 */
 void selection_sort(
     Array items,
@@ -38,11 +40,12 @@ void selection_sort(
     Comparer itemComparer);
 
 /**
- *
- * @param items
- * @param count
- * @param itemSize
- * @param itemComparer
+ * Sorts a collection using the insertion sort algorithm.
+ * 
+ * @param items        the collection of items.
+ * @param count        the number of items.
+ * @param itemSize     the size of each item.
+ * @param itemComparer the item comparer.
 */
 void insertion_sort(
     Array items,
@@ -51,11 +54,12 @@ void insertion_sort(
     Comparer itemComparer);
 
 /**
- *
- * @param items
- * @param count
- * @param itemSize
- * @param itemComparer
+ * Sorts a collection using the merge sort algorithm.
+ * 
+ * @param items        the collection of items.
+ * @param count        the number of items.
+ * @param itemSize     the size of each item.
+ * @param itemComparer the item comparer.
 */
 void merge_sort(
     Array items,

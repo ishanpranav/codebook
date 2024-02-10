@@ -9,7 +9,7 @@ struct DivisorIterator
     long long n;
     long long current;
     long long next;
-    long long end;
+    long long sqrtN;
     enum DivisorIteratorState state;
 };
 

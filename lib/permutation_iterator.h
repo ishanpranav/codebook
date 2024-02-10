@@ -37,7 +37,7 @@ void permutation_begin(
 
 /**
  * Advances the iterator to the next lexicographical permutation. This method
- * shuffles the `set` field of the `iterator` argument.
+ * shuffles the `items` field of the `iterator` argument.
  * 
  * @param iterator the iterator.
 */
