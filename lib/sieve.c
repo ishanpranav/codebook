@@ -1,6 +1,7 @@
 // Licensed under the MIT License.
 
 #include <math.h>
+#include "binary_search.h"
 #include "divisor_iterator.h"
 #include "sieve_iterator.h"
 
@@ -138,28 +139,27 @@ void sieve_jump(SieveIterator iterator, long long min)
 
     if (iterator->values->max > min)
     {
-        size_t left = 0;
-        size_t right = iterator->values->primes.count - 1;
+        long long* prime = binary_search_first_after(
+            &min,
+            primes,
+            iterator->values->primes.count,
+            sizeof * primes,
+            long_long_comparer);
 
-        while (left != right)
+        if (prime)
         {
-            iterator->index = left + (right - left) / 2;
-
-            if (primes[iterator->index] < min)
-            {
-                left = iterator->index + 1;
-            }
-            else
-            {
-                right = iterator->index;
-            }
+            iterator->index = 0;
+        }
+        else
+        {
+            iterator->index = prime - primes;
         }
     }
 
     while (primes[iterator->index] < min)
     {
         sieve_next_impl(iterator);
-    
+
         primes = iterator->values->primes.items;
     }
 

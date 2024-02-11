@@ -41,4 +41,15 @@ int int_comparer(const void* left, const void* right);
 */
 int reverse_int_comparer(const void* left, const void* right);
 
+/**
+ * Compares this instance to a specified signed integer and returns an
+ * indication of their relative values.
+ * 
+ * @param left  An integer to compare to `left`.
+ * @param right An integer to compare to `right`.
+ * @return A signed integer that indicates the relative values of `left` and 
+ *         `right`.
+*/
+int long_long_comparer(const void* left, const void* right);
+
 #endif 

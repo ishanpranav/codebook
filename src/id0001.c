@@ -11,5 +11,5 @@ int main(void)
         (5 * math_natural_sum(999 / 5)) -
         (15 * math_natural_sum(999 / 15));
 
-    return euler_submit(1, sum, start);
+    euler_submit(1, sum, start);
 }

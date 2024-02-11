@@ -9,4 +9,4 @@
  * @return A `max`-element array, or `NULL` if the process is out of
  *         memory. The caller is responsible.
 */
-int* pythagorean_triplet_count_range(long max);
+int* pythagorean_count_range(long max);

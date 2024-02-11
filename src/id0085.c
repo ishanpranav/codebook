@@ -8,9 +8,9 @@
 
 int main(void)
 {
-    long maxWidth = 0;
-    long maxHeight = 0;
-    long minDelta = LONG_MAX;
+    int maxWidth = 0;
+    int maxHeight = 0;
+    long long minDelta = LLONG_MAX;
     clock_t start = clock();
     int max = sqrt(2000000l);
 
@@ -18,8 +18,9 @@ int main(void)
     {
         for (int height = width + 1; height <= max; height++)
         {
-            long count = math_natural_sum(width) * math_natural_sum(height);
-            long delta = labs(count - 2000000l);
+            long long widthSum = math_natural_sum(width);
+            long long heightSum = math_natural_sum(height);
+            long long delta = llabs(widthSum * heightSum - 2000000l);
 
             if (delta < minDelta)
             {
@@ -30,7 +31,7 @@ int main(void)
         }
     }
 
-    long maxArea = maxWidth * maxHeight;
+    int maxArea = maxWidth * maxHeight;
 
     return euler_submit(85, maxArea, start);
 }

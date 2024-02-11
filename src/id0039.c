@@ -2,28 +2,28 @@
 
 // Integer Right Triangles
 
-#include "../lib/euclidean.h"
 #include "../lib/euler.h"
+#include "../lib/pythagorean.h"
 
 int main(void)
 {
     int maxSum = 120;
     int maxTripletCount = 3;
     clock_t start = clock();
-    int* tripletCounts = pythagorean_triplet_counts(1001);
+    int* counts = pythagorean_count_range(1001);
 
-    euler_assert(tripletCounts);
+    euler_assert(counts);
 
     for (int sum = 0; sum < 1001; sum++)
     {
-        if (tripletCounts[sum] > maxTripletCount)
+        if (counts[sum] > maxTripletCount)
         {
             maxSum = sum;
-            maxTripletCount = tripletCounts[sum];
+            maxTripletCount = counts[sum];
         }
     }
 
-    free(tripletCounts);
+    free(counts);
 
     return euler_submit(39, maxSum, start);
 }

@@ -5,14 +5,19 @@
 #include <math.h>
 #include "../lib/divisor_iterator.h"
 #include "../lib/euler.h"
-#include "../lib/list.h"
+#include "../lib/hash_set.h"
 
 int main(void)
 {
-    struct List values;
+    struct HashSet values;
     clock_t start = clock();
-    
-    euler_ok(list(&values, sizeof(double), 0));
+
+    euler_ok(hash_set(
+        &values,
+        sizeof(double),
+        0,
+        double_equality_comparer,
+        djb2_hash));
 
     for (int a = 2; a <= 100; a++)
     {
@@ -20,16 +25,13 @@ int main(void)
         {
             double result = pow(a, b);
 
-            if (!list_contains(&values, &result, double_equality_comparer))
-            {
-                euler_ok(list_add(&values, &result));
-            }
+            euler_ok(hash_set_add(&values, &result, NULL));
         }
     }
 
     size_t count = values.count;
 
-    finalize_list(&values);
+    finalize_hash_set(&values);
 
     return euler_submit(29, count, start);
 }

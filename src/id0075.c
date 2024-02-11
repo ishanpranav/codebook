@@ -2,26 +2,26 @@
 
 // Singular Integer Right Triangles
 
-#include "../lib/euclidean.h"
 #include "../lib/euler.h"
+#include "../lib/pythagorean.h"
 
 int main(void)
 {
     long count = 0;
     clock_t start = clock();
-    int* tripletCounts = pythagorean_triplet_counts(1500001l);
+    int* counts = pythagorean_count_range(1500001l);
 
-    euler_assert(tripletCounts);
+    euler_assert(counts);
 
     for (long sum = 0; sum < 1500001l; sum++)
     {
-        if (tripletCounts[sum] == 1)
+        if (counts[sum] == 1)
         {
             count++;
         }
     }
 
-    free(tripletCounts);
+    free(counts);
 
     return euler_submit(75, count, start);
 }

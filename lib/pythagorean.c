@@ -5,7 +5,7 @@
 #include "euclidean.h"
 #include "pythagorean_iterator.h"
 
-int* pythagorean_triplet_count_range(long max)
+int* pythagorean_count_range(long max)
 {
     int* result = calloc(max, sizeof * result);
 

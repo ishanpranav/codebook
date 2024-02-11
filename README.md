@@ -10,6 +10,13 @@ functions, data structures, and algorithms.
 - [Project Euler](#project-euler)
 - [LeetCode](#leetcode)
 
+## Why C?
+
+C is a wonderful language because powerful abstractions come at an extremely low
+cost. I can take liberties with my implementations (such as runtime generics)
+while outperforming modern (bloated) alternatives, often by orders of magnitude.
+Plus C is readable, elegant, and beautiful (sometimes).
+
 ## Constraints
 
 - Adhere to the [project style guide](cstyle.md).

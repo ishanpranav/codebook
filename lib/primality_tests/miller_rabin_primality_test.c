@@ -65,47 +65,47 @@ static bool miller_rabin_is_prime(long long n)
 
     if (n < 1373653l)
     {
-        long long a[] = { 2, 3, 0 };
+        static long long a[] = { 2, 3, 0 };
 
         return miller_rabin_witness_all(n, s, d, a);
     }
 
     if (n < 9080191l)
     {
-        long long a[] = { 31, 73, 0 };
+        static long long a[] = { 31, 73, 0 };
 
         return miller_rabin_witness_all(n, s, d, a);
     }
 
     if (n < 4759123141ll)
     {
-        long long a[] = { 2, 7, 61, 0 };
+        static long long a[] = { 2, 7, 61, 0 };
 
         return miller_rabin_witness_all(n, s, d, a);
     }
 
     if (n < 1122004669633ll)
     {
-        long long a[] = { 13, 23, 1662803l, 0 };
+        static long long a[] = { 13, 23, 1662803l, 0 };
 
         return miller_rabin_witness_all(n, s, d, a);
     }
 
     if (n < 2152302898747ll)
     {
-        long long a[] = { 2, 3, 5, 7, 11, 0 };
+        static long long a[] = { 2, 3, 5, 7, 11, 0 };
 
         return miller_rabin_witness_all(n, s, d, a);
     }
 
     if (n < 3474749660383ll)
     {
-        long long a[] = { 2, 3, 5, 7, 11, 13, 0 };
+        static long long a[] = { 2, 3, 5, 7, 11, 13, 0 };
 
         return miller_rabin_witness_all(n, s, d, a);
     }
 
-    long long a[] = { 2, 3, 5, 7, 11, 13, 17, 0 };
+    static long long a[] = { 2, 3, 5, 7, 11, 13, 17, 0 };
 
     return miller_rabin_witness_all(n, s, d, a);
 }
