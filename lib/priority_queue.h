@@ -34,6 +34,8 @@ typedef struct PriorityQueue* PriorityQueue;
  * @param prioritySize     the size of each priority in the queue.
  * @param capacity         the required minimum capacity.
  * @param priorityComparer the comparer used to order priorities.
+ * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
+ *         the operation; otherwise `0`.
 */
 Exception priority_queue(
     PriorityQueue instance,

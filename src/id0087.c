@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-// Cuboid Route
+// Prime Power Triples
 
 #include <math.h>
 #include "../lib/euler.h"

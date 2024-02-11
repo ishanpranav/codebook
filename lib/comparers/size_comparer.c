@@ -1,6 +1,6 @@
 // Licensed under the MIT License.
 
-#include "size_comparer.h"
+#include <stddef.h>
 
 int size_comparer(const void* left, const void* right)
 {

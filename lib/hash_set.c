@@ -1,6 +1,7 @@
+// Licensed under the MIT License.
+
 #include <stdlib.h>
 #include <string.h>
-#include "comparers/size_comparer.h"
 #include "binary_search.h"
 #include "hash_set.h"
 

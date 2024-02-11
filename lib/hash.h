@@ -45,11 +45,19 @@ uint32_t pjw_hash32(Object item, size_t size);
 size_t sdbm_hash(Object item, size_t size);
 
 /**
+ * Computes a hash by padding an integer value.
  * 
+ * @param item the object.
+ * @param size the size of the `item` argument.
+ * @return A hash code for the given item.
 */
 size_t long_hash(Object item, size_t size);
 
 /**
+ * Computes a hash by padding an integer value.
  * 
+ * @param item the object.
+ * @param size the size of the `item` argument.
+ * @return A hash code for the given item.
 */
 size_t long_long_hash(Object item, size_t size);

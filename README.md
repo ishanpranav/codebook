@@ -27,8 +27,8 @@ Plus C is readable, elegant, and beautiful (sometimes).
 
 ## Dependencies
 
-This repository depends on the
-[GNU Multiple Precision Arithmetic Library (GMP)](https://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library),
+This repository depends on the [GNU Multiple Precision Arithmetic Library
+(GMP)](https://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library),
 which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 
 ## Project Euler
@@ -119,6 +119,8 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 83  | [Path Sum: Four Ways](src/id0083.c)  | Graph theory | Minimum path |                                                                                                      |
 | 84  |    [Monopoly Odds](src/id0084.c)     |  Simulation  |    Maxima    | Blackman and Vigna's [xoshiro256\*\*](https://en.wikipedia.org/wiki/Xorshift#xoshiro256**) algorithm |
 | 85  | [Counting Rectangles](src/id0085.c)  |   Geometry   |     Area     |                                                                                                      |
+| 86 | [Cuboid Route](src/id0086.c) | Geometry | Minimum | |
+| 87 | [Prime Power Triples](src/id0087.c) | Number theory | Count | [Hash set](https://en.wikipedia.org/wiki/Hash_table) |
 
 ## LeetCode
 

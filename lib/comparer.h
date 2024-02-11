@@ -52,4 +52,15 @@ int reverse_int_comparer(const void* left, const void* right);
 */
 int long_long_comparer(const void* left, const void* right);
 
+/**
+ * Compares this instance to a specified unsigned size and returns an indication
+ * of their relative values.
+ * 
+ * @param left  A size to compare to `left`.
+ * @param right A size to compare to `right`.
+ * @return A signed integer that indicates the relative values of `left` and 
+ *         `right`.
+*/
+int size_comparer(const void* left, const void* right);
+
 #endif 

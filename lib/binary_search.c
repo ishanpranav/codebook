@@ -1,5 +1,7 @@
-#include "binary_search.h"
+// Licensed under the MIT License.
+
 #include <stdlib.h>
+#include "binary_search.h"
 
 Object binary_search_first_after(
     Object item,
