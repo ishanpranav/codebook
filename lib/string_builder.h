@@ -37,13 +37,16 @@ Exception string_builder(StringBuilder instance, size_t capacity);
 void string_builder_from_string(StringBuilder instance, String value);
 
 /**
+ * Initializes a new `StringBuilder` instance that contains characters copied
+ * from the specified instance, and has sufficient capacity to accommodate the
+ * number of characters copied.
  * 
+ * @param result   the new `StringBuilder` instance.
+ * @param instance the existing `StringBuilder` instance.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception string_builder_copy(
-    StringBuilder result, 
-    StringBuilder instance);
+Exception string_builder_copy(StringBuilder result, StringBuilder instance);
 
 /**
  * Ensures that the capacity of this instance of `StringBuilder` is at least the
@@ -108,10 +111,11 @@ void string_builder_clear(StringBuilder instance);
 String string_builder_to_string(StringBuilder instance);
 
 /**
+ * Returns the hash code for this string builder.
  * 
- * @param item
- * @param size
- * @return 
+ * @param item the string builder instance.
+ * @param size the size of a string builder reference.
+ * @return An integer hash code.
 */
 size_t string_builder_hash(Object item, size_t size);
 

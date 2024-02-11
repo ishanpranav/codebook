@@ -46,9 +46,12 @@ Exception lookup(
     Hash keyHash);
 
 /**
+ * Initializes a new `Lookup` instance that contains elements copied from the
+ * specified instance, and has sufficient capacity to accommodate the number of
+ * elements copied.
  * 
- * @param result
- * @param instance
+ * @param result   the new `Lookup` instance.
+ * @param instance the existing `Lookup` instance.
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
