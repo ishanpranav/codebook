@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include "euler.h"
+#include "object.h"
 
 /** Represents a mutable string of characters. */
 struct StringBuilder
@@ -34,6 +35,15 @@ Exception string_builder(StringBuilder instance, size_t capacity);
  *                 for this argument.
 */
 void string_builder_from_string(StringBuilder instance, String value);
+
+/**
+ * 
+ * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
+ *         the operation; otherwise `0`.
+*/
+Exception string_builder_copy(
+    StringBuilder result, 
+    StringBuilder instance);
 
 /**
  * Ensures that the capacity of this instance of `StringBuilder` is at least the
@@ -89,14 +99,6 @@ Exception string_builder_append_format(
 void string_builder_clear(StringBuilder instance);
 
 /**
- * 
- * @param result
- * @param instance
- * @return 
-*/
-Exception string_builder_clone(StringBuilder result, StringBuilder instance);
-
-/**
  * Converts the value of an `StringBuilder` to a new `String`.
  * 
  * @param instance the `StringBuilder` instance.
@@ -106,6 +108,14 @@ Exception string_builder_clone(StringBuilder result, StringBuilder instance);
 String string_builder_to_string(StringBuilder instance);
 
 /**
+ * 
+ * @param item
+ * @param size
+ * @return 
+*/
+size_t string_builder_hash(Object item, size_t size);
+
+/**
  * Determines whether two `StringBuilders` represent the same string value.
  * 
  * @param left  a string builder to compare to `right`. 
@@ -113,7 +123,7 @@ String string_builder_to_string(StringBuilder instance);
  * @return `true` if the two string builders represent the same string values;
  *         otherwise, `false`.
 */
-bool string_builder_equals(StringBuilder left, StringBuilder right);
+bool string_builder_equals(Object left, Object right);
 
 /**
  * Frees all resources.

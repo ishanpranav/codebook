@@ -19,7 +19,7 @@ struct Lookup
     size_t capacity;
     size_t maxCollisions;
     double minLoadFactor;
-    bool exceedsMaxCollisions;
+    bool overflow;
 };
 
 /** Represents a collection of keys each mapped to one or more values. */
@@ -52,47 +52,7 @@ Exception lookup(
  * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
  *         the operation; otherwise `0`.
 */
-Exception lookup_from_lookup(Lookup result, Lookup instance);
-
-/**
- * Adds the specified key-value pair to the multimap.
- * 
- * @param instance the `Lookup` instance.
- * @param key      the key to add to the multimap.
- * @param value    the value to add to the multimap.
- * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
- *         the operation; otherwise `0`.
-*/
-Exception lookup_add(Lookup instance, Object key, Object value);
-
-/**
- * Retrieves the number of matching values for the given key.
- * 
- * @param instance the `Lookup` instance.
- * @param key      the key.
- * @return The number of values with the given key.
-*/
-size_t lookup_count(Lookup instance, Object key);
-
-/**
- * Adds the specified key-value pair to the multimap and retrieves the number
- * of matching values.
- * 
- * @param instance the `Lookup` instance.
- * @param key      the key to add to the multimap.
- * @param value    the value to add to the multimap.
- * @param matches  when this method returns, contains the total number of
- *                 elements with the given key, including the newly added value.
- *                 This argument is passed unitialized, or `NULL` if the value
- *                 will not be used.
- * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
- *         the operation; otherwise `0`.
-*/
-Exception lookup_add_count(
-    Lookup instance, 
-    Object key, 
-    Object value, 
-    size_t* result);
+Exception lookup_copy(Lookup result, Lookup instance);
 
 /**
  * Removes all elements from the multimap.

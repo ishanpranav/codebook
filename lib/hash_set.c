@@ -24,13 +24,13 @@ Exception hash_set(
     instance->itemHash = itemHash;
     instance->itemSize = itemSize;
     instance->count = 0;
-    instance->maxChainLength = 2;
+    instance->maxChainLength = 3;
     instance->minLoadFactor = 0;
 
     return 0;
 }
 
-Exception hash_set_from_hash_set(HashSet result, HashSet instance)
+Exception hash_set_copy(HashSet result, HashSet instance)
 {
     Exception ex = hash_set(
         result,
@@ -64,7 +64,7 @@ Exception hash_set_from_hash_set(HashSet result, HashSet instance)
 
     result->maxChainLength = instance->maxChainLength;
     result->minLoadFactor = instance->minLoadFactor;
-    
+
     return 0;
 }
 
@@ -121,11 +121,11 @@ Exception hash_set_add(HashSet instance, Object item, bool* added)
         *added = true;
     }
 
-    if (chainLength > instance->maxChainLength)
+    if (chainLength >= instance->maxChainLength)
     {
         struct HashSet clone;
 
-        if (hash_set_from_hash_set(&clone, instance) == 0)
+        if (hash_set_copy(&clone, instance) == 0)
         {
             finalize_hash_set(instance);
             memcpy(instance, &clone, sizeof clone);

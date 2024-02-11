@@ -1,10 +1,12 @@
 // Licensed under the MIT License.
 
+#include <assert.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "hash.h"
 #include "string_builder.h"
 
 Exception string_builder(StringBuilder instance, size_t capacity)
@@ -33,6 +35,24 @@ void string_builder_from_string(StringBuilder instance, String value)
     instance->buffer = value;
     instance->length = strlen(value);
     instance->capacity = 0;
+}
+
+Exception string_builder_copy(StringBuilder result, StringBuilder instance)
+{
+    result->buffer = malloc((instance->length + 1) * sizeof * result->buffer);
+
+    if (!result)
+    {
+        return EXCEPTION_OUT_OF_MEMORY;
+    }
+
+    memcpy(result->buffer, instance->buffer, instance->length);
+
+    result->buffer[instance->length] = '\0';
+    result->capacity = instance->length;
+    result->length = instance->length;
+
+    return 0;
 }
 
 Exception string_builder_ensure_capacity(
@@ -151,24 +171,6 @@ void string_builder_clear(StringBuilder instance)
     instance->length = 0;
 }
 
-Exception string_builder_clone(StringBuilder result, StringBuilder instance)
-{
-    result->buffer = malloc((instance->length + 1) * sizeof * result->buffer);
-
-    if (!result)
-    {
-        return EXCEPTION_OUT_OF_MEMORY;
-    }
-
-    memcpy(result->buffer, instance->buffer, instance->length);
-
-    result->buffer[instance->length] = '\0';
-    result->capacity = instance->length;
-    result->length = instance->length;
-
-    return 0;
-}
-
 String string_builder_to_string(StringBuilder instance)
 {
     String result = malloc((instance->length + 1) * sizeof * result);
@@ -185,14 +187,26 @@ String string_builder_to_string(StringBuilder instance)
     return result;
 }
 
-bool string_builder_equals(StringBuilder left, StringBuilder right)
+bool string_builder_equals(Object left, Object right)
 {
-    if (left->length != right->length)
+    StringBuilder p = left;
+    StringBuilder q = right;
+
+    if (p->length != q->length)
     {
         return false;
     }
 
-    return memcmp(left->buffer, right->buffer, left->length) == 0;
+    return memcmp(p->buffer, q->buffer, p->length) == 0;
+}
+
+size_t string_builder_hash(Object item, size_t size)
+{
+    assert(size == sizeof(struct StringBuilder));
+
+    StringBuilder p = item;
+
+    return djb2_hash(p->buffer, p->length);
 }
 
 void finalize_string_builder(StringBuilder instance)

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "hash_helpers.h"
-#include "lookup.h"
+#include "lookup_iterator.h"
 
 Exception lookup(
     Lookup instance,
@@ -26,9 +26,9 @@ Exception lookup(
     instance->keySize = keySize;
     instance->valueSize = valueSize;
     instance->count = 0;
-    instance->maxCollisions = 2;
+    instance->maxCollisions = SIZE_MAX;
     instance->minLoadFactor = 0;
-    instance->exceedsMaxCollisions = false;
+    instance->overflow = false;
 
     return 0;
 }
@@ -75,7 +75,7 @@ static Exception lookup_add_impl(
     return 0;
 }
 
-Exception lookup_from_lookup(Lookup result, Lookup instance)
+Exception lookup_copy(Lookup result, Lookup instance)
 {
     Exception ex = lookup(
         result,
@@ -92,14 +92,14 @@ Exception lookup_from_lookup(Lookup result, Lookup instance)
 
     result->maxCollisions = instance->maxCollisions;
     result->minLoadFactor = instance->minLoadFactor;
-    result->exceedsMaxCollisions = instance->exceedsMaxCollisions;
+    result->overflow = instance->overflow;
 
     for (size_t i = 0; i < instance->capacity; i++)
     {
         for (LookupEntry it = instance->entries[i]; it; it = it->next)
         {
             size_t hash = result->keyHash(it->key, instance->keySize);
-            
+
             hash %= result->capacity;
             ex = lookup_add_impl(result, it->key, it->value, hash);
 
@@ -117,14 +117,14 @@ Exception lookup_from_lookup(Lookup result, Lookup instance)
 
 static void lookup_rehash(Lookup instance)
 {
-    if (!instance->exceedsMaxCollisions)
+    if (!instance->overflow)
     {
         return;
     }
 
     struct Lookup clone;
 
-    if (lookup_from_lookup(&clone, instance) != 0)
+    if (lookup_copy(&clone, instance) != 0)
     {
         return;
     }
@@ -132,64 +132,14 @@ static void lookup_rehash(Lookup instance)
     finalize_lookup(instance);
     memcpy(instance, &clone, sizeof clone);
 
-    instance->exceedsMaxCollisions = false;
+    instance->overflow = false;
 }
 
-Exception lookup_add(Lookup instance, Object key, Object value)
-{
-    size_t hash = instance->keyHash(key, instance->keySize);
-    
-    hash %= instance->capacity;
-
-    Exception ex = lookup_add_impl(instance, key, value, hash);
-
-    if (ex)
-    {
-        return ex;
-    }
-
-    lookup_rehash(instance);
-
-    return 0;
-}
-
-static size_t lookup_count_impl(Lookup instance, Object key, size_t index)
-{
-    size_t result = 0;
-    size_t collisions = 0;
-
-    for (LookupEntry it = instance->entries[index]; it; it = it->next)
-    {
-        if (instance->keyEqualityComparer(it->key, key))
-        {
-            result++;
-        }
-        else
-        {
-            collisions++;
-        }
-    }
-
-    if (collisions > instance->maxCollisions)
-    {
-        instance->exceedsMaxCollisions = true;
-    }
-
-    return result;
-}
-
-size_t lookup_count(Lookup instance, Object key)
-{
-    size_t hash = instance->keyHash(key, instance->keySize);
-
-    return lookup_count_impl(instance, key, hash % instance->capacity);
-}
-
-Exception lookup_add_count(
+Exception lookup_add_begin(
     Lookup instance,
     Object key,
     Object value,
-    size_t* result)
+    LookupIterator iterator)
 {
     size_t hash = instance->keyHash(key, instance->keySize);
 
@@ -202,11 +152,48 @@ Exception lookup_add_count(
         return ex;
     }
 
-    *result = lookup_count_impl(instance, key, hash);
-
     lookup_rehash(instance);
-    
+
+    hash = instance->keyHash(key, instance->keySize) % instance->capacity;
+    iterator->key = key;
+    iterator->instance = instance;
+    iterator->current = instance->entries[hash];
+    iterator->collisions = 0;
+
     return 0;
+}
+
+bool lookup_end(LookupIterator iterator)
+{
+    if (!iterator->current)
+    {
+        if (iterator->collisions >= iterator->instance->maxCollisions)
+        {
+            iterator->instance->overflow = true;
+        }
+
+        return true;
+    }
+
+    return false;
+}
+
+void lookup_next(LookupIterator iterator)
+{
+    do
+    {
+        iterator->current = iterator->current->next;
+
+        if (!iterator->current || iterator->instance->keyEqualityComparer(
+            iterator->current->key,
+            iterator->key))
+        {
+            return;
+        }
+
+        iterator->collisions++;
+    }
+    while (iterator->current);
 }
 
 void lookup_clear(Lookup instance)
@@ -232,7 +219,7 @@ void lookup_clear(Lookup instance)
     instance->count = 0;
 }
 
-void finalize_hash_set(Lookup instance)
+void finalize_lookup(Lookup instance)
 {
     lookup_clear(instance);
     free(instance->entries);
@@ -245,5 +232,5 @@ void finalize_hash_set(Lookup instance)
     instance->capacity = 0;
     instance->maxCollisions = 0;
     instance->minLoadFactor = 0;
-    instance->exceedsMaxCollisions = false;
+    instance->overflow = false;
 }
