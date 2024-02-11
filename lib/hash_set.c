@@ -2,17 +2,8 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include "binary_search.h"
+#include "hash_helpers.h"
 #include "hash_set.h"
-
-/** See https://planetmath.org/goodhashtableprimes. */
-static size_t primes[] = 
-{
-    53, 97, 193, 389, 769, 1543, 3079, 6151, 12289, 24593, 49157l, 98317l,
-    196613l, 393241l, 786433l, 1572869l, 3145739l, 6291469l, 12582917l,
-    25165843l, 50331653l, 100663319l, 201326611l, 402653189l, 805306457l,
-    1610612741l
-};
 
 Exception hash_set(
     HashSet instance,
@@ -21,12 +12,8 @@ Exception hash_set(
     EqualityComparer itemEqualityComparer,
     Hash itemHash)
 {
-    if (capacity < primes[0])
-    {
-        capacity = primes[0];
-    }
-
-    instance->entries = calloc(capacity, sizeof * instance->entries);
+    instance->capacity = hash_helpers_min_capacity(capacity);
+    instance->entries = calloc(instance->capacity, sizeof * instance->entries);
 
     if (!instance->entries)
     {
@@ -37,7 +24,6 @@ Exception hash_set(
     instance->itemHash = itemHash;
     instance->itemSize = itemSize;
     instance->count = 0;
-    instance->capacity = capacity;
     instance->maxChainLength = 2;
     instance->minLoadFactor = 0;
 
@@ -45,29 +31,11 @@ Exception hash_set(
 }
 
 Exception hash_set_from_hash_set(HashSet result, HashSet instance)
-{   
-    size_t capacity = instance->capacity * 2;
-    size_t* prime = binary_search_first_after(
-        &capacity, 
-        primes, 
-        26,
-        sizeof * primes,
-        size_comparer);
-
-    if (prime && *prime > capacity)
-    {
-        capacity = *prime;
-    }
-
-    if (instance->count > capacity)
-    {
-        capacity = instance->count;
-    }
-
+{
     Exception ex = hash_set(
         result,
         instance->itemSize,
-        capacity,
+        hash_helpers_new_capacity(instance->count, instance->capacity),
         instance->itemEqualityComparer,
         instance->itemHash);
 
@@ -75,6 +43,9 @@ Exception hash_set_from_hash_set(HashSet result, HashSet instance)
     {
         return ex;
     }
+
+    result->maxChainLength = SIZE_MAX;
+    result->minLoadFactor = 0;
 
     for (size_t i = 0; i < instance->capacity; i++)
     {
@@ -91,6 +62,9 @@ Exception hash_set_from_hash_set(HashSet result, HashSet instance)
         }
     }
 
+    result->maxChainLength = instance->maxChainLength;
+    result->minLoadFactor = instance->minLoadFactor;
+    
     return 0;
 }
 
@@ -103,7 +77,7 @@ Exception hash_set_add(HashSet instance, Object item, bool* added)
     size_t chainLength = 0;
     HashSetEntry* p;
 
-    for (p = &instance->entries[hash]; *p; p = &(*p)->next)
+    for (p = instance->entries + hash; *p; p = &(*p)->next)
     {
         chainLength++;
 
@@ -210,4 +184,6 @@ void finalize_hash_set(HashSet instance)
     instance->entries = NULL;
     instance->itemSize = 0;
     instance->capacity = 0;
+    instance->maxChainLength = 0;
+    instance->minLoadFactor = 0;
 }

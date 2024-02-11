@@ -8,146 +8,146 @@
 #include "../lib/hash.h"
 #include "../lib/list.h"
 #include "../lib/string_builder.h"
-#define LOOKUP_BUCKETS 12289 // https://planetmath.org/goodhashtableprimes
+// #define LOOKUP_BUCKETS 12289 // https://planetmath.org/goodhashtableprimes
 
-struct LookupEntry
-{
-    struct LookupEntry* nextEntry;
-    struct StringBuilder key;
-    struct List values;
-};
+// struct LookupEntry
+// {
+//     struct LookupEntry* nextEntry;
+//     struct StringBuilder key;
+//     struct List values;
+// };
 
-struct LookupBucket
-{
-    struct LookupEntry* firstEntry;
-    struct LookupBucket* nextBucket;
-};
+// struct LookupBucket
+// {
+//     struct LookupEntry* firstEntry;
+//     struct LookupBucket* nextBucket;
+// };
 
-struct Lookup
-{
-    struct LookupBucket* buckets;
-    struct LookupBucket* firstBucket;
-    size_t count;
-    size_t bucketCount;
-    size_t usedBucketCount;
-};
+// struct Lookup
+// {
+//     struct LookupBucket* buckets;
+//     struct LookupBucket* firstBucket;
+//     size_t count;
+//     size_t bucketCount;
+//     size_t usedBucketCount;
+// };
 
-typedef struct LookupEntry* LookupEntry;
-typedef struct LookupBucket* LookupBucket;
-typedef struct Lookup* Lookup;
+// typedef struct LookupEntry* LookupEntry;
+// typedef struct LookupBucket* LookupBucket;
+// typedef struct Lookup* Lookup;
 
-Exception lookup(Lookup instance, size_t bucketCount)
-{
-    instance->buckets = malloc(bucketCount * sizeof * instance->buckets);
+// Exception lookup(Lookup instance, size_t bucketCount)
+// {
+//     instance->buckets = malloc(bucketCount * sizeof * instance->buckets);
 
-    if (!instance->buckets)
-    {
-        return EXCEPTION_OUT_OF_MEMORY;
-    }
+//     if (!instance->buckets)
+//     {
+//         return EXCEPTION_OUT_OF_MEMORY;
+//     }
 
-    instance->firstBucket = NULL;
-    instance->count = 0;
-    instance->bucketCount = bucketCount;
-    instance->usedBucketCount = 0;
+//     instance->firstBucket = NULL;
+//     instance->count = 0;
+//     instance->bucketCount = bucketCount;
+//     instance->usedBucketCount = 0;
 
-    for (size_t i = 0; i < bucketCount; i++)
-    {
-        instance->buckets[i].firstEntry = NULL;
-        instance->buckets[i].nextBucket = NULL;
-    }
+//     for (size_t i = 0; i < bucketCount; i++)
+//     {
+//         instance->buckets[i].firstEntry = NULL;
+//         instance->buckets[i].nextBucket = NULL;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
 
-Exception lookup_add(
-    Lookup instance,
-    StringBuilder key,
-    long long value,
-    List* values)
-{
-    LookupEntry* p;
-    size_t hash = sdbm_hash(key->buffer, key->length) % instance->bucketCount;
+// Exception lookup_add(
+//     Lookup instance,
+//     StringBuilder key,
+//     long long value,
+//     List* values)
+// {
+//     LookupEntry* p;
+//     size_t hash = sdbm_hash(key->buffer, key->length) % instance->bucketCount;
 
-    for (p = &instance->buckets[hash].firstEntry; *p; p = &(*p)->nextEntry)
-    {
-        if (string_builder_equals(&(*p)->key, key))
-        {
-            *values = &(*p)->values;
+//     for (p = &instance->buckets[hash].firstEntry; *p; p = &(*p)->nextEntry)
+//     {
+//         if (string_builder_equals(&(*p)->key, key))
+//         {
+//             *values = &(*p)->values;
 
-            return list_add(&(*p)->values, &value);
-        }
-    }
+//             return list_add(&(*p)->values, &value);
+//         }
+//     }
 
-    LookupEntry entry = malloc(sizeof * entry);
+//     LookupEntry entry = malloc(sizeof * entry);
 
-    if (!entry)
-    {
-        return EXCEPTION_OUT_OF_MEMORY;
-    }
+//     if (!entry)
+//     {
+//         return EXCEPTION_OUT_OF_MEMORY;
+//     }
 
-    Exception ex = list(&entry->values, sizeof(long long), 1);
+//     Exception ex = list(&entry->values, sizeof(long long), 1);
 
-    if (ex)
-    {
-        free(entry);
+//     if (ex)
+//     {
+//         free(entry);
 
-        return ex;
-    }
+//         return ex;
+//     }
 
-    list_add(&entry->values, &value);
+//     list_add(&entry->values, &value);
 
-    if (!instance->buckets[hash].firstEntry)
-    {
-        LookupBucket first = instance->firstBucket;
+//     if (!instance->buckets[hash].firstEntry)
+//     {
+//         LookupBucket first = instance->firstBucket;
 
-        instance->buckets[hash].nextBucket = first;
-        instance->firstBucket = instance->buckets + hash;
-        instance->usedBucketCount++;
-    }
+//         instance->buckets[hash].nextBucket = first;
+//         instance->firstBucket = instance->buckets + hash;
+//         instance->usedBucketCount++;
+//     }
 
-    string_builder_clone(&entry->key, key);
+//     string_builder_clone(&entry->key, key);
 
-    entry->nextEntry = NULL;
-    *p = entry;
-    instance->count++;
-    *values = &entry->values;
+//     entry->nextEntry = NULL;
+//     *p = entry;
+//     instance->count++;
+//     *values = &entry->values;
 
-    return 0;
-}
+//     return 0;
+// }
 
-void lookup_clear(Lookup instance)
-{
-    for (LookupBucket it = instance->firstBucket; it; it = it->nextBucket)
-    {
-        LookupEntry current = it->firstEntry;
+// void lookup_clear(Lookup instance)
+// {
+//     for (LookupBucket it = instance->firstBucket; it; it = it->nextBucket)
+//     {
+//         LookupEntry current = it->firstEntry;
 
-        while (current)
-        {
-            LookupEntry next = current->nextEntry;
+//         while (current)
+//         {
+//             LookupEntry next = current->nextEntry;
 
-            finalize_string_builder(&current->key);
-            finalize_list(&current->values);
-            free(current);
+//             finalize_string_builder(&current->key);
+//             finalize_list(&current->values);
+//             free(current);
 
-            current = next;
-        }
+//             current = next;
+//         }
 
-        it->firstEntry = NULL;
-    }
+//         it->firstEntry = NULL;
+//     }
 
-    instance->count = 0;
-    instance->usedBucketCount = 0;
-    instance->firstBucket = NULL;
-}
+//     instance->count = 0;
+//     instance->usedBucketCount = 0;
+//     instance->firstBucket = NULL;
+// }
 
-void finalize_lookup(Lookup instance)
-{
-    lookup_clear(instance);
-    free(instance->buckets);
+// void finalize_lookup(Lookup instance)
+// {
+//     lookup_clear(instance);
+//     free(instance->buckets);
 
-    instance->buckets = NULL;
-    instance->bucketCount = 0;
-}
+//     instance->buckets = NULL;
+//     instance->bucketCount = 0;
+// }
 
 static long long math_cubic_permutation(Lookup lookup)
 {

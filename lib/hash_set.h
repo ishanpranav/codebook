@@ -42,6 +42,15 @@ Exception hash_set(
     Hash itemHash);
 
 /**
+ * 
+ * @param result
+ * @param instance
+ * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
+ *         the operation; otherwise `0`.
+*/
+Exception hash_set_from_hash_set(HashSet result, HashSet instance);
+
+/**
  * Adds the specified element to the set.
  * 
  * @param instance the `HashSet` instance.
