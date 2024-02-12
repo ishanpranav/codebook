@@ -202,7 +202,7 @@ bool string_builder_equals(Object left, Object right)
 
 size_t string_builder_hash(Object item, size_t size)
 {
-    assert(size == sizeof(struct StringBuilder));
+    assert(size == sizeof(StringBuilder));
 
     StringBuilder p = item;
 

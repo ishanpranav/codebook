@@ -115,11 +115,11 @@ Exception lookup_copy(Lookup result, Lookup instance)
     return 0;
 }
 
-static void lookup_rehash(Lookup instance)
+static bool lookup_rehash(Lookup instance)
 {
     if (!instance->overflow)
     {
-        return;
+        return false;
     }
 
     struct Lookup clone;
@@ -133,6 +133,15 @@ static void lookup_rehash(Lookup instance)
     memcpy(instance, &clone, sizeof clone);
 
     instance->overflow = false;
+
+    return true;
+}
+
+Exception lookup_add(Lookup instance, Object key, Object value)
+{
+    size_t hash = instance->keyHash(key, instance->keySize);
+
+    return lookup_add_impl(instance, key, value, hash % instance->capacity);
 }
 
 Exception lookup_add_begin(
@@ -152,9 +161,11 @@ Exception lookup_add_begin(
         return ex;
     }
 
-    lookup_rehash(instance);
+    if (lookup_rehash(instance))
+    {
+        hash = instance->keyHash(key, instance->keySize) % instance->capacity;
+    }
 
-    hash = instance->keyHash(key, instance->keySize) % instance->capacity;
     iterator->key = key;
     iterator->instance = instance;
     iterator->current = instance->entries[hash];

@@ -58,6 +58,17 @@ Exception lookup(
 Exception lookup_copy(Lookup result, Lookup instance);
 
 /**
+ * Adds the specified key-value pair to the multimap.
+ *
+ * @param instance the `Lookup` instance.
+ * @param key      the key to add to the multimap.
+ * @param value    the value to add to the multimap.
+ * @return `EXCEPTION_OUT_OF_MEMORY` if there is not enough memory to complete
+ *         the operation; otherwise `0`.
+*/
+Exception lookup_add(Lookup instance, Object key, Object value);
+
+/**
  * Removes all elements from the multimap.
  * 
  * @param instance the `Lookup` instance.

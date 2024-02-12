@@ -24,6 +24,7 @@ static long long math_cubic_permutation(Lookup lookup)
 
         string_builder_clear(&keyBuilder);
         euler_ok(string_builder_append_format(&keyBuilder, "%lld", cb));
+        string_builder_sort(&keyBuilder);
         qsort(keyBuilder.buffer, keyBuilder.length, 1, char_comparer);
         euler_ok(string_builder_copy(&key, &keyBuilder));
         euler_ok(lookup_add_begin(lookup, &key, &cb, &it));
