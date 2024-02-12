@@ -25,7 +25,6 @@ int main(void)
     euler_ok(sieve(&primes, max));
     euler_ok(string_builder(&nDigits, 0));
     euler_ok(string_builder(&phiDigits, 0));
-
     sieve_begin(&p, &primes);
 
     for (sieve_jump(&p, min); p.current < max; sieve_next(&p))

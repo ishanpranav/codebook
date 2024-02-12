@@ -7,15 +7,6 @@
 typedef long long (*Random)(void* instance, long long max);
 
 /**
- * Generates a random integer in the interval [0, `min(max, RAND_MAX)`].
- * 
- * @param instance the instance.
- * @param max      the exclusive upper bound of the generated integer.
- * @return A random integer in the interval [0, `min(max, RAND_MAX)`).
-*/
-long long random(Object instance, long long max);
-
-/**
  * Generates a random integer in the interval [0, `max`) using Blackman and
  * Vigna's xoshiro256** (exclusive or-shift-rotate, 256-bit) algorithm.
  * 

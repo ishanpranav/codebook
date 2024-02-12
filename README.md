@@ -134,7 +134,6 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  29  |                   [Divide Two Integers](src/lc0029.c)                    |  Mathematics  |       Quotient       |                       |
 |  31  |                     [Next Permutation](src/lc0031.c)                     |     Array     |     Permutation      | `PermutationIterator` |
 |  46  |                       [Permutations](src/lc0046.c)                       |     Array     |     Permutation      | `PermutationIterator` |
-| 49 | [Group Anagrams](src/lc0049.c) | Combinatorics | Sort | `Lookup` |
 |  50  |                        [Pow(x, n)](src/lc0050.c)                         |  Mathematics  |        Power         | `pow`                 |
 |  60  |                   [Permutation Sequence](src/lc0060.c)                   |  Mathematics  |     Permutation      | `PermutationIterator` |
 |  62  |                       [Unique Paths](src/lc0062.c)                       | Combinatorics | Binomial coefficient | `binomial`            |
