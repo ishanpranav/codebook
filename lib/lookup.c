@@ -126,7 +126,7 @@ static bool lookup_rehash(Lookup instance)
 
     if (lookup_copy(&clone, instance) != 0)
     {
-        return;
+        return false;
     }
 
     finalize_lookup(instance);
