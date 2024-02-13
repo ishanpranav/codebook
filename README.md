@@ -121,6 +121,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 85  | [Counting Rectangles](src/id0085.c)  |   Geometry   |     Area     |                                                                                                      |
 | 86 | [Cuboid Route](src/id0086.c) | Geometry | Minimum | |
 | 87 | [Prime Power Triples](src/id0087.c) | Number theory | Count | [Hash set](https://en.wikipedia.org/wiki/Hash_table) |
+| 89 | [Roman Numerals](src/id0089.c) | Numeral systems | Difference | [Roman numerals](https://en.wikipedia.org/wiki/Roman_numerals) |
 
 ## LeetCode
 

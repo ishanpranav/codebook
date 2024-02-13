@@ -72,7 +72,7 @@ cat ../data/id0081.txt | $run ./../id0081
 cat ../data/id0081.txt | $run ./../id0082
 cat ../data/id0081.txt | $run ./../id0083
 
-for i in {0084..0090};
+for i in {0084..0088};
 do
     $run ./../id${i}
 done

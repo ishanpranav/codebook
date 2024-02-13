@@ -65,7 +65,7 @@ Get-Content '../data/id0081.txt' | ./../id0081.exe
 Get-Content '../data/id0081.txt' | ./../id0082.exe
 Get-Content '../data/id0081.txt' | ./../id0083.exe
 
-for ($i = 84; $i -le 90; $i++)
+for ($i = 84; $i -le 88; $i++)
 {
     Invoke-Expression "./../id00${i}.exe"
 }

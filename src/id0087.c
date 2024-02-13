@@ -50,5 +50,5 @@ int main(void)
     finalize_hash_set(&sums);
     finalize_sieve(&primes);
 
-    return euler_submit(86, count, start);
+    return euler_submit(87, count, start);
 }
