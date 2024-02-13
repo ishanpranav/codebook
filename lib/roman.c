@@ -1,6 +1,7 @@
 // Licensed under the MIT License.
 
 #include <stdint.h>
+#include <string.h>
 #include "roman.h"
 #define KEYS 13
 
@@ -55,6 +56,19 @@ int roman_from_string_builder(StringBuilder value)
         {
             result += current;
         }
+    }
+
+    return result;
+}
+
+size_t roman_length(int value)
+{
+    size_t result = 0;
+
+    for (int i = 0; i < KEYS; i++)
+    {
+        result += (value / values[i]) * strlen(romans[i]);
+        value %= values[i];
     }
 
     return result;

@@ -7,15 +7,21 @@
 
 int main(void)
 {
-    long sum = 0;
+    char buffer[32];
+    int difference = 0;
     clock_t start = clock();
-    struct StringBuilder result;
 
-    roman_to_string_builder(&result, 16);
-    printf("%s\n", result.buffer);
-    finalize_string_builder(&result);
-    string_builder_from_string(&result, "XVI");
-    printf("%d\n", roman_from_string_builder(&result));
+    while (fgets(buffer, sizeof buffer, stdin))
+    {
+        struct StringBuilder builder;
 
-    return euler_submit(89, sum, start);
+        string_builder_from_string(&builder, buffer);
+        string_builder_trim_end(&builder);
+
+        int roman = roman_from_string_builder(&builder);
+
+        difference += builder.length - roman_length(roman);
+    }
+
+    return euler_submit(89, difference, start);
 }

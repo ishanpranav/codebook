@@ -1,6 +1,7 @@
 // Licensed under the MIT License.
 
 #include <assert.h>
+#include <ctype.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -164,6 +165,18 @@ Exception string_builder_append_format(
     instance->length += size;
 
     return 0;
+}
+
+void string_builder_trim_end(StringBuilder instance)
+{
+    for (size_t i = instance->length - 1; i != SIZE_MAX; i--)
+    {
+        if (isspace(instance->buffer[i]))
+        {
+            instance->buffer[i] = '\0';
+            instance->length--;
+        }
+    }
 }
 
 void string_builder_clear(StringBuilder instance)

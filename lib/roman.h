@@ -18,6 +18,13 @@ int roman_from_string_builder(StringBuilder value);
 
 /**
  * 
+ * @param value
+ * @return
+*/
+size_t roman_length(int value);
+
+/**
+ * 
  * @param result
  * @param value
  * @return 
