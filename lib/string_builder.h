@@ -98,7 +98,7 @@ Exception string_builder_append_format(
  * 
  * @param instance
 */
-void string_builder_trim_end(StringBuilder instance);
+void string_builder_trim_right(StringBuilder instance);
 
 /**
  * Removes all characters from this instance.

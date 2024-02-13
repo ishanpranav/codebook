@@ -167,7 +167,7 @@ Exception string_builder_append_format(
     return 0;
 }
 
-void string_builder_trim_end(StringBuilder instance)
+void string_builder_trim_right(StringBuilder instance)
 {
     for (size_t i = instance->length - 1; i != SIZE_MAX; i--)
     {

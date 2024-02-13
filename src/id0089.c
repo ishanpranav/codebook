@@ -16,7 +16,7 @@ int main(void)
         struct StringBuilder builder;
 
         string_builder_from_string(&builder, buffer);
-        string_builder_trim_end(&builder);
+        string_builder_trim_right(&builder);
 
         int roman = roman_from_string_builder(&builder);
 
