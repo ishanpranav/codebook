@@ -130,6 +130,8 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  7   |                     [Reverse Integer](src/lc0007.c)                      |  Mathematics  |       Integer        | `math_reverse`        |
 |  8   |                    [String to Integer](src/lc0008.c)                     |    Strings    |       Integer        | `atoll`               |
 |  9   |                    [Palindrome Number](src/lc0009.c)                     |  Mathematics  |       Boolean        | `math_is_palindrome`  |
+| 12 | [Integer to Roman](src/lc0012.c) | String | Mathematics | `roman_to_string_builder` |
+| 13 | [Roman to Integer](src/lc0013.c) | Mathematics | Integer | `roman_from_string_builder` |
 |  23  |                   [Merge k Sorted Lists](src/lc0023.c)                   | Linked Lists  |     Linked List      | `PriorityQueue`       |
 |  28  |    [Find the Index of the First Occurrence in a String](src/lc0028.c)    |    Strings    |        Index         | `strstr`              |
 |  29  |                   [Divide Two Integers](src/lc0029.c)                    |  Mathematics  |       Quotient       |                       |
