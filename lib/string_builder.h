@@ -95,8 +95,10 @@ Exception string_builder_append_format(
     ...);
 
 /**
+ * Removes all the trailing white-space characters from the current string
+ * builder.
  * 
- * @param instance
+ * @param instance the `StringBuilder` instance.
 */
 void string_builder_trim_right(StringBuilder instance);
 
