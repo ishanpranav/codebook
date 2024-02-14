@@ -122,6 +122,8 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 86 | [Cuboid Route](src/id0086.c) | Geometry | Minimum | |
 | 87 | [Prime Power Triples](src/id0087.c) | Number theory | Count | [Hash set](https://en.wikipedia.org/wiki/Hash_table) |
 | 89 | [Roman Numerals](src/id0089.c) | Numeral systems | Difference | [Roman numerals](https://en.wikipedia.org/wiki/Roman_numerals) |
+| 91 | [Right Triangles with Integer Coordinates](src/id0091.c) | Geometry | Count | |
+| 92 | [Square Digit Chains](src/id0092.c) | Number theory | Count | |
 
 ## LeetCode
 
@@ -142,6 +144,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  62  |                       [Unique Paths](src/lc0062.c)                       | Combinatorics | Binomial coefficient | `binomial`            |
 |  69  |                         [Sqrt(x)](src/lc0069.c)                          |  Mathematics  |     Square root      | `sqrt`                |
 |  75  |                       [Sort Colors](src/lc0075.c)                        |    Sorting    |         Sort         | `qsort`               |
+| 273 | [Integer to English Words](src/lc0273.c) | Mathematics | String | `words_to_string` |
 | 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `math_is_polygonal`   |
 | 2119 |             [A Number After a Double Reversal](src/lc2119.c)             |  Mathematics  |       Boolean        | `math_reverse`        |
 | 2400 | [Number of Ways to Reach a Position After Exactly k Steps](src/lc2400.c) | Combinatorics | Binomial coefficient | `mod_binomial_range`            |
