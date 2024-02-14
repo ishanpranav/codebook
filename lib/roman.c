@@ -76,7 +76,7 @@ size_t roman_length(int value)
 
 Exception roman_to_string_builder(StringBuilder result, int value)
 {
-    Exception ex = string_builder(result, 32);
+    Exception ex = string_builder(result, 0);
 
     if (ex)
     {
