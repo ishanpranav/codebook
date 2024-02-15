@@ -1,3 +1,7 @@
+// Licensed under the MIT License.
+
+// Arithmetic Expressions
+
 #include "../lib/combination_iterator.h"
 #include "../lib/euler.h"
 
