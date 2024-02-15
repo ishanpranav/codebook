@@ -30,6 +30,8 @@ int** permute(int items[], int length, int* returnSize, int** returnColumnSizes)
     *returnSize = results.count;
     *returnColumnSizes = malloc(results.count * sizeof ** returnColumnSizes);
     
+    euler_assert(*returnColumnSizes);
+
     for (size_t i = 0; i < results.count; i++)
     {
         returnColumnSizes[0][i] = length;

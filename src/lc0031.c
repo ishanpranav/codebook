@@ -15,7 +15,5 @@ void nextPermutation(int items[], int length)
     if (it.end)
     {
         qsort(items, length, sizeof * items, int_comparer);
-
-        return;
     }
 }

@@ -26,7 +26,7 @@ size_t hash_helpers_new_capacity(size_t count, size_t capacity)
 {
     capacity *= 2;
 
-    size_t* prime = binary_search_first_after(
+    size_t* prime = binary_search_min(
         &capacity, 
         primes, 
         26,

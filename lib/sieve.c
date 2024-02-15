@@ -139,7 +139,7 @@ void sieve_jump(SieveIterator iterator, long long min)
 
     if (iterator->values->max > min)
     {
-        long long* prime = binary_search_first_after(
+        long long* prime = binary_search_min(
             &min,
             primes,
             iterator->values->primes.count,

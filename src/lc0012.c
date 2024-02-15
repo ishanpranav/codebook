@@ -8,7 +8,7 @@ String intToRoman(int value)
 {
     struct StringBuilder result;
 
-    roman_to_string_builder(&result, value);
+    euler_ok(roman_to_string_builder(&result, value));
 
     return result.buffer;
 }

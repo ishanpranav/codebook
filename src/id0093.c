@@ -8,7 +8,7 @@
 int main(void)
 {
     struct CombinationIterator it;
-    size_t subset[2];
+    int subset[2];
 
     for (combination_begin(&it, subset, 4, 2); !it.end; combination_next(&it))
     {

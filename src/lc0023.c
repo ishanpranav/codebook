@@ -11,6 +11,9 @@ struct ListNode
     struct ListNode* next;
 };
 
+bool lazy;
+struct PriorityQueue priorityQueue;
+
 static int list_node_comparer(const void* left, const void* right)
 {
     const struct ListNode* p = *(const struct ListNode**)left;
@@ -26,14 +29,21 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
         return NULL;
     }
 
-    struct PriorityQueue priorityQueue;
+    if (lazy)
+    {
+        priority_queue_clear(&priorityQueue);
+    }
+    else
+    {
+        euler_ok(priority_queue(
+            &priorityQueue,
+            0,
+            sizeof(struct ListNode*),
+            listsSize,
+            list_node_comparer));
 
-    euler_ok(priority_queue(
-        &priorityQueue,
-        0,
-        sizeof(struct ListNode*),
-        listsSize,
-        list_node_comparer));
+        lazy = true;
+    }
 
     int out;
     struct ListNode head =
@@ -63,4 +73,9 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
     }
 
     return head.next;
+}
+
+void finalize()
+{
+    finalize_priority_queue(&priorityQueue);
 }
