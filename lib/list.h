@@ -64,13 +64,6 @@ Exception list_ensure_capacity(List instance, size_t capacity);
 bool list_contains(List instance, Object item, EqualityComparer itemComparer);
 
 /**
- * Removes all elements from the list.
- * 
- * @param instance the `List` instance.
-*/
-void list_clear(List instance);
-
-/**
  * Reverses the order of the elements in the list.
  * 
  * @param instance the `List` instance.
@@ -87,6 +80,13 @@ void list_reverse(List instance);
  *         elements are equal; otherwise, `false`.
 */
 bool list_sequence_equal(List left, List right, EqualityComparer itemComparer);
+
+/**
+ * Removes all elements from the list.
+ * 
+ * @param instance the `List` instance.
+*/
+void list_clear(List instance);
 
 /**
  * Frees all resources.

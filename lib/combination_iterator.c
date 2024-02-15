@@ -16,7 +16,7 @@ void combination_begin(
     iterator->n = n;
     iterator->end = false;
 
-    for (size_t i = 0; i < iterator->k; i++)
+    for (int i = 0; i < iterator->k; i++)
     {
         iterator->subset[i] = 0;
     }

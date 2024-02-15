@@ -1,5 +1,6 @@
 // Licensed under the MIT License.
 
+#include <stddef.h>
 #include "comparer.h"
 #include "exception.h"
 #include "object.h"
@@ -89,6 +90,13 @@ bool priority_queue_try_dequeue(
     PriorityQueue instance, 
     Object item, 
     Object priority);
+
+/**
+ * Removes all elements from the priority queue.
+ * 
+ * @param instance the `PriorityQueue` instance.
+*/
+void priority_queue_clear(PriorityQueue instance);
 
 /**
  * Frees all resources.

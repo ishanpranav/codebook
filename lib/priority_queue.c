@@ -193,8 +193,14 @@ bool priority_queue_try_dequeue(
     return true;
 }
 
+void priority_queue_clear(PriorityQueue instance)
+{
+    instance->count = 0;
+}
+
 void finalize_priority_queue(PriorityQueue instance)
 {
+    priority_queue_clear(instance);
     free(instance->items);
     free(instance->priorities);
 
@@ -202,7 +208,6 @@ void finalize_priority_queue(PriorityQueue instance)
     instance->itemSize = 0;
     instance->priorities = NULL;
     instance->prioritySize = 0;
-    instance->count = 0;
     instance->capacity = 0;
     instance->priorityComparer = NULL;
 }

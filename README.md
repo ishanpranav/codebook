@@ -145,6 +145,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  69  |                         [Sqrt(x)](src/lc0069.c)                          |  Mathematics  |     Square root      | `sqrt`                |
 |  75  |                       [Sort Colors](src/lc0075.c)                        |    Sorting    |         Sort         | `qsort`               |
 | 77 | [Combinations](src/lc0077.c) | Backtracking | Matrix | `CombinationIterator` |
+| 204 | [Count Primes](src/lc0204.c) | Mathematics | Count | `Sieve`, `binary_search_rank` |
 | 273 | [Integer to English Words](src/lc0273.c) | Mathematics | String | `words_to_string` |
 | 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `math_is_polygonal`   |
 | 744 | [Find Smallest Letter Greater Than Target](src/lc0744.c) | Binary search | Character | `binary_search_min` |

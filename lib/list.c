@@ -93,11 +93,6 @@ bool list_contains(List instance, Object item, EqualityComparer itemComparer)
     return false;
 }
 
-void list_clear(List instance)
-{
-    instance->count = 0;
-}
-
 void list_reverse(List instance)
 {
     if (!instance->count)
@@ -148,12 +143,17 @@ bool list_sequence_equal(List left, List right, EqualityComparer itemComparer)
     return true;
 }
 
+void list_clear(List instance)
+{
+    instance->count = 0;
+}
+
 void finalize_list(List instance)
 {
+    list_clear(instance);
     free(instance->items);
 
     instance->items = NULL;
     instance->itemSize = 0;
-    instance->count = 0;
     instance->capacity = 0;
 }

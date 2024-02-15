@@ -75,7 +75,7 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize)
     return head.next;
 }
 
-void finalize()
+void finalizeMergeKLists()
 {
     finalize_priority_queue(&priorityQueue);
 }
