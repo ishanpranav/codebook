@@ -68,3 +68,16 @@ int factor_divisor_sum(long long n, Sieve primes)
     
     return result;
 }
+
+int factor_sum(long long n, Sieve primes)
+{
+    long long sum = 0;
+    struct FactorIterator it;
+
+    for (factor_begin(&it, n, primes); !factor_end(&it); factor_next(&it))
+    {
+        sum += it.exponent * it.current;
+    }
+
+    return sum;
+}

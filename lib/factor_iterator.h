@@ -58,3 +58,12 @@ int factor_divisor_count(long long n, Sieve primes);
  * @return The sum of the divisors of `n`.
 */
 int factor_divisor_sum(long long n, Sieve primes);
+
+/**
+ * Computes the sum of the prime factors of an integer.
+ * 
+ * @param n      the number whose prime factors to sum.
+ * @param primes the prime sequence.
+ * @return The sum of the prime factors of `n`.
+*/
+int factor_sum(long long n, Sieve primes);
