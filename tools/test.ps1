@@ -69,3 +69,10 @@ for ($i = 84; $i -le 88; $i++)
 {
     Invoke-Expression "./../id00${i}.exe"
 }
+
+./../id0089.exe
+
+for ($i = 91; $i -le 92; $i++)
+{
+    Invoke-Expression "./../id00${i}.exe"
+}

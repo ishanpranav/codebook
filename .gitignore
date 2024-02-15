@@ -1,6 +1,7 @@
 # Licensed under the MIT License.
 
 a.out
+a.py
 *.exe
 *.a
 *.lib

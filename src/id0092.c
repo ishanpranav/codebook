@@ -41,7 +41,7 @@ int main(void)
     int results[568] = { 0 };
     clock_t start = clock();
 
-    for (long m = 1; m < 568; m++)
+    for (int m = 1; m < 568; m++)
     {
         results[m] = math_square_digit_chain(m, results);
 
@@ -51,7 +51,7 @@ int main(void)
         }
     }
 
-    for (long m = 1; m < 10000000l; m++)
+    for (long m = 568; m < 10000000l; m++)
     {
         long n = math_square_digit_chain(m, results);
 

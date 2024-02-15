@@ -49,10 +49,10 @@ is impractical, use numeric suffixes instead.
 |  `b`   | blue color component, boundary points in Pick\'s Theorem                                     |
 |  `cb`  | cube                                                                                         |
 |  `d`   | divisor                                                                                      |
+|  `dx`  | change in an arbitrary dimension                                                             |
 |  `e`   | arbitrary edge                                                                               |
 |  `ef`  | even Fibonacci number                                                                        |
 |  `f`   | Fibonacci number                                                                             |
-|  `dx`  | change in an arbitrary dimension                                                             |
 |  `g`   | green color component, arbitrary graph                                                       |
 |  `h`   | row offset, horizontal offset                                                                |
 |  `hi`  | larger pointer, point above, upper buffer                                                    |

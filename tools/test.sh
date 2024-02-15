@@ -76,3 +76,10 @@ for i in {0084..0088};
 do
     $run ./../id${i}
 done
+
+$run ./../id0089
+
+for i in {0091..0092};
+do
+    $run ./../id${i}
+done
