@@ -24,11 +24,5 @@ int main(void)
         difference += builder.length - roman_length(roman);
     }
 
-    String res = words_to_string(1234567);
-
-    euler_assert(res);
-    printf("%s.\n", res);
-    free(res);
-
     return euler_submit(89, difference, start);
 }
