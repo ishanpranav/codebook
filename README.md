@@ -147,15 +147,17 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 77 | [Combinations](src/lc0077.c) | Backtracking | Matrix | `CombinationIterator` |
 | 202 | [Happy Number](src/lc0202.c) | Mathematics | Boolean | `SquareDigitChain` |
 | 204 | [Count Primes](src/lc0204.c) | Mathematics | Count | `Sieve`, `binary_search_rank` |
-| 258 | [Add Digits](src/lc0258.c) | Mathematics | Sum | |
+| 258 | [Add Digits](src/lc0258.c) | Mathematics | Digital root | |
 | 263 | [Ugly Number](src/lc0263.c) | Mathematics | Boolean | |
 | 273 | [Integer to English Words](src/lc0273.c) | Mathematics | String | `words_to_string` |
 | 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `math_is_polygonal`   |
-| 650 | [2 Keys Keyboard](src/lc0650.c) | Mathematics | Sum | `Sieve`, `factor_sum` | 
+| 650 | [2 Keys Keyboard](src/lc0650.c) | Mathematics | Sum | `Sieve`, `factor_sum` |
 | 744 | [Find Smallest Letter Greater Than Target](src/lc0744.c) | Binary search | Character | `binary_search_min` |
 | 2119 |             [A Number After a Double Reversal](src/lc2119.c)             |  Mathematics  |       Boolean        | `math_reverse`        |
 | 2400 | [Number of Ways to Reach a Position After Exactly k Steps](src/lc2400.c) | Combinatorics | Binomial coefficient | `mod_binomial_range`            |
+| 2427 | [Number of Common Factors](src/lc2427.c) | Mathematics | Count | `gcd` |
 | 2507 | [Smallest Value After Replacing With Sum of Prime Factors](src/lc2507.c) | Mathematics | Minimum | `Sieve`, `factor_sum` |
+| 2520 | [Count the Digits That Divide a Number](src/lc2520.c) | Mathematics | Count | |
 | 2521 | [Distinct Prime Factors of a Product Array](src/lc2521.c) | Mathematics | Count |  `FactorIterator`, `Sieve` |
 | 2544 | [Alternating Digit Sum](src/lc2544.c) | Mathematics | Sum | |
 | 2550 |                       [Monkey Move](src/lc2550.c)                        | Combinatorics |        Power         | `mod_pow`             |
