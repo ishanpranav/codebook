@@ -157,4 +157,5 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 2400 | [Number of Ways to Reach a Position After Exactly k Steps](src/lc2400.c) | Combinatorics | Binomial coefficient | `mod_binomial_range`            |
 | 2507 | [Smallest Value After Replacing With Sum of Prime Factors](src/lc2507.c) | Mathematics | Minimum | `Sieve`, `factor_sum` |
 | 2521 | [Distinct Prime Factors of a Product Array](src/lc2521.c) | Mathematics | Count |  `FactorIterator`, `Sieve` |
+| 2544 | [Alternating Digit Sum](src/lc2544.c) | Mathematics | Sum | |
 | 2550 |                       [Monkey Move](src/lc2550.c)                        | Combinatorics |        Power         | `mod_pow`             |
