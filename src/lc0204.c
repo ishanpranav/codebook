@@ -18,7 +18,7 @@ int countPrimes(int n)
 
     if (!lazy)
     {
-        euler_ok(sieve(&primes, 5000000));
+        euler_ok(sieve(&primes, 5000000l));
 
         lazy = true;
     }

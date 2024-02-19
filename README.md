@@ -147,6 +147,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 | 77 | [Combinations](src/lc0077.c) | Backtracking | Matrix | `CombinationIterator` |
 | 202 | [Happy Number](src/lc0202.c) | Mathematics | Boolean | `SquareDigitChain` |
 | 204 | [Count Primes](src/lc0204.c) | Mathematics | Count | `Sieve`, `binary_search_rank` |
+| 258 | [Add Digits](src/lc0258.c) | Mathematics | Sum | |
 | 263 | [Ugly Number](src/lc0263.c) | Mathematics | Boolean | |
 | 273 | [Integer to English Words](src/lc0273.c) | Mathematics | String | `words_to_string` |
 | 367  |                   [Valid Perfect Square](src/lc0367.c)                   |  Mathematics  |       Boolean        | `math_is_polygonal`   |
