@@ -4,7 +4,6 @@
 
 #include <gmp.h>
 #include "../lib/euler.h"
-#include "../lib/exception.h"
 #include "../lib/series.h"
 
 int main(void)

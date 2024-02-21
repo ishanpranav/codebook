@@ -3,7 +3,6 @@
 // Counting Fractions
 
 #include "../lib/euler.h"
-#include "../lib/exception.h"
 
 long long math_summatory_totient(long max)
 {

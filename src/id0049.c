@@ -7,7 +7,7 @@
 #include "../lib/permutation_iterator.h"
 #include "../lib/sieve.h"
 
-static Exception math_prime_permutation(
+static void math_prime_permutation(
     Sieve primes,
     StringBuilder aDigits,
     StringBuilder bDigits,
@@ -60,8 +60,6 @@ static Exception math_prime_permutation(
 
         *result = a * 100000000ll + b * 10000 + c;
     }
-
-    return 0;
 }
 
 int main(void)
@@ -77,18 +75,15 @@ int main(void)
     euler_ok(string_builder(&a, 0));
     euler_ok(string_builder(&b, 0));
     euler_ok(string_builder(&c, 0));
-    euler_ok(math_prime_permutation(&primes, &a, &b, &c, 2, 1487, &result));
+    
+    math_prime_permutation(&primes, &a, &b, &c, 2, 1487, &result);
 
     if (result < 0)
     {
         long long* begin = primes.primes.items;
         int last = begin[primes.primes.count - 1];
 
-        Exception ex;
-        
-        ex = math_prime_permutation(&primes, &a, &b, &c, 1488, last, &result);
-
-        euler_ok(ex);
+        math_prime_permutation(&primes, &a, &b, &c, 1488, last, &result);
     }
 
     finalize_string_builder(&a);

@@ -3,7 +3,6 @@
 // Amicable Numbers
 
 #include "../lib/euler.h"
-#include "../lib/exception.h"
 #include "../lib/factor_iterator.h"
 
 int main(void)

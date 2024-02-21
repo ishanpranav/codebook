@@ -3,7 +3,6 @@
 // Digit Factorials
 
 #include "../lib/euler.h"
-#include "../lib/exception.h"
 #include "../lib/factorial.h"
 
 int main(void)

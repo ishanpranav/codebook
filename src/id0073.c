@@ -3,7 +3,6 @@
 // Counting Fractions in a Range
 
 #include "../lib/euler.h"
-#include "../lib/exception.h"
 
 long math_farey_count(int maxD, int n, int d)
 {
