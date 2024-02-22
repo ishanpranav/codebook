@@ -145,6 +145,7 @@ which is licensed under the GNU Lesser General Public License v3.0 (`LGPL-3.0`).
 |  69  |                         [Sqrt(x)](src/lc0069.c)                          |  Mathematics  |     Square root      | `sqrt`                |
 |  75  |                       [Sort Colors](src/lc0075.c)                        |    Sorting    |         Sort         | `qsort`               |
 | 77 | [Combinations](src/lc0077.c) | Backtracking | Matrix | `CombinationIterator` |
+| 150 | [Evaluate Reverse Polish Notation](src/lc0150.c) | Mathematics | Integer | `rpn_evaluate` |
 | 202 | [Happy Number](src/lc0202.c) | Mathematics | Boolean | `SquareDigitChain` |
 | 204 | [Count Primes](src/lc0204.c) | Mathematics | Count | `Sieve`, `binary_search_rank` |
 | 258 | [Add Digits](src/lc0258.c) | Mathematics | Digital root | |
