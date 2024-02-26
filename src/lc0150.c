@@ -6,5 +6,13 @@
 
 int evalRPN(String tokens[], int tokensSize) 
 {
-    return rpn_evaluate(tokens, tokensSize);
+    struct Rpn rpn =
+    {
+        .add = operator_add,
+        .subtract = ,
+        .multiply = rpn_multiply,
+        .divide = rpn_div
+    };
+
+    return rpn_evaluate(&rpn, tokens, tokensSize);
 }
