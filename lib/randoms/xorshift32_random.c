@@ -19,3 +19,13 @@ uint32_t xorshift32_random32(Object instance)
 
     return x;
 }
+
+uint64_t xorshift32_random64(Object instance)
+{
+    uint64_t a = xorshift32_random32(instance) & 0xfffful;
+    uint64_t b = xorshift32_random32(instance) & 0xfffful;
+    uint64_t c = xorshift32_random32(instance) & 0xfffful;
+    uint64_t d = xorshift32_random32(instance) & 0xfffful;
+
+    return a | (b << 16) | (c << 32) | (d << 48);
+}
