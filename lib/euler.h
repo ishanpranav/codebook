@@ -39,7 +39,7 @@ typedef char* String;
 
 /**
  * Initializes a new `String` instance with the given length.
- * 
+ *
  * @param length the string length.
  * @return A new string with the given length, or `NULL` if the process is out
  *         of memory. The caller is responsible.
@@ -47,9 +47,18 @@ typedef char* String;
 String string(size_t length);
 
 /**
+ * Determines whether the beginning of this string instance matches the
+ * specified string.
+ *
+ * @param instance the string instance.
+ * @param value    the string to compare.
+*/
+bool string_starts_with(String instance, String value);
+
+/**
  * Creates a new instance of `String` with the same value as a specified
  * `String`.
- * 
+ *
  * @param instance the `String` instance to copy.
  * @return A new string with the same value, or `NULL` if the process is out of
  *         memory. The caller is responsible.
@@ -60,10 +69,10 @@ String string_clone(String instance);
  * Compares `left` with `right` and returns an integer that indicates whether
  * `left` precedes, follows, or appears in the same position in the sort order
  * as `right`.
- * 
+ *
  * @param left  a string to compare to `right`.
  * @param right a string to compare to `left`.
- * @return A signed integer that indicates the relative values of `left` and 
+ * @return A signed integer that indicates the relative values of `left` and
  *         `right`.
 */
 int string_comparer(const void* left, const void* right);
@@ -80,7 +89,7 @@ long math_natural_sum(long n);
 /**
  * Determines the number of digits in the number resulting from `b` raised to
  * the power `a`.
- * 
+ *
  * @param b the base.
  * @param a the exponent.
  * @return The number of digits in the expanded expression `b^a`.
@@ -89,7 +98,7 @@ long long math_length(long long b, long long a);
 
 /**
  * Concatenates a span of zero-terminated integers.
- * 
+ *
  * @param left  the left digits.
  * @param right the first segment of right digits.
  * @return An integer formed by writing out the digits of `left` immediately
@@ -100,7 +109,7 @@ unsigned long long math_concat_impl(int left, int right, ...);
 
 /**
  * Reverses the digits of a given value.
- * 
+ *
  * @param n the value to reverse.
  * @return the reflection of `n`.
 */
@@ -116,7 +125,7 @@ bool math_is_palindrome(long long n);
 
 /**
  * Determines if a given value is a polygonal number.
- * 
+ *
  * @param s       the number of sides of the polygon.
  * @param x       the value to test.
  * @param approxN when this method returns, contaisn an approximation for `n`,

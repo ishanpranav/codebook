@@ -18,6 +18,11 @@ String string(size_t length)
     return result;
 }
 
+bool string_starts_with(String instance, String value)
+{
+    return strncmp(instance, value, strlen(value)) == 0;
+}
+
 String string_clone(String instance)
 {
     String result = malloc((strlen(instance) + 1) * sizeof * result);
