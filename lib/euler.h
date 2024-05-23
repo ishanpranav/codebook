@@ -19,9 +19,11 @@
     exit(1); } end_macro
 #define math_concat(left, ...) math_concat_impl(left, __VA_ARGS__, 0);
 #ifdef __GNUC__
-#define euler_fallthrough() __attribute__ ((fallthrough))
+#define EULER_FALLTHROUGH __attribute__ ((fallthrough))
+#define EULER_UNUSED __attribute__((unused))
 #else
-#define euler_fallthrough()
+#define EULER_FALLTHROUGH
+#define EULER_UNUSED
 #endif
 
 /**
