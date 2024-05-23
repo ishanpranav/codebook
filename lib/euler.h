@@ -52,6 +52,8 @@ String string(size_t length);
  *
  * @param instance the string instance.
  * @param value    the string to compare.
+ * @return `true` if the `value` parameter matches the beginning of this string;
+ *         otherwise, `false`.
 */
 bool string_starts_with(String instance, String value);
 
