@@ -11,36 +11,36 @@ void insertion_sort(
     Comparer itemComparer)
 {
     char* begin = items;
-    void* swap = malloc(itemSize);
+    void* key = malloc(itemSize);
 
-    if (!swap)
+    if (!key)
     {
         selection_sort(items, count, itemSize, itemComparer);
 
         return;
     }
 
-    for (size_t i = 1; i < count; i++)
+    for (size_t i = 1; i < count; i++) 
     {
-        char* p = begin + i * itemSize;
-        size_t j = i;
+        memcpy(key, begin + i * itemSize, itemSize);
 
-        while (j-- > 0)
+        ptrdiff_t j = i - 1;
+        
+        while (j >= 0 && itemComparer(begin + j * itemSize, key) > 0)
         {
-            if (itemComparer(p, begin + j * itemSize) >= 0)
-            {
-                break;
-            }
+            j--;
         }
 
-        j++;
+        if (j != i - 1) 
+        {
+            memmove(
+                begin + (j + 2) * itemSize, 
+                begin + (j + 1) * itemSize, 
+                (i - j - 1) * itemSize);
+        }
 
-        char* q = begin + j * itemSize; 
-
-        memcpy(swap, p, itemSize);
-        memmove(q + itemSize, q, (i - j) * itemSize);
-        memcpy(q, swap, itemSize);
+        memcpy(begin + (j + 1) * itemSize, key, itemSize);
     }
 
-    free(swap);
+    free(key);
 }
