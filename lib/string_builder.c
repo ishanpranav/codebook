@@ -1,5 +1,7 @@
 // Licensed under the MIT License.
 
+#ifndef STRING_BUILDER_4d4532d6f2db4b4088af8db287de600b
+#define STRING_BUILDER_4d4532d6f2db4b4088af8db287de600b
 #include <assert.h>
 #include <ctype.h>
 #include <stdarg.h>
@@ -232,3 +234,5 @@ void finalize_string_builder(StringBuilder instance)
     instance->length = 0;
     instance->capacity = 0;
 }
+
+#endif
