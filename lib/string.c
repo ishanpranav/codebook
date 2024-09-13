@@ -25,14 +25,15 @@ bool string_starts_with(String instance, String value)
 
 String string_clone(String instance)
 {
-    String result = malloc((strlen(instance) + 1) * sizeof * result);
+    size_t size = strlen(instance) + 1;
+    String result = malloc(size * sizeof * result);
 
     if (!result)
     {
         return NULL;
     }
 
-    return strcpy(result, instance);
+    return memcpy(result, instance, size);
 }
 
 int string_comparer(const void* left, const void* right)
