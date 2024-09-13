@@ -82,7 +82,7 @@ Exception string_builder_ensure_capacity(
         return EXCEPTION_OUT_OF_MEMORY;
     }
 
-    newBuffer[instance->length + 1] = '\0';
+    newBuffer[instance->length] = '\0';
     instance->capacity = newCapacity;
     instance->buffer = newBuffer;
 
