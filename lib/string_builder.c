@@ -175,6 +175,8 @@ void string_builder_trim_right(StringBuilder instance)
         {
             instance->buffer[i] = '\0';
             instance->length--;
+
+            break;
         }
     }
 }
