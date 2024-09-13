@@ -7,16 +7,16 @@
 #include <stdlib.h>
 #include <time.h>
 #include "exception.h"
-#define macro do {
-#define end_macro } while (0)
-#define euler_ok(ex) macro \
+#define EULER_MACRO do {
+#define EULER_END_MACRO } while (0)
+#define euler_ok(ex) EULER_MACRO \
     Exception _ex = (ex); \
     if (_ex) { \
     fprintf(stderr, "Error: %d at %s line %d.\n", _ex, __FILE__, __LINE__); \
-    exit(_ex); } end_macro
-#define euler_assert(condition) macro if (!(condition)) { \
+    exit(_ex); } EULER_END_MACRO
+#define euler_assert(condition) EULER_MACRO if (!(condition)) { \
     fprintf(stderr, "Faulted: %s line %d.\n", __FILE__, __LINE__); \
-    exit(1); } end_macro
+    exit(1); } EULER_END_MACRO
 #define math_concat(left, ...) math_concat_impl(left, __VA_ARGS__, 0);
 #ifdef __GNUC__
 #define EULER_FALLTHROUGH __attribute__ ((fallthrough))
