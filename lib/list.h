@@ -53,6 +53,16 @@ Exception list_add(List instance, Object item);
 Exception list_ensure_capacity(List instance, size_t capacity);
 
 /**
+ * Removes the element at the specified index of the list.
+ *
+ * @param instance the `List` instance.
+ * @param index    the zero-based index of the element to remove.
+ * @return `EXCEPTION_ARGUMENT_OUT_OF_RANGE` if `index` is less than `0` or
+           `index` is greater than or equal to `count`.
+*/
+Exception list_remove_at(List instance, size_t index);
+
+/**
  * Determines whether an element is in the list. This method performs a linear
  * search.
  *
