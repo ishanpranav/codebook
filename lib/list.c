@@ -77,6 +77,28 @@ Exception list_add(List instance, Object item)
     return 0;
 }
 
+Exception list_remove_at(List instance, size_t index)
+{
+    if (index < 0 || index >= instance->count)
+    {
+        return EXCEPTION_ARGUMENT_OUT_OF_RANGE;
+    }
+
+    instance->count--;
+
+    if (index == instance->count)
+    {
+        return 0;
+    }
+
+    memmove(
+        instance->items + index, 
+        instance->items + index + 1, 
+        (instance->count - index) * instance->itemSize);
+
+    return 0;
+}
+
 bool list_contains(List instance, Object item, EqualityComparer itemComparer)
 {
     char* begin = instance->items;
