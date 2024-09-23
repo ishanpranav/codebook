@@ -16,7 +16,7 @@
     exit(_ex); } EULER_END_MACRO
 #define euler_assert(condition) EULER_MACRO if (!(condition)) { \
     fprintf(stderr, "Faulted: %s line %d.\n", __FILE__, __LINE__); \
-    exit(1); } EULER_END_MACRO
+    exit(EXIT_FAILURE); } EULER_END_MACRO
 #define math_concat(left, ...) math_concat_impl(left, __VA_ARGS__, 0);
 #ifdef __GNUC__
 #define EULER_FALLTHROUGH __attribute__ ((fallthrough))
