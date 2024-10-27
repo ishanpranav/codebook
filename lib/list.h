@@ -41,6 +41,17 @@ Exception list(List instance, size_t itemSize, size_t capacity);
 Exception list_add(List instance, Object item);
 
 /**
+ * 
+ *
+ * @param instance the `List` instance.
+ * @param items    
+ * @param count     
+ * @return An exception; otherwise `0`. This method always returns `0` if the
+ *         current capacity is sufficient.
+*/
+Exception list_add_range(List instance, Object items, size_t count);
+
+/**
  * Ensures that the capacity of this list is at least the specified capacity.
  * If the current capacity is less than the required minimum capacity, it is
  * increased to at least the specified capacity.
