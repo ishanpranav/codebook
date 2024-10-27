@@ -77,6 +77,27 @@ Exception list_add(List instance, Object item)
     return 0;
 }
 
+Exception list_add_range(List instance, Object items, size_t count)
+{
+    Exception ex = list_ensure_capacity(instance, instance->count + count);
+
+    if (ex)
+    {
+        return ex;
+    }
+
+    void* end = (char*)instance->items + instance->count * instance->itemSize;
+
+    if (item)
+    {
+        memcpy(end, items, count * instance->itemSize);
+    }
+    
+    instance->count += count;
+
+    return 0;
+}
+
 Exception list_remove_at(List instance, size_t index)
 {
     if (index < 0 || index >= instance->count)
