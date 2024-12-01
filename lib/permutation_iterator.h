@@ -25,7 +25,9 @@ typedef struct PermutationIterator* PermutationIterator;
  *
  * @param iterator     when this method returns, contains the iterator. This
  *                     argument is passed uninitialized.
- * @param values       the collection.
+ * @param items        the collection.
+ * @param length       the length of the `items` collection.
+ * @param itemSize     the size of each element in `items`.
  * @param itemComparer the comparer used to determine the lexicographical order.
 */
 void permutation_begin(
@@ -47,7 +49,10 @@ void permutation_next(PermutationIterator iterator);
  * Determines whether two collections are permutations of one another.
  * 
  * @param left         a collection to compare to `right`.
+ * @param leftLength   the number of items in the `left` collection.
  * @param right        a collection to compare to `left`.
+ * @param rightLength  the number of items in the `right` collection.
+ * @param itemSize     the size of each element in `left` and `right`.
  * @param itemComparer the comparer used to determine if two elements are equal.
  * @return `true` if `left` and `right` are permutations; otherwise, `false`.
 */
